@@ -1,4 +1,4 @@
-<title>Что после покупки за $100</title>
+<title>Каталог детских AI-девайсов</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
@@ -247,512 +247,566 @@ footer a{color:var(--ink-2)}
   .bar-label small{display:inline; margin-left:7px}
   section{padding:42px 0}
 }
-</style>
 
+.pill.mkt{color:var(--ink-2); background:var(--surface-2); border-color:var(--rule-strong)}
+.srcnote{font-size:.78rem; color:var(--ink-3); line-height:1.55; margin:10px 0 0}
+.grouphead td{background:var(--surface-2); font-family:"IBM Plex Mono",monospace; font-size:.68rem;
+  letter-spacing:.11em; text-transform:uppercase; color:var(--ink-3); font-weight:500}
+.factgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(184px,1fr)); gap:1px;
+  background:var(--surface); border:1px solid var(--rule); margin:26px 0}
+.factgrid div{background:var(--surface); padding:16px 18px; outline:1px solid var(--rule); min-width:0}
+.factgrid dt{font-family:"IBM Plex Mono",monospace; font-size:.66rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 6px}
+.factgrid dd{margin:0; font-size:1.32rem; font-family:"Newsreader",serif; font-weight:600; line-height:1.15}
+.factgrid dd small{display:block; font-family:"IBM Plex Sans",sans-serif; font-size:.78rem;
+  font-weight:400; color:var(--ink-2); margin-top:5px; line-height:1.45}
+</style>
 <header class="masthead">
   <div class="wrap"><div class="col">
     <div class="kicker-row">
-      <span class="eyebrow">Animaccord · Business model research</span>
-      <span class="xs">Август 2026 · версия для обсуждения</span>
+      <span class="eyebrow">Animaccord · Market landscape</span>
+      <span class="xs">Август 2026 · обзор без выводов</span>
     </div>
-    <h1>Что должно происходить с пользователем после покупки за&nbsp;$100</h1>
-    <p class="deck">Исследование бизнес-моделей детских AI-девайсов и IP-driven hardware: что уже доказало
-      жизнеспособность на рынке, за счёт чего формируется LTV, и какая модель имеет смысл для устройства
-      вокруг Masha and the Bear.</p>
+    <h1>Детские аудио- и AI-девайсы: кто есть на рынке и как устроен</h1>
+    <p class="deck">Фактический каталог: продукты, цены, носители контента, подписки, механика работы,
+      масштаб и статус. Разбор устройств вокруг контента и IP, AI-компаньонов, голосовых колонок
+      и закрытых продуктов.</p>
     <dl class="meta">
-      <div><dt>Предмет</dt><dd>Голосовой AI-девайс вокруг одного IP</dd></div>
-      <div><dt>Целевая цена</dt><dd>~$100 retail</dd></div>
-      <div><dt>Кейсов разобрано</dt><dd>16 (в т.ч. 6 провалов)</dd></div>
-      <div><dt>Горизонт модели</dt><dd>3 года на устройство</dd></div>
+      <div><dt>Продуктов в каталоге</dt><dd>34</dd></div>
+      <div><dt>Из них закрыто</dt><dd>7</dd></div>
+      <div><dt>Данные на</dt><dd>Август 2026</dd></div>
+      <div><dt>Формат</dt><dd>Описание, без оценок</dd></div>
     </dl>
   </div></div>
 </header>
 
 <div class="thesis">
   <div class="wrap"><div class="col">
-    <span class="eyebrow">Главный вопрос → короткий ответ</span>
-    <p class="thesis-q">«Может ли такое устройство быть самостоятельным коммерчески успешным продуктом
-      и какая бизнес-модель должна находиться вокруг него?»</p>
-    <p class="thesis-a">Само по себе — нет. Устройство обязано превратить покупателя
-      в <b>повторного покупателя физических объектов с персонажем</b>. Подписка и AI —
-      надстройка над этим, а не замена: ни один известный кейс не удержал экономику
-      на подписке за AI-разговор.</p>
+    <span class="eyebrow">Как читать этот документ</span>
+    <p class="thesis-a" style="font-size:clamp(1.15rem,2.3vw,1.45rem); line-height:1.4">
+      Здесь описано, что компании делают и сколько это стоит на полке — не почему они это делают
+      и не что из этого следует.</p>
+    <p class="thesis-q" style="margin:18px 0 0; font-size:1rem; font-style:normal; opacity:.85">
+      Долгосрочные допущения игроков — окупаемость железа, план по себестоимости inference,
+      горизонт монетизации — публично не раскрываются ни одним из них.
+      Поэтому в документе нет реконструкции чужих бизнес-моделей: только наблюдаемые параметры —
+      цены, форматы носителей, условия подписок, раскрытые финансовые показатели, объёмы и даты.</p>
   </div></div>
 </div>
 
 <section id="toc" style="padding-top:44px;padding-bottom:44px">
   <div class="wrap"><div class="wide">
     <nav class="toc" aria-label="Содержание">
-      <a href="#summary"><span>01</span><b>Executive summary</b></a>
-      <a href="#landscape"><span>02</span><b>Ландшафт: четыре архетипа</b></a>
-      <a href="#benchmarks"><span>03</span><b>Benchmark-матрица: 16 кейсов</b></a>
-      <a href="#failures"><span>04</span><b>Провалы и анти-паттерны</b></a>
-      <a href="#economics"><span>05</span><b>Сравнительная экономика</b></a>
-      <a href="#ai"><span>06</span><b>Экономика AI</b></a>
-      <a href="#oneip"><span>07</span><b>Гипотеза одного IP</b></a>
-      <a href="#scenarios"><span>08</span><b>Четыре сценария</b></a>
-      <a href="#recommend"><span>09</span><b>Рекомендуемая модель</b></a>
-      <a href="#unit"><span>10</span><b>Unit economics</b></a>
-      <a href="#hypotheses"><span>11</span><b>Гипотезы к проверке</b></a>
-      <a href="#gonogo"><span>12</span><b>Go / no-go критерии</b></a>
-      <a href="#method"><span>13</span><b>Метод и источники</b></a>
+      <a href="#map"><span>01</span><b>Карта категорий</b></a>
+      <a href="#prices"><span>02</span><b>Цены устройств</b></a>
+      <a href="#content"><span>03</span><b>Устройства вокруг контента</b></a>
+      <a href="#companions"><span>04</span><b>AI-компаньоны</b></a>
+      <a href="#speakers"><span>05</span><b>Голосовые колонки</b></a>
+      <a href="#closed"><span>06</span><b>Закрытые продукты</b></a>
+      <a href="#disclosed"><span>07</span><b>Раскрытая экономика</b></a>
+      <a href="#stack"><span>08</span><b>Цены AI-стека</b></a>
+      <a href="#regulation"><span>09</span><b>Регуляторный календарь</b></a>
+      <a href="#masha"><span>10</span><b>Masha в цифрах</b></a>
+      <a href="#method"><span>11</span><b>Метод и надёжность</b></a>
     </nav>
   </div></div>
 </section>
 
-<section id="summary">
+<section id="map">
   <div class="wrap">
     <div class="sec-head">
-      <span class="sec-num">01 — Executive summary</span>
-      <h2>Пять выводов, которые определяют решение</h2>
-      <p>Ниже — сжатый ответ на весь бриф. Каждый вывод раскрыт в соответствующем разделе,
-        цифры и источники — в разделах 05, 06 и 13.</p>
-    </div>
-    <div class="wide">
-      <div class="findings">
-
-        <article class="finding">
-          <div class="n">01</div>
-          <div>
-            <h3>Hardware никогда не несёт модель — но и «продавать в минус ради экосистемы» тоже не работает</h3>
-            <p>У Tonies, лучшего кейса категории, в 2025 году колонки дали <strong>26% выручки</strong>,
-              а фигурки — <strong>71%</strong>. Контент приносит в 2,8 раза больше, чем железо.
-              Обратная крайность — Amazon: 25 млрд $ убытка девайсного подразделения за 2017–2021,
-              потому что Echo продавали около себестоимости в расчёте на экосистему, которая не материализовалась.</p>
-            <p>Вывод не «субсидируй железо», а «<strong>железо должно окупаться в момент продажи хотя бы в ноль,
-              а зарабатывать нужно на том, что докупают</strong>». Anki, Jibo и Kuri умерли ровно потому,
-              что докупать было нечего.</p>
-          </div>
-        </article>
-
-        <article class="finding">
-          <div class="n">02</div>
-          <div>
-            <h3>Даже идеально исполненная content-attach модель даёт 8,6% EBITDA</h3>
-            <p>Tonies: 11,8 млн установленной базы, ~5,7 повторных покупок на активное устройство в год,
-              валовая маржа 62,8% — и при этом <strong>скорректированная EBITDA всего 8,6%</strong>
-              и отрицательный свободный денежный поток в 2025 году. Операционные расходы съедают 86% валовой прибыли.</p>
-            <p>Это бизнес масштаба, а не бизнес маржи. Для Animaccord честная точка сравнения —
-              не «сколько заработает завод», а <strong>11% роялти, которые Tonies платит лицензиарам</strong>,
-              при нулевых вложениях. Причём Masha-фигурка в экосистеме Tonies уже продаётся.</p>
-          </div>
-        </article>
-
-        <article class="finding">
-          <div class="n">03</div>
-          <div>
-            <h3>AI — это статья расходов раньше, чем статья доходов</h3>
-            <p>15 минут живого диалога в день стоят <strong>$13–25 на пользователя в месяц</strong>
-              по ценам голосового стека 2026 года. Чтобы такая подписка была валовомаржинальной,
-              её пришлось бы продавать за $53–88 в месяц. Детский рынок платит $5–10.</p>
-            <p>AI сходится только как <strong>тонкий слой поверх заранее отрендеренного контента</strong>:
-              не более 10–20% времени использования приходится на живую генерацию, остальное — готовые
-              аудиофайлы с нулевой предельной себестоимостью, плюс жёсткая суточная квота.</p>
-          </div>
-        </article>
-
-        <article class="finding">
-          <div class="n">04</div>
-          <div>
-            <h3>Подписка в детском hardware существует, но она поздняя и небольшая</h3>
-            <p>У Tonies спустя десять лет «Accessories &amp; Digital» — <strong>3,5% выручки</strong>.
-              У Yoto подписка Yoto Club даёт ~25% выручки, но на заметно меньшей базе.
-              Медианный месячный отток детских образовательных подписок — <strong>7,4%</strong> (около 60% в год).</p>
-            <p>Две главные причины отписки — «ребёнок потерял интерес» (36%) и «перерос контент» (24%).
-              Именно то, что одно дошкольное IP исправить не может.</p>
-          </div>
-        </article>
-
-        <article class="finding">
-          <div class="n">05</div>
-          <div>
-            <h3>Одного IP хватает, чтобы продать устройство, но не хватает, чтобы его удержать</h3>
-            <p>Ядро аудитории Masha — 2–6 лет. Устройству для окупаемости нужно 3–5 лет жизни в семье.
-              Ребёнок перерастает IP примерно в середине этого срока — это структурный, а не маркетинговый разрыв.</p>
-            <p>Ответ на гипотезу брифа — <strong>вариант B с заложенной архитектурой под C</strong>:
-              Masha продаёт коробку, но платформа обязана с первого дня уметь принимать сторонний контент,
-              иначе второй год жизни устройства не наступит.</p>
-          </div>
-        </article>
-
-      </div>
-
-      <div class="col" style="margin-top:34px">
-        <div class="callout ink">
-          <h4>Что это значит для решения</h4>
-          <p class="small" style="margin-bottom:.6rem">Запускать отдельный hardware-продукт — <strong>да,
-            но не как производителя железа</strong>. Рекомендуемый путь: сначала за нулевые деньги
-            снять реальные метрики attach rate через уже существующего лицензиата (Tonies),
-            параллельно спроектировать собственное устройство как <em>content ecosystem</em> (сценарий 3)
-            с архитектурой платформы (сценарий 4).</p>
-          <p class="small" style="margin-bottom:0">Hardware-only (сценарий 1) нежизнеспособен при $99.
-            Подписка за AI (сценарий 2) — функция, а не бизнес-модель. Подробности — разделы 08 и 09.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="landscape">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num">02 — Ландшафт</span>
-      <h2>Четыре архетипа: кто на чём на самом деле зарабатывает</h2>
-      <p>Все изученные продукты сводятся к четырём моделям монетизации после продажи устройства.
-        Различаются они не технологией, а тем, что именно пользователь покупает во второй раз.</p>
+      <span class="sec-num">01 — Карта категорий</span>
+      <h2>Четыре группы продуктов</h2>
+      <p>Группировка по тому, как устройство получает контент и что предлагается купить после него.
+        Это описательная классификация для навигации по каталогу.</p>
     </div>
     <div class="wide">
       <div class="tscroll">
         <table>
-          <caption>Отдельная категория — китайские AI-игрушки (BubblePal, FoloToy): формально архетип C,
-            фактически продаются как разовое железо без подписки. Более 1 500 компаний в сегменте на октябрь 2025 г.</caption>
-          <thead>
-            <tr>
-              <th>Архетип</th><th>Что покупают второй раз</th><th>Примеры</th>
-              <th class="num">Доля recurring</th><th>Экономический статус</th>
-            </tr>
-          </thead>
+          <thead><tr><th>Группа</th><th>Как получает контент</th><th>Что предлагается докупить</th><th>Есть ли AI-диалог</th><th>Кто в группе</th></tr></thead>
           <tbody>
             <tr>
-              <td class="name">A. Content device</td>
-              <td>Физические объекты-носители контента (фигурки, карточки)</td>
-              <td>Tonies, Yoto, Storypod, Lunii, Faba</td>
-              <td class="num">70–75%</td>
-              <td><span class="pill pos">Доказан</span> единственная модель с публично подтверждённой прибыльностью</td>
+              <td class="name">Устройства вокруг контента</td>
+              <td>Физический носитель: фигурка, карточка, диск, токен с NFC или RFID</td>
+              <td>Новые носители, подписка на цифровую библиотеку</td>
+              <td>Нет либо в тестовом режиме</td>
+              <td>Tonies, Yoto, Storypod, Lunii, Faba, Timio, Jooki, tiptoi</td>
             </tr>
             <tr>
-              <td class="name">B. Ecosystem device</td>
-              <td>Ничего материального: сервисы, commerce, медиа-подписка</td>
-              <td>Amazon Echo / Echo Kids, Google Nest</td>
-              <td class="num">н/д</td>
-              <td><span class="pill neg">Провален</span> работает только у владельца маркетплейса, да и то не сработал</td>
+              <td class="name">AI-компаньоны</td>
+              <td>Генерация в реальном времени, часть библиотеки предзаписана</td>
+              <td>Подписка, дополнительные персонажи</td>
+              <td>Да, основа продукта</td>
+              <td>Miko, Curio, Bondu, BubblePal, FoloToy, Ropet, Loona, Fuzozo</td>
             </tr>
             <tr>
-              <td class="name">C. AI companion</td>
-              <td>Подписку на расширенный AI и контент</td>
-              <td>Miko, Curio, Moxie †, BubblePal</td>
-              <td class="num">0–35%</td>
-              <td><span class="pill warn">Не доказан</span> единственный масштабный игрок — Miko, и тот на образовательном контенте</td>
+              <td class="name">Голосовые колонки</td>
+              <td>Стриминг и голосовой ассистент общего назначения</td>
+              <td>Медиа-подписка платформы</td>
+              <td>Да, ассистент</td>
+              <td>Echo Dot Kids, Яндекс Станция, СберБум, Nest</td>
             </tr>
             <tr>
-              <td class="name">D. IP hardware</td>
-              <td>Обычно ничего — железо как мерч</td>
-              <td>Anki †, Jibo †, Hello Barbie †, Aristotle †</td>
-              <td class="num">0%</td>
-              <td><span class="pill neg">Провален</span> все крупные попытки закрылись</td>
+              <td class="name">Плееры без носителя</td>
+              <td>Синхронизация со стриминговым сервисом, офлайн-воспроизведение</td>
+              <td>Ничего, нужна подписка стриминга</td>
+              <td>Нет</td>
+              <td>Mighty, частично Jooki</td>
             </tr>
           </tbody>
         </table>
       </div>
     </div>
+  </div>
+</section>
 
-    <div class="col">
-      <h3 style="margin-top:34px">Ключевое наблюдение</h3>
-      <p>Граница между выжившими и умершими проходит не по качеству технологии и не по силе бренда.
-        Она проходит по одному признаку: <strong>существует ли физический объект, который ребёнок хочет
-        получить следующим</strong>.</p>
-      <p>Tonies и Yoto продают коллекционирование — фигурка и карточка это игрушка, подарок и предмет желания
-        одновременно. Anki продавал робота: превосходного, любимого, и совершенно законченного в момент покупки.
-        Anki привлёк около $260 млн, выпустил миллионы устройств и всё равно закрылся в 2019 году.</p>
-      <p>AI не меняет эту логику. Он меняет то, <em>насколько интересен</em> объект в первые недели,
-        но не создаёт повода купить следующий.</p>
+<section id="prices">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">02 — Цены</span>
+      <h2>Прайс-лист устройств на полке</h2>
+      <p>Заявленные розничные цены в США на август 2026 года. Фактические цены в промо
+        и у отдельных ритейлеров бывают заметно ниже — отмечено в подписи.</p>
+    </div>
+    <div class="wide">
+      <div class="viz">
+        <p class="viz-title">Розничная цена устройства, доллары США</p>
+        <p class="viz-sub">Сгруппировано по категории. Дополнительный контент, подписки и бандлы
+          в цену не входят.</p>
+        <div class="legend">
+          <span><i style="background:var(--s1)"></i>Вокруг контента</span>
+          <span><i style="background:var(--s2)"></i>AI-компаньон</span>
+          <span><i style="background:var(--s3)"></i>Голосовая колонка</span>
+        </div>
+        <div class="bar-row"><div class="bar-label">Yoto Mini<small>Yoto</small></div>
+          <div class="bar-track"><div class="seg a" style="width:23.4%">$70</div></div></div>
+        <div class="bar-row"><div class="bar-label">Storypod<small>с 1 iCraftie</small></div>
+          <div class="bar-track"><div class="seg a" style="width:26.4%">$79</div></div></div>
+        <div class="bar-row"><div class="bar-label">Yoto Player 3<small>Yoto</small></div>
+          <div class="bar-track"><div class="seg a" style="width:36.8%">$110</div></div></div>
+        <div class="bar-row"><div class="bar-label">Toniebox 2<small>бандл $139–159</small></div>
+          <div class="bar-track"><div class="seg a" style="width:46.8%">$140</div></div></div>
+        <div class="bar-row"><div class="bar-label">Curio Grok<small>Curio</small></div>
+          <div class="bar-track"><div class="seg b" style="width:33.1%">$99</div></div></div>
+        <div class="bar-row"><div class="bar-label">FoloToy Kumma<small>FoloToy</small></div>
+          <div class="bar-track"><div class="seg b" style="width:33.1%">$99</div></div></div>
+        <div class="bar-row"><div class="bar-label">Miko Mini<small>в промо от $60</small></div>
+          <div class="bar-track"><div class="seg b" style="width:49.8%">$149</div></div></div>
+        <div class="bar-row"><div class="bar-label">Bondu<small>предзаказ</small></div>
+          <div class="bar-track"><div class="seg b" style="width:66.9%">$200</div></div></div>
+        <div class="bar-row"><div class="bar-label">Miko 3<small>Miko</small></div>
+          <div class="bar-track"><div class="seg b" style="width:83.3%">$249</div></div></div>
+        <div class="bar-row"><div class="bar-label">Ropet<small>Pro — $319</small></div>
+          <div class="bar-track"><div class="seg b" style="width:100%">$299</div></div></div>
+        <div class="bar-row"><div class="bar-label">Loona<small>Keyi Robot</small></div>
+          <div class="bar-track"><div class="seg b" style="width:100%">$299</div></div></div>
+        <div class="bar-row"><div class="bar-label">Echo Dot Kids<small>в промо от $38</small></div>
+          <div class="bar-track"><div class="seg c" style="width:20.1%">$60</div></div></div>
+        <div class="axis"><span>$0</span><span>$150</span><span>$299</span></div>
+        <p class="srcnote">Европейские продукты в этот график не вошли: Lunii — около €70,
+          Faba — около €60. Российские устройства см. в разделе 05.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="benchmarks">
+<section id="content">
   <div class="wrap">
     <div class="sec-head">
-      <span class="sec-num">03 — Benchmarks</span>
-      <h2>Шестнадцать кейсов в одной таблице</h2>
-      <p>Сравнительная матрица по параметрам брифа. Прочерк означает, что компания не раскрывает показатель —
-        это само по себе информация: непубличные игроки категории не раскрывают retention ни один.</p>
+      <span class="sec-num">03 — Вокруг контента</span>
+      <h2>Устройства с физическим носителем</h2>
+      <p>Общая механика группы: ребёнок ставит на устройство предмет, устройство играет привязанное
+        к нему аудио. Различаются форматом носителя, наполнением каталога и наличием подписки.</p>
     </div>
     <div class="wide">
       <div class="tscroll">
-        <table style="min-width:1080px">
-          <caption>† компания прекратила деятельность или продукт снят с рынка.
-            Цены — retail в США на середину 2026 г. «Recurring» — доля выручки, не приходящейся на продажу устройства.</caption>
+        <table style="min-width:1240px">
+          <caption>Цены — розница США, август 2026. Для европейских продуктов указана европейская цена.</caption>
           <thead>
-            <tr>
-              <th>Продукт</th><th>Тип</th><th class="num">Цена HW</th><th>IP</th>
-              <th>Подписка</th><th class="num">Recurring</th><th>Доп. покупки</th><th>AI</th>
-              <th>Что работает / что нет</th>
-            </tr>
+            <tr><th>Продукт</th><th>Компания</th><th class="num">Устройство</th><th>Носитель</th>
+              <th class="num">Цена носителя</th><th>Подписка</th><th>Как устроено</th><th>Статус</th></tr>
           </thead>
           <tbody>
             <tr>
-              <td class="name">Toniebox 2</td><td>Content device</td><td class="num">$140</td>
-              <td>350+ лицензий</td><td>mytonies (слабая)</td><td class="num">74%</td>
-              <td>Фигурки $17,99</td><td>Генератор историй в тесте</td>
-              <td><span class="pill pos">Эталон</span> attach ~5,7/год; но EBITDA 8,6%</td>
+              <td class="name">Toniebox 2</td><td>tonies SE, Германия</td><td class="num">$140</td>
+              <td>Фигурка персонажа с NFC</td><td class="num">$17,99</td>
+              <td>mytonies — цифровые тайтлы</td>
+              <td>Фигурка ставится на колонку. Creative Tonies позволяют записать своё аудио.
+                Tonieplay — игровые фигурки с контроллером</td>
+              <td><span class="pill mkt">На рынке</span></td>
             </tr>
             <tr>
-              <td class="name">Toniebox Lite</td><td>Content device</td><td class="num">н/д</td>
-              <td>те же</td><td>та же</td><td class="num">—</td>
-              <td>те же фигурки</td><td>—</td>
-              <td>Запуск 2026: снижение порога входа и второе устройство в семью</td>
+              <td class="name">Toniebox Lite</td><td>tonies SE, Германия</td><td class="num">н/д</td>
+              <td>Те же фигурки</td><td class="num">$17,99</td><td>Та же</td>
+              <td>Упрощённая версия. Предзаказ в США с 27 июля 2026, магазины с августа,
+                UK, Австралия и Новая Зеландия — осень 2026</td>
+              <td><span class="pill warn">Анонсирован</span></td>
             </tr>
             <tr>
-              <td class="name">Yoto Player 3</td><td>Content device</td><td class="num">$110</td>
-              <td>Мульти-IP</td><td>Yoto Club от $4,99</td><td class="num">~60%</td>
-              <td>Карточки $7–30</td><td>Нет</td>
-              <td><span class="pill pos">Работает</span> подписка 25% выручки — лучший результат категории</td>
+              <td class="name">Yoto Player 3</td><td>Yoto, Великобритания</td><td class="num">$110</td>
+              <td>Карточка с NFC</td><td class="num">$7–30</td>
+              <td>Yoto Club от $4,99/мес</td>
+              <td>Карточка вставляется в слот. Подписка даёт кредиты на карточки,
+                скидки и бесплатную доставку. Есть пустые карточки для своих записей</td>
+              <td><span class="pill mkt">На рынке</span></td>
             </tr>
             <tr>
-              <td class="name">Yoto Mini</td><td>Content device</td><td class="num">$70</td>
-              <td>Мульти-IP</td><td>та же</td><td class="num">~60%</td>
-              <td>те же карточки</td><td>Нет</td>
-              <td>Дешёвая точка входа в ту же библиотеку — второй девайс, не замена</td>
+              <td class="name">Yoto Mini</td><td>Yoto, Великобритания</td><td class="num">$70</td>
+              <td>Те же карточки</td><td class="num">$7–30</td><td>Та же</td>
+              <td>Портативная версия с той же библиотекой</td>
+              <td><span class="pill mkt">На рынке</span></td>
             </tr>
             <tr>
-              <td class="name">Storypod</td><td>Content device</td><td class="num">~$100</td>
-              <td>Мульти + свой</td><td>$10–22,50/мес</td><td class="num">высокая</td>
-              <td>Crafties, карточки</td><td>Ограниченный</td>
-              <td><span class="pill warn">Ниша</span> подписка по возрастам — самая агрессивная в категории</td>
+              <td class="name">Storypod</td><td>Craftie Fox, США</td><td class="num">$79 с 1 iCraftie</td>
+              <td>Crafties — вязаные фигурки; карточки; аудиокниги</td><td class="num">варьируется</td>
+              <td>Learning Sets: $29,99/квартал для 0–2 лет, $67,49/квартал для 3–6 лет</td>
+              <td>Подписка организована как возрастные наборы, номера 1–9 и 10–21,
+                контент приходит по мере взросления</td>
+              <td><span class="pill mkt">На рынке</span></td>
             </tr>
             <tr>
-              <td class="name">Lunii</td><td>Content device</td><td class="num">~$70–90</td>
-              <td>Свой</td><td>Нет</td><td class="num">средняя</td>
-              <td>Цифровые альбомы</td><td>Нет</td>
-              <td>Франция; цифровой контент дешевле в производстве, но хуже как подарок</td>
+              <td class="name">Lunii</td><td>Lunii, Франция</td><td class="num">~€70</td>
+              <td>Носителя нет — цифровые альбомы через приложение</td><td class="num">от €5 за альбом</td>
+              <td>Нет</td>
+              <td>«Фабрика историй»: ребёнок собирает сюжет, выбирая героя, место и предмет.
+                Мультиязычность</td>
+              <td><span class="pill mkt">На рынке</span></td>
             </tr>
             <tr>
-              <td class="name">Faba</td><td>Content device</td><td class="num">~$80</td>
-              <td>Мульти</td><td>Нет</td><td class="num">средняя</td>
-              <td>Фигурки-персонажи</td><td>Нет</td>
-              <td>Италия; клон модели Tonies на локальном контенте</td>
+              <td class="name">Faba</td><td>Faba, Италия</td><td class="num">~€60</td>
+              <td>Фигурки-персонажи</td><td class="num">от €10</td><td>Нет</td>
+              <td>Механика Tonies на локальном итальянском контенте</td>
+              <td><span class="pill mkt">На рынке</span></td>
             </tr>
             <tr>
-              <td class="name">Echo Dot Kids</td><td>Ecosystem</td><td class="num">$60 (часто $38)</td>
-              <td>Мульти</td><td>Kids+ $2,99–5,99</td><td class="num">н/д</td>
-              <td>Нет</td><td>Alexa + LLM</td>
-              <td><span class="pill neg">Убыточен</span> −$25 млрд по девайсам за 2017–2021</td>
+              <td class="name">Timio</td><td>Timio, Нидерланды</td><td class="num">Starter kit с 5 дисками</td>
+              <td>Магнитные диски</td><td class="num">от €10</td><td>Нет</td>
+              <td>Обучающий уклон: словарь, викторины, животные, музыка.
+                Восемь языков на одном диске, от 2 лет</td>
+              <td><span class="pill mkt">На рынке</span></td>
             </tr>
             <tr>
-              <td class="name">Miko 3 / Mini</td><td>AI companion</td><td class="num">$150–249</td>
-              <td>Disney, PBS и др.</td><td>Miko Max $14,99</td><td class="num">растёт ×29 г/г</td>
-              <td>Контент-паки</td><td>Да, ядро продукта</td>
-              <td><span class="pill warn">Единственный масштаб</span> ~$43 млн выручки; платят за обучение, не за AI</td>
+              <td class="name">Jooki</td><td>Jooki, Бельгия</td><td class="num">Плеер + 2 токена</td>
+              <td>Токены и фигурки</td><td class="num">варьируется</td>
+              <td>Нужна подписка Spotify для стриминга</td>
+              <td>Гибрид: токен привязывается к плейлисту Spotify или к загруженным MP3.
+                5 ГБ памяти, до 8 часов работы</td>
+              <td><span class="pill mkt">На рынке</span></td>
             </tr>
             <tr>
-              <td class="name">Curio Grok / Grem</td><td>AI companion</td><td class="num">$99</td>
-              <td>Свой (Grimes)</td><td>Заявлено «не нужна»</td><td class="num">~0%</td>
-              <td>Нет</td><td>Да, ядро продукта</td>
-              <td><span class="pill neg">Риск</span> новизна уходит к 4-му дню; не распознаёт речь до 5 лет</td>
+              <td class="name">Mighty 3</td><td>Mighty Audio, США</td><td class="num">н/д</td>
+              <td>Носителя нет</td><td class="num">—</td>
+              <td>Требуется Spotify или Amazon Music</td>
+              <td>Офлайн-плеер: синхронизирует до 1000+ треков со стриминга,
+                работает без телефона и экрана</td>
+              <td><span class="pill mkt">На рынке</span></td>
             </tr>
             <tr>
-              <td class="name">BubblePal (Haivivi)</td><td>AI companion</td><td class="num">$89–150</td>
-              <td>Мульти-персонажи</td><td>Нет</td><td class="num">~0%</td>
-              <td>Нет</td><td>Да, ядро продукта</td>
-              <td>200 тыс.+ устройств; подвеска к чужой игрушке — обходит стоимость плюша</td>
-            </tr>
-            <tr>
-              <td class="name">FoloToy Kumma</td><td>AI companion</td><td class="num">$99</td>
-              <td>Свой</td><td>Нет</td><td class="num">~0%</td>
-              <td>Нет</td><td>Да, на OpenAI</td>
-              <td><span class="pill neg">Инцидент</span> снят с продажи после отчёта PIRG, доступ к моделям отозван</td>
-            </tr>
-            <tr>
-              <td class="name">Moxie †</td><td>AI companion</td><td class="num">$799</td>
-              <td>Свой</td><td>Была</td><td class="num">—</td>
-              <td>Нет</td><td>Да, полностью в облаке</td>
-              <td><span class="pill neg">Закрыт 2024</span> роботы «окирпичились», офлайн-режима не было</td>
-            </tr>
-            <tr>
-              <td class="name">Anki Cozmo / Vector †</td><td>IP hardware</td><td class="num">$179 / $249</td>
-              <td>Свой</td><td>Нет</td><td class="num">0%</td>
-              <td>Нет</td><td>Компьютерное зрение</td>
-              <td><span class="pill neg">Закрыт 2019</span> $260 млн инвестиций, нулевая recurring выручка</td>
-            </tr>
-            <tr>
-              <td class="name">Jibo † / Kuri †</td><td>IP hardware</td><td class="num">$700–900</td>
-              <td>Свой</td><td>Нет</td><td class="num">0%</td>
-              <td>Нет</td><td>Социальный робот</td>
-              <td><span class="pill neg">Закрыты 2018</span> цена железа не покрывалась ничем</td>
-            </tr>
-            <tr>
-              <td class="name">Mattel Aristotle †</td><td>Ecosystem</td><td class="num">не вышел</td>
-              <td>Mattel</td><td>Планировалась</td><td class="num">—</td>
-              <td>Планировались</td><td>Голосовой ассистент</td>
-              <td><span class="pill neg">Отменён 2017</span> убит кампанией о приватности до релиза</td>
+              <td class="name">tiptoi</td><td>Ravensburger, Германия</td><td class="num">Ручка + книга</td>
+              <td>Книги, карты, игры со скрытым кодом</td><td class="num">от €10</td><td>Нет</td>
+              <td>Оптическая ручка считывает точечный код с печатной страницы
+                и произносит соответствующее аудио</td>
+              <td><span class="pill mkt">На рынке</span></td>
             </tr>
           </tbody>
         </table>
       </div>
-    </div>
 
-    <div class="col">
-      <h3 style="margin-top:34px">Три кейса, которые стоит разобрать отдельно</h3>
-
-      <div class="callout pos">
-        <h4>Tonies — как выглядит успех вблизи</h4>
-        <p class="small">Выручка 2025: <strong>€630,3 млн</strong> (+31%). Разбивка: колонки €161,2 млн,
-          фигурки €447,2 млн, аксессуары и цифра €22,0 млн. Установленная база — около 11,8 млн колонок
-          и более 156 млн фигурок. Каталог: ~1 500 фигурок, 12 игр Tonieplay, 3 500+ цифровых наименований.
-          Валовая маржа 62,8%, лицензионные отчисления 11,0% выручки.</p>
-        <p class="small" style="margin-bottom:0">Важная деталь для Animaccord: фигурка
-          <strong>Masha &amp; the Bear уже продаётся в этой экосистеме</strong> по лицензии Animaccord
-          (9 треков, ~38 минут, 3+). То есть часть ответа на вопрос «покупают ли Машу как физический
-          аудио-объект» уже существует в виде реальных продаж — её нужно просто запросить у партнёра.</p>
-      </div>
-
-      <div class="callout warn">
-        <h4>Yoto — единственный, у кого подписка действительно работает</h4>
-        <p class="small" style="margin-bottom:0">Выручка 2024 — £94,8 млн (+86%), более 1 млн активных устройств,
-          15 млн+ проданных карточек, attach более 3 карточек на устройство в год. Yoto Club даёт около
-          <strong>25% выручки</strong> — вчетверо больше, чем цифровое направление Tonies. Механика:
-          подписка даёт не «доступ к AI», а <em>кредиты на карточки</em>, скидки и бесплатную доставку.
-          Это подписка на физические покупки, а не на софт — и именно поэтому она удерживается.</p>
-      </div>
-
-      <div class="callout neg">
-        <h4>Miko — и почему это не опровержение</h4>
-        <p class="small" style="margin-bottom:0">Miko выглядит как доказательство модели «AI + подписка»:
-          выручка ~$43 млн, подписочный доход вырос в 29 раз за год, более 500 тыс. устройств.
-          Но продаётся <strong>Miko Max за $14,99 как доступ к библиотеке Disney, PBS, Da Vinci и vooks</strong> —
-          то есть к лицензированному контенту, а не к AI-диалогу. Устройство стоит $150–249, а не $99.
-          Miko подтверждает, что родители платят за <em>контент и обучение</em>; он не подтверждает,
-          что они платят за разговор с персонажем.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="failures">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num">04 — Анти-паттерны</span>
-      <h2>Шесть способов потерять деньги, уже проверенных другими</h2>
-      <p>Бриф справедливо требует изучить провалы. Ниже — не список банкротств, а причинно-следственные
-        связи, каждая из которых напрямую применима к рассматриваемому продукту.</p>
-    </div>
-    <div class="wide">
-      <div class="findings">
-        <article class="finding">
-          <div class="n">A1</div>
-          <div>
-            <h3>Нулевая recurring выручка при дорогом железе</h3>
-            <p><strong>Кто:</strong> Anki (Cozmo $179, Vector $249), Jibo ($899), Kuri. Все три закрылись
-              в течение 12 месяцев друг за другом, 2018–2019. Anki привлёк около $260 млн.</p>
-            <p><strong>Механика провала:</strong> при цене ниже $300 BOM робота с компьютерным зрением
-              и эмоциональным AI не оставляет почти ничего. Выручка заканчивалась в момент покупки,
-              а разработка и поддержка — нет. Выживание зависело от следующего раунда, а не от бизнеса.</p>
-            <p><strong>Применимость:</strong> прямая. Это ровно сценарий 1.</p>
-          </div>
-        </article>
-        <article class="finding">
-          <div class="n">A2</div>
-          <div>
-            <h3>Облачная зависимость без офлайн-режима</h3>
-            <p><strong>Кто:</strong> Embodied Moxie, $799. Компания прекратила работу в ноябре 2024-го
-              после того, как ведущий инвестор вышел из раунда; 30 января серверы выключили,
-              и устройства перестали работать полностью.</p>
-            <p><strong>Механика провала:</strong> распознавание речи, диалог и эмоциональный вывод жили
-              только на серверах. Ни офлайн-режима, ни возвратов, ни гарантийной поддержки.
-              Репутационный ущерб категории оказался больше, чем потери одной компании.</p>
-            <p><strong>Применимость:</strong> критическая. Устройство с персонажем Animaccord,
-              переставшее говорить, — это удар по IP, а не по продукту.</p>
-          </div>
-        </article>
-        <article class="finding">
-          <div class="n">A3</div>
-          <div>
-            <h3>Приватность убивает продукт до релиза</h3>
-            <p><strong>Кто:</strong> Mattel Aristotle — отменён в октябре 2017 года под давлением
-              родительских и правозащитных организаций, ещё до выхода. Hello Barbie — коллективный иск
-              и претензии по COPPA.</p>
-            <p><strong>Механика провала:</strong> устройство, которое слушает ребёнка в спальне,
-              оценивается публикой не по функциям, а по намерениям владельца данных.
-              Крупный бренд здесь не защита, а мишень.</p>
-            <p><strong>Применимость:</strong> высокая. Узнаваемость Masha делает запуск заметным
-              по умолчанию — включая для критиков.</p>
-          </div>
-        </article>
-        <article class="finding">
-          <div class="n">A4</div>
-          <div>
-            <h3>Генеративный AI без жёстких ограничений</h3>
-            <p><strong>Кто:</strong> FoloToy Kumma, $99. В ноябре 2025 года отчёт PIRG показал, что игрушка
-              выдавала сексуализированный контент и объясняла детям, где найти спички и таблетки.
-              OpenAI отозвал доступ к моделям, продажи приостановили, затем вернули после аудита.</p>
-            <p><strong>Механика провала:</strong> LLM общего назначения плюс детская аудитория без
-              многослойной модерации — вопрос времени, а не вероятности.</p>
-            <p><strong>Применимость:</strong> критическая, и она усиливается регуляторикой (см. ниже).</p>
-          </div>
-        </article>
-        <article class="finding">
-          <div class="n">A5</div>
-          <div>
-            <h3>Новизна вместо привычки</h3>
-            <p><strong>Кто:</strong> Curio Grok и китайский сегмент AI-игрушек в целом. Обзоры фиксируют
-              спад интереса <strong>к четвёртому дню</strong>; типичная родительская формулировка —
-              «поиграла пять минут и заскучала».</p>
-            <p><strong>Механика провала:</strong> ответы слишком длинные, распознавание не справляется
-              с речью детей до пяти лет, нет структурированных игр и песен. Разговор ради разговора
-              не образует ежедневного ритуала.</p>
-            <p><strong>Применимость:</strong> прямая. Это главный риск сценария 2.</p>
-          </div>
-        </article>
-        <article class="finding">
-          <div class="n">A6</div>
-          <div>
-            <h3>Ставка на экосистему, которой ещё нет</h3>
-            <p><strong>Кто:</strong> Amazon. Логика Безоса 2013 года — «продавать премиальное железо
-              примерно по себестоимости» и зарабатывать на использовании. Итог: около
-              <strong>$25 млрд убытка</strong> девайсного подразделения за 2017–2021,
-              $3 млрд за один квартал 2022-го.</p>
-            <p><strong>Механика провала:</strong> пользователи не стали покупать больше — Echo превратились
-              в «таймеры для яиц». Экосистемная выручка была гипотезой, а субсидия железа — фактом.</p>
-            <p><strong>Применимость:</strong> высокая для сценария 4, если платформу строить до того,
-              как подтверждён attach rate.</p>
-          </div>
-        </article>
-      </div>
-
-      <div class="col" style="margin-top:34px">
-        <div class="callout neg">
-          <h4>Регуляторный контур ужесточился именно в 2026 году</h4>
-          <p class="small" style="margin-bottom:.6rem">Это меняет стоимость входа в категорию и должно
-            закладываться в план, а не обнаруживаться после запуска:</p>
-          <ul class="tight small" style="margin-bottom:0">
-            <li><strong>EU Toy Safety Regulation 2025/2509</strong> — вступил в силу 1 января 2026 г.
-              Обязательный цифровой паспорт продукта (DPP) вместо декларации соответствия.
-              Плюшевая игрушка со встроенным AI попадает в область регулирования.</li>
-            <li><strong>Обновлённые правила COPPA (FTC)</strong> — усиленные требования к уведомлению
-              и согласию, минимизации данных и прозрачности.</li>
-            <li><strong>Children's AI Toy Safety Act of 2026</strong> (S. 5171) — законопроект о федеральных
-              стандартах безопасности для AI-игрушек детям до 13 лет с полномочиями FTC.</li>
-            <li><strong>Законы штатов</strong> — раскрытие факта общения с AI с почасовыми напоминаниями
-              и обязательные механизмы реакции на признаки самоповреждения.</li>
-          </ul>
+      <div class="col">
+        <h3 style="margin-top:32px">Каталоги контента</h3>
+        <div class="factgrid">
+          <div><dt>tonies — фигурок</dt><dd>~1 500<small>плюс 12 игр Tonieplay и более 3 500 цифровых
+            наименований в mytonies</small></dd></div>
+          <div><dt>tonies — лицензиаров</dt><dd>~350<small>Disney, Warner Bros., NBC Universal, Mattel,
+            Marvel, Paramount, Hasbro, Universal, Sony Music, Animaccord</small></dd></div>
+          <div><dt>Yoto — карточек продано</dt><dd>15 млн+<small>при более чем 1 млн активных устройств</small></dd></div>
+          <div><dt>Yoto — attach</dt><dd>&gt;3 карточки<small>на устройство в год, по заявлению компании</small></dd></div>
         </div>
+        <p class="xs">Тестируемое направление: tonies запустил в mytonies генератор контента на AI —
+          пользователь создаёт сценарий истории, затем озвучивает его сам или синтезирует через TTS
+          и записывает на Creative Tonie. Компания заявляет о введённых ограничениях
+          на недопустимую лексику и нарушение прав.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="economics">
+<section id="companions">
   <div class="wrap">
     <div class="sec-head">
-      <span class="sec-num">05 — Сравнительная экономика</span>
-      <h2>Куда на самом деле приходят деньги</h2>
-      <p>Ниже — расчёты по раскрытой отчётности Tonies за 2024 и 2025 годы. Это единственный публичный
-        источник настоящих цифр в категории, поэтому он служит опорной точкой для всей модели.</p>
+      <span class="sec-num">04 — AI-компаньоны</span>
+      <h2>Устройства с разговорным AI</h2>
+      <p>Группа сформировалась в 2024–2026 годах. Общая механика: устройство слушает ребёнка
+        и отвечает голосом персонажа. Ниже — где выполняется обработка, что стоит и что заявлено.</p>
     </div>
     <div class="wide">
+      <div class="tscroll">
+        <table style="min-width:1260px">
+          <caption>Столбец «Обработка» указывает, где по заявлениям производителя выполняется
+            распознавание речи и генерация ответа.</caption>
+          <thead>
+            <tr><th>Продукт</th><th>Компания</th><th class="num">Цена</th><th>Подписка</th>
+              <th>Обработка</th><th>Возраст</th><th>Масштаб и факты</th><th>Статус</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="name">Miko 3</td><td>Miko, Индия</td><td class="num">$249</td>
+              <td>Miko Max — $14,99/мес или $99/год</td><td>Облако</td><td>5–10</td>
+              <td>Подписка даёт библиотеку Disney, Da Vinci, PBS, vooks. Выручка FY24 — ₹358 крор
+                (около $43 млн), доход от подписки вырос в 29 раз г/г, продано более 500 тыс. устройств за год</td>
+              <td><span class="pill mkt">На рынке</span></td>
+            </tr>
+            <tr>
+              <td class="name">Miko Mini</td><td>Miko, Индия</td><td class="num">$149</td>
+              <td>Та же, 30 дней бесплатно в комплекте</td><td>Облако</td><td>5–10</td>
+              <td>В рознице встречается за $59,99–69,99</td>
+              <td><span class="pill mkt">На рынке</span></td>
+            </tr>
+            <tr>
+              <td class="name">Curio — Grok, Grem, Gabbo</td><td>Curio, США</td><td class="num">$99</td>
+              <td>Заявлено, что не требуется</td><td>Облако, нужен Wi-Fi</td><td>3+</td>
+              <td>Плюшевые персонажи, соучредитель — Grimes. Обзоры отмечают отсутствие офлайн-режима,
+                сложности с распознаванием речи детей младше пяти лет, отсутствие песен
+                и структурированных игр</td>
+              <td><span class="pill mkt">На рынке</span></td>
+            </tr>
+            <tr>
+              <td class="name">Bondu</td><td>The AI Toy Company, США</td><td class="num">$199,99</td>
+              <td>Premium-подписки заявлены в планах</td><td>Облако</td><td>дошкольный</td>
+              <td>Плюшевый динозавр. Привлечено $5,3 млн. Компания заявляет о планах развивать
+                функциональность обновлениями</td>
+              <td><span class="pill warn">Предзаказ</span></td>
+            </tr>
+            <tr>
+              <td class="name">BubblePal</td><td>Haivivi, Китай</td><td class="num">¥399 в КНР / $89–150</td>
+              <td>Нет</td><td>Облако</td><td>3–12</td>
+              <td>Подвеска, которая крепится к любой имеющейся игрушке. Продано более 200 тыс. устройств,
+                более 300 тыс. семей. Запуск в КНР — июль 2024, в США — декабрь 2024,
+                затем Канада и Великобритания</td>
+              <td><span class="pill mkt">На рынке</span></td>
+            </tr>
+            <tr>
+              <td class="name">FoloToy Kumma</td><td>FoloToy, Китай</td><td class="num">$99</td>
+              <td>Нет</td><td>Облако, модели OpenAI</td><td>дошкольный</td>
+              <td>Более 20 тыс. устройств в I квартале 2025, план на год — 300 тыс.
+                В ноябре 2025 продажи приостановлены после отчёта PIRG, доступ к моделям OpenAI отозван;
+                через неделю продажи возобновлены после аудита безопасности</td>
+              <td><span class="pill mkt">Возвращён</span></td>
+            </tr>
+            <tr>
+              <td class="name">Ropet</td><td>Ropet, Китай</td><td class="num">$299 / Pro $319</td>
+              <td>н/д</td><td>Гибрид: ChatGPT плюс офлайн-обработка части функций</td><td>универсальный</td>
+              <td>Дебют на CES 2025. Распознавание лиц и считывание эмоций.
+                Версия Pro отличается подсветкой в док-станции</td>
+              <td><span class="pill mkt">На рынке</span></td>
+            </tr>
+            <tr>
+              <td class="name">Loona</td><td>Keyi Robot, Китай</td><td class="num">~$299</td>
+              <td>н/д</td><td>Облако</td><td>универсальный</td>
+              <td>Робот-питомец: следует за человеком, реагирует на игнорирование,
+                поддерживает многоходовой диалог</td>
+              <td><span class="pill mkt">На рынке</span></td>
+            </tr>
+            <tr>
+              <td class="name">Fuzozo</td><td>Robopoet и Tuya Smart, Китай</td><td class="num">н/д</td>
+              <td>н/д</td><td>Облако через встроенную сотовую связь</td><td>универсальный</td>
+              <td>Дебют на CES 2026. Заявленное отличие — собственный сотовый модуль,
+                чтобы устройство не зависело от домашнего Wi-Fi</td>
+              <td><span class="pill warn">Анонсирован</span></td>
+            </tr>
+            <tr>
+              <td class="name">Mattel × OpenAI</td><td>Mattel, США</td><td class="num">н/д</td>
+              <td>н/д</td><td>Облако, модели OpenAI</td><td>вероятно 13+</td>
+              <td>Партнёрство объявлено в июне 2025, первые продукты ожидались к концу 2025.
+                В декабре 2025 запуск отложен. Бренды в периметре — Barbie, Hot Wheels, American Girl</td>
+              <td><span class="pill warn">Отложен</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col">
+        <h3 style="margin-top:32px">Локальная обработка</h3>
+        <p>Отдельное направление — устройства и платформы, где распознавание речи, генерация
+          и синтез выполняются на самом устройстве без обращения к облаку.</p>
+        <div class="tscroll">
+          <table>
+            <thead><tr><th>Проект</th><th>Что это</th><th>Стек</th></tr></thead>
+            <tbody>
+              <tr><td class="name">OpenToys</td><td>Открытая платформа для сборки локальных AI-игрушек,
+                запуск 14 марта 2026. Заявлено: без облака, без подписки, данные остаются на устройстве</td>
+                <td>Apple Silicon для инференса, ESP32-S3 в устройстве, Whisper для ASR,
+                  Qwen3-TTS для синтеза, модели через MLX; Rust и React</td></tr>
+              <tr><td class="name">NeoHumans</td><td>Коммерческая платформа Edge AI для интерактивных игрушек.
+                Заявлено: от ключевого слова до произнесённого ответа всё выполняется на устройстве,
+                аудио и диалоги наружу не передаются</td>
+                <td>LLM, распознавание речи и синтез скомпилированы в ONNX для работы офлайн</td></tr>
+              <tr><td class="name">Ropet</td><td>Серийное устройство с частично офлайновой обработкой
+                при облачном ChatGPT для диалога</td><td>Не раскрывается</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="xs">Заявления о полностью локальной работе приведены так, как их формулируют
+          сами разработчики; независимых замеров качества, задержки и энергопотребления
+          в открытых источниках нет.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="speakers">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">05 — Колонки</span>
+      <h2>Голосовые колонки с детским режимом</h2>
+      <p>Универсальные устройства, у которых детский сценарий — одна из функций,
+        а не назначение продукта.</p>
+    </div>
+    <div class="wide">
+      <div class="tscroll">
+        <table style="min-width:880px">
+          <thead><tr><th>Продукт</th><th>Платформа</th><th class="num">Цена</th><th>Подписка</th>
+            <th>Что в детском режиме</th></tr></thead>
+          <tbody>
+            <tr><td class="name">Echo Dot Kids</td><td>Amazon Alexa</td><td class="num">$59,99, в промо от $38</td>
+              <td>Amazon Kids+ — $2,99/мес с Prime, $5,99/мес без него; год включён в комплект</td>
+              <td>Родительский контроль, детский дизайн, двухлетняя гарантия.
+                Kids+ даёт аудиокниги, игры, фильмы и сериалы без рекламы, детские радиостанции,
+                будильники голосом персонажей</td></tr>
+            <tr><td class="name">Яндекс Станция Лайт 2</td><td>Алиса</td><td class="num">8 799 ₽</td>
+              <td>Яндекс Плюс — 399 ₽/мес или 3 490 ₽/год</td>
+              <td>Алиса определяет, обращается к ней взрослый или ребёнок, включает разные плейлисты
+                и меняет манеру ответа. Без подписки работает базовый набор функций без Музыки и Кинопоиска</td></tr>
+            <tr><td class="name">Яндекс Станция Мини 3</td><td>Алиса</td><td class="num">9 999 ₽</td>
+              <td>Та же</td><td>Тот же детский режим</td></tr>
+            <tr><td class="name">СберБум Мини 2</td><td>Салют, GigaChat</td><td class="num">н/д</td>
+              <td>Подписки экосистемы Сбера</td><td>Голосовой ассистент Салют с детскими сценариями</td></tr>
+            <tr><td class="name">Google Nest</td><td>Google Assistant / Gemini</td><td class="num">варьируется</td>
+              <td>Google One и YouTube Premium как смежные</td>
+              <td>Детский профиль в Family Link, ограничение контента</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="closed">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">06 — Закрытые продукты</span>
+      <h2>Что уходило с рынка и когда</h2>
+      <p>Хронология по датам и фактам. Формулировки причин приведены так, как они изложены
+        в публичных сообщениях компаний и в отраслевой прессе.</p>
+    </div>
+    <div class="wide">
+      <div class="tscroll">
+        <table style="min-width:1040px">
+          <thead><tr><th>Продукт</th><th>Компания</th><th class="num">Цена</th><th class="num">Период</th>
+            <th>Что произошло</th></tr></thead>
+          <tbody>
+            <tr><td class="name">Hello Barbie</td><td>Mattel и ToyTalk</td><td class="num">~$75</td>
+              <td class="num">2015–2017</td>
+              <td>Говорящая кукла с распознаванием речи. Коллективный иск в Верховном суде Лос-Анджелеса
+                от двух матерей с претензиями по COPPA; специалисты Bluebox Labs указали на уязвимости
+                на старте продаж</td></tr>
+            <tr><td class="name">Mattel Aristotle</td><td>Mattel</td><td class="num">не вышел</td>
+              <td class="num">анонс 2017</td>
+              <td>Голосовое устройство для детской, позиционировалось как радионяня и голосовой компьютер.
+                Отменено в октябре 2017 под давлением родительских и правозащитных организаций;
+                петицию против выпуска подписали более 1 500 человек</td></tr>
+            <tr><td class="name">CloudPets</td><td>Spiral Toys</td><td class="num">~$40</td>
+              <td class="num">2015–2017</td>
+              <td>Плюшевые игрушки с записью голосовых сообщений. Утечка базы с записями
+                и учётными данными пользователей</td></tr>
+            <tr><td class="name">Jibo</td><td>Jibo Inc., США</td><td class="num">$899</td>
+              <td class="num">2017–2018</td>
+              <td>Домашний социальный робот. Компания прекратила работу в конце 2018 года</td></tr>
+            <tr><td class="name">Kuri</td><td>Mayfield Robotics, США</td><td class="num">$700</td>
+              <td class="num">2017–2018</td>
+              <td>Домашний робот-компаньон. Производство остановлено в августе 2018 года</td></tr>
+            <tr><td class="name">Cozmo и Vector</td><td>Anki, США</td><td class="num">$179 и $249</td>
+              <td class="num">2016–2019</td>
+              <td>Настольные роботы с компьютерным зрением. Компания закрылась в апреле 2019 года,
+                привлекши около $260 млн; продано несколько миллионов устройств.
+                Позднее бренд был выкуплен и продукты частично возобновлены другим владельцем</td></tr>
+            <tr><td class="name">Moxie</td><td>Embodied, США</td><td class="num">$799</td>
+              <td class="num">2020–2025</td>
+              <td>Социальный робот-компаньон для детей 5–10 лет. Компания прекратила деятельность
+                в ноябре 2024 года после выхода ведущего инвестора из раунда финансирования.
+                Серверы отключены 30 января, устройства перестали работать: распознавание речи,
+                диалог и эмоциональный вывод выполнялись только в облаке, офлайн-режима не было.
+                Возвраты и гарантийная поддержка не предоставлялись. Позднее предпринималась
+                попытка открыть исходный код</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="disclosed">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">07 — Раскрытая экономика</span>
+      <h2>Что компании публикуют о себе</h2>
+      <p>Из всей категории отчётность публикует одна компания — tonies SE, как эмитент
+        на Франкфуртской бирже. Остальные раскрывают отдельные показатели в пресс-релизах
+        и интервью. Ниже приведено то, что опубликовано.</p>
+    </div>
+    <div class="wide">
+
+      <h3 class="col" style="margin-bottom:14px">tonies SE — отчётность FY2024 и FY2025</h3>
+      <div class="tscroll">
+        <table>
+          <thead><tr><th>Показатель</th><th class="num">FY2024</th><th class="num">FY2025</th><th class="num">План 2026</th></tr></thead>
+          <tbody>
+            <tr><td>Выручка группы</td><td class="num">€480,5 млн</td><td class="num">€630,3 млн</td><td class="num">&gt;€760 млн</td></tr>
+            <tr><td>Рост год к году</td><td class="num">+33%</td><td class="num">+31% (+36% в пост. валюте)</td><td class="num">&gt;+20% пост. валюта</td></tr>
+            <tr><td>Выручка — колонки</td><td class="num">€137 млн</td><td class="num">€161,2 млн (+18%)</td><td class="num">—</td></tr>
+            <tr><td>Выручка — фигурки</td><td class="num">—</td><td class="num">€447,2 млн (+37%)</td><td class="num">—</td></tr>
+            <tr><td>Выручка — аксессуары и цифра</td><td class="num">—</td><td class="num">€22,0 млн (+23%)</td><td class="num">—</td></tr>
+            <tr><td>Валовая маржа</td><td class="num">—</td><td class="num">62,8%</td><td class="num">—</td></tr>
+            <tr><td>Скорр. EBITDA, маржа</td><td class="num">7,5%</td><td class="num">8,6%</td><td class="num">9–11%</td></tr>
+            <tr><td>Свободный денежный поток</td><td class="num">+€33,1 млн</td><td class="num">−€11,9 млн</td><td class="num">—</td></tr>
+            <tr><td>Лицензионные отчисления</td><td class="num">—</td><td class="num">€69,4 млн — 11,0% выручки</td><td class="num">—</td></tr>
+            <tr><td>DACH / Северная Америка / остальной мир</td><td class="num">184 / 210 / 85</td><td class="num">213,8 / 275,7 / 140,8</td><td class="num">Сев. Америка &gt;+30%</td></tr>
+            <tr><td>Продано колонок накопленным итогом</td><td class="num">&gt;8 млн</td><td class="num">~11,8 млн</td><td class="num">12,2 млн на июль 2026</td></tr>
+            <tr><td>Продано фигурок накопленным итогом</td><td class="num">&gt;100 млн</td><td class="num">&gt;156 млн</td><td class="num">165 млн на июль 2026</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tscroll">
+        <table>
+          <caption>Величины, полученные арифметически из таблицы выше. Компания указывает базу 2024 года
+            как «более 8 млн» и «более 100 млн», поэтому производные значения — верхняя граница.
+            Компания сама эти показатели не публикует.</caption>
+          <thead><tr><th>Расчётная величина</th><th class="num">Значение</th><th>Как получено</th></tr></thead>
+          <tbody>
+            <tr><td>Продано колонок за 2025</td><td class="num">~3,8 млн</td><td>11,8 − 8,0</td></tr>
+            <tr><td>Продано фигурок за 2025</td><td class="num">~56 млн</td><td>156 − 100</td></tr>
+            <tr><td>Фигурок на активную колонку в год</td><td class="num">~5,7</td><td>56 млн ÷ средняя база 9,9 млн</td></tr>
+            <tr><td>Фигурок на колонку накопленным итогом</td><td class="num">~13,2</td><td>156 ÷ 11,8</td></tr>
+            <tr><td>Чистая выручка с фигурки</td><td class="num">~€8,0</td><td>€447,2 млн ÷ 56 млн; розница ~$17,99</td></tr>
+            <tr><td>Чистая выручка с колонки</td><td class="num">~€42</td><td>€161,2 млн ÷ 3,8 млн; розница $99–140</td></tr>
+            <tr><td>Выручка на активное устройство в год</td><td class="num">~€64</td><td>€630,3 млн ÷ 9,9 млн</td></tr>
+            <tr><td>Доли в выручке</td><td class="num">26 / 71 / 3,5%</td><td>колонки / фигурки / аксессуары и цифра</td></tr>
+          </tbody>
+        </table>
+      </div>
 
       <div class="viz">
-        <p class="viz-title">Структура выручки: железо против того, что докупают</p>
-        <p class="viz-sub">Доля выручки по источникам. Tonies — 2025 финансовый год по раскрытым данным;
-          Yoto — оценка по публичным заявлениям компании за 2025 год.</p>
+        <p class="viz-title">Структура выручки по источникам</p>
+        <p class="viz-sub">tonies — раскрытые данные FY2025. Yoto — по публичным заявлениям компании
+          за 2025 год, отчётность не публикуется.</p>
         <div class="legend">
           <span><i style="background:var(--s1)"></i>Устройство</span>
           <span><i style="background:var(--s2)"></i>Физический контент</span>
           <span><i style="background:var(--s3)"></i>Подписка и цифра</span>
         </div>
         <div class="bar-row">
-          <div class="bar-label">Tonies<small>€630,3 млн</small></div>
+          <div class="bar-label">tonies<small>€630,3 млн</small></div>
           <div class="bar-track">
             <div class="seg a" style="width:25.6%">26%</div>
             <div class="seg b" style="width:71.0%">71%</div>
@@ -767,595 +821,166 @@ footer a{color:var(--ink-2)}
             <div class="seg c" style="width:25%">25%</div>
           </div>
         </div>
-        <p class="xs" style="margin:14px 0 0">У Tonies подписка и цифра — 3,4%, подпись не помещается в сегмент.
-          Это и есть содержательный результат: за десять лет цифровое направление так и не стало значимым.</p>
-      </div>
-
-      <div class="tscroll">
-        <table>
-          <caption><span class="tag-d">расч.</span> — показатель не раскрывается компанией, рассчитан из
-            разницы накопленных величин между отчётами FY2024 и FY2025. Компания указывает базу как
-            «более 8 млн» и «более 100 млн» на конец 2024 г., поэтому производные значения —
-            верхняя граница оценки.</caption>
-          <thead>
-            <tr><th>Показатель</th><th class="num">Значение</th><th>Комментарий</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Выручка FY2025</td><td class="num">€630,3 млн</td><td>+31% г/г, +36% в постоянной валюте</td></tr>
-            <tr><td>Валовая маржа</td><td class="num">62,8%</td><td>Улучшилась за счёт логистики, курса и микса</td></tr>
-            <tr><td>Скорр. EBITDA</td><td class="num">8,6%</td><td>Рекорд компании. Операционные расходы съедают 86% валовой прибыли</td></tr>
-            <tr><td>Свободный денежный поток</td><td class="num">−€11,9 млн</td><td>Против +€33,1 млн годом ранее — рост оплачивается оборотным капиталом</td></tr>
-            <tr><td>Лицензионные отчисления</td><td class="num">11,0%</td><td>€69,4 млн — <strong>это и есть цена IP в такой модели</strong></td></tr>
-            <tr><td>Продано колонок за 2025 <span class="tag-d">расч.</span></td><td class="num">~3,8 млн</td><td>Прирост базы с ~8,0 до 11,8 млн</td></tr>
-            <tr><td>Продано фигурок за 2025 <span class="tag-d">расч.</span></td><td class="num">~56 млн</td><td>Прирост со ~100 до 156 млн</td></tr>
-            <tr><td><strong>Фигурок на активную колонку в год</strong> <span class="tag-d">расч.</span></td><td class="num">~5,7</td><td>Ключевая метрика категории. Yoto заявляет «более 3»</td></tr>
-            <tr><td>Фигурок на колонку накопленным итогом <span class="tag-d">расч.</span></td><td class="num">~13,2</td><td>За весь срок жизни устройства на текущий момент</td></tr>
-            <tr><td>Чистая выручка с фигурки <span class="tag-d">расч.</span></td><td class="num">~€8,0</td><td>При рознице ~$17,99 бренд получает около 45–50%</td></tr>
-            <tr><td>Чистая выручка с колонки <span class="tag-d">расч.</span></td><td class="num">~€42</td><td>При рознице $99–140 — то есть ~40% от полки</td></tr>
-            <tr><td><strong>Выручка на активное устройство в год</strong> <span class="tag-d">расч.</span></td><td class="num">~€64</td><td>Столько «стоит» одна семья в год для платформы</td></tr>
-            <tr><td>Отношение контент / железо</td><td class="num">2,8×</td><td>За срок жизни устройства: ~€106 контента против ~€42 железа</td></tr>
-          </tbody>
-        </table>
+        <p class="srcnote">У tonies подписка и цифра составляют 3,4% — подпись не помещается в сегмент.</p>
       </div>
 
       <div class="col">
-        <h3 style="margin-top:34px">Что из этого следует для устройства за $99</h3>
-        <p>Первое: <strong>attach rate — не второстепенная метрика, а вся модель целиком</strong>.
-          При 5,7 докупках в год устройство приносит платформе примерно €64 в год — против €42 разовой
-          выручки с самой коробки. Если attach упадёт до 2, бизнес исчезает: контент перестаёт
-          покрывать поддержку, облако и обслуживание базы.</p>
-        <p>Второе: <strong>маржа в этой категории низкая даже при отличном исполнении</strong>. 8,6% EBITDA
-          при выручке €630 млн — это результат десяти лет, 350 лицензионных партнёров и 1 500 SKU.
-          Компания меньшего масштаба на этой модели прибыли не увидит.</p>
-        <p>Третье, и для Animaccord самое важное: <strong>11% роялти при нулевых вложениях —
-          это не «слабая» альтернатива, а прямой конкурент собственному производству</strong>.
-          Чтобы своё устройство обыграло лицензионную схему, оно должно давать больше 11% выручки
-          экосистемы в виде прибыли. У Tonies собственная EBITDA-маржа — 8,6%.</p>
-
-        <div class="callout warn">
-          <h4>Экономика канала: где теряется цена полки</h4>
-          <p class="small" style="margin-bottom:.55rem">Из $99 розничной цены до владельца продукта доходит
-            далеко не всё. Ориентиры по отрасли:</p>
-          <ul class="tight small" style="margin-bottom:.55rem">
-            <li><strong>Игрушечная розница:</strong> валовая маржа 40–60% (keystone — ровно 50%)</li>
-            <li><strong>Дистрибьюторы:</strong> ещё 20–40% сверх закупки</li>
-            <li><strong>Возвраты электроники:</strong> 3–15% в норме, обработка возврата $30–65 за штуку —
-              для устройства за $99 один возврат съедает маржу с трёх проданных</li>
-          </ul>
-          <p class="small" style="margin-bottom:0">Практический вывод: DTC даёт максимальную выручку с единицы,
-            но CAC $25–45 съедает разницу; розница даёт нулевой CAC, но оставляет ~$50 из $99.
-            Обе схемы приводят к одному — <em>на железе не зарабатывают</em>.</p>
+        <h3 style="margin-top:30px">Остальные игроки: что известно</h3>
+        <div class="tscroll">
+          <table>
+            <thead><tr><th>Компания</th><th>Опубликованные показатели</th></tr></thead>
+            <tbody>
+              <tr><td class="name">Yoto</td><td>Выручка 2024 — £94,8 млн, рост 86%. Более 1 млн активных устройств,
+                более 15 млн проданных карточек, attach выше 3 карточек на устройство в год.
+                Доли выручки за 2025: устройства около 40%, Yoto Club около 25%.
+                Всего привлечено $59,4 млн за 9 раундов; последний — заём $15 млн от HSBC Life в октябре 2024.
+                Отдельные агрегаторы приводят иную цифру — $44,2 млн ARR</td></tr>
+              <tr><td class="name">Miko</td><td>Выручка FY24 — ₹358 крор, около $43 млн.
+                Доход от подписки вырос в 29 раз год к году. Продано более 500 тыс. устройств за год,
+                рост продаж около 40% в год</td></tr>
+              <tr><td class="name">Storypod</td><td>Диапазон выручки $10–25 млн, привлечено $4 млн</td></tr>
+              <tr><td class="name">Haivivi / BubblePal</td><td>Более 200 тыс. проданных устройств,
+                более 300 тыс. семей. Среднемесячные продажи в 2024 — несколько тысяч штук,
+                к январю 2025 — более 20 тыс. в месяц</td></tr>
+              <tr><td class="name">FoloToy</td><td>Более 20 тыс. устройств в I квартале 2025,
+                заявленный план на 2025 год — 300 тыс.</td></tr>
+              <tr><td class="name">Amazon</td><td>Девайсное подразделение: убыток около $25 млрд за 2017–2021.
+                Убыток $3 млрд в I квартале 2022. Отдельно продуктовая экономика Echo не раскрывается</td></tr>
+              <tr><td class="name">Bondu</td><td>Привлечено $5,3 млн</td></tr>
+            </tbody>
+          </table>
         </div>
+        <p class="xs">Себестоимость устройств никто из перечисленных не раскрывает.
+          Публичные ориентиры существуют только по разборам Amazon и Google:
+          Echo Dot первого поколения — BOM $45,39 при рознице $89,99;
+          второго поколения — $34,87 при рознице $49,99; Google Home — $43,44 при рознице $129.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="ai">
+<section id="stack">
   <div class="wrap">
     <div class="sec-head">
-      <span class="sec-num">06 — Экономика AI</span>
-      <h2>Сколько стоит, чтобы персонаж разговаривал</h2>
-      <p>Это раздел, где чаще всего ошибаются на этапе продуктовой концепции. Расчёт ниже —
-        диапазонный, по публичным ценам голосового стека на 2026 год, для трёх профилей нагрузки,
-        как требует бриф.</p>
+      <span class="sec-num">08 — Цены AI-стека</span>
+      <h2>Сколько стоит минута голосового диалога</h2>
+      <p>Опубликованные прайс-листы провайдеров на середину 2026 года. Это справочные цены на облачные
+        API, а не себестоимость чьего-либо продукта: собственные модели, локальный инференс
+        и корпоративные контракты в эти цифры не входят.</p>
     </div>
     <div class="wide">
-
       <div class="tscroll">
         <table>
-          <caption>Себестоимость минуты живого диалога. Оптимизированный стек — малая модель, бюджетный TTS,
-            кэширование частых реплик. Базовый — модель среднего класса и качественный голос.
-            Премиальный — фронтир-модель и синтез уровня ElevenLabs.
-            Модерация добавляет 15–25% к стоимости LLM и уже учтена.</caption>
-          <thead>
-            <tr><th>Компонент</th><th class="num">Оптимизированный</th><th class="num">Базовый</th><th class="num">Премиальный</th></tr>
-          </thead>
+          <caption>Цены за минуту диалога. Готовые голосовые агенты продаются пакетом:
+            ElevenLabs Agents — $0,08/мин, Cartesia Line — $0,06/мин плюс $0,014 за номер,
+            Deepgram Voice Agent — $0,050–0,163/мин в зависимости от тарифа.</caption>
+          <thead><tr><th>Компонент</th><th class="num">Нижняя граница</th><th class="num">Верхняя граница</th><th>Примеры и примечания</th></tr></thead>
           <tbody>
-            <tr><td>ASR / распознавание речи</td><td class="num">$0,004</td><td class="num">$0,006</td><td class="num">$0,012</td></tr>
-            <tr><td>LLM inference</td><td class="num">$0,012</td><td class="num">$0,030</td><td class="num">$0,060</td></tr>
-            <tr><td>TTS / синтез голоса</td><td class="num">$0,011</td><td class="num">$0,015</td><td class="num">$0,036</td></tr>
-            <tr><td>Модерация и safety-слой</td><td class="num">$0,003</td><td class="num">$0,004</td><td class="num">$0,002</td></tr>
-            <tr><td><strong>Итого за минуту</strong></td><td class="num"><strong>$0,030</strong></td><td class="num"><strong>$0,055</strong></td><td class="num"><strong>$0,110</strong></td></tr>
+            <tr><td>Распознавание речи</td><td class="num">$0,0025</td><td class="num">$0,012</td>
+              <td>Deepgram Nova-2 в потоковом режиме — около $0,0043/мин</td></tr>
+            <tr><td>LLM inference</td><td class="num">&lt;$0,05</td><td class="num">$0,20</td>
+              <td>Нижняя граница — компактные модели вроде GPT-4o mini, Claude Haiku, Gemini Flash;
+                верхняя — фронтир-модели уровня GPT-4o</td></tr>
+            <tr><td>Синтез речи</td><td class="num">$0,011</td><td class="num">$0,036</td>
+              <td>Deepgram и Azure TTS — около $0,011/мин; ElevenLabs — около $0,036/мин</td></tr>
+            <tr><td><strong>Собранный стек</strong></td><td class="num"><strong>$0,08</strong></td><td class="num"><strong>$0,15</strong></td>
+              <td>Типовые связки: Vapi с GPT-4o, Deepgram Nova-2 и ElevenLabs — $0,08–0,15/мин;
+                Retell с тем же набором — $0,11–0,15/мин</td></tr>
           </tbody>
         </table>
-      </div>
-
-      <div class="viz">
-        <p class="viz-title">Стоимость AI на одного активного пользователя в месяц</p>
-        <p class="viz-sub">Пунктиром — весь бюджет на AI, который остаётся при подписке $7,99 в месяц
-          и целевой валовой марже 60%. Всё, что длиннее пунктирной отметки, убыточно.</p>
-        <div class="bar-row">
-          <div class="bar-label">Бюджет AI<small>подписка $7,99</small></div>
-          <div class="bar-track"><div class="seg ref" style="width:4.8%; min-width:74px">$3,20</div></div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Гибрид<small>4,5 мин/день, опт.</small></div>
-          <div class="bar-track"><div class="seg a" style="width:6.1%; min-width:56px">$4,05</div></div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Light<small>5 мин/день, базовый</small></div>
-          <div class="bar-track"><div class="seg a" style="width:12.4%">$8,20</div></div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Normal<small>15 мин/день, опт.</small></div>
-          <div class="bar-track"><div class="seg a" style="width:20.5%">$13,50</div></div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Normal<small>15 мин/день, базовый</small></div>
-          <div class="bar-track"><div class="seg a" style="width:37.6%">$24,80</div></div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Heavy<small>40 мин/день, базовый</small></div>
-          <div class="bar-track"><div class="seg a" style="width:100%">$66,00</div></div>
-        </div>
-        <div class="axis"><span>$0</span><span>$33</span><span>$66 / мес</span></div>
-      </div>
-
-      <div class="col">
-        <p>Цифры читаются однозначно. <strong>Нормальный пользователь — тот, ради которого продукт и делается, —
-          стоит $13–25 в месяц только в inference.</strong> Чтобы такая подписка была валовомаржинальной
-          на 60%, её нужно продавать за $34–62. Детский рынок платит $5–10 и отваливается на 7,4% в месяц.</p>
-
-        <div class="callout pos">
-          <h4>Единственная архитектура, в которой AI сходится</h4>
-          <p class="small" style="margin-bottom:.55rem">Ошибка в постановке — считать, что «использование устройства»
-            равно «живому диалогу». У Tonies и Yoto ребёнок слушает по 30–60 минут в день, и это
-            <strong>заранее отрендеренные аудиофайлы с нулевой предельной себестоимостью</strong>.</p>
-          <p class="small" style="margin-bottom:.55rem">Правильная цель — 45 минут использования в день,
-            из которых живой генерации 10–20%:</p>
-          <ul class="tight small" style="margin-bottom:.55rem">
-            <li><strong>80–90% времени</strong> — готовые истории, песни, эпизоды Masha: себестоимость 0</li>
-            <li><strong>10–20%</strong> — живой диалог, персонализация, вопросы: $4–8 в месяц</li>
-            <li><strong>Кэширование</strong> — приветствия, реакции, повторяющиеся реплики синтезируются один раз</li>
-            <li><strong>Суточная квота</strong> — 15 минут диалога в бесплатном тарифе, 45 в платном.
-              Квота здесь не жадность, а <em>единственный способ сделать себестоимость предсказуемой</em>,
-              и заодно то, что родители воспринимают как заботу об экранном времени</li>
-            <li><strong>Ключевые слова и сценарии на устройстве</strong> — пробуждение и типовые команды
-              без обращения к облаку</li>
-          </ul>
-          <p class="small" style="margin-bottom:0">При такой архитектуре AI обходится в $4–8 на активное
-            устройство в месяц, а с учётом того, что подписчиков будет 20–35% базы, средняя нагрузка
-            на устройство падает до <strong>$1,20–2,50</strong> — это уже помещается в модель.</p>
-        </div>
-
-        <h3 style="margin-top:30px">Что AI реально добавляет к экономике</h3>
-        <p>Бриф верно ставит вопрос: не «есть ли AI», а «что он добавляет». Ответ по итогам кейсов
-          разделяется на три части.</p>
-        <p><strong>AI повышает конверсию на полке, а не retention.</strong> Это аргумент «почему это,
-          а не Toniebox» — то есть актив продаж. Данных, что AI сам по себе удерживает,
-          нет ни у одного игрока; данные о спаде интереса к четвёртому дню — есть.</p>
-        <p><strong>Родители платят за персонализацию и обучение, а не за разговор.</strong> Miko продаёт
-          подписку как доступ к Disney и PBS. Storypod продаёт наборы по возрастам за $10–22,50 в месяц.
-          Оба монетизируют результат для ребёнка, а не факт наличия AI.</p>
-        <p><strong>Настоящая ценность AI — снижение стоимости контента.</strong> Показательно, что Tonies
-          тестирует AI не как собеседника, а как <em>генератор сценариев внутри mytonies</em>:
-          пользователь создаёт историю, озвучивает сам или через TTS и записывает на Creative Tonie.
-          Это AI, который производит контент для физического носителя — то есть усиливает
-          проверенную модель, а не заменяет её.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="oneip">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num">07 — Гипотеза одного IP</span>
-      <h2>Достаточно ли одной Маши</h2>
-      <p>Бриф просит выбрать между тремя вариантами. Ответ — B, но с обязательным условием,
-        которое превращает его в путь к C.</p>
-    </div>
-    <div class="col">
-      <p>Разрыв здесь арифметический, а не маркетинговый. Ядро аудитории Masha and the Bear —
-        дошкольники 2–6 лет; это лучший преддошкольный бренд в мире по данным Parrot Analytics,
-        100 млрд просмотров, топ-10 самых востребованных шоу планеты в 2024 году. Сила IP не обсуждается.</p>
-      <p>Обсуждается срок. Устройству за $99 нужно 3–5 лет жизни в семье, чтобы окупить себя
-        и накопить attach. Ребёнок, купивший его в 3 года, выходит из ядра IP примерно в 6 —
-        то есть <strong>в середине жизненного цикла устройства, а не в конце</strong>.</p>
-      <p>Отраслевые данные это подтверждают напрямую: в детских образовательных подписках
-        <strong>24% отписок приходится на «ребёнок перерос контент»</strong> и ещё 36% — на «потерял интерес».
-        Вместе это 60% оттока, и ни одну из двух причин нельзя закрыть, добавив ещё серий про Машу.</p>
-
-      <div class="tscroll">
-        <table>
-          <caption>Оценка вариантов из раздела 6 брифа.</caption>
-          <thead><tr><th>Вариант</th><th>Формулировка</th><th>Вердикт</th></tr></thead>
-          <tbody>
-            <tr>
-              <td class="name">A</td>
-              <td>Masha достаточно для самостоятельного продукта</td>
-              <td><span class="pill neg">Отклонён</span> хватит на первый год, дальше устройство замолкает вместе с интересом ребёнка</td>
-            </tr>
-            <tr>
-              <td class="name">B</td>
-              <td>Masha — точка входа, нужна более широкая библиотека</td>
-              <td><span class="pill pos">Рекомендуется</span> совпадает с фактической моделью Tonies и Yoto</td>
-            </tr>
-            <tr>
-              <td class="name">C</td>
-              <td>Hardware как платформа для нескольких IP</td>
-              <td><span class="pill warn">Целевое состояние</span> правильный финал, но как стартовая позиция требует каталога, которого нет</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p><strong>Практический вывод:</strong> начинать нужно с B, но техническая и юридическая архитектура
-        обязана быть архитектурой C с первого дня. Конкретно это значит: формат носителя контента,
-        схема прав, идентификация устройства и структура каталога проектируются под сторонний контент,
-        даже если в первый год в каталоге только Masha.</p>
-
-      <div class="callout ink">
-        <h4>Актив, которого нет у конкурентов</h4>
-        <p class="small" style="margin-bottom:.55rem">У Animaccord есть то, чего не было ни у Anki, ни у Curio,
-          ни у Moxie: <strong>350+ действующих лицензионных сделок и 300+ медиа-сделок</strong> —
-          Ferrero, Danone, Spin Master, Havaianas, Warner, Amazon Prime, Rai, SBT, Televisa.
-          Это готовая переговорная позиция для наполнения каталога чужим контентом:
-          компания уже умеет договариваться о правах, и её знают как правообладателя, а не как стартап.</p>
-        <p class="small" style="margin-bottom:0">Внутри самой франшизы ресурс тоже больше, чем кажется:
-          спин-оффы, песни, сказки, обучающие форматы. Но масштаб надо мерить честно —
-          фигурка Masha у Tonies это 9 треков и 38 минут. Устройству нужны сотни часов.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="scenarios">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num">08 — Сценарии</span>
-      <h2>Четыре модели и что каждая приносит за три года</h2>
-      <p>Расчёт ведётся на одно проданное устройство за три года, в базовых допущениях.
-        Полный набор допущений и чувствительность — в разделе 10.</p>
-    </div>
-    <div class="wide">
-
-      <div class="viz">
-        <p class="viz-title">Валовая прибыль на одно устройство за три года</p>
-        <p class="viz-sub">Базовый сценарий: 4 единицы контента в год по $5,90 валовой прибыли,
-          подписка $7,99 при 30% проникновения, удержание 65% год к году.
-          Розничный канал, если не указано иное.</p>
-        <div class="legend">
-          <span><i style="background:var(--s1)"></i>Устройство</span>
-          <span><i style="background:var(--s2)"></i>Контент</span>
-          <span><i style="background:var(--s3)"></i>Подписка</span>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Сценарий 1<small>hardware-only</small></div>
-          <div class="bar-flex"><div class="bar-track" style="flex:1"><div class="seg a" style="width:3.9%"></div></div><span class="bar-after">$4</span></div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Сценарий 2<small>+ AI-подписка</small></div>
-          <div class="bar-flex"><div class="bar-track" style="flex:1"><div class="seg a" style="width:3.9%"></div><div class="seg c" style="width:19.3%">$20</div></div><span class="bar-after">$24</span></div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Сценарий 3<small>+ экосистема контента</small></div>
-          <div class="bar-flex"><div class="bar-track" style="flex:1"><div class="seg a" style="width:3.9%"></div><div class="seg b" style="width:44.6%">$46</div></div><span class="bar-after">$50</span></div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Сценарий 4<small>платформа</small></div>
-          <div class="bar-flex"><div class="bar-track" style="flex:1"><div class="seg a" style="width:3.9%"></div><div class="seg b" style="width:47.1%">$49</div><div class="seg c" style="width:28.7%">$30</div></div><span class="bar-after">$83</span></div>
-        </div>
-        <div class="bar-row">
-          <div class="bar-label">Сценарий 4 · DTC<small>выше чек и attach</small></div>
-          <div class="bar-flex"><div class="bar-track" style="flex:1"><div class="seg a" style="width:13.5%">$14</div><div class="seg b" style="width:53.0%">$55</div><div class="seg c" style="width:33.5%">$35</div></div><span class="bar-after">$104</span></div>
-        </div>
-        <div class="axis"><span>$0</span><span>$52</span><span>$104 за 3 года</span></div>
-      </div>
-
-      <div class="scen">
-
-        <article class="scen-card">
-          <div class="scen-top">
-            <span class="eyebrow">Сценарий 1</span>
-            <h3>Hardware-only</h3>
-            <span class="pill neg">Нежизнеспособен</span>
-          </div>
-          <p class="scen-formula">$99 устройство → выручка заканчивается в момент продажи</p>
-          <p>Вся экономика — маржа с продажи. При BOM около $30 для устройства этого класса
-            (ориентир: Echo Dot 1-го поколения — BOM $45,39 при рознице $89,99) и рознице $99
-            владелец получает $50 через розницу или $94 через DTC.</p>
-          <p>Через розницу после логистики, возвратов и поддержки остаётся около $13 валовой прибыли
-            на устройство. Через DTC — $52, но CAC $25–45 съедает почти всё. Итог: $4–14 на устройство,
-            из которых нужно оплатить разработку, оснастку, сертификацию по EU TSR, облако на весь срок
-            жизни устройства и поддержку.</p>
-          <div class="scen-grid">
-            <div><h5>Когда работает</h5><p>Только при рознице $150+ и нулевой облачной составляющей —
-              то есть если убрать AI, ради которого продукт затевается.</p></div>
-            <div><h5>Кто пробовал</h5><p>Anki, Jibo, Kuri. Все закрылись, суммарно привлекши более $400 млн.</p></div>
-            <div><h5>Скрытая ловушка</h5><p>Облачные расходы на проданную базу продолжаются годами
-              после того, как выручка от неё закончилась.</p></div>
-          </div>
-        </article>
-
-        <article class="scen-card">
-          <div class="scen-top">
-            <span class="eyebrow">Сценарий 2</span>
-            <h3>Hardware + AI-подписка</h3>
-            <span class="pill warn">Функция, а не модель</span>
-          </div>
-          <p class="scen-formula">$99 устройство + $X/мес → базовое бесплатно, premium за деньги</p>
-          <p>Модель понятна и знакома, но упирается в два ограничения одновременно. Первое —
-            себестоимость: активный пользователь стоит $13–25 в месяц (раздел 06). Второе —
-            проникновение: при отсутствии физических докупок вся выручка держится на 20–35% семей,
-            которые подписались, при оттоке около 7% в месяц.</p>
-          <p>За три года это даёт около $24 валовой прибыли на устройство. Меньше, чем стоит
-            привлечь одного покупателя в DTC.</p>
-          <div class="scen-grid">
-            <div><h5>Когда работает</h5><p>Если подписка продаёт контент и обучение, а не диалог —
-              как Miko Max за $14,99 с библиотекой Disney и PBS.</p></div>
-            <div><h5>Условие</h5><p>Гибридная архитектура с квотами. Без неё каждый вовлечённый
-              ребёнок — убыток, и чем лучше продукт, тем хуже экономика.</p></div>
-            <div><h5>Вывод</h5><p>Подписку нужно строить, но как <em>слой поверх</em> сценария 3,
-              а не как самостоятельный источник.</p></div>
-          </div>
-        </article>
-
-        <article class="scen-card">
-          <div class="scen-top">
-            <span class="eyebrow">Сценарий 3</span>
-            <h3>Hardware + экосистема контента</h3>
-            <span class="pill pos">Экономическое ядро</span>
-          </div>
-          <p class="scen-formula">Устройство → контент → персонажи → повторные покупки</p>
-          <p>Логика Tonies и Yoto — единственная в категории с публично подтверждённой прибыльностью.
-            Ребёнок получает физический объект с персонажем; объект становится подарком, коллекцией
-            и поводом вернуться к устройству. Взрослый покупает не «контент», а игрушку,
-            что снимает сопротивление цене.</p>
-          <p>При 4 покупках в год по $5,90 валовой прибыли и удержании 60% модель даёт около $50
-            на устройство за три года — в двенадцать раз больше сценария 1.</p>
-          <div class="scen-grid">
-            <div><h5>Что может быть носителем</h5><p>Фигурки персонажей франшизы, карточки эпизодов,
-              сезонные и подарочные наборы, «пустой» носитель для родительских записей.</p></div>
-            <div><h5>Ориентир по цене</h5><p>$14,99–19,99 за фигурку, $7–13 за карточку.
-              Себестоимость носителя $2,50–3,50, валовая маржа 60–70%.</p></div>
-            <div><h5>Риск</h5><p>Каталог. Ниже 3 покупок в год модель не окупает поддержку базы.</p></div>
-          </div>
-        </article>
-
-        <article class="scen-card">
-          <div class="scen-top">
-            <span class="eyebrow">Сценарий 4</span>
-            <h3>Masha Platform</h3>
-            <span class="pill pos">Стратегическая цель</span>
-          </div>
-          <p class="scen-formula">колонка + приложение + TV + игры + AI + подписка + контент → один аккаунт</p>
-          <p>Устройство становится физической точкой входа в DTC-экосистему, где одна личность ребёнка
-            и один персонаж сопровождают его между устройствами. Экономически это сценарий 3
-            плюс подписочный слой: около $83 на устройство за три года через розницу и до $104 через DTC.</p>
-          <p>Стратегическая ценность выходит за рамки этой арифметики и, вероятно, превышает её.</p>
-          <div class="scen-grid">
-            <div><h5>Что даёт сверх денег</h5><p>Прямые отношения с семьёй, first-party данные,
-              ежедневный контакт с персонажем, собственный канал дистрибуции контента.</p></div>
-            <div><h5>Зачем это IP-владельцу</h5><p>Снижение зависимости от YouTube и стримингов —
-              переход из лицензионной компании в потребительскую платформу.</p></div>
-            <div><h5>Главный риск</h5><p>Строить платформу до того, как подтверждён attach rate.
-              Это ровно ошибка Amazon ценой $25 млрд.</p></div>
-          </div>
-        </article>
-
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="recommend">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num">09 — Рекомендация</span>
-      <h2>Рекомендуемая модель и порядок шагов</h2>
-      <p>Рекомендация состоит из двух частей: какая модель правильная — и в каком порядке к ней идти,
-        чтобы не оплатить чужие ошибки заново.</p>
-    </div>
-    <div class="col">
-      <h3>Модель: сценарий 3 как двигатель, сценарий 4 как направление</h3>
-      <p>Устройство за $89–99, вокруг которого работает экосистема физических носителей контента
-        с персонажами франшизы, плюс необязательный подписочный слой $6,99 в месяц
-        с персонализированными историями, памятью и обучающими сценариями.
-        AI встроен в продукт, но не является предметом продажи: он делает истории персональными
-        и удешевляет производство контента, а платят за контент и за объекты.</p>
-
-      <h3 style="margin-top:26px">Порядок: сначала измерить чужими деньгами</h3>
-      <p>Ключевое обстоятельство, которое меняет план: <strong>фигурка Masha &amp; the Bear уже продаётся
-        в экосистеме Tonies по лицензии Animaccord</strong>. Это значит, что главную неизвестную всей модели —
-        покупают ли Машу как физический аудио-объект и с какой частотой — можно измерить
-        <em>до</em> любых вложений в железо.</p>
-
-      <div class="checks">
-        <div class="check">
-          <div><b>Шаг 1 · Снять реальные данные у действующего лицензиата</b>
-            <span>Запросить у Tonies sell-through по Masha-фигурке: продажи по рынкам, доля в категории,
-              повторные покупки, сезонность. Расширить линейку — 2–3 новые фигурки и игра Tonieplay —
-              и посмотреть, растёт ли attach. Стоимость для Animaccord близка к нулю.</span></div>
-          <div class="val">0–3 мес</div>
-        </div>
-        <div class="check">
-          <div><b>Шаг 2 · Проверить готовность платить за AI отдельно</b>
-            <span>Продать AI-слой до того, как он построен: приложение с персонализированными
-              историями от Маши по подписке $4,99–7,99, без всякого устройства. Это даёт настоящие
-              цифры по проникновению подписки, оттоку и стоимости inference на реальной нагрузке.</span></div>
-          <div class="val">2–6 мес</div>
-        </div>
-        <div class="check">
-          <div><b>Шаг 3 · Устройство на ODM, а не собственное производство</b>
-            <span>При подтверждённых метриках — выпуск через контрактного производителя или лицензиата
-              в 1–2 рынках. Animaccord оставляет за собой каталог, аккаунт семьи и подписку;
-              железо, логистику и возвраты берёт партнёр, который умеет это делать.</span></div>
-          <div class="val">6–18 мес</div>
-        </div>
-        <div class="check">
-          <div><b>Шаг 4 · Открыть каталог для стороннего контента</b>
-            <span>Только после того, как attach подтверждён на собственном устройстве.
-              Это переход к сценарию 4 и к варианту C по разделу 07.</span></div>
-          <div class="val">18+ мес</div>
-        </div>
-      </div>
-
-      <div class="callout ink">
-        <h4>Почему не строить железо самим</h4>
-        <p class="small" style="margin-bottom:.55rem">Асимметрия Animaccord — в правах и в дистрибуции прав,
-          а не в производстве и логистике. Tonies с оборотом €630 млн и десятью годами опыта
-          зарабатывает 8,6% EBITDA и в 2025 году ушёл в отрицательный денежный поток.
-          Одновременно он платит правообладателям 11% выручки.</p>
-        <p class="small" style="margin-bottom:0">Собственное производство имеет смысл только тогда,
-          когда контроль над семьёй и данными стоит дороже разницы между этими двумя числами.
-          Это стратегическое решение, и принимать его надо осознанно —
-          но не как побочный эффект продуктовой инициативы.</p>
-      </div>
-
-      <h3 style="margin-top:26px">Ответы на десять вопросов брифа</h3>
-      <div class="tscroll">
-        <table>
-          <thead><tr><th>Вопрос</th><th>Ответ</th></tr></thead>
-          <tbody>
-            <tr><td>1. Есть ли основания запускать отдельный hardware-продукт?</td><td>Да, но как экосистему контента и предпочтительно через партнёра-производителя. Как самостоятельное железо — нет.</td></tr>
-            <tr><td>2. Может ли устройство быть прибыльным само по себе?</td><td>Нет. При $99 через розницу остаётся ~$13 валовой прибыли до CAC, разработки и облака.</td></tr>
-            <tr><td>3. Нужен ли subscription layer?</td><td>Да, но вторым слоем и с целью 20–35% проникновения. Как единственный источник — нет.</td></tr>
-            <tr><td>4. Нужен ли content marketplace?</td><td>Да. Архитектурно — с первого дня, коммерчески — после подтверждения attach.</td></tr>
-            <tr><td>5. Достаточно ли одного IP?</td><td>Нет. Вариант B: Masha — точка входа, библиотека обязана расширяться.</td></tr>
-            <tr><td>6. Какой должна быть роль AI?</td><td>Персонализация контента и удешевление его производства. Не предмет подписки сам по себе.</td></tr>
-            <tr><td>7. Какой target price реалистичен?</td><td>$89–99 за устройство, $14,99–19,99 за носитель контента, $6,99 за подписку.</td></tr>
-            <tr><td>8. Что должно быть MVP бизнес-модели?</td><td>Расширение линейки у действующего лицензиата плюс отдельное платное AI-приложение. Железо — третьим шагом.</td></tr>
-            <tr><td>9. Какие гипотезы проверить до производства?</td><td>Десять гипотез, раздел 11.</td></tr>
-            <tr><td>10. Какие метрики — go / no-go?</td><td>Девять критериев, раздел 12.</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="unit">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num">10 — Unit economics</span>
-      <h2>Три сценария на одно устройство</h2>
-      <p>Горизонт — три года. Все допущения выписаны явно, чтобы их можно было оспорить поштучно.
-        Это модель для обсуждения, а не прогноз.</p>
-    </div>
-    <div class="wide">
-      <div class="tscroll">
-        <table style="min-width:760px">
-          <caption>Модель построена для сценария 4 через розничный канал. Валовая прибыль с единицы контента —
-            $5,90 (чистая выручка $9,00 при рознице $17,99, валовая маржа 65%). «Удержание» — доля устройств,
-            остающихся активными в следующем году.</caption>
-          <thead>
-            <tr><th>Параметр</th><th class="num">Консервативный</th><th class="num">Базовый</th><th class="num">Оптимистичный</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>Вклад устройства (после CAC)</td><td class="num">$0</td><td class="num">$4</td><td class="num">$10</td></tr>
-            <tr><td>Единиц контента в год</td><td class="num">2,0</td><td class="num">4,0</td><td class="num">6,5</td></tr>
-            <tr><td>Проникновение подписки</td><td class="num">15%</td><td class="num">30%</td><td class="num">45%</td></tr>
-            <tr><td>Цена подписки</td><td class="num">$5,99</td><td class="num">$7,99</td><td class="num">$9,99</td></tr>
-            <tr><td>Валовая маржа подписки после AI</td><td class="num">35%</td><td class="num">50%</td><td class="num">60%</td></tr>
-            <tr><td>Удержание год к году</td><td class="num">45%</td><td class="num">65%</td><td class="num">75%</td></tr>
-            <tr><td><strong>LTV за 3 года</strong></td><td class="num"><strong>$26</strong></td><td class="num"><strong>$83</strong></td><td class="num"><strong>$174</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="tscroll">
-        <table>
-          <caption>Окупаемость привлечения в базовом сценарии. Ежемесячный поток валовой прибыли — $3,17
-            (контент $1,97 плюс подписка $1,20).</caption>
-          <thead><tr><th>Канал</th><th class="num">CAC</th><th class="num">Прибыль в момент продажи</th><th class="num">Окупаемость</th><th>Компромисс</th></tr></thead>
-          <tbody>
-            <tr><td class="name">Розница / игрушечные сети</td><td class="num">$4</td><td class="num">$4</td><td class="num">сразу</td><td>Нет прямых отношений с семьёй, нет данных, полка забирает половину цены</td></tr>
-            <tr><td class="name">Amazon 3P</td><td class="num">$22</td><td class="num">$10</td><td class="num">~4 мес</td><td>Данные о покупателе принадлежат площадке</td></tr>
-            <tr><td class="name">DTC</td><td class="num">$38</td><td class="num">$10</td><td class="num">~9 мес</td><td>Максимум контроля и данных, но требует оборотного капитала и маркетинга</td></tr>
-            <tr><td class="name">Лицензирование</td><td class="num">$0</td><td class="num">~$9 роялти</td><td class="num">сразу</td><td>Нулевой риск и нулевой контроль. Текущая модель Animaccord</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <div class="col">
-        <div class="callout warn">
-          <h4>Что ломает модель быстрее всего</h4>
-          <p class="small" style="margin-bottom:.55rem">Чувствительность неравномерна.
-            По убыванию разрушительности:</p>
-          <ul class="tight small" style="margin-bottom:0">
-            <li><strong>Attach rate.</strong> Падение с 4 до 2 покупок в год снижает LTV с $83 до $43.
-              Это единственный параметр, который в одиночку решает судьбу проекта.</li>
-            <li><strong>Удержание.</strong> 65% против 45% — разница в LTV почти двукратная,
-              потому что эффект накапливается по годам.</li>
-            <li><strong>Себестоимость AI.</strong> Разница между оптимизированным и базовым стеком
-              на «нормальном» пользователе — $11 в месяц, что больше самой подписки.</li>
-            <li><strong>Возвраты.</strong> При 10% возвратов и стоимости обработки $30–65
-              теряется вся прибыль с трёх устройств за одно возвращённое.</li>
-          </ul>
-        </div>
-        <p class="xs">Консервативный сценарий ($26 за три года) означает, что при рознице проект едва
-          покрывает поддержку, а при DTC убыточен. Базовый ($83) — жизнеспособный бизнес умеренного размера.
-          Оптимистичный ($174) требует attach на уровне Tonies и проникновения подписки выше,
-          чем у любого игрока категории, — рассматривать его как цель, а не как план.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="hypotheses">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num">11 — Гипотезы</span>
-      <h2>Что проверить до промышленного производства</h2>
-      <p>Десять гипотез в порядке убывания риска. Первые три можно проверить без единого произведённого
-        устройства — и именно они решают, стоит ли делать остальное.</p>
-    </div>
-    <div class="wide">
-      <div class="tscroll">
-        <table style="min-width:820px">
-          <thead><tr><th>№</th><th>Гипотеза</th><th>Как проверить</th><th>Порог</th></tr></thead>
-          <tbody>
-            <tr><td class="num">H1</td><td><strong>Attach rate.</strong> Семья докупает 4+ единицы контента с персонажем в год</td><td>Данные sell-through у Tonies по Masha-фигурке плюс расширение линейки</td><td class="num">≥ 4/год</td></tr>
-            <tr><td class="num">H2</td><td><strong>Возрастной разрыв.</strong> Устройство остаётся активным после выхода ребёнка из ядра IP</td><td>Когортный анализ активности по возрасту у действующих игроков; интервью с родителями 5–7 лет</td><td class="num">≥ 40% на 3-й год</td></tr>
-            <tr><td class="num">H3</td><td><strong>Готовность платить за AI.</strong> Родители платят за персонализированные истории отдельной строкой</td><td>Платное приложение без устройства, ценовые тесты $4,99 / $6,99 / $9,99</td><td class="num">≥ 20% конверсии</td></tr>
-            <tr><td class="num">H4</td><td><strong>Новизна против привычки.</strong> Использование не падает после первых двух недель</td><td>Домашний тест прототипа, 50+ семей, телеметрия по дням</td><td class="num">D30 / D1 ≥ 45%</td></tr>
-            <tr><td class="num">H5</td><td><strong>Себестоимость AI.</strong> Гибридная архитектура удерживает $1,50 на активное устройство</td><td>Замер на реальной нагрузке в приложении из H3</td><td class="num">≤ $1,50/мес</td></tr>
-            <tr><td class="num">H6</td><td><strong>Распознавание речи детей 3–5 лет.</strong> ASR справляется с фрагментарной речью</td><td>Полевой тест на целевых языках и возрастах; замер доли неуспешных реплик</td><td class="num">≤ 10% сбоев</td></tr>
-            <tr><td class="num">H7</td><td><strong>Ценовая эластичность.</strong> $99 — верная точка</td><td>Тесты $79 / $99 / $129 на предзаказах или лендингах</td><td class="num">эластичность &lt; 1,5</td></tr>
-            <tr><td class="num">H8</td><td><strong>Доверие родителей.</strong> Устройство с микрофоном в детской принимается</td><td>Качественные интервью, тест формулировок о приватности, проверка на медийную реакцию</td><td class="num">нет отторжения</td></tr>
-            <tr><td class="num">H9</td><td><strong>Глубина каталога.</strong> Внутри франшизы набирается 100+ часов качественного аудио</td><td>Аудит библиотеки Animaccord, оценка стоимости продакшена недостающего</td><td class="num">≥ 100 часов</td></tr>
-            <tr><td class="num">H10</td><td><strong>Подарочный сценарий.</strong> Носители контента покупают как подарок, а не только родители</td><td>Анализ сезонности продаж у Tonies и Yoto; тест подарочной упаковки</td><td class="num">≥ 30% в Q4</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="gonogo">
-  <div class="wrap">
-    <div class="sec-head">
-      <span class="sec-num">12 — Go / no-go</span>
-      <h2>Критерии перехода к серийному производству</h2>
-      <p>Пороговые значения, при недостижении которых проект останавливается или возвращается
-        к лицензионной модели. Проверяются на пилоте до заказа оснастки.</p>
-    </div>
-    <div class="wide">
-      <div class="checks">
-        <div class="check"><div><b>Attach rate</b><span>Оплаченных единиц контента на устройство за первые 12 месяцев. Ориентир Tonies — 5,7; ниже 3 бизнеса нет</span></div><div class="val">≥ 4,0</div></div>
-        <div class="check"><div><b>Удержание устройства</b><span>Доля устройств с активностью хотя бы раз в неделю на 30-й и 180-й день</span></div><div class="val">D30 ≥ 45%<br>D180 ≥ 25%</div></div>
-        <div class="check"><div><b>Валовая маржа контента</b><span>По носителю контента, после производства, логистики и брака</span></div><div class="val">≥ 60%</div></div>
-        <div class="check"><div><b>Себестоимость AI</b><span>В среднем на активное устройство в месяц, включая модерацию и облако</span></div><div class="val">≤ $1,50</div></div>
-        <div class="check"><div><b>Проникновение подписки</b><span>К 6-му месяцу, при месячном оттоке не выше 6%</span></div><div class="val">≥ 20%</div></div>
-        <div class="check"><div><b>Окупаемость CAC</b><span>В DTC-канале; в рознице требование — неотрицательный вклад устройства</span></div><div class="val">≤ 9 мес</div></div>
-        <div class="check"><div><b>Возвраты</b><span>Доля возвращённых устройств за 90 дней. Обработка стоит $30–65 за штуку</span></div><div class="val">≤ 6%</div></div>
-        <div class="check"><div><b>Безопасность контента</b><span>Критических инцидентов на корпусе красных команд не менее 5 000 часов диалога</span></div><div class="val">0</div></div>
-        <div class="check"><div><b>Регуляторное соответствие</b><span>EU TSR 2025/2509 с цифровым паспортом, COPPA, законы штатов о раскрытии AI — подтверждено до заказа оснастки</span></div><div class="val">подписано</div></div>
       </div>
       <div class="col">
-        <div class="callout neg">
-          <h4>Два безусловных стоп-сигнала</h4>
-          <p class="small" style="margin-bottom:.55rem"><strong>Attach ниже 3,0 за первый год.</strong>
-            Это означает, что физический носитель не стал предметом желания. Ни подписка, ни AI,
-            ни снижение цены устройства эту дыру не закрывают — проверено на всех провалившихся кейсах
-            раздела 04. Правильное действие — вернуться к лицензионной модели.</p>
-          <p class="small" style="margin-bottom:0"><strong>Любой публичный инцидент безопасности
-            до массового запуска.</strong> Aristotle убили до релиза, Kumma сняли с продажи за неделю.
-            Для компании, чей главный актив — доверие родителей к персонажу,
-            репутационный ущерб несопоставим с выручкой всей категории.</p>
+        <p class="xs">Цены на инференс за 2024–2026 годы снижались; ни один из перечисленных провайдеров
+          не публикует прогноз стоимости на будущие периоды. Планы игроков рынка по себестоимости
+          обслуживания устройства и по переходу на собственные или локальные модели
+          в открытых источниках отсутствуют.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="regulation">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">09 — Регуляторика</span>
+      <h2>Что вступило в силу и что рассматривается</h2>
+      <p>Календарь по состоянию на август 2026 года.</p>
+    </div>
+    <div class="wide">
+      <div class="tscroll">
+        <table style="min-width:780px">
+          <thead><tr><th>Норма</th><th>Юрисдикция</th><th class="num">Статус</th><th>Содержание</th></tr></thead>
+          <tbody>
+            <tr><td class="name">Toy Safety Regulation 2025/2509</td><td>Евросоюз</td>
+              <td class="num">В силе с 01.01.2026</td>
+              <td>Ужесточённые требования к производителям, импортёрам и дистрибьюторам.
+                Цифровой паспорт продукта становится обязательным и заменяет декларацию о соответствии.
+                Игрушка со встроенной AI-системой попадает под регулирование;
+                отдельно стоящий детский чат-бот — нет</td></tr>
+            <tr><td class="name">Обновлённые правила COPPA</td><td>США, FTC</td>
+              <td class="num">Применяются с 22.04</td>
+              <td>Усиленные требования к уведомлению и получению согласия,
+                минимизация собираемых данных, прозрачность</td></tr>
+            <tr><td class="name">Children's AI Toy Safety Act of 2026 (S. 5171)</td><td>США, федеральный</td>
+              <td class="num">Внесён</td>
+              <td>Законопроект сенатора Тэмми Дакворт. Федеральные стандарты безопасности
+                для AI-продуктов, адресованных детям младше 13 лет: сбор данных, генерация контента,
+                влияние на психическое здоровье. Полномочия по надзору — у FTC.
+                Предполагает инвентаризацию всех AI-функций в продукте, включая распознавание голоса,
+                чат-ботов, алгоритмы персонализации и генеративный контент</td></tr>
+            <tr><td class="name">Законы штатов об AI-чатботах</td><td>США, штаты</td>
+              <td class="num">Приняты и вносятся</td>
+              <td>Обязательное раскрытие факта общения с AI, в ряде норм — с почасовыми напоминаниями.
+                Требования к механизмам обнаружения и реакции на признаки самоповреждения</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col">
+        <p class="xs">Наблюдаемые события применения: в ноябре 2025 года после публикации отчёта PIRG
+          компания FoloToy приостановила продажи Kumma и начала аудит безопасности,
+          OpenAI отозвал доступ к своим моделям за нарушение правил защиты несовершеннолетних;
+          через неделю продажи возобновились. В декабре 2025 года Mattel отложила выпуск первых
+          AI-продуктов на фоне запросов сенаторов о прозрачности к производителям игрушек.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="masha">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">10 — Masha в цифрах</span>
+      <h2>Позиция IP и текущее присутствие в категории</h2>
+      <p>Публичные показатели франшизы и факт её представленности в экосистеме Tonies.</p>
+    </div>
+    <div class="wide">
+      <div class="factgrid">
+        <div><dt>Подписчиков на YouTube</dt><dd>53,2 млн<small>основной англоязычный канал,
+          2 063 видео, 33,2 млрд просмотров</small></dd></div>
+        <div><dt>Просмотров суммарно</dt><dd>100 млрд+<small>по всем каналам и языкам</small></dd></div>
+        <div><dt>Позиция в категории</dt><dd>№1 preschool<small>по данным Parrot Analytics;
+          в топ-5 детского контента с 2020 года, топ-10 самых востребованных шоу мира в 2024</small></dd></div>
+        <div><dt>География</dt><dd>150+ стран<small>переведён более чем на 25 языков</small></dd></div>
+        <div><dt>Лицензионных сделок</dt><dd>350+<small>Ferrero, Danone, Tonies, Spin Master,
+          Havaianas и другие</small></dd></div>
+        <div><dt>Медиа-сделок</dt><dd>300+<small>Warner Media, Amazon Prime, Rai, SBT, Televisa</small></dd></div>
+      </div>
+      <div class="col">
+        <div class="callout ink">
+          <h4>Masha &amp; the Bear Tonie</h4>
+          <p class="small" style="margin-bottom:0">Фигурка выпускается в экосистеме Tonies по лицензии
+            Animaccord LTD. Содержание: 9 треков — истории и песни, около 38 минут звучания.
+            Треклист: How They Met, Song of Jams, Red Riding Hood, Song About Cleanliness,
+            By the Pike's Wish, Song of Three Wishes, The Wolf and the Seven Young Kids,
+            Coming Home Song, Lullaby Song. Рекомендованный возраст — от 3 лет.
+            Требует отдельно приобретаемую Toniebox. Производство — Тунис.
+            Розничная цена в линейке Tonies — $17,99.</p>
         </div>
+        <p class="xs">О компании: Animaccord основана в 2008 году, около 200 сотрудников,
+          региональные офисы в США, России, Китае, Польше и на Кипре.
+          Ключевые регионы присутствия франшизы — Латинская Америка, Ближний Восток и Северная Африка,
+          Китай, Индия. В Италии права на игры и пазлы у Ravensburger, активити-книги выпускает Play Press;
+          в Бразилии книги и активити-издания выпускает Ciranda Cultural.</p>
       </div>
     </div>
   </div>
@@ -1364,37 +989,39 @@ footer a{color:var(--ink-2)}
 <section id="method">
   <div class="wrap">
     <div class="sec-head">
-      <span class="sec-num">13 — Метод</span>
-      <h2>Как получены цифры и чему в них верить</h2>
+      <span class="sec-num">11 — Метод</span>
+      <h2>Откуда данные и насколько им можно верить</h2>
     </div>
     <div class="col">
-      <p>Исследование опирается на три типа данных, и их надёжность разная.</p>
-      <p><strong>Раскрытая отчётность.</strong> Только Tonies SE публикует настоящие цифры категории —
-        как публичная компания на Франкфуртской бирже. Все показатели по Tonies в разделах 05 и 03 —
-        из релизов по итогам FY2024 и FY2025. Это самый надёжный слой.</p>
-      <p><strong>Производные расчёты</strong> (помечены <span class="tag-d">расч.</span>).
-        Attach rate, выручка на устройство и цена за единицу выведены из разницы накопленных величин
-        между отчётами. Компания указывает базу как «более 8 млн» и «более 100 млн» на конец 2024 года,
-        поэтому производные значения следует читать как верхнюю границу: реальный attach может быть ниже
-        на 5–10%.</p>
-      <p><strong>Оценки и вторичные источники.</strong> Yoto, Storypod, Miko, Curio и китайские
-        производители не публикуют отчётность. По Yoto публичные источники расходятся —
-        от £94,8 млн выручки за 2024 год до оценки $44 млн ARR; в модели используется первая цифра
-        как заявленная самой компанией, но полагаться на неё как на аудированную нельзя.
-        Все оценки в разделах 08 и 10 — построенные допущения, а не наблюдения.</p>
-      <p><strong>Себестоимость AI</strong> рассчитана по публичным прайс-листам голосовых провайдеров
-        на середину 2026 года: ASR $0,0025–0,012 за минуту, TTS $0,011–0,036, LLM от менее $0,05
-        для малых моделей до $0,08–0,20 для фронтир-моделей; готовые голосовые агенты — $0,05–0,163
-        за минуту. Цены падают, поэтому расчёт стоит пересматривать раз в квартал —
-        но структура вывода от этого не меняется, потому что вместе с ценой падает и порог,
-        за который родители готовы платить.</p>
+      <p><strong>Раскрытая отчётность.</strong> Показатели tonies SE взяты из релизов по итогам
+        FY2024 и FY2025 и из сообщения о запуске Toniebox Lite от июля 2026 года.
+        Это единственный аудируемый источник в категории.</p>
+      <p><strong>Расчётные величины</strong> в разделе 07 получены арифметически из раскрытых
+        накопленных показателей. Компания публикует базу 2024 года в формате «более 8 млн»
+        и «более 100 млн», поэтому производные значения следует читать как верхнюю границу:
+        фактические величины могут быть ниже на 5–10%.</p>
+      <p><strong>Заявления компаний.</strong> Yoto, Miko, Storypod, Haivivi, FoloToy и Bondu
+        отчётность не публикуют; приведённые цифры — их собственные заявления в пресс-релизах
+        и интервью, независимо не подтверждённые. По Yoto открытые источники расходятся:
+        £94,8 млн выручки за 2024 год против оценки $44,2 млн ARR у агрегаторов.
+        Обе величины приведены без выбора между ними.</p>
+      <p><strong>Цены</strong> собраны с сайтов производителей и крупных ритейлеров на август 2026 года.
+        Промо-цены и цены отдельных сетей указаны там, где они устойчиво отличаются от прайса.</p>
+      <p><strong>Прайс AI-стека</strong> — публичные тарифы провайдеров на середину 2026 года.
+        Это стоимость облачных API по опубликованным ценам, а не чья-либо фактическая себестоимость.</p>
 
-      <div class="callout ink">
-        <h4>Чего в этом исследовании нет</h4>
-        <p class="small" style="margin-bottom:0">Здесь нет полевых данных: не опрошены родители,
-          не протестирован прототип, не запрошены данные у Tonies как у действующего партнёра.
-          Три первые гипотезы раздела 11 закрывают именно этот пробел, и до их проверки
-          любые финансовые проекции остаются структурными, а не прогнозными.</p>
+      <div class="callout warn">
+        <h4>Чего в обзоре нет</h4>
+        <p class="small" style="margin-bottom:.55rem">Границы документа, чтобы они были явными:</p>
+        <ul class="tight small" style="margin-bottom:0">
+          <li>Нет реконструкции чужих бизнес-моделей и допущений об их окупаемости —
+            ни одна компания в категории их не раскрывает</li>
+          <li>Нет данных о retention и оттоке по конкретным продуктам: их не публикует никто,
+            включая tonies</li>
+          <li>Нет себестоимости устройств: единственные публичные ориентиры — разборы Echo Dot и Google Home</li>
+          <li>Нет полевых данных: родители не опрашивались, устройства не тестировались</li>
+          <li>Нет оценок, рекомендаций и сценариев — по условиям задачи</li>
+        </ul>
       </div>
     </div>
   </div>
@@ -1402,15 +1029,18 @@ footer a{color:var(--ink-2)}
 
 <footer>
   <div class="wrap"><div class="col">
-    <p class="xs" style="margin-bottom:.6rem"><strong>Основные источники:</strong>
-      релизы и отчётность tonies SE по FY2024 и FY2025; заявления Yoto о выручке и подписке;
-      публикации о девайсном подразделении Amazon; отчёт PIRG об AI-игрушках (ноябрь 2025);
-      материалы IEEE Spectrum о провалах социальной робототехники; MIT Technology Review
-      о китайском рынке AI-игрушек; EU Toy Safety Regulation 2025/2509; обновлённые правила COPPA;
-      законопроект S. 5171; отраслевые бенчмарки оттока детских подписок; прайс-листы
-      голосовых AI-провайдеров 2026; Parrot Analytics и License Global по Masha and the Bear.</p>
-    <p class="xs" style="margin-bottom:0">Подготовлено для обсуждения. Все финансовые модели —
-      диапазонные оценки на основе публичных данных и не являются прогнозом.
-      Валюта — доллары США, если не указано иное.</p>
+    <p class="xs" style="margin-bottom:.6rem"><strong>Источники:</strong>
+      релизы и отчётность tonies SE (FY2024, FY2025, Toniebox Lite, июль 2026);
+      сайты и пресс-релизы Yoto, Storypod, Miko, Curio, Haivivi, FoloToy, Bondu, Ropet, Keyi, Tuya;
+      корпоративные сообщения Mattel и OpenAI; отчёт PIRG об AI-игрушках (ноябрь 2025);
+      MIT Technology Review о рынке AI-игрушек в Китае; IEEE Spectrum о социальной робототехнике;
+      публикации о девайсном подразделении Amazon; разборы BOM ABI Research и TechInsights;
+      EU Toy Safety Regulation 2025/2509; правила COPPA (FTC); законопроект S. 5171;
+      прайс-листы Deepgram, ElevenLabs, Cartesia, Vapi, Retell; документация OpenToys и NeoHumans;
+      Parrot Analytics, License Global, Total Licensing по Masha and the Bear;
+      каталоги Amazon, Walmart, DNS, Ситилинк, Яндекс Маркет.</p>
+    <p class="xs" style="margin-bottom:0">Обзор рынка, август 2026. Документ описательный:
+      содержит наблюдаемые параметры продуктов и опубликованные показатели компаний,
+      без интерпретаций и рекомендаций.</p>
   </div></div>
 </footer>
