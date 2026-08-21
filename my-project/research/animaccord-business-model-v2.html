@@ -1,0 +1,1775 @@
+<title>Лицензируемый слой персонажа</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+
+<style>
+:root{
+  color-scheme: light;
+  --paper:#F2F4F2; --surface:#FCFDFC; --surface-2:#E9EDEA;
+  --ink:#121614; --ink-2:#464F4B; --ink-3:#7A837E;
+  --rule:#D5DBD7; --rule-strong:#B6BFB9;
+  --accent:#1C3A34; --thesis-bg:#1C3A34; --thesis-fg:#EDF2EF;
+  --pos:#1E6B45; --warn:#8A6410; --neg:#9B2C1F;
+  --pos-bg:#E4EFE8; --warn-bg:#F4EEDD; --neg-bg:#F5E4E0;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a;
+  --s1-fg:#FFFFFF; --s2-fg:#101413; --s3-fg:#101413;
+  --shadow:0 1px 2px rgba(18,22,20,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --paper:#0E1211; --surface:#161B19; --surface-2:#1E2523;
+    --ink:#E6EAE7; --ink-2:#A8B2AD; --ink-3:#7B8580;
+    --rule:#2A322E; --rule-strong:#3C4641;
+    --accent:#8FBFAF; --thesis-bg:#8FBFAF; --thesis-fg:#0E1211;
+    --pos:#5FBF8A; --warn:#D9A63C; --neg:#E0796A;
+    --pos-bg:#16241D; --warn-bg:#26200F; --neg-bg:#2A1815;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70;
+  --s1-fg:#0E1211; --s2-fg:#0E1211; --s3-fg:#0E1211;
+    --s1-fg:#0E1211; --s2-fg:#0E1211; --s3-fg:#0E1211;
+    --shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --paper:#0E1211; --surface:#161B19; --surface-2:#1E2523;
+  --ink:#E6EAE7; --ink-2:#A8B2AD; --ink-3:#7B8580;
+  --rule:#2A322E; --rule-strong:#3C4641;
+  --accent:#8FBFAF; --thesis-bg:#8FBFAF; --thesis-fg:#0E1211;
+  --pos:#5FBF8A; --warn:#D9A63C; --neg:#E0796A;
+  --pos-bg:#16241D; --warn-bg:#26200F; --neg-bg:#2A1815;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70;
+  --s1-fg:#0E1211; --s2-fg:#0E1211; --s3-fg:#0E1211;
+  --shadow:0 1px 2px rgba(0,0,0,.4);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:16.5px; line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1180px; margin:0 auto; padding:0 28px}
+.col{max-width:680px; margin-left:auto; margin-right:auto}
+.wide{max-width:1124px; margin-left:auto; margin-right:auto}
+
+h1,h2,h3,h4{font-family:"Newsreader",Georgia,serif; font-weight:600; text-wrap:balance; margin:0}
+h1{font-size:clamp(2.1rem,5.2vw,3.35rem); line-height:1.1; letter-spacing:-.015em}
+h2{font-size:clamp(1.6rem,3.4vw,2.15rem); line-height:1.17; letter-spacing:-.01em}
+h3{font-size:1.24rem; line-height:1.3; margin:0 0 .5rem}
+h4{font-size:1.02rem; line-height:1.35; font-family:"IBM Plex Sans",sans-serif; font-weight:600}
+p{margin:0 0 1.05rem}
+a{color:inherit}
+
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.7rem; font-weight:500;
+  letter-spacing:.15em; text-transform:uppercase; color:var(--accent);
+}
+.muted{color:var(--ink-2)}
+.small{font-size:.9rem; line-height:1.55}
+.xs{font-size:.8rem; line-height:1.5; color:var(--ink-3)}
+strong{font-weight:600}
+em{font-style:italic}
+
+/* ---------- masthead ---------- */
+.masthead{border-bottom:1px solid var(--rule); padding:56px 0 40px; background:var(--surface)}
+.masthead .col{max-width:800px}
+.kicker-row{display:flex; flex-wrap:wrap; gap:10px 20px; align-items:baseline; margin-bottom:26px}
+.deck{font-size:1.12rem; color:var(--ink-2); margin-top:20px; max-width:64ch}
+.meta{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(158px,1fr)); gap:1px;
+  background:var(--surface); border:1px solid var(--rule); margin-top:34px;
+}
+.meta div{background:var(--surface); padding:12px 14px; outline:1px solid var(--rule)}
+.meta dt{font-family:"IBM Plex Mono",monospace; font-size:.66rem; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 4px}
+.meta dd{margin:0; font-size:.9rem; font-weight:500}
+
+/* ---------- thesis ---------- */
+.thesis{background:var(--thesis-bg); color:var(--thesis-fg); padding:46px 0}
+.thesis .col{max-width:760px}
+.thesis .eyebrow{color:inherit; opacity:.72}
+.thesis-q{font-family:"Newsreader",serif; font-size:clamp(1.25rem,2.6vw,1.6rem);
+  line-height:1.35; opacity:.85; margin:14px 0 22px; font-style:italic}
+.thesis-a{font-family:"Newsreader",serif; font-size:clamp(1.5rem,3.4vw,2.1rem);
+  line-height:1.25; font-weight:600; letter-spacing:-.01em}
+.thesis-a b{font-weight:600; text-decoration:underline; text-decoration-thickness:2px;
+  text-underline-offset:.16em; text-decoration-color:color-mix(in srgb, currentColor 42%, transparent)}
+
+/* ---------- sections ---------- */
+section{padding:56px 0; border-bottom:1px solid var(--rule)}
+.sec-head{max-width:680px; margin:0 auto 30px}
+.sec-num{
+  font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.14em;
+  color:var(--accent); display:block; margin-bottom:10px;
+}
+.sec-head p{color:var(--ink-2); margin-top:12px; margin-bottom:0}
+
+/* ---------- toc ---------- */
+.toc{display:grid; grid-template-columns:repeat(auto-fit,minmax(232px,1fr)); gap:1px;
+  background:var(--surface); border:1px solid var(--rule)}
+.toc a{background:var(--surface); padding:13px 15px; text-decoration:none; display:flex; gap:11px;
+  align-items:baseline; transition:background .12s; outline:1px solid var(--rule)}
+.toc a:hover,.toc a:focus-visible{background:var(--surface-2)}
+.toc span{font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--accent); flex:none}
+.toc b{font-weight:500; font-size:.91rem; line-height:1.35}
+
+/* ---------- finding blocks ---------- */
+.findings{display:grid; grid-template-columns:minmax(0,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule)}
+.finding{background:var(--surface); padding:24px 26px; display:grid;
+  grid-template-columns:52px minmax(0,1fr); gap:20px; align-items:start; min-width:0}
+.finding .n{font-family:"IBM Plex Mono",monospace; font-size:1.55rem; color:var(--accent);
+  line-height:1; padding-top:3px; font-weight:500}
+.finding h3{font-family:"IBM Plex Sans",sans-serif; font-size:1.05rem; font-weight:600; margin-bottom:.42rem}
+.finding p{margin:0; font-size:.94rem; line-height:1.6; color:var(--ink-2)}
+.finding p + p{margin-top:.6rem}
+
+/* ---------- callouts ---------- */
+.callout{border:1px solid var(--rule-strong); background:var(--surface); padding:20px 22px; margin:26px 0}
+.callout.pos{border-top:3px solid var(--pos)}
+.callout.warn{border-top:3px solid var(--warn)}
+.callout.neg{border-top:3px solid var(--neg)}
+.callout.ink{border-top:3px solid var(--accent)}
+.callout h4{margin:0 0 .45rem}
+.callout p:last-child{margin-bottom:0}
+.callout .xs:last-child{margin-bottom:0}
+
+/* ---------- tables ---------- */
+.tscroll{overflow-x:auto; border:1px solid var(--rule); background:var(--surface); margin:26px 0}
+table{border-collapse:collapse; width:100%; font-size:.855rem; min-width:620px}
+th,td{text-align:left; padding:10px 13px; border-bottom:1px solid var(--rule); vertical-align:top}
+thead th{
+  font-family:"IBM Plex Mono",monospace; font-size:.68rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--ink-3); font-weight:500; background:var(--surface-2); position:sticky; top:0;
+  border-bottom:1px solid var(--rule-strong); white-space:nowrap;
+}
+tbody tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:right; font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums; white-space:nowrap}
+td.name{font-weight:600; white-space:nowrap}
+tbody tr:hover{background:var(--surface-2)}
+caption{caption-side:bottom; text-align:left; padding:11px 13px; font-size:.78rem;
+  color:var(--ink-3); line-height:1.5; border-top:1px solid var(--rule)}
+
+.pill{display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:.66rem;
+  letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border:1px solid currentColor;
+  white-space:nowrap; font-weight:500}
+.pill.pos{color:var(--pos); background:var(--pos-bg)}
+.pill.warn{color:var(--warn); background:var(--warn-bg)}
+.pill.neg{color:var(--neg); background:var(--neg-bg)}
+.pill.n{color:var(--ink-3); background:var(--surface-2)}
+
+.tag-d{font-family:"IBM Plex Mono",monospace; font-size:.62rem; color:var(--ink-3);
+  border:1px solid var(--rule-strong); padding:0 3px; margin-left:3px; vertical-align:1px;
+  letter-spacing:.04em; white-space:nowrap}
+
+/* ---------- charts ---------- */
+.viz{margin:26px 0; background:var(--surface); border:1px solid var(--rule); padding:22px 24px 20px}
+.viz-title{font-weight:600; font-size:.97rem; margin:0 0 3px}
+.viz-sub{font-size:.8rem; color:var(--ink-3); margin:0 0 18px; line-height:1.5}
+.legend{display:flex; flex-wrap:wrap; gap:7px 20px; margin:0 0 18px}
+.legend i{display:inline-block; width:11px; height:11px; margin-right:7px; vertical-align:-1px; border-radius:2px}
+.legend span{font-size:.79rem; color:var(--ink-2); font-family:"IBM Plex Mono",monospace; letter-spacing:.02em}
+
+.bar-row{display:grid; grid-template-columns:118px minmax(0,1fr); gap:16px; align-items:center; margin-bottom:11px}
+.bar-row:last-child{margin-bottom:0}
+.bar-label{font-size:.83rem; font-weight:500; line-height:1.3; text-align:right}
+.bar-label small{display:block; font-size:.71rem; color:var(--ink-3); font-weight:400;
+  font-family:"IBM Plex Mono",monospace}
+.bar-track{display:flex; gap:2px; height:34px; align-items:stretch}
+.seg{display:flex; align-items:center; justify-content:flex-end; padding:0 8px; border-radius:0 3px 3px 0;
+  font-family:"IBM Plex Mono",monospace; font-size:.73rem; color:var(--ink); font-weight:500;
+  min-width:2px; overflow:hidden}
+.seg:not(:last-child){border-radius:0}
+.seg:first-child{border-radius:3px 0 0 3px}
+.seg.a{background:var(--s1); color:var(--s1-fg)}
+.seg.b{background:var(--s2); color:var(--s2-fg)}
+.seg.c{background:var(--s3); color:var(--s3-fg)}
+.seg.ref{background:transparent; border:1.5px dashed var(--neg); color:var(--neg); justify-content:flex-end}
+.bar-after{font-family:"IBM Plex Mono",monospace; font-size:.79rem; color:var(--ink-2);
+  padding-left:13px; min-width:46px; text-align:right; white-space:nowrap; align-self:center}
+.bar-flex{display:flex; align-items:center}
+
+.axis{border-top:1px solid var(--rule); margin-top:16px; padding-top:8px; display:flex;
+  justify-content:space-between; font-family:"IBM Plex Mono",monospace; font-size:.7rem; color:var(--ink-3)}
+
+/* threshold marker */
+.thresh-wrap{position:relative}
+.thresh{position:absolute; top:-6px; bottom:16px; border-left:2px dashed var(--neg); opacity:.85}
+.thresh b{position:absolute; top:-4px; left:6px; font-family:"IBM Plex Mono",monospace;
+  font-size:.68rem; color:var(--neg); font-weight:500; white-space:nowrap; background:var(--surface); padding:0 3px}
+
+/* ---------- scenario cards ---------- */
+.scen{display:grid; grid-template-columns:minmax(0,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:26px 0}
+.scen-card{background:var(--surface); padding:24px 26px; min-width:0}
+.scen-top{display:flex; flex-wrap:wrap; gap:10px 14px; align-items:baseline; margin-bottom:12px}
+.scen-top .eyebrow{flex:none}
+.scen-card h3{font-family:"IBM Plex Sans",sans-serif; font-size:1.1rem; margin:0}
+.scen-formula{font-family:"IBM Plex Mono",monospace; font-size:.79rem; color:var(--ink-2);
+  background:var(--surface-2); padding:8px 11px; margin:0 0 14px; border-left:2px solid var(--rule-strong);
+  overflow-x:auto; white-space:nowrap; max-width:100%}
+.scen-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(168px,1fr)); gap:16px; margin-top:16px}
+.scen-grid h5{font-family:"IBM Plex Mono",monospace; font-size:.67rem; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 5px; font-weight:500}
+.scen-grid p{margin:0; font-size:.87rem; line-height:1.55; color:var(--ink-2)}
+.scen-card > p{font-size:.94rem; color:var(--ink-2)}
+
+/* ---------- checklist ---------- */
+.checks{border:1px solid var(--rule); background:var(--surface); margin:26px 0}
+.check{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:14px 20px; padding:14px 20px;
+  border-bottom:1px solid var(--rule); align-items:center}
+.check:last-child{border-bottom:none}
+.check b{font-weight:600; font-size:.93rem; display:block}
+.check span{font-size:.83rem; color:var(--ink-2); display:block; margin-top:2px; line-height:1.5}
+.check .val{font-family:"IBM Plex Mono",monospace; font-size:.86rem; font-weight:500;
+  text-align:right; white-space:nowrap; color:var(--ink)}
+
+ul.tight{margin:0 0 1.05rem; padding-left:1.15rem}
+ul.tight li{margin-bottom:.42rem}
+ul.tight li::marker{color:var(--accent)}
+ol.tight{margin:0 0 1.05rem; padding-left:1.3rem}
+ol.tight li{margin-bottom:.5rem}
+ol.tight li::marker{font-family:"IBM Plex Mono",monospace; font-size:.85em; color:var(--accent)}
+
+footer{padding:44px 0 60px; color:var(--ink-3)}
+footer .col{max-width:680px}
+footer a{color:var(--ink-2)}
+
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+@media (prefers-reduced-motion: reduce){*{transition:none !important; animation:none !important}}
+@media (max-width:640px){
+  body{font-size:16px}
+  .wrap{padding:0 18px}
+  .finding{grid-template-columns:minmax(0,1fr); gap:8px}
+  .finding .n{font-size:1.2rem}
+  .bar-row{grid-template-columns:minmax(0,1fr); gap:5px}
+  .bar-label{text-align:left}
+  .bar-label small{display:inline; margin-left:7px}
+  section{padding:42px 0}
+}
+
+.pill.cond{color:var(--ink-2); background:var(--surface-2); border-color:var(--rule-strong);
+  white-space:normal; line-height:1.45; max-width:100%}
+.phase{display:grid; grid-template-columns:88px minmax(0,1fr) auto; gap:14px 18px; padding:14px 18px;
+  border-bottom:1px solid var(--rule); align-items:start}
+.phase:last-child{border-bottom:none}
+.phase .ph{font-family:"IBM Plex Mono",monospace; font-size:.7rem; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--accent); padding-top:3px}
+.phase b{display:block; font-size:.95rem; font-weight:600; margin-bottom:3px}
+.phase span{display:block; font-size:.85rem; color:var(--ink-2); line-height:1.5}
+.phase .cm{font-family:"IBM Plex Mono",monospace; font-size:.85rem; font-weight:500; white-space:nowrap; text-align:right}
+.split2{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:1px;
+  background:var(--surface); border:1px solid var(--rule); margin:26px 0}
+.split2 > div{background:var(--surface); padding:20px 22px; outline:1px solid var(--rule); min-width:0}
+.split2 h4{margin:0 0 8px}
+.split2 p{margin:0; font-size:.9rem; color:var(--ink-2); line-height:1.55}
+.split2 ul{margin:8px 0 0; padding-left:1.05rem}
+.split2 li{font-size:.87rem; color:var(--ink-2); margin-bottom:5px; line-height:1.5}
+</style>
+<header class="masthead">
+  <div class="wrap"><div class="col">
+    <div class="kicker-row">
+      <span class="eyebrow">Animaccord · Product &amp; business architecture · v2</span>
+      <span class="xs">Август 2026 · заменяет v1</span>
+    </div>
+    <h1>Лицензируемый слой персонажа: предмет разработки и его экономика</h1>
+    <p class="deck">Что именно строится вокруг AI-девайса, при каких условиях каждая часть конструкции
+      сходится, сколько стоит её создание и сопровождение, и что из построенного переносится
+      на внешние рынки, а что делается заново.</p>
+    <dl class="meta">
+      <div><dt>Горизонт</dt><dd>18 месяцев, три фазы</dd></div>
+      <div><dt>Первый рынок</dt><dd>Россия, как референс</dd></div>
+      <div><dt>Модели экономики</dt><dd>На устройство и на лицензиата</dd></div>
+      <div><dt>Статус</dt><dd>Проектный документ</dd></div>
+    </dl>
+  </div></div>
+</header>
+
+<div class="thesis">
+  <div class="wrap"><div class="col">
+    <span class="eyebrow">Центральный тезис</span>
+    <p class="thesis-a">У Анимаккорда сегодня два профильных актива: производство сериала
+      и лицензирование. Предлагается третий, того же типа — <b>лицензируемый слой персонажа</b>:
+      канон, голос, память и приёмка, упакованные так, что их можно продавать лицензиатам
+      как право, а не как разработку.</p>
+    <p class="thesis-q" style="margin-top:22px; font-style:normal; font-size:1.02rem; opacity:.88">
+      Россия в этой конструкции — не первый рынок, а <strong>референс-инсталляция</strong>:
+      единственное место, где компания держит весь стек целиком и получает на выходе не столько выручку,
+      сколько доказательства — реальную себестоимость минуты, удержание, историю безопасности,
+      отлаженный канон. Дальше на внешние рынки уходит пакет с доказательствами,
+      и роялти растёт без капитальных затрат.</p>
+  </div></div>
+</div>
+
+<section id="toc" style="padding-top:44px;padding-bottom:44px">
+  <div class="wrap"><div class="wide">
+    <nav class="toc" aria-label="Содержание">
+      <a href="#summary"><span>01</span><b>Executive summary</b></a>
+      <a href="#assets"><span>02</span><b>Что уже есть</b></a>
+      <a href="#landscape"><span>03</span><b>Четыре архетипа</b></a>
+      <a href="#benchmarks"><span>04</span><b>Benchmark-матрица</b></a>
+      <a href="#requirements"><span>05</span><b>Требования к ТЗ</b></a>
+      <a href="#regulation"><span>06</span><b>Регуляторный контур</b></a>
+      <a href="#economics"><span>07</span><b>Экономика категории</b></a>
+      <a href="#ai"><span>08</span><b>Экономика AI: мир и РФ</b></a>
+      <a href="#russia"><span>09</span><b>Российский контур</b></a>
+      <a href="#platforms"><span>10</span><b>Ландшафт платформ</b></a>
+      <a href="#agegap"><span>11</span><b>Возрастной разрыв</b></a>
+      <a href="#scenarios"><span>12</span><b>Сценарии, включая пятый</b></a>
+      <a href="#subject"><span>13</span><b>Предмет разработки</b></a>
+      <a href="#unit"><span>14</span><b>Unit economics</b></a>
+      <a href="#hypotheses"><span>15</span><b>Гипотезы</b></a>
+      <a href="#phases"><span>16</span><b>Переход между фазами</b></a>
+      <a href="#method"><span>17</span><b>Метод и источники</b></a>
+    </nav>
+  </div></div>
+</section>
+
+<section id="summary">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">01 — Executive summary</span>
+      <h2>Пять условий, которые задают конструкцию</h2>
+      <p>Каждый пункт — наблюдение из фактуры и следствие, которое оно накладывает на продукт.
+        Цифры и источники — в разделах 07–10.</p>
+    </div>
+    <div class="wide">
+      <div class="findings">
+
+        <article class="finding">
+          <div class="n">01</div>
+          <div>
+            <h3>Железо не несёт модель — значит, в модели должен быть повторяющийся платёж</h3>
+            <p>У Tonies в 2025 году колонки дали 26% выручки, фигурки — 71%: контент приносит
+              в 2,8 раза больше железа. У продуктов без повторяющегося платежа выручка заканчивалась
+              в момент продажи, и все крупные из них ушли с рынка в 2018–2019 годах.</p>
+            <p><strong>Следствие:</strong> в конструкции должна быть хотя бы одна из трёх форм
+              повторяющегося платежа — носители контента, подписка, роялти с лицензии.
+              Разобраны в разделе 12; сценарий 5 использует третью.</p>
+          </div>
+        </article>
+
+        <article class="finding">
+          <div class="n">02</div>
+          <div>
+            <h3>Маржа в категории низкая даже при отличном исполнении — это задаёт планку</h3>
+            <p>Tonies при выручке €630,3 млн, установленной базе 11,8 млн устройств и валовой марже
+              62,8% показывает скорректированную EBITDA 8,6% и отрицательный свободный денежный поток
+              за 2025 год. Лицензиарам он платит 11,0% выручки — €69,4 млн.</p>
+            <p><strong>Следствие:</strong> собственная модель имеет смысл при доходности выше 11%
+              с оборота экосистемы, то есть выше того, что даёт чистое лицензирование при нулевых
+              вложениях. Сценарий 5 сконструирован так, чтобы брать и роялти, и маржу на инференсе.</p>
+          </div>
+        </article>
+
+        <article class="finding">
+          <div class="n">03</div>
+          <div>
+            <h3>Живой диалог стоит $13–25 на пользователя в месяц — гибридная архитектура обязательна</h3>
+            <p>15 минут живой генерации в день на мировом стеке дают $13–25 в месяц; на российском
+              при подписке 299–399 ₽ в бюджет помещается <strong>1,8–3,0 минуты живого диалога в день</strong>.
+              Разница между стеками — в пределах погрешности, см. раздел 08.</p>
+            <p><strong>Следствие:</strong> гибридная архитектура с квотой — не опция, а требование
+              к ТЗ уровня P0. Предзаписанный контент несёт основную часть времени использования,
+              живая генерация метрируется. Отсюда же вытекает ценность локального инференса
+              именно на российском рынке.</p>
+          </div>
+        </article>
+
+        <article class="finding">
+          <div class="n">04</div>
+          <div>
+            <h3>Подписка в детском hardware поздняя и небольшая</h3>
+            <p>У Tonies спустя десять лет «Accessories &amp; Digital» — 3,5% выручки. У Yoto подписка
+              даёт около 25%, но механика там — кредиты на физические карточки, а не доступ к софту.
+              Медианный месячный отток детских образовательных подписок — 7,4%.</p>
+            <p><strong>Следствие:</strong> подписку нельзя закладывать как основной источник
+              в первые 18 месяцев. Способ обойти отток — бандл с уже существующей подпиской,
+              а не отдельная строка в чеке; гипотеза H6.</p>
+          </div>
+        </article>
+
+        <article class="finding">
+          <div class="n">05</div>
+          <div>
+            <h3>Возрастной разрыв — структурное ограничение срока окупаемости</h3>
+            <p>Ядро аудитории франшизы — 2–6 лет; устройству для окупаемости нужно 3–5 лет жизни
+              в семье. В детских подписках 24% отписок приходится на «ребёнок перерос контент»
+              и 36% — на «потерял интерес».</p>
+            <p><strong>Следствие:</strong> разрыв влияет на срок окупаемости и на выбор метрики
+              успеха. Варианты смягчения внутри франшизы — раздел 11.</p>
+          </div>
+        </article>
+
+      </div>
+
+      <div class="col" style="margin-top:34px">
+        <div class="callout ink">
+          <h4>Что из этого следует для конструкции продукта</h4>
+          <p class="small" style="margin-bottom:.6rem">Пять условий сходятся в одну архитектуру:
+            устройство с обязательным офлайн-режимом, предзаписанная библиотека как основа времени
+            использования, метрируемый слой живого диалога поверх неё, и <strong>ядро, отделённое
+            от рынка</strong> — чтобы то, что построено в России, продавалось дальше как право.</p>
+          <p class="small" style="margin-bottom:0">Состав ядра, три строки затрат и граница
+            между переносимым и непереносимым — раздел 13. Это основная часть документа;
+            всё предыдущее — фактура, на которой она стоит.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="assets">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">02 — Что уже есть</span>
+      <h2>Активы, на которые опирается конструкция</h2>
+      <p>Часть того, что в отраслевых обзорах выглядит как предмет разработки, у компании уже
+        построено и работает. Ниже — то, что удалось установить по открытым источникам.</p>
+    </div>
+    <div class="wide">
+      <div class="tscroll">
+        <table style="min-width:960px">
+          <caption>Данные из публичных сообщений компании и магазинов приложений.
+            Внутренние метрики по этим активам в открытых источниках отсутствуют.</caption>
+          <thead><tr><th>Актив</th><th>Что это</th><th>Что уже отработано</th><th>Что нужно уточнить внутри</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="name">Masha Club</td>
+              <td>Система subscription sharing и кросс-промо поверх портфеля из более чем 30 игр
+                с 700 млн загрузок. С мая 2023 компания издаёт приложения под собственными аккаунтами
+                в App Store и Google Play; за четыре месяца после запуска собственные приложения
+                набрали более 10 млн загрузок. Сторонним разработчикам предложено присоединяться
+                к Masha Club и получать доступ к платформам sharing и кросс-промо</td>
+              <td>Механика мультиконтентного каталога с одной подпиской построена и обкатана —
+                в играх. Это ровно та механика, которой требует устройство: один аккаунт,
+                один платёж, много единиц контента</td>
+              <td>Проникновение подписки, отток, ARPU, доля пользователей, приходящих
+                через кросс-промо</td>
+            </tr>
+            <tr>
+              <td class="name">Голосовое AI-приложение с Машей</td>
+              <td>В Google Play присутствует «Маша и Медведь: ИИ Чат и Игры» — голосовой GPT-чат
+                с персонажем, игры и мультфильмы. Подписка $3,99 в неделю или $9,99 в месяц.
+                Опубликовано под аккаунтом стороннего разработчика, не под аккаунтом компании</td>
+              <td>Продукт того же класса, что проектируется, уже находится в руках пользователей.
+                Отзывы фиксируют конфликт, описанный в разделе 08: лимит времени заканчивается быстро,
+                ответ разработчика ссылается на стоимость AI</td>
+              <td><strong>Статус продукта:</strong> собственный, лицензиата или неавторизованный.
+                При наличии отношений — метрики удержания, стоимость минуты и структура лимита.
+                Это дешевле и быстрее, чем строить тестовое приложение с нуля</td>
+            </tr>
+            <tr>
+              <td class="name">Аудио-дистрибуция с Believe</td>
+              <td>Соглашение о глобальном аудиорелизе музыкального контента франшизы в первом квартале
+                2026 года: песни Маши, потешки и спецвыпуски на 56 цифровых площадках,
+                в 30 языках, включая Spotify, Apple Music, YouTube Music, Amazon Music, Deezer,
+                TikTok и Instagram</td>
+              <td>Аудиоконтент уже отделён от видео, локализован и упакован под дистрибуцию.
+                Это готовая база для наполнения устройства и для фабрики контента</td>
+              <td>Объём каталога в часах, права на воспроизведение вне DSP, возможность
+                использования в устройстве и в генеративных сценариях</td>
+            </tr>
+            <tr>
+              <td class="name">Elari KidPhone MB</td>
+              <td>Детские смарт-часы под лицензией франшизы, продаются в России: 4G и Wi-Fi,
+                анимированные меню с персонажами, шесть подвесок-шармов на ремешке, изучение
+                английских слов с персонажами, игры. В комплекте доступ к VK Музыке и Wink,
+                Детское радио и голосовой ассистент Маруся от VK</td>
+              <td>Прецедент лицензионного устройства с персонажем и голосовым ассистентом
+                на российском рынке уже существует. Существенная деталь: контент и ассистент
+                в нём — партнёрские (VK), а не собственные</td>
+              <td>Объёмы продаж, структура роялти, вовлечённость в аудио- и голосовые сценарии.
+                Это ближайший доступный бенчмарк спроса</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col">
+        <p style="margin-top:26px">Совокупно: у компании есть механика подписки на мультиконтентный
+          каталог, упакованный аудиокаталог на 30 языках, действующий лицензионный прецедент
+          устройства с персонажем в России и, по всей видимости, работающее голосовое AI-приложение
+          с этим же персонажем.</p>
+        <p><strong>Вопрос не в создании этих компонентов, а в их сборке</strong> — и в том,
+          чтобы собранное принадлежало компании как переносимое право, а не как разовая интеграция
+          под одного партнёра.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="landscape">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">03 — Ландшафт</span>
+      <h2>Четыре архетипа и условия, при которых каждый работает</h2>
+      <p>Классификация по тому, что пользователь покупает во второй раз.</p>
+    </div>
+    <div class="wide">
+      <div class="tscroll">
+        <table style="min-width:900px">
+          <thead>
+            <tr><th>Архетип</th><th>Что покупают второй раз</th><th>Примеры</th>
+              <th class="num">Доля recurring</th><th>При каких условиях сходится</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="name">A. Content device</td>
+              <td>Физические носители контента</td>
+              <td>Tonies, Yoto, Storypod, Lunii, Faba</td>
+              <td class="num">70–75%</td>
+              <td>При каталоге в тысячи наименований и повторных покупках порядка 4–6 в год.
+                Единственный архетип с публично подтверждённой прибыльностью — и та на уровне
+                8,6% EBITDA</td>
+            </tr>
+            <tr>
+              <td class="name">B. Ecosystem device</td>
+              <td>Сервисы и медиа-подписка платформы</td>
+              <td>Echo Kids, Nest</td>
+              <td class="num">н/д</td>
+              <td>При наличии у владельца собственного маркетплейса или медиа-подписки, на которую
+                устройство приводит. У Amazon экосистемная выручка не покрыла субсидию железа</td>
+            </tr>
+            <tr>
+              <td class="name">C. AI companion</td>
+              <td>Подписку на расширенный AI и контент</td>
+              <td>Miko, Curio, Moxie, BubblePal</td>
+              <td class="num">0–35%</td>
+              <td>При цене устройства $150+ и подписке, продающей лицензированный контент
+                и обучение, а не сам факт диалога. Единственный игрок с подтверждённым масштабом —
+                Miko, и его подписка устроена именно так</td>
+            </tr>
+            <tr>
+              <td class="name">D. IP hardware</td>
+              <td>Как правило, ничего</td>
+              <td>Anki, Jibo, Hello Barbie, Aristotle</td>
+              <td class="num">0%</td>
+              <td>При рознице от $150 и нулевой облачной составляющей на весь срок жизни базы.
+                Ни один из перечисленных этого условия не выдержал</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col">
+        <p style="margin-top:26px">Наблюдение, общее для всех четырёх: разделительная линия проходит
+          не по качеству технологии и не по силе бренда, а по тому, <strong>существует ли объект
+          или услуга, за которую платят повторно</strong>. Сценарий 5 в разделе 12 добавляет
+          пятую форму — роялти с лицензиата, — которая в этой таблице не представлена,
+          потому что на рынке детских устройств её пока никто не использует.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="benchmarks">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">04 — Benchmarks</span>
+      <h2>Шестнадцать кейсов в одной таблице</h2>
+      <p>Сравнительная матрица по параметрам исходного брифа. Прочерк означает, что компания
+        не раскрывает показатель. Attach rate приведён как отраслевой бенчмарк категории
+        content device — метрикой проекта он не является, см. раздел 16.</p>
+    </div>
+    <div class="wide">
+      <div class="tscroll">
+        <table style="min-width:1080px">
+          <caption>† компания прекратила деятельность или продукт снят с рынка.
+            Цены — retail в США на середину 2026 г. «Recurring» — доля выручки,
+            не приходящейся на продажу устройства.</caption>
+          <thead>
+            <tr><th>Продукт</th><th>Тип</th><th class="num">Цена HW</th><th>IP</th>
+              <th>Подписка</th><th class="num">Recurring</th><th>Доп. покупки</th><th>AI</th>
+              <th>Наблюдения</th></tr>
+          </thead>
+          <tbody>
+            <tr><td class="name">Toniebox 2</td><td>Content device</td><td class="num">$140</td>
+              <td>350+ лицензий</td><td>mytonies</td><td class="num">74%</td><td>Фигурки $17,99</td>
+              <td>Генератор историй в тесте</td>
+              <td>Повторных покупок ~5,7 на активное устройство в год; EBITDA 8,6%</td></tr>
+            <tr><td class="name">Toniebox Lite</td><td>Content device</td><td class="num">н/д</td>
+              <td>те же</td><td>та же</td><td class="num">—</td><td>те же фигурки</td><td>—</td>
+              <td>Запуск 2026: снижение порога входа, второе устройство в семью</td></tr>
+            <tr><td class="name">Yoto Player 3</td><td>Content device</td><td class="num">$110</td>
+              <td>Мульти-IP</td><td>Yoto Club от $4,99</td><td class="num">~60%</td>
+              <td>Карточки $7–30</td><td>Нет</td>
+              <td>Подписка 25% выручки; продаёт кредиты на физические карточки, а не доступ к софту</td></tr>
+            <tr><td class="name">Yoto Mini</td><td>Content device</td><td class="num">$70</td>
+              <td>Мульти-IP</td><td>та же</td><td class="num">~60%</td><td>те же карточки</td><td>Нет</td>
+              <td>Дешёвая точка входа в ту же библиотеку — второе устройство, не замена</td></tr>
+            <tr><td class="name">Storypod</td><td>Content device</td><td class="num">~$100</td>
+              <td>Мульти + свой</td><td>$10–22,50/мес</td><td class="num">высокая</td>
+              <td>Crafties, карточки</td><td>Ограниченный</td>
+              <td>Подписка организована как возрастные наборы, приходящие по мере взросления</td></tr>
+            <tr><td class="name">Lunii</td><td>Content device</td><td class="num">~$70–90</td>
+              <td>Свой</td><td>Нет</td><td class="num">средняя</td><td>Цифровые альбомы</td><td>Нет</td>
+              <td>Цифровой носитель дешевле в производстве, слабее как подарок</td></tr>
+            <tr><td class="name">Faba</td><td>Content device</td><td class="num">~$80</td>
+              <td>Мульти</td><td>Нет</td><td class="num">средняя</td><td>Фигурки-персонажи</td><td>Нет</td>
+              <td>Механика Tonies на локальном итальянском контенте</td></tr>
+            <tr><td class="name">Echo Dot Kids</td><td>Ecosystem</td><td class="num">$60 (часто $38)</td>
+              <td>Мульти</td><td>Kids+ $2,99–5,99</td><td class="num">н/д</td><td>Нет</td><td>Alexa + LLM</td>
+              <td>Девайсное подразделение: −$25 млрд за 2017–2021</td></tr>
+            <tr><td class="name">Miko 3 / Mini</td><td>AI companion</td><td class="num">$150–249</td>
+              <td>Disney, PBS и др.</td><td>Miko Max $14,99</td><td class="num">растёт ×29 г/г</td>
+              <td>Контент-паки</td><td>Да, ядро продукта</td>
+              <td>~$43 млн выручки; подписка продаёт лицензированный контент и обучение</td></tr>
+            <tr><td class="name">Curio Grok / Grem</td><td>AI companion</td><td class="num">$99</td>
+              <td>Свой</td><td>Заявлено «не нужна»</td><td class="num">~0%</td><td>Нет</td>
+              <td>Да, ядро продукта</td>
+              <td>Обзоры: спад к 4-му дню, сбои распознавания речи детей до 5 лет, нет офлайна</td></tr>
+            <tr><td class="name">BubblePal (Haivivi)</td><td>AI companion</td><td class="num">$89–150</td>
+              <td>Мульти-персонажи</td><td>Нет</td><td class="num">~0%</td><td>Нет</td>
+              <td>Да, ядро продукта</td>
+              <td>200 тыс.+ устройств; подвеска к чужой игрушке снимает стоимость плюша</td></tr>
+            <tr><td class="name">FoloToy Kumma</td><td>AI companion</td><td class="num">$99</td>
+              <td>Свой</td><td>Нет</td><td class="num">~0%</td><td>Нет</td><td>Да, на OpenAI</td>
+              <td>Снят после отчёта PIRG, доступ к моделям отозван, возвращён после аудита</td></tr>
+            <tr><td class="name">Moxie †</td><td>AI companion</td><td class="num">$799</td>
+              <td>Свой</td><td>Была</td><td class="num">—</td><td>Нет</td><td>Да, полностью в облаке</td>
+              <td>Серверы отключены, устройства перестали работать; офлайн-режима не было</td></tr>
+            <tr><td class="name">Anki Cozmo / Vector †</td><td>IP hardware</td><td class="num">$179 / $249</td>
+              <td>Свой</td><td>Нет</td><td class="num">0%</td><td>Нет</td><td>Компьютерное зрение</td>
+              <td>$260 млн инвестиций, миллионы устройств, нулевая recurring выручка</td></tr>
+            <tr><td class="name">Jibo † / Kuri †</td><td>IP hardware</td><td class="num">$700–900</td>
+              <td>Свой</td><td>Нет</td><td class="num">0%</td><td>Социальный робот</td>
+              <td>Цена железа не покрывалась ничем после продажи</td><td>Закрыты 2018</td></tr>
+            <tr><td class="name">Mattel Aristotle †</td><td>Ecosystem</td><td class="num">не вышел</td>
+              <td>Mattel</td><td>Планировалась</td><td class="num">—</td><td>Планировались</td>
+              <td>Голосовой ассистент</td>
+              <td>Отменён в октябре 2017 до релиза после кампании о приватности</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="requirements">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">05 — Требования к ТЗ</span>
+      <h2>Что провалы предшественников означают для технического задания</h2>
+      <p>Каждый разобранный случай даёт проверяемую строку требований. Приоритет P0 означает,
+        что без выполнения требования продукт не выпускается.</p>
+    </div>
+    <div class="wide">
+      <div class="tscroll">
+        <table style="min-width:1000px">
+          <thead><tr><th>Источник требования</th><th>Что произошло</th><th>Требование</th>
+            <th>Проверяемый критерий</th><th class="num">Приоритет</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="name">Moxie</td>
+              <td>Устройство за $799. Компания прекратила деятельность в ноябре 2024 после выхода
+                инвестора; 30 января серверы отключили. Распознавание, диалог и эмоциональный вывод
+                выполнялись только в облаке, офлайн-режима не было — устройства перестали работать
+                полностью</td>
+              <td><strong>Офлайн-режим обязателен.</strong> Устройство остаётся функциональным
+                без облака: предзаписанная библиотека, локальные сценарии, локальное пробуждение</td>
+              <td>Полный сценарий использования воспроизводится при отключённой сети</td>
+              <td class="num">P0</td>
+            </tr>
+            <tr>
+              <td class="name">FoloToy Kumma</td>
+              <td>Устройство за $99 на моделях OpenAI. В ноябре 2025 отчёт PIRG показал выдачу
+                недопустимого контента; доступ к моделям отозван, продажи приостановлены,
+                возобновлены через неделю после аудита</td>
+              <td><strong>Многослойная модерация на входе и выходе</strong>, детектор выпадения
+                из образа, откат на утверждённые реплики</td>
+              <td>Ноль критических инцидентов на корпусе не менее 5 000 часов диалога</td>
+              <td class="num">P0</td>
+            </tr>
+            <tr>
+              <td class="name">Curio, китайский сегмент</td>
+              <td>Обзоры фиксируют спад интереса к четвёртому дню; отмечаются длинные ответы,
+                сбои распознавания речи детей младше пяти лет, отсутствие песен
+                и структурированных игр</td>
+              <td><strong>Ритуал вместо новизны:</strong> структурированные сценарии,
+                песни, игры, повторяющиеся форматы с предсказуемым началом и концом</td>
+              <td>D30/D1 не ниже 45%</td>
+              <td class="num">P0</td>
+            </tr>
+            <tr>
+              <td class="name">Anki, Jibo, Kuri</td>
+              <td>Cozmo $179, Vector $249, Jibo $899. Все три закрылись в 2018–2019;
+                Anki привлёк около $260 млн. Повторяющегося платежа в модели не было</td>
+              <td><strong>Повторяющийся платёж заложен в модель до заказа оснастки</strong> —
+                в одной из трёх форм по разделу 12</td>
+              <td>Источник повторяющегося платежа выбран и оценён в финмодели
+                до размещения заказа на оснастку</td>
+              <td class="num">P0</td>
+            </tr>
+            <tr>
+              <td class="name">Aristotle, Hello Barbie</td>
+              <td>Aristotle отменён в октябре 2017 под давлением родительских организаций
+                ещё до выхода; петицию подписали более 1 500 человек. Hello Barbie —
+                коллективный иск и претензии по COPPA</td>
+              <td><strong>Приватность как публичная позиция:</strong> архитектура данных
+                и коммуникация проектируются до анонса, а не после запроса</td>
+              <td>Модель хранения, состав данных и родительские права описаны публично
+                на момент анонса</td>
+              <td class="num">P0</td>
+            </tr>
+            <tr>
+              <td class="name">Amazon</td>
+              <td>Убыток девайсного подразделения около $25 млрд за 2017–2021 при стратегии
+                продажи железа около себестоимости в расчёте на экосистемную выручку</td>
+              <td><strong>Платформенный слой строится на подтверждённых метриках
+                первой вертикали,</strong> а не параллельно с ней</td>
+              <td>Переход к фазе платформы — по критериям раздела 16</td>
+              <td class="num">P1</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="regulation">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">06 — Регуляторный контур</span>
+      <h2>Мир и Россия</h2>
+      <p>Требования, влияющие на архитектуру данных и сроки. Российский контур существеннее
+        для первой фазы, мировой — для переносимости.</p>
+    </div>
+    <div class="wide">
+      <div class="tscroll">
+        <table style="min-width:840px">
+          <thead><tr><th>Норма</th><th>Юрисдикция</th><th class="num">Статус</th><th>Что означает для продукта</th></tr></thead>
+          <tbody>
+            <tr><td class="name">152-ФЗ</td><td>Россия</td><td class="num">Действует</td>
+              <td>Обработка данных ребёнка — только с согласия законного представителя.
+                Согласие должно быть информированным, добровольным и отзываемым, с указанием
+                целей, объёма данных, сроков и получателей. Обработка данных несовершеннолетних
+                и биометрических данных отнесена к категориям, требующим согласования
+                нормативных актов с уполномоченным органом. Родительское согласие,
+                политика хранения и возможность отзыва — часть продукта, а не документов</td></tr>
+            <tr><td class="name">Голос как биометрия</td><td>Россия</td><td class="num">Действует</td>
+              <td>Требует отдельной проработки: голосовая запись ребёнка при определённых способах
+                обработки попадает в режим биометрических данных с повышенными требованиями.
+                Архитектурный вывод — не хранить сырое аудио дольше времени обработки
+                и по возможности не выносить его за пределы устройства</td></tr>
+            <tr><td class="name">Toy Safety Regulation 2025/2509</td><td>ЕС</td>
+              <td class="num">В силе с 01.01.2026</td>
+              <td>Обязательный цифровой паспорт продукта вместо декларации о соответствии.
+                Игрушка со встроенной AI-системой попадает под регулирование.
+                Релевантно на фазе выхода на внешние рынки</td></tr>
+            <tr><td class="name">Обновлённые правила COPPA</td><td>США</td><td class="num">Применяются</td>
+              <td>Усиленные требования к уведомлению и согласию, минимизация данных, прозрачность</td></tr>
+            <tr><td class="name">Children's AI Toy Safety Act of 2026 (S. 5171)</td><td>США</td>
+              <td class="num">Внесён</td>
+              <td>Федеральные стандарты для AI-продуктов детям до 13 лет: сбор данных,
+                генерация контента, влияние на психическое здоровье; надзор у FTC.
+                Предполагает инвентаризацию всех AI-функций, включая распознавание голоса
+                и генеративный контент</td></tr>
+            <tr><td class="name">Законы штатов об AI-чатботах</td><td>США</td><td class="num">Приняты и вносятся</td>
+              <td>Раскрытие факта общения с AI, в ряде норм с почасовыми напоминаниями;
+                механизмы реакции на признаки самоповреждения</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col">
+        <div class="callout ink">
+          <h4>Общее для обоих контуров</h4>
+          <p class="small" style="margin-bottom:0">Требования сходятся к одной архитектурной развилке:
+            где обрабатывается голос ребёнка. Локальная обработка снимает бо́льшую часть вопросов
+            и в 152-ФЗ, и в COPPA, и в законопроекте S. 5171 одновременно — но переносит
+            стоимость с облака на себестоимость устройства. Развилка количественно разобрана
+            в разделах 08 и 13.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="economics">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">07 — Экономика категории</span>
+      <h2>Раскрытые цифры и что они задают</h2>
+      <p>Tonies — единственная публичная компания категории. Её отчётность используется
+        как опорная точка для оценки потолка модели.</p>
+    </div>
+    <div class="wide">
+      <div class="viz">
+        <p class="viz-title">Структура выручки по источникам</p>
+        <p class="viz-sub">tonies — раскрытые данные FY2025. Yoto — по публичным заявлениям компании.</p>
+        <div class="legend">
+          <span><i style="background:var(--s1)"></i>Устройство</span>
+          <span><i style="background:var(--s2)"></i>Физический контент</span>
+          <span><i style="background:var(--s3)"></i>Подписка и цифра</span>
+        </div>
+        <div class="bar-row"><div class="bar-label">tonies<small>€630,3 млн</small></div>
+          <div class="bar-track"><div class="seg a" style="width:25.6%">26%</div>
+            <div class="seg b" style="width:71.0%">71%</div><div class="seg c" style="width:3.4%"></div></div></div>
+        <div class="bar-row"><div class="bar-label">Yoto<small>£94,8 млн (2024)</small></div>
+          <div class="bar-track"><div class="seg a" style="width:40%">40%</div>
+            <div class="seg b" style="width:35%">35%</div><div class="seg c" style="width:25%">25%</div></div></div>
+        <p class="xs" style="margin:14px 0 0">У tonies подписка и цифра — 3,4%, подпись не помещается
+          в сегмент. За десять лет цифровое направление не стало значимым.</p>
+      </div>
+
+      <div class="tscroll">
+        <table>
+          <caption><span class="tag-d">расч.</span> — не раскрывается компанией, получено из разницы
+            накопленных величин между отчётами FY2024 и FY2025. База 2024 указана компанией как
+            «более 8 млн» и «более 100 млн», поэтому производные — верхняя граница.</caption>
+          <thead><tr><th>Показатель</th><th class="num">Значение</th><th>Комментарий</th></tr></thead>
+          <tbody>
+            <tr><td>Выручка FY2025</td><td class="num">€630,3 млн</td><td>+31% г/г, +36% в постоянной валюте</td></tr>
+            <tr><td>Валовая маржа</td><td class="num">62,8%</td><td>Логистика, курс, микс</td></tr>
+            <tr><td>Скорр. EBITDA</td><td class="num">8,6%</td><td>Рекорд компании; операционные расходы съедают 86% валовой прибыли</td></tr>
+            <tr><td>Свободный денежный поток</td><td class="num">−€11,9 млн</td><td>Против +€33,1 млн годом ранее</td></tr>
+            <tr><td>Лицензионные отчисления</td><td class="num">11,0%</td><td>€69,4 млн — <strong>планка доходности для собственной модели</strong></td></tr>
+            <tr><td>Повторных покупок на устройство в год <span class="tag-d">расч.</span></td><td class="num">~5,7</td>
+              <td>Отраслевой бенчмарк архетипа A. Yoto заявляет «более 3»</td></tr>
+            <tr><td>Чистая выручка с единицы контента <span class="tag-d">расч.</span></td><td class="num">~€8,0</td>
+              <td>При рознице ~$17,99 бренд получает 45–50%</td></tr>
+            <tr><td>Чистая выручка с устройства <span class="tag-d">расч.</span></td><td class="num">~€42</td>
+              <td>При рознице $99–140 — около 40% от полки</td></tr>
+            <tr><td>Выручка на активное устройство в год <span class="tag-d">расч.</span></td><td class="num">~€64</td>
+              <td>Столько «стоит» одна семья в год для платформы</td></tr>
+            <tr><td>Отношение контент / железо</td><td class="num">2,8×</td><td>За срок жизни: ~€106 контента против ~€42 железа</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col">
+        <p style="margin-top:26px">Из этих цифр следуют два ограничения на конструкцию.</p>
+        <p><strong>Первое — планка.</strong> Лицензиары в этой модели получают 11,0% выручки
+          экосистемы при нулевых вложениях. Собственная конструкция имеет экономический смысл
+          при доходности выше этой отметки; сценарий 5 в разделе 12 построен так, чтобы
+          добавить к роялти вторую строку — маржу на пропускаемом инференсе.</p>
+        <p><strong>Второе — канал.</strong> Из розничной цены до владельца продукта доходит
+          около 40%: игрушечная розница берёт 40–60% валовой маржи, дистрибьюторы ещё 20–40%
+          сверх закупки, возвраты электроники составляют 3–15% при стоимости обработки
+          $30–65 за штуку. Это одинаково верно для любого сценария и учтено в разделе 14.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="ai">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">08 — Экономика AI</span>
+      <h2>Себестоимость минуты: мировой и российский стек</h2>
+      <p>Расчёт диапазонный, по опубликованным прайс-листам на середину 2026 года,
+        для трёх профилей нагрузки.</p>
+    </div>
+    <div class="wide">
+
+      <div class="tscroll">
+        <table>
+          <caption>Мировой стек. Оптимизированный — малая модель, бюджетный TTS, кэширование.
+            Базовый — модель среднего класса и качественный голос. Премиальный — фронтир-модель
+            и синтез уровня ElevenLabs. Модерация добавляет 15–25% к стоимости LLM и учтена.</caption>
+          <thead><tr><th>Компонент</th><th class="num">Оптимизированный</th><th class="num">Базовый</th><th class="num">Премиальный</th></tr></thead>
+          <tbody>
+            <tr><td>ASR</td><td class="num">$0,004</td><td class="num">$0,006</td><td class="num">$0,012</td></tr>
+            <tr><td>LLM</td><td class="num">$0,012</td><td class="num">$0,030</td><td class="num">$0,060</td></tr>
+            <tr><td>TTS</td><td class="num">$0,011</td><td class="num">$0,015</td><td class="num">$0,036</td></tr>
+            <tr><td>Модерация</td><td class="num">$0,003</td><td class="num">$0,004</td><td class="num">$0,002</td></tr>
+            <tr><td><strong>Итого за минуту</strong></td><td class="num"><strong>$0,030</strong></td>
+              <td class="num"><strong>$0,055</strong></td><td class="num"><strong>$0,110</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tscroll">
+        <table>
+          <caption>Российский стек: SaluteSpeech (распознавание 1 200 ₽ за 1 000 минут, синтез
+            1 000 ₽ за 1 млн символов, с НДС) и GigaChat. Допущения расчёта: 8 реплик в минуту
+            по ~270 токенов, ассистент говорит ~35 секунд из минуты при ~15 символах в секунду,
+            модерация +20% к LLM.</caption>
+          <thead><tr><th>Компонент</th><th class="num">GigaChat Lite</th><th class="num">GigaChat Pro</th><th class="num">GigaChat Max</th></tr></thead>
+          <tbody>
+            <tr><td>ASR — SaluteSpeech</td><td class="num">1,20 ₽</td><td class="num">1,20 ₽</td><td class="num">1,20 ₽</td></tr>
+            <tr><td>LLM</td><td class="num">0,43 ₽</td><td class="num">3,24 ₽</td><td class="num">4,10 ₽</td></tr>
+            <tr><td>TTS — SaluteSpeech</td><td class="num">0,53 ₽</td><td class="num">0,53 ₽</td><td class="num">0,53 ₽</td></tr>
+            <tr><td>Модерация</td><td class="num">0,09 ₽</td><td class="num">0,65 ₽</td><td class="num">0,82 ₽</td></tr>
+            <tr><td><strong>Итого за минуту</strong></td><td class="num"><strong>2,25 ₽</strong></td>
+              <td class="num"><strong>5,62 ₽</strong></td><td class="num"><strong>6,65 ₽</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col">
+        <div class="callout warn">
+          <h4>Расчёт не подтверждает ожидание, что российский стек дешевле</h4>
+          <p class="small" style="margin-bottom:.55rem">При сопоставлении по курсу 80 ₽ за доллар —
+            это <em>явное допущение расчёта, а не котировка</em> — стеки практически совпадают:</p>
+          <ul class="tight small" style="margin-bottom:.55rem">
+            <li>мировой оптимизированный — <strong>2,40 ₽/мин</strong>, российский на Lite —
+              <strong>2,25 ₽/мин</strong>;</li>
+            <li>мировой базовый — <strong>4,40 ₽/мин</strong>, российский на Pro —
+              <strong>5,62 ₽/мин</strong>.</li>
+          </ul>
+          <p class="small" style="margin-bottom:.55rem">Разница внутри погрешности допущений.
+            Покомпонентно картина неоднородна: <strong>LLM в России дешевле</strong>
+            (GigaChat Lite — 0,20 ₽ за 1 000 токенов, порядка $0,0025), синтез сопоставим,
+            а <strong>распознавание речи дороже примерно в 3,5 раза</strong>
+            (1,20 ₽/мин против $0,0043 у Deepgram). Экономия на модели гасится переплатой
+            за распознавание.</p>
+          <p class="small" style="margin-bottom:0">Формулировка «старт в России улучшает удельную
+            экономику» на этих данных не подтверждается как факт и приводится ниже
+            как <strong>условие</strong>: при каких допущениях она становится верной.</p>
+        </div>
+
+        <h3 style="margin-top:30px">Что помещается в российскую подписку</h3>
+        <p>Ориентир цены детской подписки на российском рынке — Яндекс Плюс 399 ₽ в месяц.
+          Ниже — сколько минут живого диалога в день умещается в бюджет AI при разных ценах
+          и целевой марже, на самом дешёвом стеке.</p>
+      </div>
+
+      <div class="viz">
+        <p class="viz-title">Допустимая квота живого диалога, минут в день</p>
+        <p class="viz-sub">Стек GigaChat Lite при 2,25 ₽ за минуту. Для сравнения — квота,
+          которую позволял мировой расчёт при подписке $7,99.</p>
+        <div class="bar-row"><div class="bar-label">199 ₽<small>маржа 60%</small></div>
+          <div class="bar-flex"><div class="bar-track" style="flex:1"><div class="seg a" style="width:8%">1,2</div></div><span class="bar-after">35 мин/мес</span></div></div>
+        <div class="bar-row"><div class="bar-label">299 ₽<small>маржа 60%</small></div>
+          <div class="bar-flex"><div class="bar-track" style="flex:1"><div class="seg a" style="width:12%">1,8</div></div><span class="bar-after">53 мин/мес</span></div></div>
+        <div class="bar-row"><div class="bar-label">399 ₽<small>маржа 60%</small></div>
+          <div class="bar-flex"><div class="bar-track" style="flex:1"><div class="seg a" style="width:16%">2,4</div></div><span class="bar-after">71 мин/мес</span></div></div>
+        <div class="bar-row"><div class="bar-label">399 ₽<small>маржа 50%</small></div>
+          <div class="bar-flex"><div class="bar-track" style="flex:1"><div class="seg a" style="width:20%">3,0</div></div><span class="bar-after">89 мин/мес</span></div></div>
+        <div class="bar-row"><div class="bar-label">499 ₽<small>маржа 50%</small></div>
+          <div class="bar-flex"><div class="bar-track" style="flex:1"><div class="seg a" style="width:24.7%">3,7</div></div><span class="bar-after">111 мин/мес</span></div></div>
+        <div class="bar-row"><div class="bar-label">$7,99<small>мировой расчёт</small></div>
+          <div class="bar-flex"><div class="bar-track" style="flex:1"><div class="seg b" style="width:100%">15,0</div></div><span class="bar-after">450 мин/мес</span></div></div>
+        <div class="axis"><span>0</span><span>7,5</span><span>15 мин/день</span></div>
+      </div>
+
+      <div class="col">
+        <p>Это главный количественный вывод раздела. При российских ценах на подписку
+          <strong>в бюджет помещается 1,2–3,7 минуты живого диалога в день</strong> —
+          то есть в четыре-двенадцать раз меньше, чем допускал мировой расчёт.
+          Причина не в дороговизне стека, а в цене подписки: 399 ₽ примерно вдвое ниже $7,99.</p>
+
+        <div class="callout pos">
+          <h4>Три условия, при которых конструкция сходится</h4>
+          <p class="small" style="margin-bottom:.55rem">Ни одно из них не про выбор поставщика
+            моделей — все три про архитектуру:</p>
+          <ul class="tight small" style="margin-bottom:.55rem">
+            <li><strong>Гибридная архитектура.</strong> 80–90% времени использования несёт
+              предзаписанный контент с нулевой предельной себестоимостью; живая генерация
+              занимает 10–20%. При 45 минутах использования в день это 4,5–9 минут генерации —
+              что уже сопоставимо с квотой, помещающейся в подписку 399–499 ₽.</li>
+            <li><strong>Бандл вместо отдельной подписки.</strong> При включении в существующую
+              подписку с большим ARPU бюджет AI перестаёт упираться в цену отдельной строки,
+              а отток считается по всей подписке, а не по детскому модулю. Гипотеза H6.</li>
+            <li><strong>Локальный инференс.</strong> Перенос распознавания и синтеза на устройство
+              убирает самую дорогую компоненту российского стека — ASR за 1,20 ₽/мин — и одновременно
+              снимает бо́льшую часть вопросов 152-ФЗ о голосе ребёнка. Стоимость переезжает
+              в себестоимость железа; развилка количественно разобрана в разделе 13.</li>
+          </ul>
+          <p class="small" style="margin-bottom:0">При выполнении всех трёх старт в России
+            действительно даёт лучшую удельную экономику, чем старт на мировом рынке —
+            но за счёт архитектуры и бандла, а не за счёт цен на модели.</p>
+        </div>
+
+        <h3 style="margin-top:30px">Месячная себестоимость на активное устройство, Россия</h3>
+      </div>
+
+      <div class="tscroll">
+        <table>
+          <caption>Без учёта облака, хранения и поддержки — только инференс.
+            Строка «Гибрид» соответствует 10% живой генерации при 45 минутах использования в день.</caption>
+          <thead><tr><th>Профиль</th><th class="num">GigaChat Lite</th><th class="num">GigaChat Pro</th><th>Комментарий</th></tr></thead>
+          <tbody>
+            <tr><td>Гибрид, 4,5 мин/день</td><td class="num">304 ₽</td><td class="num">759 ₽</td>
+              <td>Помещается в подписку 499 ₽ только на Lite и только при марже ниже 40%</td></tr>
+            <tr><td>Light, 5 мин/день</td><td class="num">338 ₽</td><td class="num">843 ₽</td><td>—</td></tr>
+            <tr><td>Normal, 15 мин/день</td><td class="num">1 012 ₽</td><td class="num">2 529 ₽</td>
+              <td>Не покрывается ни одной реалистичной ценой отдельной детской подписки</td></tr>
+            <tr><td>Heavy, 40 мин/день</td><td class="num">2 700 ₽</td><td class="num">6 744 ₽</td>
+              <td>Требует жёсткой квоты независимо от модели монетизации</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col">
+        <p class="xs">Цены на инференс за 2024–2026 годы снижались, и расчёт стоит пересматривать
+          ежеквартально. Прогнозов стоимости на будущие периоды ни один из перечисленных поставщиков
+          не публикует, поэтому в модели раздела 14 снижение не заложено.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="russia">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">09 — Российский контур</span>
+      <h2>Рынок, канал, прецедент и что переносится дальше</h2>
+      <p>Первая фаза идёт в России. Ниже — параметры этого рынка и граница между тем,
+        что на нём проверяется для всех рынков, и тем, что действует только здесь.</p>
+    </div>
+    <div class="wide">
+      <div class="factgrid">
+        <div><dt>Рынок умных колонок РФ</dt><dd>48 млрд ₽<small>2025 год, рост 10% за год</small></dd></div>
+        <div><dt>Ценовая точка</dt><dd>5 000–10 000 ₽<small>VK Капсула Нео от 5 000 ₽,
+          Яндекс Станция Лайт 2 — 8 799 ₽, Мини 3 — 9 999 ₽</small></dd></div>
+        <div><dt>Ориентир подписки</dt><dd>399 ₽/мес<small>Яндекс Плюс; 3 490 ₽ при годовой оплате</small></dd></div>
+        <div><dt>Прецедент с франшизой</dt><dd>Elari KidPhone MB<small>лицензионное устройство
+          с персонажами и голосовым ассистентом уже продаётся</small></dd></div>
+      </div>
+
+      <div class="col">
+        <h3 style="margin-top:30px">Что даёт российский рынок как площадка первой фазы</h3>
+        <p><strong>Полный стек в одних руках.</strong> Это единственный рынок, где компания
+          может держать одновременно контент, канал, платежи и отношения с семьёй.
+          На выходе получаются не столько продажи, сколько измеренные величины: реальная
+          себестоимость минуты, удержание, история безопасности, отлаженный канон.</p>
+        <p><strong>Ценовая структура иная, чем в мировом расчёте.</strong> Устройство в диапазоне
+          5 000–10 000 ₽ и подписка около 399 ₽ — это примерно вдвое ниже долларовых ориентиров
+          при сопоставимой себестоимости инференса. Отсюда жёсткость квоты, посчитанная в разделе 08,
+          и отсюда же ценность бандла и локального инференса именно здесь.</p>
+        <p><strong>Один регуляторный контур вместо трёх.</strong> На первой фазе достаточно
+          соответствия 152-ФЗ; цифровой паспорт ЕС, COPPA и законы штатов подключаются
+          на фазе выхода наружу. Это экономит время первой фазы, но создаёт риск:
+          архитектура данных, спроектированная только под 152-ФЗ, может не пройти
+          в ЕС и США без переделки. Поэтому политика хранения проектируется
+          по строгому из контуров сразу — см. раздел 13, статья «сервис памяти».</p>
+
+        <h3 style="margin-top:30px">Прецедент Elari: что он показывает и чего не показывает</h3>
+        <p>Elari KidPhone MB — детские смарт-часы под лицензией франшизы, продающиеся в России.
+          Персонажи присутствуют в анимированных меню, играх, стикерах и шести подвесках-шармах
+          на ремешке; есть обучение английским словам с персонажами. Устройство поддерживает
+          4G и Wi-Fi, имеет датчик снятия с руки, кнопку SOS, безопасные зоны и аудиомониторинг.</p>
+        <p><strong>Показывает:</strong> лицензионное устройство с персонажем в России продаётся,
+          канал существует, родители платят за форм-фактор с персонажем.</p>
+        <p><strong>Не показывает:</strong> спрос именно на голосовое взаимодействие с персонажем.
+          Голосовой ассистент в устройстве — Маруся от VK, музыка и аудиосказки — из VK Музыки,
+          Wink и Детского радио. То есть <strong>персонаж отвечает за оболочку, а голос и контент —
+          партнёрские</strong>. Ровно тот слой, который предлагается построить, в этом прецеденте
+          принадлежит не компании.</p>
+        <p class="xs">Объёмы продаж, структура роялти и вовлечённость в аудиосценарии
+          в открытых источниках отсутствуют. Это ближайший доступный внутренний бенчмарк спроса;
+          запрос данных у партнёра — гипотеза H1.</p>
+
+        <div class="callout ink">
+          <h4>Подписка: бандл вместо отдельной строки</h4>
+          <p class="small" style="margin-bottom:.55rem">Отдельная детская подписка наследует
+            отраслевой отток 7,4% в месяц, причём две главные причины отписки —
+            «ребёнок потерял интерес» (36%) и «перерос контент» (24%) — устройством не лечатся.</p>
+          <p class="small" style="margin-bottom:0">Альтернатива, требующая проверки:
+            включение в существующую подписку с большим ARPU — собственный Masha Club
+            либо подписка партнёра по экосистеме. Тогда отток считается по всей подписке,
+            а детский модуль работает на её удержание, а не конкурирует за отдельный платёж.
+            У компании эта механика уже построена в играх. Гипотеза H6.</p>
+        </div>
+
+        <h3 style="margin-top:30px">Что переносится на внешние рынки, а что нет</h3>
+      </div>
+
+      <div class="split2">
+        <div>
+          <h4>Переносится</h4>
+          <ul>
+            <li>Канон персонажа и правила его удержания</li>
+            <li>Приёмочный набор и история безопасности — измеренная на реальных часах диалога</li>
+            <li>Метрики удержания и структура квоты</li>
+            <li>Голосовой пайплайн и тембр — при наличии прав на голос за пределами РФ</li>
+            <li>Фабрика контента и её выработка</li>
+            <li>Сам факт работающей инсталляции как аргумент в переговорах с лицензиатами</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Не переносится</h4>
+          <ul>
+            <li>Поставщики моделей, распознавания и синтеза</li>
+            <li>Облачный контур и размещение данных</li>
+            <li>Платежи и биллинг подписки</li>
+            <li>Регуляторное соответствие: 152-ФЗ не даёт ни COPPA, ни цифрового паспорта ЕС</li>
+            <li>Каналы продаж и партнёрская экосистема</li>
+            <li>Ценовая точка и структура бандла</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <p class="xs">Граница проходит не по функциям, а по тому, привязан ли компонент
+          к юрисдикции и поставщику. Всё, что привязано, переделывается на каждом рынке —
+          и это отдельная статья затрат, см. раздел 13.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="platforms">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">10 — Ландшафт платформ</span>
+      <h2>Кто уже продаёт инструментарий</h2>
+      <p>Проверка на то, что предлагаемая архитектура индустриально стандартна,
+        и на то, какая её часть остаётся незанятой.</p>
+    </div>
+    <div class="wide">
+      <div class="tscroll">
+        <table style="min-width:1000px">
+          <thead><tr><th>Платформа</th><th>Что закрывает</th><th>Чего не закрывает</th><th>Релевантность</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="name">Tuya</td>
+              <td>AIoT-платформа с готовым решением для AI-игрушек: конструктор агента с настройкой
+                личности, логики памяти и поведения без обучения моделей; AI-модули и AI-боксы;
+                подключение к ChatGPT, Gemini, DeepSeek, Qwen, Doubao; 60+ языков; родительское
+                приложение с мониторингом диалогов; преднастроенные каркасы GDPR и CCPA.
+                Заявляет выход в серию от 15 дней и экономию 30–50% расходов на разработку,
+                включая путь кастомизации под бренд-IP</td>
+              <td>Канон конкретного персонажа, его голос, приёмку и права.
+                Конструктор личности — это пустая форма, которую нужно чем-то наполнить</td>
+              <td>Подтверждает, что рантайм и адаптеры — покупаемый товар.
+                По имеющимся данным для российского рынка недоступна</td>
+            </tr>
+            <tr>
+              <td class="name">Inworld AI</td>
+              <td>Ближайший аналог слоя персонажа. Компания сместилась из чистого слоя персонажа
+                в инфраструктуру: Runtime — высокопроизводительный графовый движок на C++
+                с SDK для Node.js и Unreal, оркестрирующий LLM, распознавание, синтез, память
+                и инструменты в одном конвейере, с удалённой перенастройкой без передеплоя.
+                Плюс собственные Realtime TTS и STT и роутер к 220+ моделям</td>
+              <td>Права на персонажа и его аудиторию</td>
+              <td><strong>Прямой урок:</strong> ценность утекает в рантайм и приёмку.
+                Конфигурации персонажа и прав оказалось недостаточно, чтобы удержать позицию,
+                и компания ушла вниз по стеку</td>
+            </tr>
+            <tr>
+              <td class="name">Слой оркестрации и голоса</td>
+              <td>LiveKit, Pipecat, Cartesia, ElevenLabs, платформы автоматической оценки качества
+                диалога. Транспорт реального времени, конвейеры голосовых агентов, синтез,
+                регрессионное тестирование поведения</td>
+              <td>Всё предметное: персонаж, канон, контент, приёмка под конкретный бренд</td>
+              <td>Подтверждает, что архитектура из раздела 13 — индустриальный стандарт,
+                а не изобретение под этот проект. Компоненты берутся готовыми</td>
+            </tr>
+            <tr>
+              <td class="name">Российский контур</td>
+              <td>GigaChat и SaluteSpeech у Сбера, YandexGPT и SpeechKit в Yandex AI Studio —
+                модели, распознавание и синтез с размещением внутри страны</td>
+              <td>Готового решения уровня Tuya для AI-игрушек в открытом доступе не обнаружено:
+                конструктора агента, модулей и родительского контроля пакетом нет</td>
+              <td>На российском рынке слой оркестрации придётся собирать самостоятельно
+                из компонентов — это часть CAPEX фазы 1</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col">
+        <p style="margin-top:26px">Вывод раздела: <strong>инструментарий на рынке есть,
+          и переписывать его не нужно</strong>. Рантайм, транспорт, синтез и оценка берутся готовыми
+          там, где доступны, и собираются из компонентов там, где готового пакета нет.</p>
+        <p>Незанятое место — <strong>наполнение, канон и приёмка</strong>. Оно завязано на права,
+          и в случае этой франшизы права есть только у одной компании. Траектория Inworld
+          показывает и обратное: удержать позицию только на конфигурации персонажа не удалось —
+          значит, слой персонажа имеет смысл строить вместе с рантаймом и приёмкой,
+          а не как надстройку над чужим.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="agegap">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">11 — Возрастной разрыв</span>
+      <h2>Арифметика ограничения и что его смягчает</h2>
+    </div>
+    <div class="col">
+      <p>Ядро аудитории франшизы — дошкольники 2–6 лет. Это лучший преддошкольный бренд
+        в мире по данным Parrot Analytics: 100 млрд просмотров, топ-10 самых востребованных
+        шоу планеты в 2024 году, присутствие в 150+ странах.</p>
+      <p>Устройству для окупаемости нужно 3–5 лет активной жизни в семье. Ребёнок, получивший
+        его в 3 года, выходит из ядра примерно в 6 — <strong>в середине жизненного цикла
+        устройства, а не в конце</strong>. Отраслевые данные это подтверждают: в детских
+        образовательных подписках 24% отписок приходится на «перерос контент» и 36% —
+        на «потерял интерес».</p>
+      <p>Ограничение структурное: оно влияет на срок окупаемости и на то, какая метрика считается
+        успехом. Ниже — варианты смягчения внутри франшизы, без выхода на внешние права.</p>
+
+      <div class="tscroll">
+        <table>
+          <caption>Все варианты опираются на материал, права на который уже принадлежат компании.
+            Оценка объёма каталога в часах требует внутреннего аудита — гипотеза H8.</caption>
+          <thead><tr><th>Вариант</th><th>Механика</th><th>Что требуется</th></tr></thead>
+          <tbody>
+            <tr><td class="name">Форматы внутри вселенной</td>
+              <td>Спин-оффы, сказки, страшилки, песни — разные форматы для разных возрастов
+                при одном наборе персонажей</td>
+              <td>Аудит библиотеки: сколько часов качественного аудио набирается сегодня
+                и сколько нужно допроизвести</td></tr>
+            <tr><td class="name">Обучающие сценарии</td>
+              <td>Формат, где ценность для родителя растёт с возрастом ребёнка, а не падает:
+                счёт, буквы, английский. У Miko подписка держится именно на этом</td>
+              <td>Методическая проработка и отдельная приёмка обучающего контента</td></tr>
+            <tr><td class="name">Взрослеющая линейка</td>
+              <td>Сложность сценариев и лексика привязаны к профилю ребёнка в сервисе памяти
+                и растут вместе с ним</td>
+              <td>Возрастная адаптация как функция рантайма, а не как отдельный SKU;
+                входит в состав ядра, раздел 13</td></tr>
+            <tr><td class="name">Второе устройство в семью</td>
+              <td>Младший ребёнок наследует каталог. У Yoto эту роль играет Mini,
+                у tonies — анонсированный Lite</td>
+              <td>Привязка каталога к аккаунту семьи, а не к устройству</td></tr>
+            <tr><td class="name">Фабрика контента</td>
+              <td>Производство озвученного контента из библиотеки и канона снижает стоимость
+                пополнения каталога и позволяет закрывать возрастные пробелы быстрее</td>
+              <td>Входит в состав ядра, раздел 13</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="xs">Ни один из вариантов не устраняет разрыв полностью — они переносят точку выхода
+        ребёнка из продукта вправо. Насколько именно — измеряется когортно на первой фазе
+        и входит в критерии перехода, раздел 16.</p>
+    </div>
+  </div>
+</section>
+
+<section id="scenarios">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">12 — Сценарии</span>
+      <h2>Пять конструкций и условия каждой</h2>
+      <p>Сценарии 1–4 считаются на одно проданное устройство за три года в базовых допущениях.
+        Сценарий 5 измеряется в другой единице — на лицензиата — и приведён отдельно.</p>
+    </div>
+    <div class="wide">
+
+      <div class="viz">
+        <p class="viz-title">Валовая прибыль на одно устройство за три года, сценарии 1–4</p>
+        <p class="viz-sub">Базовые допущения: 4 единицы контента в год по $5,90 валовой прибыли,
+          подписка $7,99 при 30% проникновения, удержание 65% год к году, розничный канал.</p>
+        <div class="legend">
+          <span><i style="background:var(--s1)"></i>Устройство</span>
+          <span><i style="background:var(--s2)"></i>Контент</span>
+          <span><i style="background:var(--s3)"></i>Подписка</span>
+        </div>
+        <div class="bar-row"><div class="bar-label">Сценарий 1<small>hardware-only</small></div>
+          <div class="bar-flex"><div class="bar-track" style="flex:1"><div class="seg a" style="width:3.9%"></div></div><span class="bar-after">$4</span></div></div>
+        <div class="bar-row"><div class="bar-label">Сценарий 2<small>+ подписка</small></div>
+          <div class="bar-flex"><div class="bar-track" style="flex:1"><div class="seg a" style="width:3.9%"></div><div class="seg c" style="width:19.3%">$20</div></div><span class="bar-after">$24</span></div></div>
+        <div class="bar-row"><div class="bar-label">Сценарий 3<small>+ контент</small></div>
+          <div class="bar-flex"><div class="bar-track" style="flex:1"><div class="seg a" style="width:3.9%"></div><div class="seg b" style="width:44.6%">$46</div></div><span class="bar-after">$50</span></div></div>
+        <div class="bar-row"><div class="bar-label">Сценарий 4<small>платформа</small></div>
+          <div class="bar-flex"><div class="bar-track" style="flex:1"><div class="seg a" style="width:3.9%"></div><div class="seg b" style="width:47.1%">$49</div><div class="seg c" style="width:28.7%">$30</div></div><span class="bar-after">$83</span></div></div>
+        <div class="bar-row"><div class="bar-label">Сценарий 4 · DTC<small>выше чек</small></div>
+          <div class="bar-flex"><div class="bar-track" style="flex:1"><div class="seg a" style="width:13.5%">$14</div><div class="seg b" style="width:53.0%">$55</div><div class="seg c" style="width:33.5%">$35</div></div><span class="bar-after">$104</span></div></div>
+        <div class="axis"><span>$0</span><span>$52</span><span>$104 за 3 года</span></div>
+      </div>
+
+      <div class="scen">
+        <article class="scen-card">
+          <div class="scen-top"><span class="eyebrow">Сценарий 1</span><h3>Hardware-only</h3>
+            <span class="pill cond">Работает при рознице от $150</span></div>
+          <p>Вся экономика — маржа с продажи. При BOM около $30 и рознице $99 через розницу остаётся
+            около $13 валовой прибыли на устройство, через DTC — $52, но CAC $25–45 съедает почти всё.
+            Итог $4–14 на устройство, из которых оплачиваются разработка, оснастка, сертификация
+            и облако на весь срок жизни базы. Условие жизнеспособности — розница от $150
+            и нулевая облачная составляющая. Кейсы Anki, Jibo и Kuri показывают, что происходит,
+            когда условие не выполнено.</p>
+        </article>
+
+        <article class="scen-card">
+          <div class="scen-top"><span class="eyebrow">Сценарий 2</span><h3>Hardware + подписка</h3>
+            <span class="pill cond">Работает при COGS ниже $1,50 и подписке на контент</span></div>
+          <p>За три года даёт около $24 валовой прибыли на устройство при 30% проникновения
+            и оттоке 7% в месяц. Выходит в плюс при удельной себестоимости AI ниже $1,50
+            на активное устройство в месяц — что достигается гибридной архитектурой из раздела 08 —
+            и при условии, что подписка продаёт контент и обучение, а не факт диалога:
+            так устроен Miko Max за $14,99 с библиотекой Disney и PBS. На российских ценах
+            подписки требования к квоте жёстче, см. раздел 08.</p>
+        </article>
+
+        <article class="scen-card">
+          <div class="scen-top"><span class="eyebrow">Сценарий 3</span><h3>Hardware + экосистема контента</h3>
+            <span class="pill cond">Работает при каталоге в тысячи наименований</span></div>
+          <p class="scen-formula">Устройство → контент → персонажи → повторные покупки</p>
+          <p>Логика Tonies и Yoto: около $50 на устройство за три года при 4 покупках в год.
+            Условие — каталог масштаба, который у Tonies составляет ~1 500 фигурок
+            и 3 500+ цифровых наименований, накопленных за десять лет. Носителем могут быть
+            фигурки персонажей, карточки эпизодов, сезонные и подарочные наборы.
+            Ориентир цены — $14,99–19,99 за фигурку при себестоимости носителя $2,50–3,50.</p>
+        </article>
+
+        <article class="scen-card">
+          <div class="scen-top"><span class="eyebrow">Сценарий 4</span><h3>Платформа</h3>
+            <span class="pill cond">Работает после подтверждения метрик первой вертикали</span></div>
+          <p class="scen-formula">колонка + приложение + TV + игры + AI + подписка + контент → один аккаунт</p>
+          <p>Сценарий 3 плюс подписочный слой: около $83 на устройство за три года через розницу
+            и до $104 через DTC. Даёт прямые отношения с семьёй, first-party данные и собственный
+            канал дистрибуции контента. Условие — строить после подтверждения метрик первой
+            вертикали, а не параллельно: обратный порядок стоил Amazon около $25 млрд.</p>
+        </article>
+
+        <article class="scen-card" style="border-top:3px solid var(--accent)">
+          <div class="scen-top"><span class="eyebrow">Сценарий 5 — новый</span>
+            <h3>Лицензируемый слой персонажа</h3>
+            <span class="pill cond">Работает при переносимом ядре</span></div>
+          <p class="scen-formula">ядро → референс-инсталляция → пакет с доказательствами → лицензиаты</p>
+          <p>Компания разрабатывает и держит слой персонажа — канон, голос, память, рантайм
+            и приёмку — и лицензирует его производителям устройств так же, как сегодня лицензирует
+            изображение персонажа. Россия работает как референс-инсталляция: единственный рынок,
+            где стек держится целиком и где измеряются себестоимость минуты, удержание
+            и история безопасности. Дальше наружу уходит не разработка, а право с доказательствами.</p>
+          <p><strong>Отличие от остальных четырёх:</strong> выручка не привязана к количеству
+            устройств, проданных самой компанией. Она привязана к количеству устройств,
+            проданных лицензиатами, и к объёму инференса, проходящего через ядро.
+            Это тот же тип актива, что уже есть у компании, — право, а не производство.</p>
+          <div class="scen-grid">
+            <div><h5>Три источника выручки</h5><p>Роялти с устройства, плата за сертификацию SKU,
+              маржа на пропускаемом через ядро инференсе. Расчёт — раздел 14.</p></div>
+            <div><h5>Условие жизнеспособности</h5><p>Переносимость ядра. Если построенное
+              в России нельзя перенести без переделки, лицензировать нечего.
+              Это отдельная статья затрат, раздел 13.</p></div>
+            <div><h5>Что подтверждает применимость</h5><p>Траектория Inworld: ценность
+              в этой нише мигрирует в рантайм и приёмку. Tuya продаёт конструктор личности
+              как пустую форму — наполнение не входит в её предмет.</p></div>
+          </div>
+        </article>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="subject">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">13 — Предмет разработки</span>
+      <h2>Что именно строится и во что это обходится</h2>
+      <p>Состав ядра, граница переносимости и три строки затрат вместо одной строки «разработка».</p>
+    </div>
+    <div class="wide">
+
+      <div class="split2">
+        <div>
+          <h4>Переносимое ядро</h4>
+          <p style="margin-bottom:10px">Разрабатывается один раз, лицензируется дальше.</p>
+          <ul>
+            <li><strong>Character Runtime</strong> — оркестратор диалога: удержание канона,
+              роутинг моделей, гардрейлы на входе и выходе, детектор выпадения из образа,
+              откат на утверждённые реплики</li>
+            <li><strong>Конструктор канона</strong> для редакторов — правки персонажа
+              идут без участия разработчиков</li>
+            <li><strong>Голосовой пайплайн</strong> — тембр, стриминг, перебивание, задержка</li>
+            <li><strong>Сервис памяти</strong> — профиль ребёнка, политики хранения,
+              родительские сводки</li>
+            <li><strong>Приёмочный набор и портал сертификации</strong> лицензиатов</li>
+            <li><strong>Фабрика контента</strong> — производство озвученного контента
+              из библиотеки и канона</li>
+          </ul>
+        </div>
+        <div>
+          <h4>Непереносимый нижний слой</h4>
+          <p style="margin-bottom:10px">Переделывается под каждый рынок.</p>
+          <ul>
+            <li>Облако и размещение данных</li>
+            <li>Поставщики моделей, распознавания и синтеза</li>
+            <li>Платежи и биллинг</li>
+            <li>Регуляторное соответствие юрисдикции</li>
+            <li>Каналы продаж и партнёры</li>
+          </ul>
+          <p style="margin-top:12px"><strong>Переносимость — отдельная статья затрат первой фазы,
+            а не бесплатный побочный эффект.</strong> Если адаптеры моделей, локали и абстракция
+            комплаенса не заложены в фазу 1, зарубежная версия делается заново,
+            и сценарий 5 не работает.</p>
+        </div>
+      </div>
+
+      <h3 class="col" style="margin-top:34px; margin-bottom:14px">Три строки затрат</h3>
+      <div class="tscroll">
+        <table style="min-width:880px">
+          <caption>Против каждой строки CAPEX указано, что она покупает.
+            Оценки в человеко-месяцах — ориентир для планирования, не смета;
+            ставки и стоимость привлечения определяются внутри.</caption>
+          <thead><tr><th>Строка</th><th>Состав</th><th>Что покупает</th><th class="num">Оценка</th></tr></thead>
+          <tbody>
+            <tr><td class="name">CAPEX ядра</td>
+              <td>Единоразово, по фазам. Разбивка ниже</td>
+              <td>Актив, который лицензируется</td><td class="num">~114 чел-мес</td></tr>
+            <tr><td class="name">COGS на устройство</td>
+              <td>Инференс, синтез, облако, модерация — на активное устройство в месяц</td>
+              <td>Ничего не покупает: это переменная, которую нужно удерживать.
+                Целевое значение — не выше $1,50, на российском стеке 304 ₽ при гибридной архитектуре</td>
+              <td class="num">$1,20–2,50</td></tr>
+            <tr><td class="name">OPEX сопровождения</td>
+              <td>Приёмка новых SKU, обновление моделей, поддержка лицензиатов, ведение канона.
+                Постоянная строка, растёт с числом лицензиатов медленнее, чем выручка</td>
+              <td>Возможность держать качество персонажа при росте числа устройств</td>
+              <td class="num">3–5 чел постоянно</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="col" style="margin-top:30px; margin-bottom:14px">CAPEX ядра по фазам</h3>
+      <div class="checks">
+        <div class="phase">
+          <div class="ph">Фаза 1<br>0–6 мес</div>
+          <div><b>Character Runtime, канон, голос, память</b>
+            <span>Состав: 2 бэкенд, 1 ML-инженер, 1 инженер данных, 1 звукорежиссёр,
+              1 продукт, 1 редактор канона.<br>
+              <strong>Что покупает:</strong> роутинг и кэш снижают COGS — это единственный способ
+              удержать себестоимость минуты в рамках раздела 08. Гардрейлы и откат на утверждённые
+              реплики закрывают требование P0 из раздела 05.</span></div>
+          <div class="val">42 чел-мес</div>
+        </div>
+        <div class="phase">
+          <div class="ph">Фаза 2<br>6–12 мес</div>
+          <div><b>Конструктор канона, приёмка, портал, фабрика контента</b>
+            <span>Состав: 2 бэкенд, 1 фронтенд, 1 ML, 1 QA-автоматизация, 1 редактор, 1 продукт.<br>
+              <strong>Что покупает:</strong> конструктор канона снижает OPEX — правки персонажа
+              перестают требовать разработчиков. Приёмка и SDK дают возможность масштабировать
+              выручку через лицензиатов без роста CAPEX. Фабрика контента снижает стоимость
+              пополнения каталога.</span></div>
+          <div class="val">42 чел-мес</div>
+        </div>
+        <div class="phase">
+          <div class="ph">Фаза 3<br>12–18 мес</div>
+          <div><b>Переносимость: адаптеры моделей, локали, абстракция комплаенса</b>
+            <span>Состав: 2 бэкенд, 1 ML, 1 комплаенс, 1 продукт.<br>
+              <strong>Что покупает:</strong> собственно возможность сценария 5.
+              Без этой фазы ядро остаётся российской инсталляцией, а не лицензируемым правом.</span></div>
+          <div class="val">30 чел-мес</div>
+        </div>
+        <div class="phase">
+          <div class="ph">На каждый<br>новый рынок</div>
+          <div><b>Непереносимый слой</b>
+            <span>Облако, модели, платежи, комплаенс, каналы. Повторяется для каждого рынка
+              и не амортизируется предыдущими.</span></div>
+          <div class="val">12–20 чел-мес</div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="callout warn">
+          <h4>Развилка, которую нужно закрыть до фазы 1</h4>
+          <p class="small" style="margin-bottom:.55rem">Где выполняется распознавание и синтез —
+            в облаке или на устройстве. Это решение определяет одновременно три вещи:
+            себестоимость минуты, ответ регулятору о голосе ребёнка и требования к железу.</p>
+          <ul class="tight small" style="margin-bottom:0">
+            <li><strong>Облако:</strong> дешевле железо, но ASR в России стоит 1,20 ₽/мин —
+              самая дорогая компонента стека, и голос ребёнка покидает устройство</li>
+            <li><strong>На устройстве:</strong> убирает ASR из переменных затрат и снимает
+              бо́льшую часть вопросов 152-ФЗ, но требует вычислительного модуля,
+              что поднимает BOM и энергопотребление</li>
+            <li><strong>С выгрузкой на телефон родителя:</strong> промежуточный вариант,
+              применяемый в отрасли; требует установленного приложения и близости устройства</li>
+          </ul>
+        </div>
+        <p class="xs">Модель раздела 14 посчитана для облачного варианта как консервативного.
+          Локальный вариант меняет структуру: COGS падает, CAPEX и BOM растут;
+          пересчёт — после выбора платформы.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="unit">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">14 — Unit economics</span>
+      <h2>Две модели: на устройство и на лицензиата</h2>
+      <p>Первая описывает сценарии 1–4, вторая — сценарий 5. Они не заменяют друг друга:
+        в конструкции с лицензиатами работают обе одновременно, на разных участках.</p>
+    </div>
+    <div class="wide">
+
+      <h3 class="col" style="margin-bottom:14px">Модель А — на устройство, три года</h3>
+      <div class="tscroll">
+        <table style="min-width:760px">
+          <caption>Сценарий 4 через розничный канал. Валовая прибыль с единицы контента — $5,90
+            (чистая выручка $9,00 при рознице $17,99, маржа 65%). «Удержание» — доля устройств,
+            остающихся активными в следующем году.</caption>
+          <thead><tr><th>Параметр</th><th class="num">Консервативный</th><th class="num">Базовый</th><th class="num">Оптимистичный</th></tr></thead>
+          <tbody>
+            <tr><td>Вклад устройства после CAC</td><td class="num">$0</td><td class="num">$4</td><td class="num">$10</td></tr>
+            <tr><td>Единиц контента в год</td><td class="num">2,0</td><td class="num">4,0</td><td class="num">6,5</td></tr>
+            <tr><td>Проникновение подписки</td><td class="num">15%</td><td class="num">30%</td><td class="num">45%</td></tr>
+            <tr><td>Цена подписки</td><td class="num">$5,99</td><td class="num">$7,99</td><td class="num">$9,99</td></tr>
+            <tr><td>Маржа подписки после AI</td><td class="num">35%</td><td class="num">50%</td><td class="num">60%</td></tr>
+            <tr><td>Удержание год к году</td><td class="num">45%</td><td class="num">65%</td><td class="num">75%</td></tr>
+            <tr><td><strong>LTV за 3 года</strong></td><td class="num"><strong>$26</strong></td>
+              <td class="num"><strong>$83</strong></td><td class="num"><strong>$174</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tscroll">
+        <table>
+          <caption>Окупаемость привлечения в базовом сценарии. Ежемесячный поток валовой прибыли —
+            $3,17: контент $1,97 плюс подписка $1,20.</caption>
+          <thead><tr><th>Канал</th><th class="num">CAC</th><th class="num">Прибыль в момент продажи</th>
+            <th class="num">Окупаемость</th><th>Что канал даёт и чего лишает</th></tr></thead>
+          <tbody>
+            <tr><td class="name">Розница</td><td class="num">$4</td><td class="num">$4</td><td class="num">сразу</td>
+              <td>Нет прямых отношений с семьёй и данных; полка забирает около половины цены</td></tr>
+            <tr><td class="name">Маркетплейс</td><td class="num">$22</td><td class="num">$10</td><td class="num">~4 мес</td>
+              <td>Данные о покупателе принадлежат площадке</td></tr>
+            <tr><td class="name">DTC</td><td class="num">$38</td><td class="num">$10</td><td class="num">~9 мес</td>
+              <td>Максимум контроля и данных; требует оборотного капитала и маркетинга</td></tr>
+            <tr><td class="name">Лицензирование</td><td class="num">$0</td><td class="num">~$9 роялти</td><td class="num">сразу</td>
+              <td>Нулевой риск и нулевой контроль над продуктом. Модель Б добавляет к этому
+                вторую и третью строки выручки</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 class="col" style="margin-top:34px; margin-bottom:14px">Модель Б — на лицензиата, в год</h3>
+      <div class="col">
+        <p>Единица счёта — не устройство, а лицензиат. Три источника выручки:
+          роялти с каждого выпущенного устройства, разовая плата за сертификацию SKU
+          и маржа на инференсе, проходящем через ядро.</p>
+      </div>
+      <div class="tscroll">
+        <table style="min-width:860px">
+          <caption>Допущения модели: роялти $5 с устройства, доля активных устройств 60%,
+            маржа на пропускаемом инференсе $0,30 на активное устройство в месяц.
+            Все три величины — предмет переговоров и подлежат проверке, см. гипотезы H9 и H10.</caption>
+          <thead><tr><th>Тип лицензиата</th><th class="num">Устройств в год</th><th class="num">Роялти</th>
+            <th class="num">Маржа на инференсе</th><th class="num">Сертификация</th><th class="num">Итого в год</th></tr></thead>
+          <tbody>
+            <tr><td class="name">Малый</td><td class="num">25 000</td><td class="num">$125 000</td>
+              <td class="num">$54 000</td><td class="num">$15 000</td><td class="num"><strong>$194 000</strong></td></tr>
+            <tr><td class="name">Средний</td><td class="num">100 000</td><td class="num">$500 000</td>
+              <td class="num">$216 000</td><td class="num">$30 000</td><td class="num"><strong>$746 000</strong></td></tr>
+            <tr><td class="name">Крупный</td><td class="num">400 000</td><td class="num">$2 000 000</td>
+              <td class="num">$864 000</td><td class="num">$50 000</td><td class="num"><strong>$2 914 000</strong></td></tr>
+            <tr><td class="name">Портфель<br>1 крупный + 3 средних + 5 малых</td><td class="num">725 000</td>
+              <td class="num">$3 625 000</td><td class="num">$1 566 000</td><td class="num">$155 000</td>
+              <td class="num"><strong>$6 122 000</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col">
+        <p><strong>Как устроены продления.</strong> Сертификация повторяется при каждом новом SKU
+          и при существенном обновлении моделей. Роялти и маржа на инференсе продолжаются, пока база
+          активна, — то есть выручка от лицензиата не заканчивается вместе с его продажами,
+          а затухает вместе с его установленной базой. Это отличает модель Б от разового
+          лицензионного платежа.</p>
+        <p><strong>Как две модели соотносятся.</strong> Модель А описывает референс-инсталляцию:
+          устройства, которые компания продаёт сама в России, чтобы получить измеренные величины.
+          Модель Б описывает то, ради чего инсталляция строится. Портфель из девяти лицензиатов
+          даёт порядок $6 млн в год при 725 тыс. устройств — сопоставимо с тем, что дал бы
+          собственный выпуск 100 тыс. устройств по модели А ($83 × 100 000 = $8,3 млн),
+          но <strong>без капитальных затрат на производство, логистику и возвраты</strong>
+          и без CAC.</p>
+        <div class="callout warn">
+          <h4>Где модель Б наиболее чувствительна</h4>
+          <ul class="tight small" style="margin-bottom:0">
+            <li><strong>Ставка роялти.</strong> Это переговорная величина, а не рыночная данность.
+              Ориентир снизу — 11,0%, которые Tonies платит правообладателям с выручки экосистемы</li>
+            <li><strong>Доля активных устройств.</strong> Маржа на инференсе начисляется только
+              с активных; при удержании ниже расчётного эта строка падает быстрее роялти</li>
+            <li><strong>Готовность лицензиата пропускать инференс через чужое ядро.</strong>
+              Если он захочет свой стек, остаётся только роялти — треть модели.
+              Приёмка и качество канона — единственный рычаг здесь</li>
+            <li><strong>Число лицензиатов.</strong> Модель линейна по ним, а OPEX сопровождения
+              растёт медленнее — но только при работающем портале сертификации из фазы 2</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="hypotheses">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">15 — Гипотезы</span>
+      <h2>Что проверяется и в каком порядке</h2>
+      <p>Первые три закрываются внутренними запросами и не требуют разработки.</p>
+    </div>
+    <div class="wide">
+      <div class="tscroll">
+        <table style="min-width:900px">
+          <thead><tr><th>№</th><th>Гипотеза</th><th>Как проверить</th><th>Порог</th><th class="num">Фаза</th></tr></thead>
+          <tbody>
+            <tr><td class="num">H1</td><td><strong>Спрос на устройство с персонажем в России подтверждён</strong></td>
+              <td>Запросить у партнёра по Elari KidPhone MB объёмы продаж, структуру роялти
+                и вовлечённость в аудио- и голосовые сценарии</td>
+              <td class="num">данные получены</td><td class="num">0</td></tr>
+            <tr><td class="num">H2</td><td><strong>Существующее AI-приложение даёт метрики</strong></td>
+              <td>Установить статус приложения «Маша и Медведь: ИИ Чат и Игры» — собственное,
+                лицензиата или неавторизованное. При наличии отношений — запросить удержание,
+                структуру лимита и фактическую стоимость минуты</td>
+              <td class="num">статус установлен</td><td class="num">0</td></tr>
+            <tr><td class="num">H3</td><td><strong>Аудиокаталога хватает на наполнение устройства</strong></td>
+              <td>Аудит библиотеки после релиза с Believe: сколько часов качественного аудио
+                есть сегодня, какие права на воспроизведение вне DSP, что нужно допроизвести</td>
+              <td class="num">≥ 100 часов</td><td class="num">0</td></tr>
+            <tr><td class="num">H4</td><td><strong>Гибридная архитектура удерживает себестоимость</strong></td>
+              <td>Замер на реальной нагрузке: доля времени на предзаписанном контенте
+                против живой генерации</td>
+              <td class="num">≤ 304 ₽/мес</td><td class="num">1</td></tr>
+            <tr><td class="num">H5</td><td><strong>Распознавание справляется с детской речью 3–5 лет</strong></td>
+              <td>Полевой тест на русском, замер доли неуспешных реплик; сравнение облачного
+                и локального распознавания</td>
+              <td class="num">≤ 10% сбоев</td><td class="num">1</td></tr>
+            <tr><td class="num">H6</td><td><strong>Бандл обходит отток отдельной подписки</strong></td>
+              <td>Тест включения в существующую подписку против отдельной строки;
+                механика Masha Club как площадка</td>
+              <td class="num">отток ≤ 4%/мес</td><td class="num">1</td></tr>
+            <tr><td class="num">H7</td><td><strong>Ритуал удерживает после ухода новизны</strong></td>
+              <td>Домашний тест прототипа, 50+ семей, телеметрия по дням</td>
+              <td class="num">D30/D1 ≥ 45%</td><td class="num">1</td></tr>
+            <tr><td class="num">H8</td><td><strong>Возрастной разрыв смягчается внутри франшизы</strong></td>
+              <td>Когортный анализ активности по возрасту на первой фазе; тест обучающих
+                и взрослеющих форматов</td>
+              <td class="num">≥ 40% на 3-й год</td><td class="num">2</td></tr>
+            <tr><td class="num">H9</td><td><strong>Лицензиаты готовы платить за слой персонажа</strong></td>
+              <td>Переговоры с 3–5 производителями на пакете с доказательствами;
+                проверка приемлемой ставки роялти</td>
+              <td class="num">≥ 2 письма о намерениях</td><td class="num">2</td></tr>
+            <tr><td class="num">H10</td><td><strong>Лицензиаты готовы пропускать инференс через ядро</strong></td>
+              <td>Те же переговоры: согласие на использование рантайма и приёмки,
+                а не только канона</td>
+              <td class="num">≥ 50% согласных</td><td class="num">2</td></tr>
+            <tr><td class="num">H11</td><td><strong>Ядро переносимо без переделки</strong></td>
+              <td>Пилотная локализация на один внешний рынок: замер доли кода и контента,
+                переносимых без изменений</td>
+              <td class="num">≤ 20 чел-мес</td><td class="num">3</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col">
+        <p class="xs">Гипотезы H1–H3 не требуют бюджета и закрываются внутренними запросами
+          и одним аудитом. Они же определяют, насколько точны допущения моделей раздела 14 —
+          сегодня эти допущения построены на отраслевых бенчмарках, а не на собственных данных
+          компании.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="phases">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">16 — Переход между фазами</span>
+      <h2>Критерии, по которым открывается следующая фаза</h2>
+      <p>Это не критерии «делать или не делать», а условия готовности к следующему этапу
+        и к следующему траншу.</p>
+    </div>
+    <div class="wide">
+      <div class="checks">
+        <div class="check"><div><b>Фаза 0 → 1: до начала разработки</b>
+          <span>Закрыты H1–H3: получены данные по Elari, установлен статус AI-приложения,
+            проведён аудит аудиокаталога. Выбрана развилка облако / локальный инференс.
+            Источник повторяющегося платежа выбран и оценён</span></div>
+          <div class="val">3 из 3</div></div>
+        <div class="check"><div><b>Фаза 1 → 2: до запуска приёмки и портала</b>
+          <span>Удержание устройства: доля устройств с активностью хотя бы раз в неделю</span></div>
+          <div class="val">D30 ≥ 45%<br>D180 ≥ 25%</div></div>
+        <div class="check"><div><b>Себестоимость под контролем</b>
+          <span>Инференс, синтез, облако и модерация на активное устройство в месяц</span></div>
+          <div class="val">≤ 304 ₽</div></div>
+        <div class="check"><div><b>Безопасность подтверждена</b>
+          <span>Критических инцидентов на корпусе не менее 5 000 часов диалога</span></div>
+          <div class="val">0</div></div>
+        <div class="check"><div><b>Канон устойчив</b>
+          <span>Доля реплик, отклонённых детектором выпадения из образа, на контрольном наборе</span></div>
+          <div class="val">≤ 2%</div></div>
+        <div class="check"><div><b>Регуляторное соответствие</b>
+          <span>152-ФЗ: родительское согласие, политика хранения, отзыв согласия — реализованы
+            и проверены до выхода в продажу</span></div>
+          <div class="val">подписано</div></div>
+        <div class="check"><div><b>Фаза 2 → 3: до вложений в переносимость</b>
+          <span>Закрыты H9 и H10: подтверждён интерес лицензиатов к слою персонажа
+            и к пропуску инференса через ядро</span></div>
+          <div class="val">≥ 2 LOI</div></div>
+        <div class="check"><div><b>Приёмка работает без разработчиков</b>
+          <span>Правки канона и сертификация нового SKU проходят силами редакторов</span></div>
+          <div class="val">0 задач в разработку</div></div>
+        <div class="check"><div><b>Фаза 3 → внешние рынки</b>
+          <span>Закрыта H11: пилотная локализация уложилась в бюджет непереносимого слоя</span></div>
+          <div class="val">≤ 20 чел-мес</div></div>
+      </div>
+
+      <div class="col">
+        <div class="callout neg">
+          <h4>Два безусловных стоп-сигнала</h4>
+          <p class="small" style="margin-bottom:.55rem"><strong>Отсутствие удержания устройства:
+            D180 ниже 25%.</strong> Означает, что устройство не стало частью повседневного обихода
+            семьи. Ни подписка, ни расширение каталога, ни снижение цены этого не компенсируют:
+            все три источника повторяющегося платежа начисляются только с активной базы,
+            а в модели Б от удержания напрямую зависит вторая строка выручки.
+            При срабатывании — возврат к фазе 1 с пересмотром продуктовой механики,
+            а не переход дальше.</p>
+          <p class="small" style="margin-bottom:0"><strong>Публичный инцидент безопасности
+            до массового запуска.</strong> Aristotle отменили до релиза, Kumma сняли с продажи
+            за неделю. Для компании, чей основной актив — доверие родителей к персонажу,
+            последствия несопоставимы с выручкой этапа.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="method">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">17 — Метод</span>
+      <h2>Откуда цифры и чему в них верить</h2>
+    </div>
+    <div class="col">
+      <p><strong>Раскрытая отчётность.</strong> Показатели tonies SE — из релизов по итогам FY2024
+        и FY2025. Это единственный аудируемый источник в категории.</p>
+      <p><strong>Расчётные величины</strong> (помечены <span class="tag-d">расч.</span>) выведены
+        из разницы накопленных показателей. База 2024 указана компанией как «более 8 млн»
+        и «более 100 млн», поэтому производные значения — верхняя граница; реальные могут быть
+        ниже на 5–10%.</p>
+      <p><strong>Российский стек.</strong> Тарифы SaluteSpeech и GigaChat — из документации
+        для разработчиков Сбера. Официальные страницы Yandex AI Studio на момент подготовки
+        были недоступны для автоматического доступа, поэтому цены SpeechKit в расчёт не вошли
+        и требуют сверки. Сопоставление рублёвых и долларовых величин выполнено по курсу
+        80 ₽ за доллар — <strong>это допущение расчёта, а не котировка</strong>;
+        при другом курсе выводы раздела 08 о сопоставимости стеков могут измениться.</p>
+      <p><strong>Активы компании.</strong> Данные о Masha Club, релизе с Believe, приложении
+        в Google Play и Elari KidPhone MB собраны из публичных сообщений и магазинов приложений.
+        Внутренних метрик по ним в открытых источниках нет — отсюда гипотезы H1–H3.</p>
+      <p><strong>Оценки в человеко-месяцах</strong> раздела 13 — ориентир для планирования,
+        построенный от состава команд, а не смета. Ставки, стоимость привлечения
+        и сроки найма определяются внутри.</p>
+      <p><strong>Модели раздела 14</strong> — построенные допущения. Все входные параметры
+        выписаны явно, чтобы их можно было оспаривать поштучно. Ставка роялти, доля активных
+        устройств и маржа на инференсе в модели Б — переговорные величины, а не наблюдения.</p>
+
+      <div class="callout warn">
+        <h4>Чего в этом документе нет</h4>
+        <ul class="tight small" style="margin-bottom:0">
+          <li>Полевых данных: родители не опрашивались, прототип не тестировался</li>
+          <li>Внутренних метрик компании по существующим активам — они закрываются гипотезами H1–H3</li>
+          <li>Себестоимости устройств: публичные ориентиры существуют только по разборам
+            Echo Dot и Google Home</li>
+          <li>Данных о retention по конкретным продуктам категории: их не публикует никто,
+            включая tonies</li>
+          <li>Цен SpeechKit и коммерческих условий платформенных поставщиков —
+            ни Tuya, ни Inworld их публично не раскрывают</li>
+          <li>Юридической проработки: права на голос за пределами России, форма лицензионного
+            договора на слой персонажа и режим биометрических данных требуют отдельного заключения</li>
+          <li>Рекомендаций об устройстве лицензионного бизнеса компании — вне предмета документа</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><div class="col">
+    <p class="xs" style="margin-bottom:.6rem"><strong>Источники:</strong>
+      отчётность tonies SE за FY2024 и FY2025; публичные заявления Yoto, Miko, Storypod, Haivivi;
+      отчёт PIRG об AI-игрушках (ноябрь 2025); IEEE Spectrum о социальной робототехнике;
+      публикации о девайсном подразделении Amazon; документация для разработчиков Сбера
+      по GigaChat и SaluteSpeech; материалы Tuya Smart, включая Spielwarenmesse 2026;
+      материалы Inworld AI о Runtime и голосовых моделях; 152-ФЗ и разъяснения по обработке
+      данных несовершеннолетних; EU Toy Safety Regulation 2025/2509; правила COPPA;
+      законопроект S. 5171; сообщения Animaccord о Masha Club и релизе с Believe;
+      каталоги и обзоры Elari KidPhone MB; данные по рынку умных колонок России;
+      Parrot Analytics и License Global по франшизе.</p>
+    <p class="xs" style="margin-bottom:0">Версия 2, август 2026. Заменяет версию 1.
+      Документ проектный: описывает конструкцию и условия её работоспособности.
+      Валюта — доллары США, где не указано иное; российские величины — в рублях.</p>
+  </div></div>
+</footer>
