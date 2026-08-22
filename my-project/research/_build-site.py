@@ -1,16 +1,28 @@
 #!/usr/bin/env python3
-"""Собирает docs/ — сайт из четырёх исследовательских документов.
+"""Собирает сайт из четырёх исследовательских документов.
 
-Источник правды остаётся в my-project/research/*.html: скрипт вынимает из каждого
-файла заголовок, стили и содержимое и заворачивает их в общую оболочку.
-Запуск: python3 my-project/research/_build-site.py
+Источник правды остаётся здесь, в my-project/research/*.html: скрипт вынимает из
+каждого файла заголовок, стили и содержимое и заворачивает их в общую оболочку
+из _site-assets/.
+
+Опубликован сайт в соседнем репозитории komoroshin/research, подпапка animaccord/,
+откуда его отдаёт GitHub Pages. Туда же ведёт путь сборки по умолчанию:
+
+    python3 my-project/research/_build-site.py
+
+Другое место назначения — через --out; для подпапки чужого репозитория добавьте
+--subdir, чтобы не создавать лишний .nojekyll:
+
+    python3 my-project/research/_build-site.py --out /путь/site --subdir
 """
-import re, shutil
+import argparse, re, shutil
 from pathlib import Path
 from html import escape
 
 SRC = Path(__file__).resolve().parent
-OUT = SRC.parents[1] / "docs"
+# По умолчанию — подпапка в соседнем клоне komoroshin/research.
+OUT = SRC.parents[2] / "research" / "animaccord"
+ROOT_SITE = False  # в корне сайта нужен .nojekyll, в подпапке — нет
 
 # family: 'screen' — документ свёрстан под экран и уже отзывчив;
 #         'print'  — документ свёрстан под A4 и требует экранного слоя.
@@ -325,9 +337,11 @@ def build_index():
 
 
 def main():
-    OUT.mkdir(exist_ok=True)
+    OUT.mkdir(parents=True, exist_ok=True)
     (OUT / "pdf").mkdir(exist_ok=True)
-    (OUT / ".nojekyll").touch()
+    if ROOT_SITE:
+        (OUT / ".nojekyll").touch()
+    shutil.copytree(SRC / "_site-assets", OUT / "assets", dirs_exist_ok=True)
     for i, d in enumerate(DOCS):
         build_doc(i, d)
     build_index()
@@ -337,4 +351,13 @@ def main():
 
 
 if __name__ == "__main__":
+    ap = argparse.ArgumentParser(description=__doc__)
+    ap.add_argument("--out", help=f"каталог сборки (по умолчанию {OUT})")
+    ap.add_argument("--subdir", action="store_true",
+                    help="сайт лежит в подпапке чужого репозитория: .nojekyll не создаётся")
+    args = ap.parse_args()
+    if args.out:
+        OUT = Path(args.out).resolve()
+    if args.subdir:
+        ROOT_SITE = False
     main()
