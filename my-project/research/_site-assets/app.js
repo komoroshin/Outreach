@@ -21,3 +21,20 @@
     if (e.target.closest('a')) setOpen(false);
   });
 })();
+
+// Проявление секций при прокрутке — как на остальных страницах сайта.
+(function () {
+  var items = document.querySelectorAll('.reveal');
+  if (!items.length) return;
+  if (!('IntersectionObserver' in window) ||
+      window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    items.forEach(function (el) { el.classList.add('on'); });
+    return;
+  }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) {
+      if (e.isIntersecting) { e.target.classList.add('on'); io.unobserve(e.target); }
+    });
+  }, { rootMargin: '0px 0px -12% 0px' });
+  items.forEach(function (el) { io.observe(el); });
+})();
