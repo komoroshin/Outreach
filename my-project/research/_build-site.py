@@ -76,6 +76,15 @@ SKIN_COMMON = """
     font-family:'IBM Plex Sans',-apple-system,'Segoe UI',Roboto,sans-serif }
   .thesis-q{ font-style:normal }
   a{ color:var(--accent) }
+  thead th{ position:static }
+  /* тень на краю показывает, что таблицу можно листать вбок */
+  .tscroll,.tbl{
+    background:
+      linear-gradient(to right, var(--app-paper), rgba(243,240,232,0)) 0 0/28px 100% no-repeat local,
+      linear-gradient(to left, var(--app-paper), rgba(243,240,232,0)) 100% 0/28px 100% no-repeat local,
+      radial-gradient(farthest-side at 0 50%, rgba(17,17,17,.16), rgba(17,17,17,0)) 0 0/12px 100% no-repeat scroll,
+      radial-gradient(farthest-side at 100% 50%, rgba(17,17,17,.16), rgba(17,17,17,0)) 100% 0/12px 100% no-repeat scroll;
+  }
 }
 """
 
@@ -134,10 +143,10 @@ ADAPT_PRINT = """
 ADAPT_SCREEN = """
 @media screen{
   html,body{ background:var(--app-desk) }
-  .sheet{ max-width:1120px; margin:36px auto 60px; overflow:hidden }
+  .sheet{ max-width:1120px; margin:36px auto 60px }
   .wrap{ max-width:none; padding:0 40px }
   .masthead{ padding:48px 0 36px }
-  thead th{ top:var(--app-bar-h) }
+  .tscroll{ overflow-x:auto }
 }
 @media screen and (max-width:820px){
   .sheet{ margin:0; border-left:0; border-right:0; box-shadow:none }
