@@ -211,17 +211,55 @@ footer{ border-top:.6pt solid var(--rule); padding-top:2.6mm; margin-top:4mm;
 
   <div class="card">
     <div class="card-top">
-      <h3>Rockchip, Allwinner, Actions, Beken, JieLi</h3>
-      <span class="who">Производители чипов · Китай</span>
+      <h3>Чиповый слой: два тира</h3>
+      <span class="who">Rockchip, Allwinner, Actions, Beken, JieLi · Китай</span>
     </div>
-    <div class="card-body"><dl class="spec">
-      <dt>Что поставляет</dt><dd>Собственные решения под AI-игрушки. Часть уже применяется
-        в серийных продуктах на рынке.</dd>
-      <dt>Где инференс</dt><dd>Зависит от конкретного решения.</dd>
-      <dt>Известная тяга</dt><dd>Отраслевые публикации отмечают премию к цене чипа
-        до десяти раз в этом сегменте относительно обычных аудиочипов, и описывают направление
-        как активную зону конкуренции между производителями и модульными вендорами.</dd>
-    </dl></div>
+    <div class="card-body">
+      <p style="margin-bottom:3mm">Выбор поставщика здесь равнозначен выбору архитектуры:
+        нижний тир физически не может считать локально, верхний — может, но поднимает
+        себестоимость изделия.</p>
+      <table>
+        <thead><tr><th>Чип</th><th>Вендор</th><th>Что внутри</th><th class="num">Класс</th></tr></thead>
+        <tbody>
+          <tr><td class="name">AC791N</td><td>JieLi</td>
+            <td>Wi-Fi MCU. Компания доминирует в массовых дешёвых Bluetooth-аудиочипах</td>
+            <td class="num">$1–2</td></tr>
+          <tr><td class="name">ATS3703</td><td>Actions Technology</td>
+            <td>Аудио-SoC. Компания основана в Чжухае в 2014, fabless, специализируется
+              на аудио для колонок, наушников и носимых устройств; лицензирует аудио-DSP Ceva,
+              отгрузила более 100 млн беспроводных аудио-SoC</td>
+            <td class="num">$1–2</td></tr>
+          <tr><td class="name">BK7252N, BK7258</td><td>Beken</td>
+            <td>BK7258 — интегрированный аудио-видео Wi-Fi SoC с низким потреблением</td>
+            <td class="num">$1–2</td></tr>
+          <tr><td class="name">TXW81X</td><td>Taisic</td><td>Wi-Fi MCU того же класса</td>
+            <td class="num">$1–2</td></tr>
+          <tr><td class="name">R128 (R128-S3)</td><td>Allwinner</td>
+            <td>Мультимедийный SoC под дальнеполевое распознавание речи: ядро XuanTie RISC-V,
+              DSP HiFi5, MCU Arm M33, Wi-Fi 802.11b/g/n с двухрежимным Bluetooth, аудиокодек.
+              Стоит в роботе-компаньоне по IP Talking Tom</td>
+            <td class="num">средний</td></tr>
+          <tr><td class="name">RV1106</td><td>Rockchip</td>
+            <td>Cortex-A7 с NPU четвёртого поколения на 1 TOPS и встроенными 256 МБ DDR3L.
+              Недорогой вход в настоящий локальный инференс</td>
+            <td class="num">~$5–8</td></tr>
+          <tr><td class="name">RK3576</td><td>Rockchip</td>
+            <td>Четыре Cortex-A72 и четыре A53, NPU 6 TOPS INT8 с поддержкой int4, int8, int16,
+              FP16, BF16 и TF32, декодирование 8K. Полноценный edge-AI процессор</td>
+            <td class="num">верхний</td></tr>
+        </tbody>
+      </table>
+      <p class="xs" style="margin-top:3mm">Позиционирование вендоров: у Rockchip самый широкий
+        портфель в Китае — процессоры, питание, интерфейсы, беспроводная связь, — и заметные позиции
+        в Европе и Южной Америке. Allwinner держит концентрированную линейку и берёт ценой,
+        это одни из самых дешёвых ARM-процессоров. Actions, Beken и JieLi — узкие специалисты
+        по аудио и беспроводной связи.</p>
+      <p class="xs" style="margin-top:2mm">Цены и объёмы: отдельные MCU — от ~10 юаней,
+        готовые модули Wi-Fi с аудио — 10–20 юаней, отдельные Wi-Fi-чипы — $1–2.
+        Отраслевые публикации отмечают премию к цене чипа в этом сегменте до десяти раз
+        относительно обычных аудиочипов. При проникновении AI-игрушек в 20% детского рынка
+        к 2028 году отрасли потребуется дополнительно порядка 1,5 млрд Wi-Fi-чипов и модулей.</p>
+    </div>
   </div>
 
   <div class="card">
