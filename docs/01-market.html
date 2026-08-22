@@ -1,0 +1,1182 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Каталог детских AI-девайсов — Animaccord</title>
+<meta name="description" content="Что есть на рынке: 33 продукта с ценами, носителями контента, подписками и механикой работы. Описание без выводов — материал, на который опираются остальные три документа.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="assets/app.css">
+<style>
+:root{
+  color-scheme: light;
+  --paper:#F2F4F2; --surface:#FCFDFC; --surface-2:#E9EDEA;
+  --ink:#121614; --ink-2:#464F4B; --ink-3:#7A837E;
+  --rule:#D5DBD7; --rule-strong:#B6BFB9;
+  --accent:#1C3A34; --thesis-bg:#1C3A34; --thesis-fg:#EDF2EF;
+  --pos:#1E6B45; --warn:#8A6410; --neg:#9B2C1F;
+  --pos-bg:#E4EFE8; --warn-bg:#F4EEDD; --neg-bg:#F5E4E0;
+  --s1:#2a78d6; --s2:#eb6834; --s3:#1baf7a;
+  --s1-fg:#FFFFFF; --s2-fg:#101413; --s3-fg:#101413;
+  --shadow:0 1px 2px rgba(18,22,20,.06);
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){
+    color-scheme: dark;
+    --paper:#0E1211; --surface:#161B19; --surface-2:#1E2523;
+    --ink:#E6EAE7; --ink-2:#A8B2AD; --ink-3:#7B8580;
+    --rule:#2A322E; --rule-strong:#3C4641;
+    --accent:#8FBFAF; --thesis-bg:#8FBFAF; --thesis-fg:#0E1211;
+    --pos:#5FBF8A; --warn:#D9A63C; --neg:#E0796A;
+    --pos-bg:#16241D; --warn-bg:#26200F; --neg-bg:#2A1815;
+    --s1:#3987e5; --s2:#d95926; --s3:#199e70;
+  --s1-fg:#0E1211; --s2-fg:#0E1211; --s3-fg:#0E1211;
+    --s1-fg:#0E1211; --s2-fg:#0E1211; --s3-fg:#0E1211;
+    --shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme: dark;
+  --paper:#0E1211; --surface:#161B19; --surface-2:#1E2523;
+  --ink:#E6EAE7; --ink-2:#A8B2AD; --ink-3:#7B8580;
+  --rule:#2A322E; --rule-strong:#3C4641;
+  --accent:#8FBFAF; --thesis-bg:#8FBFAF; --thesis-fg:#0E1211;
+  --pos:#5FBF8A; --warn:#D9A63C; --neg:#E0796A;
+  --pos-bg:#16241D; --warn-bg:#26200F; --neg-bg:#2A1815;
+  --s1:#3987e5; --s2:#d95926; --s3:#199e70;
+  --s1-fg:#0E1211; --s2-fg:#0E1211; --s3-fg:#0E1211;
+  --shadow:0 1px 2px rgba(0,0,0,.4);
+}
+
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;
+  font-size:16.5px; line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+.wrap{max-width:1180px; margin:0 auto; padding:0 28px}
+.col{max-width:680px; margin-left:auto; margin-right:auto}
+.wide{max-width:1124px; margin-left:auto; margin-right:auto}
+
+h1,h2,h3,h4{font-family:"Newsreader",Georgia,serif; font-weight:600; text-wrap:balance; margin:0}
+h1{font-size:clamp(2.1rem,5.2vw,3.35rem); line-height:1.1; letter-spacing:-.015em}
+h2{font-size:clamp(1.6rem,3.4vw,2.15rem); line-height:1.17; letter-spacing:-.01em}
+h3{font-size:1.24rem; line-height:1.3; margin:0 0 .5rem}
+h4{font-size:1.02rem; line-height:1.35; font-family:"IBM Plex Sans",sans-serif; font-weight:600}
+p{margin:0 0 1.05rem}
+a{color:inherit}
+
+.eyebrow{
+  font-family:"IBM Plex Mono",ui-monospace,monospace; font-size:.7rem; font-weight:500;
+  letter-spacing:.15em; text-transform:uppercase; color:var(--accent);
+}
+.muted{color:var(--ink-2)}
+.small{font-size:.9rem; line-height:1.55}
+.xs{font-size:.8rem; line-height:1.5; color:var(--ink-3)}
+strong{font-weight:600}
+em{font-style:italic}
+
+/* ---------- masthead ---------- */
+.masthead{border-bottom:1px solid var(--rule); padding:56px 0 40px; background:var(--surface)}
+.masthead .col{max-width:800px}
+.kicker-row{display:flex; flex-wrap:wrap; gap:10px 20px; align-items:baseline; margin-bottom:26px}
+.deck{font-size:1.12rem; color:var(--ink-2); margin-top:20px; max-width:64ch}
+.meta{
+  display:grid; grid-template-columns:repeat(auto-fit,minmax(158px,1fr)); gap:1px;
+  background:var(--surface); border:1px solid var(--rule); margin-top:34px;
+}
+.meta div{background:var(--surface); padding:12px 14px; outline:1px solid var(--rule)}
+.meta dt{font-family:"IBM Plex Mono",monospace; font-size:.66rem; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 4px}
+.meta dd{margin:0; font-size:.9rem; font-weight:500}
+
+/* ---------- thesis ---------- */
+.thesis{background:var(--thesis-bg); color:var(--thesis-fg); padding:46px 0}
+.thesis .col{max-width:760px}
+.thesis .eyebrow{color:inherit; opacity:.72}
+.thesis-q{font-family:"Newsreader",serif; font-size:clamp(1.25rem,2.6vw,1.6rem);
+  line-height:1.35; opacity:.85; margin:14px 0 22px; font-style:italic}
+.thesis-a{font-family:"Newsreader",serif; font-size:clamp(1.5rem,3.4vw,2.1rem);
+  line-height:1.25; font-weight:600; letter-spacing:-.01em}
+.thesis-a b{font-weight:600; text-decoration:underline; text-decoration-thickness:2px;
+  text-underline-offset:.16em; text-decoration-color:color-mix(in srgb, currentColor 42%, transparent)}
+
+/* ---------- sections ---------- */
+section{padding:56px 0; border-bottom:1px solid var(--rule)}
+.sec-head{max-width:680px; margin:0 auto 30px}
+.sec-num{
+  font-family:"IBM Plex Mono",monospace; font-size:.72rem; letter-spacing:.14em;
+  color:var(--accent); display:block; margin-bottom:10px;
+}
+.sec-head p{color:var(--ink-2); margin-top:12px; margin-bottom:0}
+
+/* ---------- toc ---------- */
+.toc{display:grid; grid-template-columns:repeat(auto-fit,minmax(232px,1fr)); gap:1px;
+  background:var(--surface); border:1px solid var(--rule)}
+.toc a{background:var(--surface); padding:13px 15px; text-decoration:none; display:flex; gap:11px;
+  align-items:baseline; transition:background .12s; outline:1px solid var(--rule)}
+.toc a:hover,.toc a:focus-visible{background:var(--surface-2)}
+.toc span{font-family:"IBM Plex Mono",monospace; font-size:.72rem; color:var(--accent); flex:none}
+.toc b{font-weight:500; font-size:.91rem; line-height:1.35}
+
+/* ---------- finding blocks ---------- */
+.findings{display:grid; grid-template-columns:minmax(0,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule)}
+.finding{background:var(--surface); padding:24px 26px; display:grid;
+  grid-template-columns:52px minmax(0,1fr); gap:20px; align-items:start; min-width:0}
+.finding .n{font-family:"IBM Plex Mono",monospace; font-size:1.55rem; color:var(--accent);
+  line-height:1; padding-top:3px; font-weight:500}
+.finding h3{font-family:"IBM Plex Sans",sans-serif; font-size:1.05rem; font-weight:600; margin-bottom:.42rem}
+.finding p{margin:0; font-size:.94rem; line-height:1.6; color:var(--ink-2)}
+.finding p + p{margin-top:.6rem}
+
+/* ---------- callouts ---------- */
+.callout{border:1px solid var(--rule-strong); background:var(--surface); padding:20px 22px; margin:26px 0}
+.callout.pos{border-top:3px solid var(--pos)}
+.callout.warn{border-top:3px solid var(--warn)}
+.callout.neg{border-top:3px solid var(--neg)}
+.callout.ink{border-top:3px solid var(--accent)}
+.callout h4{margin:0 0 .45rem}
+.callout p:last-child{margin-bottom:0}
+.callout .xs:last-child{margin-bottom:0}
+
+/* ---------- tables ---------- */
+.tscroll{overflow-x:auto; border:1px solid var(--rule); background:var(--surface); margin:26px 0}
+table{border-collapse:collapse; width:100%; font-size:.855rem; min-width:620px}
+th,td{text-align:left; padding:10px 13px; border-bottom:1px solid var(--rule); vertical-align:top}
+thead th{
+  font-family:"IBM Plex Mono",monospace; font-size:.68rem; letter-spacing:.1em; text-transform:uppercase;
+  color:var(--ink-3); font-weight:500; background:var(--surface-2); position:sticky; top:0;
+  border-bottom:1px solid var(--rule-strong); white-space:nowrap;
+}
+tbody tr:last-child td{border-bottom:none}
+td.num,th.num{text-align:right; font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums; white-space:nowrap}
+td.name{font-weight:600; white-space:nowrap}
+tbody tr:hover{background:var(--surface-2)}
+caption{caption-side:bottom; text-align:left; padding:11px 13px; font-size:.78rem;
+  color:var(--ink-3); line-height:1.5; border-top:1px solid var(--rule)}
+
+.pill{display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:.66rem;
+  letter-spacing:.06em; text-transform:uppercase; padding:2px 7px; border:1px solid currentColor;
+  white-space:nowrap; font-weight:500}
+.pill.pos{color:var(--pos); background:var(--pos-bg)}
+.pill.warn{color:var(--warn); background:var(--warn-bg)}
+.pill.neg{color:var(--neg); background:var(--neg-bg)}
+.pill.n{color:var(--ink-3); background:var(--surface-2)}
+
+.tag-d{font-family:"IBM Plex Mono",monospace; font-size:.62rem; color:var(--ink-3);
+  border:1px solid var(--rule-strong); padding:0 3px; margin-left:3px; vertical-align:1px;
+  letter-spacing:.04em; white-space:nowrap}
+
+/* ---------- charts ---------- */
+.viz{margin:26px 0; background:var(--surface); border:1px solid var(--rule); padding:22px 24px 20px}
+.viz-title{font-weight:600; font-size:.97rem; margin:0 0 3px}
+.viz-sub{font-size:.8rem; color:var(--ink-3); margin:0 0 18px; line-height:1.5}
+.legend{display:flex; flex-wrap:wrap; gap:7px 20px; margin:0 0 18px}
+.legend i{display:inline-block; width:11px; height:11px; margin-right:7px; vertical-align:-1px; border-radius:2px}
+.legend span{font-size:.79rem; color:var(--ink-2); font-family:"IBM Plex Mono",monospace; letter-spacing:.02em}
+
+.bar-row{display:grid; grid-template-columns:118px minmax(0,1fr); gap:16px; align-items:center; margin-bottom:11px}
+.bar-row:last-child{margin-bottom:0}
+.bar-label{font-size:.83rem; font-weight:500; line-height:1.3; text-align:right}
+.bar-label small{display:block; font-size:.71rem; color:var(--ink-3); font-weight:400;
+  font-family:"IBM Plex Mono",monospace}
+.bar-track{display:flex; gap:2px; height:34px; align-items:stretch}
+.seg{display:flex; align-items:center; justify-content:flex-end; padding:0 8px; border-radius:0 3px 3px 0;
+  font-family:"IBM Plex Mono",monospace; font-size:.73rem; color:var(--ink); font-weight:500;
+  min-width:2px; overflow:hidden}
+.seg:not(:last-child){border-radius:0}
+.seg:first-child{border-radius:3px 0 0 3px}
+.seg.a{background:var(--s1); color:var(--s1-fg)}
+.seg.b{background:var(--s2); color:var(--s2-fg)}
+.seg.c{background:var(--s3); color:var(--s3-fg)}
+.seg.ref{background:transparent; border:1.5px dashed var(--neg); color:var(--neg); justify-content:flex-end}
+.bar-after{font-family:"IBM Plex Mono",monospace; font-size:.79rem; color:var(--ink-2);
+  padding-left:13px; min-width:46px; text-align:right; white-space:nowrap; align-self:center}
+.bar-flex{display:flex; align-items:center}
+
+.axis{border-top:1px solid var(--rule); margin-top:16px; padding-top:8px; display:flex;
+  justify-content:space-between; font-family:"IBM Plex Mono",monospace; font-size:.7rem; color:var(--ink-3)}
+
+/* threshold marker */
+.thresh-wrap{position:relative}
+.thresh{position:absolute; top:-6px; bottom:16px; border-left:2px dashed var(--neg); opacity:.85}
+.thresh b{position:absolute; top:-4px; left:6px; font-family:"IBM Plex Mono",monospace;
+  font-size:.68rem; color:var(--neg); font-weight:500; white-space:nowrap; background:var(--surface); padding:0 3px}
+
+/* ---------- scenario cards ---------- */
+.scen{display:grid; grid-template-columns:minmax(0,1fr); gap:1px; background:var(--rule); border:1px solid var(--rule); margin:26px 0}
+.scen-card{background:var(--surface); padding:24px 26px; min-width:0}
+.scen-top{display:flex; flex-wrap:wrap; gap:10px 14px; align-items:baseline; margin-bottom:12px}
+.scen-top .eyebrow{flex:none}
+.scen-card h3{font-family:"IBM Plex Sans",sans-serif; font-size:1.1rem; margin:0}
+.scen-formula{font-family:"IBM Plex Mono",monospace; font-size:.79rem; color:var(--ink-2);
+  background:var(--surface-2); padding:8px 11px; margin:0 0 14px; border-left:2px solid var(--rule-strong);
+  overflow-x:auto; white-space:nowrap; max-width:100%}
+.scen-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(168px,1fr)); gap:16px; margin-top:16px}
+.scen-grid h5{font-family:"IBM Plex Mono",monospace; font-size:.67rem; letter-spacing:.11em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 5px; font-weight:500}
+.scen-grid p{margin:0; font-size:.87rem; line-height:1.55; color:var(--ink-2)}
+.scen-card > p{font-size:.94rem; color:var(--ink-2)}
+
+/* ---------- checklist ---------- */
+.checks{border:1px solid var(--rule); background:var(--surface); margin:26px 0}
+.check{display:grid; grid-template-columns:minmax(0,1fr) auto; gap:14px 20px; padding:14px 20px;
+  border-bottom:1px solid var(--rule); align-items:center}
+.check:last-child{border-bottom:none}
+.check b{font-weight:600; font-size:.93rem; display:block}
+.check span{font-size:.83rem; color:var(--ink-2); display:block; margin-top:2px; line-height:1.5}
+.check .val{font-family:"IBM Plex Mono",monospace; font-size:.86rem; font-weight:500;
+  text-align:right; white-space:nowrap; color:var(--ink)}
+
+ul.tight{margin:0 0 1.05rem; padding-left:1.15rem}
+ul.tight li{margin-bottom:.42rem}
+ul.tight li::marker{color:var(--accent)}
+ol.tight{margin:0 0 1.05rem; padding-left:1.3rem}
+ol.tight li{margin-bottom:.5rem}
+ol.tight li::marker{font-family:"IBM Plex Mono",monospace; font-size:.85em; color:var(--accent)}
+
+footer{padding:44px 0 60px; color:var(--ink-3)}
+footer .col{max-width:680px}
+footer a{color:var(--ink-2)}
+
+:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+@media (prefers-reduced-motion: reduce){*{transition:none !important; animation:none !important}}
+@media (max-width:640px){
+  body{font-size:16px}
+  .wrap{padding:0 18px}
+  .finding{grid-template-columns:minmax(0,1fr); gap:8px}
+  .finding .n{font-size:1.2rem}
+  .bar-row{grid-template-columns:minmax(0,1fr); gap:5px}
+  .bar-label{text-align:left}
+  .bar-label small{display:inline; margin-left:7px}
+  section{padding:42px 0}
+}
+
+.pill.mkt{color:var(--ink-2); background:var(--surface-2); border-color:var(--rule-strong)}
+.srcnote{font-size:.78rem; color:var(--ink-3); line-height:1.55; margin:10px 0 0}
+.grouphead td{background:var(--surface-2); font-family:"IBM Plex Mono",monospace; font-size:.68rem;
+  letter-spacing:.11em; text-transform:uppercase; color:var(--ink-3); font-weight:500}
+.factgrid{display:grid; grid-template-columns:repeat(auto-fit,minmax(184px,1fr)); gap:1px;
+  background:var(--surface); border:1px solid var(--rule); margin:26px 0}
+.factgrid div{background:var(--surface); padding:16px 18px; outline:1px solid var(--rule); min-width:0}
+.factgrid dt{font-family:"IBM Plex Mono",monospace; font-size:.66rem; letter-spacing:.12em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 6px}
+.factgrid dd{margin:0; font-size:1.32rem; font-family:"Newsreader",serif; font-weight:600; line-height:1.15}
+.factgrid dd small{display:block; font-family:"IBM Plex Sans",sans-serif; font-size:.78rem;
+  font-weight:400; color:var(--ink-2); margin-top:5px; line-height:1.45}
+</style>
+<style>
+@media screen{
+  thead th{ top:var(--app-bar-h) }
+}
+</style>
+</head>
+<body>
+<a class="app-skip" href="#doc">К содержанию документа</a>
+<header id="appbar">
+  <a class="mark" href="index.html"><b>Animaccord</b><span>AI-девайс</span></a>
+  <button class="burger" type="button" aria-expanded="false" aria-controls="appnav">Разделы</button>
+  <nav id="appnav" aria-label="Документы"><a href="01-market.html" aria-current="page"><i>01</i>Обзор рынка</a><a href="02-platform.html"><i>02</i>Платформы</a><a href="03-character-layer.html"><i>03</i>Слой персонажа</a><a href="04-investor-inputs.html"><i>04</i>Вводные</a></nav>
+  
+</header>
+<main id="doc" class="doc">
+<header class="masthead">
+  <div class="wrap"><div class="col">
+    <div class="kicker-row">
+      <span class="eyebrow">Animaccord · Market landscape</span>
+      <span class="xs">Август 2026 · обзор без выводов</span>
+    </div>
+    <h1>Детские аудио- и AI-девайсы: кто есть на рынке и как устроен</h1>
+    <p class="deck">Фактический каталог: продукты, цены, носители контента, подписки, механика работы,
+      масштаб и статус. Разбор устройств вокруг контента и IP, AI-компаньонов, голосовых колонок
+      и закрытых продуктов.</p>
+    <dl class="meta">
+      <div><dt>Продуктов в каталоге</dt><dd>33</dd></div>
+      <div><dt>Из них закрыто</dt><dd>7</dd></div>
+      <div><dt>Платформ и поставщиков</dt><dd>8</dd></div>
+      <div><dt>Формат</dt><dd>Описание, без оценок</dd></div>
+    </dl>
+  </div></div>
+</header>
+
+<div class="thesis">
+  <div class="wrap"><div class="col">
+    <span class="eyebrow">Как читать этот документ</span>
+    <p class="thesis-a" style="font-size:clamp(1.15rem,2.3vw,1.45rem); line-height:1.4">
+      Здесь описано, что компании делают и сколько это стоит на полке.</p>
+    <p class="thesis-q" style="margin:18px 0 0; font-size:1rem; font-style:normal; opacity:.85">
+      Долгосрочные допущения игроков — окупаемость железа, план по себестоимости inference,
+      горизонт монетизации — публично не раскрываются ни одним из них. Поэтому документ держится
+      наблюдаемых параметров: цены, форматы носителей, условия подписок, раскрытые финансовые
+      показатели, объёмы и даты.</p>
+  </div></div>
+</div>
+
+<section id="toc" style="padding-top:44px;padding-bottom:44px">
+  <div class="wrap"><div class="wide">
+    <nav class="toc" aria-label="Содержание">
+      <a href="#map"><span>01</span><b>Карта категорий</b></a>
+      <a href="#prices"><span>02</span><b>Цены устройств</b></a>
+      <a href="#content"><span>03</span><b>Устройства вокруг контента</b></a>
+      <a href="#companions"><span>04</span><b>AI-компаньоны</b></a>
+      <a href="#platform"><span>05</span><b>Платформенный слой</b></a>
+      <a href="#speakers"><span>06</span><b>Голосовые колонки</b></a>
+      <a href="#closed"><span>07</span><b>Закрытые продукты</b></a>
+      <a href="#disclosed"><span>08</span><b>Раскрытая экономика</b></a>
+      <a href="#stack"><span>09</span><b>Цены AI-стека</b></a>
+      <a href="#regulation"><span>10</span><b>Регуляторный календарь</b></a>
+      <a href="#masha"><span>11</span><b>Masha в цифрах</b></a>
+      <a href="#method"><span>12</span><b>Метод и надёжность</b></a>
+    </nav>
+  </div></div>
+</section>
+
+<section id="map">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">01 — Карта категорий</span>
+      <h2>Четыре группы продуктов</h2>
+      <p>Группировка по тому, как устройство получает контент и что предлагается купить после него.
+        Это описательная классификация для навигации по каталогу.</p>
+    </div>
+    <div class="wide">
+      <div class="tscroll">
+        <table>
+          <thead><tr><th>Группа</th><th>Как получает контент</th><th>Что предлагается докупить</th><th>Есть ли AI-диалог</th><th>Кто в группе</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="name">Устройства вокруг контента</td>
+              <td>Физический носитель: фигурка, карточка, диск, токен с NFC или RFID</td>
+              <td>Новые носители, подписка на цифровую библиотеку</td>
+              <td>Нет либо в тестовом режиме</td>
+              <td>Tonies, Yoto, Storypod, Lunii, Faba, Timio, Jooki, tiptoi</td>
+            </tr>
+            <tr>
+              <td class="name">AI-компаньоны</td>
+              <td>Генерация в реальном времени, часть библиотеки предзаписана</td>
+              <td>Подписка, дополнительные персонажи</td>
+              <td>Да, основа продукта</td>
+              <td>Miko, Curio, Bondu, BubblePal, FoloToy, Ropet, Loona, Fuzozo</td>
+            </tr>
+            <tr>
+              <td class="name">Голосовые колонки</td>
+              <td>Стриминг и голосовой ассистент общего назначения</td>
+              <td>Медиа-подписка платформы</td>
+              <td>Да, ассистент</td>
+              <td>Echo Dot Kids, Яндекс Станция, СберБум, Nest</td>
+            </tr>
+            <tr>
+              <td class="name">Плееры без носителя</td>
+              <td>Синхронизация со стриминговым сервисом, офлайн-воспроизведение</td>
+              <td>Ничего, нужна подписка стриминга</td>
+              <td>Нет</td>
+              <td>Mighty, частично Jooki</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="prices">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">02 — Цены</span>
+      <h2>Прайс-лист устройств на полке</h2>
+      <p>Заявленные розничные цены в США на август 2026 года. Фактические цены в промо
+        и у отдельных ритейлеров бывают заметно ниже — отмечено в подписи.</p>
+    </div>
+    <div class="wide">
+      <div class="viz">
+        <p class="viz-title">Розничная цена устройства, доллары США</p>
+        <p class="viz-sub">Сгруппировано по категории. Дополнительный контент, подписки и бандлы
+          в цену не входят.</p>
+        <div class="legend">
+          <span><i style="background:var(--s1)"></i>Вокруг контента</span>
+          <span><i style="background:var(--s2)"></i>AI-компаньон</span>
+          <span><i style="background:var(--s3)"></i>Голосовая колонка</span>
+        </div>
+        <div class="bar-row"><div class="bar-label">Yoto Mini<small>Yoto</small></div>
+          <div class="bar-track"><div class="seg a" style="width:23.4%">$70</div></div></div>
+        <div class="bar-row"><div class="bar-label">Storypod<small>с 1 iCraftie</small></div>
+          <div class="bar-track"><div class="seg a" style="width:26.4%">$79</div></div></div>
+        <div class="bar-row"><div class="bar-label">Yoto Player 3<small>Yoto</small></div>
+          <div class="bar-track"><div class="seg a" style="width:36.8%">$110</div></div></div>
+        <div class="bar-row"><div class="bar-label">Toniebox 2<small>бандл $139–159</small></div>
+          <div class="bar-track"><div class="seg a" style="width:46.8%">$140</div></div></div>
+        <div class="bar-row"><div class="bar-label">Curio Grok<small>Curio</small></div>
+          <div class="bar-track"><div class="seg b" style="width:33.1%">$99</div></div></div>
+        <div class="bar-row"><div class="bar-label">FoloToy Kumma<small>FoloToy</small></div>
+          <div class="bar-track"><div class="seg b" style="width:33.1%">$99</div></div></div>
+        <div class="bar-row"><div class="bar-label">Miko Mini<small>в промо от $60</small></div>
+          <div class="bar-track"><div class="seg b" style="width:49.8%">$149</div></div></div>
+        <div class="bar-row"><div class="bar-label">Bondu<small>предзаказ</small></div>
+          <div class="bar-track"><div class="seg b" style="width:66.9%">$200</div></div></div>
+        <div class="bar-row"><div class="bar-label">Miko 3<small>Miko</small></div>
+          <div class="bar-track"><div class="seg b" style="width:83.3%">$249</div></div></div>
+        <div class="bar-row"><div class="bar-label">Ropet<small>Pro — $319</small></div>
+          <div class="bar-track"><div class="seg b" style="width:100%">$299</div></div></div>
+        <div class="bar-row"><div class="bar-label">Loona<small>Keyi Robot</small></div>
+          <div class="bar-track"><div class="seg b" style="width:100%">$299</div></div></div>
+        <div class="bar-row"><div class="bar-label">Echo Dot Kids<small>в промо от $38</small></div>
+          <div class="bar-track"><div class="seg c" style="width:20.1%">$60</div></div></div>
+        <div class="axis"><span>$0</span><span>$150</span><span>$299</span></div>
+        <p class="srcnote">Европейские продукты в этот график не вошли: Lunii — около €70,
+          Faba — около €60. Российские устройства см. в разделе 05.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="content">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">03 — Вокруг контента</span>
+      <h2>Устройства с физическим носителем</h2>
+      <p>Общая механика группы: ребёнок ставит на устройство предмет, устройство играет привязанное
+        к нему аудио. Различаются форматом носителя, наполнением каталога и наличием подписки.</p>
+    </div>
+    <div class="wide">
+      <div class="tscroll">
+        <table style="min-width:1240px">
+          <caption>Цены — розница США, август 2026. Для европейских продуктов указана европейская цена.</caption>
+          <thead>
+            <tr><th>Продукт</th><th>Компания</th><th class="num">Устройство</th><th>Носитель</th>
+              <th class="num">Цена носителя</th><th>Подписка</th><th>Как устроено</th><th>Статус</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="name">Toniebox 2</td><td>tonies SE, Германия</td><td class="num">$140</td>
+              <td>Фигурка персонажа с NFC</td><td class="num">$17,99</td>
+              <td>mytonies — цифровые тайтлы</td>
+              <td>Фигурка ставится на колонку. Creative Tonies позволяют записать своё аудио.
+                Tonieplay — игровые фигурки с контроллером</td>
+              <td><span class="pill mkt">На рынке</span></td>
+            </tr>
+            <tr>
+              <td class="name">Toniebox Lite</td><td>tonies SE, Германия</td><td class="num">н/д</td>
+              <td>Те же фигурки</td><td class="num">$17,99</td><td>Та же</td>
+              <td>Упрощённая версия. Предзаказ в США с 27 июля 2026, магазины с августа,
+                UK, Австралия и Новая Зеландия — осень 2026</td>
+              <td><span class="pill warn">Анонсирован</span></td>
+            </tr>
+            <tr>
+              <td class="name">Yoto Player 3</td><td>Yoto, Великобритания</td><td class="num">$110</td>
+              <td>Карточка с NFC</td><td class="num">$7–30</td>
+              <td>Yoto Club от $4,99/мес</td>
+              <td>Карточка вставляется в слот. Подписка даёт кредиты на карточки,
+                скидки и бесплатную доставку. Есть пустые карточки для своих записей</td>
+              <td><span class="pill mkt">На рынке</span></td>
+            </tr>
+            <tr>
+              <td class="name">Yoto Mini</td><td>Yoto, Великобритания</td><td class="num">$70</td>
+              <td>Те же карточки</td><td class="num">$7–30</td><td>Та же</td>
+              <td>Портативная версия с той же библиотекой</td>
+              <td><span class="pill mkt">На рынке</span></td>
+            </tr>
+            <tr>
+              <td class="name">Storypod</td><td>Craftie Fox, США</td><td class="num">$79 с 1 iCraftie</td>
+              <td>Crafties — вязаные фигурки; карточки; аудиокниги</td><td class="num">варьируется</td>
+              <td>Learning Sets: $29,99/квартал для 0–2 лет, $67,49/квартал для 3–6 лет</td>
+              <td>Подписка организована как возрастные наборы, номера 1–9 и 10–21,
+                контент приходит по мере взросления</td>
+              <td><span class="pill mkt">На рынке</span></td>
+            </tr>
+            <tr>
+              <td class="name">Lunii</td><td>Lunii, Франция</td><td class="num">~€70</td>
+              <td>Носителя нет — цифровые альбомы через приложение</td><td class="num">от €5 за альбом</td>
+              <td>Нет</td>
+              <td>«Фабрика историй»: ребёнок собирает сюжет, выбирая героя, место и предмет.
+                Мультиязычность</td>
+              <td><span class="pill mkt">На рынке</span></td>
+            </tr>
+            <tr>
+              <td class="name">Faba</td><td>Faba, Италия</td><td class="num">~€60</td>
+              <td>Фигурки-персонажи</td><td class="num">от €10</td><td>Нет</td>
+              <td>Механика Tonies на локальном итальянском контенте</td>
+              <td><span class="pill mkt">На рынке</span></td>
+            </tr>
+            <tr>
+              <td class="name">Timio</td><td>Timio, Нидерланды</td><td class="num">Starter kit с 5 дисками</td>
+              <td>Магнитные диски</td><td class="num">от €10</td><td>Нет</td>
+              <td>Обучающий уклон: словарь, викторины, животные, музыка.
+                Восемь языков на одном диске, от 2 лет</td>
+              <td><span class="pill mkt">На рынке</span></td>
+            </tr>
+            <tr>
+              <td class="name">Jooki</td><td>Jooki, Бельгия</td><td class="num">Плеер + 2 токена</td>
+              <td>Токены и фигурки</td><td class="num">варьируется</td>
+              <td>Нужна подписка Spotify для стриминга</td>
+              <td>Гибрид: токен привязывается к плейлисту Spotify или к загруженным MP3.
+                5 ГБ памяти, до 8 часов работы</td>
+              <td><span class="pill mkt">На рынке</span></td>
+            </tr>
+            <tr>
+              <td class="name">Mighty 3</td><td>Mighty Audio, США</td><td class="num">н/д</td>
+              <td>Носителя нет</td><td class="num">—</td>
+              <td>Требуется Spotify или Amazon Music</td>
+              <td>Офлайн-плеер: синхронизирует до 1000+ треков со стриминга,
+                работает без телефона и экрана</td>
+              <td><span class="pill mkt">На рынке</span></td>
+            </tr>
+            <tr>
+              <td class="name">tiptoi</td><td>Ravensburger, Германия</td><td class="num">Ручка + книга</td>
+              <td>Книги, карты, игры со скрытым кодом</td><td class="num">от €10</td><td>Нет</td>
+              <td>Оптическая ручка считывает точечный код с печатной страницы
+                и произносит соответствующее аудио</td>
+              <td><span class="pill mkt">На рынке</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col">
+        <h3 style="margin-top:32px">Каталоги контента</h3>
+        <div class="factgrid">
+          <div><dt>tonies — фигурок</dt><dd>~1 500<small>плюс 12 игр Tonieplay и более 3 500 цифровых
+            наименований в mytonies</small></dd></div>
+          <div><dt>tonies — лицензиаров</dt><dd>~350<small>Disney, Warner Bros., NBC Universal, Mattel,
+            Marvel, Paramount, Hasbro, Universal, Sony Music, Animaccord</small></dd></div>
+          <div><dt>Yoto — карточек продано</dt><dd>15 млн+<small>при более чем 1 млн активных устройств</small></dd></div>
+          <div><dt>Yoto — attach</dt><dd>&gt;3 карточки<small>на устройство в год, по заявлению компании</small></dd></div>
+        </div>
+        <p class="xs">Тестируемое направление: tonies запустил в mytonies генератор контента на AI —
+          пользователь создаёт сценарий истории, затем озвучивает его сам или синтезирует через TTS
+          и записывает на Creative Tonie. Компания заявляет о введённых ограничениях
+          на недопустимую лексику и нарушение прав.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="companions">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">04 — AI-компаньоны</span>
+      <h2>Устройства с разговорным AI</h2>
+      <p>Группа сформировалась в 2024–2026 годах. Общая механика: устройство слушает ребёнка
+        и отвечает голосом персонажа. Ниже — где выполняется обработка, что стоит и что заявлено.</p>
+    </div>
+    <div class="wide">
+      <div class="tscroll">
+        <table style="min-width:1260px">
+          <caption>Столбец «Обработка» указывает, где по заявлениям производителя выполняется
+            распознавание речи и генерация ответа.</caption>
+          <thead>
+            <tr><th>Продукт</th><th>Компания</th><th class="num">Цена</th><th>Подписка</th>
+              <th>Обработка</th><th>Возраст</th><th>Масштаб и факты</th><th>Статус</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="name">Miko 3</td><td>Miko, Индия</td><td class="num">$249</td>
+              <td>Miko Max — $14,99/мес или $99/год</td><td>Облако</td><td>5–10</td>
+              <td>Подписка даёт библиотеку Disney, Da Vinci, PBS, vooks. Выручка FY24 — ₹358 крор
+                (около $43 млн), доход от подписки вырос в 29 раз г/г, продано более 500 тыс. устройств за год</td>
+              <td><span class="pill mkt">На рынке</span></td>
+            </tr>
+            <tr>
+              <td class="name">Miko Mini</td><td>Miko, Индия</td><td class="num">$149</td>
+              <td>Та же, 30 дней бесплатно в комплекте</td><td>Облако</td><td>5–10</td>
+              <td>В рознице встречается за $59,99–69,99</td>
+              <td><span class="pill mkt">На рынке</span></td>
+            </tr>
+            <tr>
+              <td class="name">Curio — Grok, Grem, Gabbo</td><td>Curio, США</td><td class="num">$99</td>
+              <td>Заявлено, что не требуется</td><td>Облако, нужен Wi-Fi</td><td>3+</td>
+              <td>Плюшевые персонажи, соучредитель — Grimes. Обзоры отмечают отсутствие офлайн-режима,
+                сложности с распознаванием речи детей младше пяти лет, отсутствие песен
+                и структурированных игр</td>
+              <td><span class="pill mkt">На рынке</span></td>
+            </tr>
+            <tr>
+              <td class="name">Bondu</td><td>The AI Toy Company, США</td><td class="num">$199,99</td>
+              <td>Premium-подписки заявлены в планах</td><td>Облако</td><td>3–9</td>
+              <td>Плюшевый динозавр, четыре цвета. Основатели — Fateen Anam Rafid и Dan Judkins,
+                ранее руководитель в Hasbro. Заявлен не единый LLM, а составной workflow.
+                32 языка, ролевые сценарии со звуковыми эффектами. Сертификация kidSAFE,
+                соответствие COPPA; голоса детей, по заявлению компании, не сохраняются.
+                Предзаказ с 9 октября 2025. Привлечено $5,3 млн: Makers Fund, Samsung Ventures,
+                Boost VC, Founders Inc</td>
+              <td><span class="pill warn">Предзаказ</span></td>
+            </tr>
+            <tr>
+              <td class="name">BubblePal</td><td>Haivivi, Китай</td><td class="num">¥399 в КНР / $89–150</td>
+              <td>Нет</td><td>Облако</td><td>3–12</td>
+              <td>Подвеска, которая крепится к любой имеющейся игрушке. Продано более 200 тыс. устройств,
+                более 300 тыс. семей. Запуск в КНР — июль 2024, в США — декабрь 2024,
+                затем Канада и Великобритания</td>
+              <td><span class="pill mkt">На рынке</span></td>
+            </tr>
+            <tr>
+              <td class="name">FoloToy Kumma</td><td>FoloToy, Китай</td><td class="num">$99</td>
+              <td>Нет</td><td>Облако, модели OpenAI</td><td>дошкольный</td>
+              <td>Более 20 тыс. устройств в I квартале 2025, план на год — 300 тыс.
+                В ноябре 2025 продажи приостановлены после отчёта PIRG, доступ к моделям OpenAI отозван;
+                через неделю продажи возобновлены после аудита безопасности</td>
+              <td><span class="pill mkt">Возвращён</span></td>
+            </tr>
+            <tr>
+              <td class="name">Ropet</td><td>Ropet, Китай</td><td class="num">$299 / Pro $319</td>
+              <td>н/д</td><td>Гибрид: ChatGPT плюс офлайн-обработка части функций</td><td>универсальный</td>
+              <td>Дебют на CES 2025. Распознавание лиц и считывание эмоций.
+                Версия Pro отличается подсветкой в док-станции</td>
+              <td><span class="pill mkt">На рынке</span></td>
+            </tr>
+            <tr>
+              <td class="name">Loona</td><td>Keyi Robot, Китай</td><td class="num">~$299</td>
+              <td>н/д</td><td>Облако</td><td>универсальный</td>
+              <td>Робот-питомец: следует за человеком, реагирует на игнорирование,
+                поддерживает многоходовой диалог</td>
+              <td><span class="pill mkt">На рынке</span></td>
+            </tr>
+            <tr>
+              <td class="name">Fuzozo</td><td>Robopoet и Tuya Smart, Китай</td><td class="num">н/д</td>
+              <td>н/д</td><td>Облако через встроенную сотовую связь</td><td>универсальный</td>
+              <td>Дебют на CES 2026, собственный сотовый модуль вместо домашнего Wi-Fi.
+                Около 300 тыс. устройств в Китае накопленным итогом к июню 2026,
+                40 тыс. за распродажу 618 и первое место в категории AI-игрушек на Tmall.
+                В июле 2026 Tuya вошла в pre-A раунд Robopoet на 100 млн юаней</td>
+              <td><span class="pill warn">Анонсирован</span></td>
+            </tr>
+            <tr>
+              <td class="name">Mattel × OpenAI</td><td>Mattel, США</td><td class="num">н/д</td>
+              <td>н/д</td><td>Облако, модели OpenAI</td><td>вероятно 13+</td>
+              <td>Партнёрство объявлено в июне 2025, первые продукты ожидались к концу 2025.
+                В декабре 2025 запуск отложен. Бренды в периметре — Barbie, Hot Wheels, American Girl</td>
+              <td><span class="pill warn">Отложен</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="col">
+        <p class="xs">Столбец «Обработка» отражает заявления производителей.
+          Устройства этой группы, за исключением Ropet, требуют постоянного подключения к сети:
+          у Curio отсутствие офлайн-режима отмечается в обзорах, Fuzozo решает ту же задачу
+          встроенным сотовым модулем. Кто поставляет им начинку — в разделе 05.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="platform">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">05 — Платформенный слой</span>
+      <h2>Кто продаёт не игрушку, а начинку для неё</h2>
+      <p>Отдельный B2B-слой: компании, которые поставляют производителям игрушек модули, чипы,
+        модели и облачную обвязку. Конечному покупателю эти бренды не видны.</p>
+    </div>
+    <div class="wide">
+      <div class="tscroll">
+        <table style="min-width:1140px">
+          <caption>Коммерческие условия ни один из перечисленных публично не раскрывает,
+            кроме цены токенов у Doubao.</caption>
+          <thead><tr><th>Платформа</th><th>Кто это</th><th>Что поставляет</th>
+            <th>Где выполняется инференс</th><th>Известная тяга</th></tr></thead>
+          <tbody>
+            <tr>
+              <td class="name">Tuya Smart</td><td>Публичная IoT-платформа, Китай и США</td>
+              <td>Платформа разработки AI-агента: настройка личности, логики памяти и поведения
+                без обучения моделей. AI-модули и AI-боксы для дооснащения готовых изделий.
+                Подключение к ChatGPT, Gemini, DeepSeek, Qwen, Doubao. Более 60 языков.
+                Родительское приложение с мониторингом диалогов и контролем экранного времени.
+                Преднастроенные каркасы под GDPR и CCPA, аппаратное шифрование, локализация данных</td>
+              <td>Облако, инфраструктура более чем в 200 странах</td>
+              <td>Заявляет сокращение цикла разработки более чем на 60%, выход на рынок
+                от 15 дней, экономию 30–50% расходов на R&amp;D. На Spielwarenmesse 2026 показала
+                четыре категории AI-игрушек: NebulaPals, Walulu, обучающую камеру, робопса и часы.
+                Названные бренды на платформе: Fuzozo от Robopoet, Walulu, AOOMII,
+                AI Scruffy Cat, Wozzi, Famue</td>
+            </tr>
+            <tr>
+              <td class="name">Volcano Engine / Doubao</td><td>Облачное подразделение ByteDance</td>
+              <td>Большая модель Doubao плюс совместные аппаратные решения.
+                Связка ESP-VoCat с Espressif — готовый набор разработчика
+                для голосовых продуктов: игрушек, колонок, центров управления</td>
+              <td>Облако</td>
+              <td>Doubao в корпоративном тарифе — ¥0,0008 за 1 000 токенов.
+                Партнёрство с Shanghai Fortune Techgroup по AI-игрушкам,
+                Wi-Fi-модули Bestechnic, интерфейсные модули Tuya</td>
+            </tr>
+            <tr>
+              <td class="name">Espressif</td><td>Производитель чипов, Китай</td>
+              <td>Чипы и модули Wi-Fi плюс связка «чип + AI-софт» с моделью Doubao.
+                Набор ESP-VoCat</td>
+              <td>Облако; на устройстве — ключевое слово и обработка звука</td>
+              <td>ESP32 — самый распространённый чип в AI-игрушках; в разобранных устройствах
+                категории встречается ESP32-S3</td>
+            </tr>
+            <tr>
+              <td class="name">Rockchip, Allwinner, Actions, Beken, JieLi</td>
+              <td>Производители чипов, Китай</td>
+              <td>Собственные решения под AI-игрушки, часть уже применяется в серийных продуктах</td>
+              <td>Зависит от решения</td>
+              <td>Отраслевые публикации отмечают премию к цене чипа до десяти раз
+                в этом сегменте относительно обычных аудиочипов</td>
+            </tr>
+            <tr>
+              <td class="name">Haivivi</td><td>Юэжань Инновейшн, Китай</td>
+              <td>Не платформа в строгом смысле: собственный бренд AI-плюша и роботов.
+                В августе 2025 выпустила серию CocoMate со сквозной архитектурой
+                и съёмным модулем</td>
+              <td>Облако</td>
+              <td>23 апреля 2026 объявила глобальный запуск всей основной линейки.
+                Более 200 тыс. устройств по продукту BubblePal</td>
+            </tr>
+            <tr>
+              <td class="name">OpenToys</td><td>Открытый проект</td>
+              <td>Локальный стек для сборки AI-игрушек: Whisper для распознавания,
+                Qwen3-TTS для синтеза, модели через MLX. Устройство на ESP32-S3,
+                инференс на Apple Silicon рядом. Заявлено: без облака, без подписки,
+                данные остаются на устройстве</td>
+              <td>Локально, на компьютере пользователя</td>
+              <td>Запуск 14 марта 2026. Открытый код, коммерческих внедрений не заявлено</td>
+            </tr>
+            <tr>
+              <td class="name">NeoHumans</td><td>Стартап, США</td>
+              <td>Три модели в формате ONNX одним файлом: neo-llm на 1,3 млрд параметров
+                (около 400 МБ, INT4, контекст 4K, около 30 токенов/с), neo-asr на 82 млн (около 45 МБ,
+                задержка около 50 мс), neo-tts на 48 млн (около 35 МБ, 32 голосовых пресета).
+                Суммарно около 480 МБ на диске, до 800 МБ ОЗУ, сквозная задержка менее 200 мс.
+                Целевое железо: Qualcomm QCS6490 и QCS4490, NVIDIA Jetson Orin Nano и NX,
+                Raspberry Pi CM4 и Pi 5. Модуль ALIVE может выгружать инференс
+                на телефон или Mac рядом через BLE или Wi-Fi Direct</td>
+              <td>Локально, на устройстве или на телефоне владельца</td>
+              <td>По данным агрегаторов основана в 2023 году, США, основатель и CEO — Rahul Rai,
+                привлечённого финансирования нет. Сайт — одна страница: клиенты, команда,
+                документация, кейсы и цены не опубликованы; веса моделей в открытых репозиториях
+                не найдены. Самый ранний доступный архивный снимок сайта — март 2026</td>
+            </tr>
+            <tr>
+              <td class="name">Контрактные фабрики</td><td>Китай, преимущественно Шэньчжэнь</td>
+              <td>OEM-сборка AI-игрушек под чужим брендом на готовых решениях перечисленных выше</td>
+              <td>Обычно облако поставщика решения</td>
+              <td>Публичных данных об объёмах нет</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col">
+        <p class="xs">Заявления о полностью локальной работе приведены так, как их формулируют
+          сами разработчики. Независимых замеров качества диалога, задержки, энергопотребления
+          и поведения на детской речи по этим стекам в открытых источниках нет.
+          Данные о NeoHumans взяты из автоматических агрегаторов и с сайта компании;
+          независимого подтверждения года основания, состава команды и статуса финансирования
+          найти не удалось.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="speakers">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">06 — Колонки</span>
+      <h2>Голосовые колонки с детским режимом</h2>
+      <p>Универсальные устройства, у которых детский сценарий — одна из функций,
+        а не назначение продукта.</p>
+    </div>
+    <div class="wide">
+      <div class="tscroll">
+        <table style="min-width:880px">
+          <thead><tr><th>Продукт</th><th>Платформа</th><th class="num">Цена</th><th>Подписка</th>
+            <th>Что в детском режиме</th></tr></thead>
+          <tbody>
+            <tr><td class="name">Echo Dot Kids</td><td>Amazon Alexa</td><td class="num">$59,99, в промо от $38</td>
+              <td>Amazon Kids+ — $2,99/мес с Prime, $5,99/мес без него; год включён в комплект</td>
+              <td>Родительский контроль, детский дизайн, двухлетняя гарантия.
+                Kids+ даёт аудиокниги, игры, фильмы и сериалы без рекламы, детские радиостанции,
+                будильники голосом персонажей</td></tr>
+            <tr><td class="name">Яндекс Станция Лайт 2</td><td>Алиса</td><td class="num">8 799 ₽</td>
+              <td>Яндекс Плюс — 399 ₽/мес или 3 490 ₽/год</td>
+              <td>Алиса определяет, обращается к ней взрослый или ребёнок, включает разные плейлисты
+                и меняет манеру ответа. Без подписки работает базовый набор функций без Музыки и Кинопоиска</td></tr>
+            <tr><td class="name">Яндекс Станция Мини 3</td><td>Алиса</td><td class="num">9 999 ₽</td>
+              <td>Та же</td><td>Тот же детский режим</td></tr>
+            <tr><td class="name">СберБум Мини 2</td><td>Салют, GigaChat</td><td class="num">н/д</td>
+              <td>Подписки экосистемы Сбера</td><td>Голосовой ассистент Салют с детскими сценариями</td></tr>
+            <tr><td class="name">Google Nest</td><td>Google Assistant / Gemini</td><td class="num">варьируется</td>
+              <td>Google One и YouTube Premium как смежные</td>
+              <td>Детский профиль в Family Link, ограничение контента</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="closed">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">07 — Закрытые продукты</span>
+      <h2>Что уходило с рынка и когда</h2>
+      <p>Хронология по датам и фактам. Формулировки причин приведены так, как они изложены
+        в публичных сообщениях компаний и в отраслевой прессе.</p>
+    </div>
+    <div class="wide">
+      <div class="tscroll">
+        <table style="min-width:1040px">
+          <thead><tr><th>Продукт</th><th>Компания</th><th class="num">Цена</th><th class="num">Период</th>
+            <th>Что произошло</th></tr></thead>
+          <tbody>
+            <tr><td class="name">Hello Barbie</td><td>Mattel и ToyTalk</td><td class="num">~$75</td>
+              <td class="num">2015–2017</td>
+              <td>Говорящая кукла с распознаванием речи. Коллективный иск в Верховном суде Лос-Анджелеса
+                от двух матерей с претензиями по COPPA; специалисты Bluebox Labs указали на уязвимости
+                на старте продаж</td></tr>
+            <tr><td class="name">Mattel Aristotle</td><td>Mattel</td><td class="num">не вышел</td>
+              <td class="num">анонс 2017</td>
+              <td>Голосовое устройство для детской, позиционировалось как радионяня и голосовой компьютер.
+                Отменено в октябре 2017 под давлением родительских и правозащитных организаций;
+                петицию против выпуска подписали более 1 500 человек</td></tr>
+            <tr><td class="name">CloudPets</td><td>Spiral Toys</td><td class="num">~$40</td>
+              <td class="num">2015–2017</td>
+              <td>Плюшевые игрушки с записью голосовых сообщений. Утечка базы с записями
+                и учётными данными пользователей</td></tr>
+            <tr><td class="name">Jibo</td><td>Jibo Inc., США</td><td class="num">$899</td>
+              <td class="num">2017–2018</td>
+              <td>Домашний социальный робот. Компания прекратила работу в конце 2018 года</td></tr>
+            <tr><td class="name">Kuri</td><td>Mayfield Robotics, США</td><td class="num">$700</td>
+              <td class="num">2017–2018</td>
+              <td>Домашний робот-компаньон. Производство остановлено в августе 2018 года</td></tr>
+            <tr><td class="name">Cozmo и Vector</td><td>Anki, США</td><td class="num">$179 и $249</td>
+              <td class="num">2016–2019</td>
+              <td>Настольные роботы с компьютерным зрением. Компания закрылась в апреле 2019 года,
+                привлекши около $260 млн; продано несколько миллионов устройств.
+                Позднее бренд был выкуплен и продукты частично возобновлены другим владельцем</td></tr>
+            <tr><td class="name">Moxie</td><td>Embodied, США</td><td class="num">$799</td>
+              <td class="num">2020–2025</td>
+              <td>Социальный робот-компаньон для детей 5–10 лет. Компания прекратила деятельность
+                в ноябре 2024 года после выхода ведущего инвестора из раунда финансирования.
+                Серверы отключены 30 января, устройства перестали работать: распознавание речи,
+                диалог и эмоциональный вывод выполнялись только в облаке, офлайн-режима не было.
+                Возвраты и гарантийная поддержка не предоставлялись. Позднее предпринималась
+                попытка открыть исходный код</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="disclosed">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">08 — Раскрытая экономика</span>
+      <h2>Что компании публикуют о себе</h2>
+      <p>Из всей категории отчётность публикует одна компания — tonies SE, как эмитент
+        на Франкфуртской бирже. Остальные раскрывают отдельные показатели в пресс-релизах
+        и интервью. Ниже приведено то, что опубликовано.</p>
+    </div>
+    <div class="wide">
+
+      <h3 class="col" style="margin-bottom:14px">tonies SE — отчётность FY2024 и FY2025</h3>
+      <div class="tscroll">
+        <table>
+          <thead><tr><th>Показатель</th><th class="num">FY2024</th><th class="num">FY2025</th><th class="num">План 2026</th></tr></thead>
+          <tbody>
+            <tr><td>Выручка группы</td><td class="num">€480,5 млн</td><td class="num">€630,3 млн</td><td class="num">&gt;€760 млн</td></tr>
+            <tr><td>Рост год к году</td><td class="num">+33%</td><td class="num">+31% (+36% в пост. валюте)</td><td class="num">&gt;+20% пост. валюта</td></tr>
+            <tr><td>Выручка — колонки</td><td class="num">€137 млн</td><td class="num">€161,2 млн (+18%)</td><td class="num">—</td></tr>
+            <tr><td>Выручка — фигурки</td><td class="num">—</td><td class="num">€447,2 млн (+37%)</td><td class="num">—</td></tr>
+            <tr><td>Выручка — аксессуары и цифра</td><td class="num">—</td><td class="num">€22,0 млн (+23%)</td><td class="num">—</td></tr>
+            <tr><td>Валовая маржа</td><td class="num">—</td><td class="num">62,8%</td><td class="num">—</td></tr>
+            <tr><td>Скорр. EBITDA, маржа</td><td class="num">7,5%</td><td class="num">8,6%</td><td class="num">9–11%</td></tr>
+            <tr><td>Свободный денежный поток</td><td class="num">+€33,1 млн</td><td class="num">−€11,9 млн</td><td class="num">—</td></tr>
+            <tr><td>Лицензионные отчисления</td><td class="num">—</td><td class="num">€69,4 млн — 11,0% выручки</td><td class="num">—</td></tr>
+            <tr><td>DACH / Северная Америка / остальной мир</td><td class="num">184 / 210 / 85</td><td class="num">213,8 / 275,7 / 140,8</td><td class="num">Сев. Америка &gt;+30%</td></tr>
+            <tr><td>Продано колонок накопленным итогом</td><td class="num">&gt;8 млн</td><td class="num">~11,8 млн</td><td class="num">12,2 млн на июль 2026</td></tr>
+            <tr><td>Продано фигурок накопленным итогом</td><td class="num">&gt;100 млн</td><td class="num">&gt;156 млн</td><td class="num">165 млн на июль 2026</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="tscroll">
+        <table>
+          <caption>Величины, полученные арифметически из таблицы выше. Компания указывает базу 2024 года
+            как «более 8 млн» и «более 100 млн», поэтому производные значения — верхняя граница.
+            Компания сама эти показатели не публикует.</caption>
+          <thead><tr><th>Расчётная величина</th><th class="num">Значение</th><th>Как получено</th></tr></thead>
+          <tbody>
+            <tr><td>Продано колонок за 2025</td><td class="num">~3,8 млн</td><td>11,8 − 8,0</td></tr>
+            <tr><td>Продано фигурок за 2025</td><td class="num">~56 млн</td><td>156 − 100</td></tr>
+            <tr><td>Фигурок на активную колонку в год</td><td class="num">~5,7</td><td>56 млн ÷ средняя база 9,9 млн</td></tr>
+            <tr><td>Фигурок на колонку накопленным итогом</td><td class="num">~13,2</td><td>156 ÷ 11,8</td></tr>
+            <tr><td>Чистая выручка с фигурки</td><td class="num">~€8,0</td><td>€447,2 млн ÷ 56 млн; розница ~$17,99</td></tr>
+            <tr><td>Чистая выручка с колонки</td><td class="num">~€42</td><td>€161,2 млн ÷ 3,8 млн; розница $99–140</td></tr>
+            <tr><td>Выручка на активное устройство в год</td><td class="num">~€64</td><td>€630,3 млн ÷ 9,9 млн</td></tr>
+            <tr><td>Доли в выручке</td><td class="num">26 / 71 / 3,5%</td><td>колонки / фигурки / аксессуары и цифра</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="viz">
+        <p class="viz-title">Структура выручки по источникам</p>
+        <p class="viz-sub">tonies — раскрытые данные FY2025. Yoto — по публичным заявлениям компании
+          за 2025 год, отчётность не публикуется.</p>
+        <div class="legend">
+          <span><i style="background:var(--s1)"></i>Устройство</span>
+          <span><i style="background:var(--s2)"></i>Физический контент</span>
+          <span><i style="background:var(--s3)"></i>Подписка и цифра</span>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">tonies<small>€630,3 млн</small></div>
+          <div class="bar-track">
+            <div class="seg a" style="width:25.6%">26%</div>
+            <div class="seg b" style="width:71.0%">71%</div>
+            <div class="seg c" style="width:3.4%"></div>
+          </div>
+        </div>
+        <div class="bar-row">
+          <div class="bar-label">Yoto<small>£94,8 млн (2024)</small></div>
+          <div class="bar-track">
+            <div class="seg a" style="width:40%">40%</div>
+            <div class="seg b" style="width:35%">35%</div>
+            <div class="seg c" style="width:25%">25%</div>
+          </div>
+        </div>
+        <p class="srcnote">У tonies подписка и цифра составляют 3,4% — подпись не помещается в сегмент.</p>
+      </div>
+
+      <div class="col">
+        <h3 style="margin-top:30px">Остальные игроки: что известно</h3>
+        <div class="tscroll">
+          <table>
+            <thead><tr><th>Компания</th><th>Опубликованные показатели</th></tr></thead>
+            <tbody>
+              <tr><td class="name">Yoto</td><td>Выручка 2024 — £94,8 млн, рост 86%. Более 1 млн активных устройств,
+                более 15 млн проданных карточек, attach выше 3 карточек на устройство в год.
+                Доли выручки за 2025: устройства около 40%, Yoto Club около 25%.
+                Всего привлечено $59,4 млн за 9 раундов; последний — заём $15 млн от HSBC Life в октябре 2024.
+                Отдельные агрегаторы приводят иную цифру — $44,2 млн ARR</td></tr>
+              <tr><td class="name">Miko</td><td>Выручка FY24 — ₹358 крор, около $43 млн.
+                Доход от подписки вырос в 29 раз год к году. Продано более 500 тыс. устройств за год,
+                рост продаж около 40% в год</td></tr>
+              <tr><td class="name">Storypod</td><td>Диапазон выручки $10–25 млн, привлечено $4 млн</td></tr>
+              <tr><td class="name">Haivivi / BubblePal</td><td>Более 200 тыс. проданных устройств,
+                более 300 тыс. семей. Среднемесячные продажи в 2024 — несколько тысяч штук,
+                к январю 2025 — более 20 тыс. в месяц</td></tr>
+              <tr><td class="name">FoloToy</td><td>Более 20 тыс. устройств в I квартале 2025,
+                заявленный план на 2025 год — 300 тыс.</td></tr>
+              <tr><td class="name">Amazon</td><td>Девайсное подразделение: убыток около $25 млрд за 2017–2021.
+                Убыток $3 млрд в I квартале 2022. Отдельно продуктовая экономика Echo не раскрывается</td></tr>
+              <tr><td class="name">Bondu</td><td>Привлечено $5,3 млн</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="xs">Себестоимость устройств никто из перечисленных не раскрывает.
+          Публичные ориентиры существуют только по разборам Amazon и Google:
+          Echo Dot первого поколения — BOM $45,39 при рознице $89,99;
+          второго поколения — $34,87 при рознице $49,99; Google Home — $43,44 при рознице $129.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="stack">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">09 — Цены AI-стека</span>
+      <h2>Сколько стоит минута голосового диалога</h2>
+      <p>Опубликованные прайс-листы провайдеров на середину 2026 года. Это справочные цены на облачные
+        API: собственные модели, локальный инференс и корпоративные контракты в эти цифры
+        не входят.</p>
+    </div>
+    <div class="wide">
+      <div class="tscroll">
+        <table>
+          <caption>Цены за минуту диалога. Готовые голосовые агенты продаются пакетом:
+            ElevenLabs Agents — $0,08/мин, Cartesia Line — $0,06/мин плюс $0,014 за номер,
+            Deepgram Voice Agent — $0,050–0,163/мин в зависимости от тарифа.</caption>
+          <thead><tr><th>Компонент</th><th class="num">Нижняя граница</th><th class="num">Верхняя граница</th><th>Примеры и примечания</th></tr></thead>
+          <tbody>
+            <tr><td>Распознавание речи</td><td class="num">$0,0025</td><td class="num">$0,012</td>
+              <td>Deepgram Nova-2 в потоковом режиме — около $0,0043/мин</td></tr>
+            <tr><td>LLM inference</td><td class="num">&lt;$0,05</td><td class="num">$0,20</td>
+              <td>Нижняя граница — компактные модели вроде GPT-4o mini, Claude Haiku, Gemini Flash;
+                верхняя — фронтир-модели уровня GPT-4o</td></tr>
+            <tr><td>Синтез речи</td><td class="num">$0,011</td><td class="num">$0,036</td>
+              <td>Deepgram и Azure TTS — около $0,011/мин; ElevenLabs — около $0,036/мин</td></tr>
+            <tr><td><strong>Собранный стек</strong></td><td class="num"><strong>$0,08</strong></td><td class="num"><strong>$0,15</strong></td>
+              <td>Типовые связки: Vapi с GPT-4o, Deepgram Nova-2 и ElevenLabs — $0,08–0,15/мин;
+                Retell с тем же набором — $0,11–0,15/мин</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col">
+        <p class="xs">Цены на инференс за 2024–2026 годы снижались; ни один из перечисленных провайдеров
+          не публикует прогноз стоимости на будущие периоды. Планы игроков рынка по себестоимости
+          обслуживания устройства и по переходу на собственные или локальные модели
+          в открытых источниках отсутствуют.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="regulation">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">10 — Регуляторика</span>
+      <h2>Что вступило в силу и что рассматривается</h2>
+      <p>Календарь по состоянию на август 2026 года.</p>
+    </div>
+    <div class="wide">
+      <div class="tscroll">
+        <table style="min-width:780px">
+          <thead><tr><th>Норма</th><th>Юрисдикция</th><th class="num">Статус</th><th>Содержание</th></tr></thead>
+          <tbody>
+            <tr><td class="name">Toy Safety Regulation 2025/2509</td><td>Евросоюз</td>
+              <td class="num">В силе с 01.01.2026</td>
+              <td>Ужесточённые требования к производителям, импортёрам и дистрибьюторам.
+                Цифровой паспорт продукта становится обязательным и заменяет декларацию о соответствии.
+                Игрушка со встроенной AI-системой попадает под регулирование;
+                отдельно стоящий детский чат-бот — нет</td></tr>
+            <tr><td class="name">Обновлённые правила COPPA</td><td>США, FTC</td>
+              <td class="num">Применяются с 22.04</td>
+              <td>Усиленные требования к уведомлению и получению согласия,
+                минимизация собираемых данных, прозрачность</td></tr>
+            <tr><td class="name">Children's AI Toy Safety Act of 2026 (S. 5171)</td><td>США, федеральный</td>
+              <td class="num">Внесён</td>
+              <td>Законопроект сенатора Тэмми Дакворт. Федеральные стандарты безопасности
+                для AI-продуктов, адресованных детям младше 13 лет: сбор данных, генерация контента,
+                влияние на психическое здоровье. Полномочия по надзору — у FTC.
+                Предполагает инвентаризацию всех AI-функций в продукте, включая распознавание голоса,
+                чат-ботов, алгоритмы персонализации и генеративный контент</td></tr>
+            <tr><td class="name">Законы штатов об AI-чатботах</td><td>США, штаты</td>
+              <td class="num">Приняты и вносятся</td>
+              <td>Обязательное раскрытие факта общения с AI, в ряде норм — с почасовыми напоминаниями.
+                Требования к механизмам обнаружения и реакции на признаки самоповреждения</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="col">
+        <p class="xs">Наблюдаемые события применения: в ноябре 2025 года после публикации отчёта PIRG
+          компания FoloToy приостановила продажи Kumma и начала аудит безопасности,
+          OpenAI отозвал доступ к своим моделям за нарушение правил защиты несовершеннолетних;
+          через неделю продажи возобновились. В декабре 2025 года Mattel отложила выпуск первых
+          AI-продуктов на фоне запросов сенаторов о прозрачности к производителям игрушек.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="masha">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">11 — Masha в цифрах</span>
+      <h2>Позиция IP и текущее присутствие в категории</h2>
+      <p>Публичные показатели франшизы и факт её представленности в экосистеме Tonies.</p>
+    </div>
+    <div class="wide">
+      <div class="factgrid">
+        <div><dt>Подписчиков на YouTube</dt><dd>53,2 млн<small>основной англоязычный канал,
+          2 063 видео, 33,2 млрд просмотров</small></dd></div>
+        <div><dt>Просмотров суммарно</dt><dd>100 млрд+<small>по всем каналам и языкам</small></dd></div>
+        <div><dt>Позиция в категории</dt><dd>№1 preschool<small>по данным Parrot Analytics;
+          в топ-5 детского контента с 2020 года, топ-10 самых востребованных шоу мира в 2024</small></dd></div>
+        <div><dt>География</dt><dd>150+ стран<small>переведён более чем на 25 языков</small></dd></div>
+        <div><dt>Лицензионных сделок</dt><dd>350+<small>Ferrero, Danone, Tonies, Spin Master,
+          Havaianas и другие</small></dd></div>
+        <div><dt>Медиа-сделок</dt><dd>300+<small>Warner Media, Amazon Prime, Rai, SBT, Televisa</small></dd></div>
+      </div>
+      <div class="col">
+        <div class="callout ink">
+          <h4>Masha &amp; the Bear Tonie</h4>
+          <p class="small" style="margin-bottom:0">Фигурка выпускается в экосистеме Tonies по лицензии
+            Animaccord LTD. Содержание: 9 треков — истории и песни, около 38 минут звучания.
+            Треклист: How They Met, Song of Jams, Red Riding Hood, Song About Cleanliness,
+            By the Pike's Wish, Song of Three Wishes, The Wolf and the Seven Young Kids,
+            Coming Home Song, Lullaby Song. Рекомендованный возраст — от 3 лет.
+            Требует отдельно приобретаемую Toniebox. Производство — Тунис.
+            Розничная цена в линейке Tonies — $17,99.</p>
+        </div>
+        <p class="xs">О компании: Animaccord основана в 2008 году, около 200 сотрудников,
+          региональные офисы в США, России, Китае, Польше и на Кипре.
+          Ключевые регионы присутствия франшизы — Латинская Америка, Ближний Восток и Северная Африка,
+          Китай, Индия. В Италии права на игры и пазлы у Ravensburger, активити-книги выпускает Play Press;
+          в Бразилии книги и активити-издания выпускает Ciranda Cultural.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="method">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="sec-num">12 — Метод</span>
+      <h2>Откуда данные и насколько им можно верить</h2>
+    </div>
+    <div class="col">
+      <p><strong>Раскрытая отчётность.</strong> Показатели tonies SE взяты из релизов по итогам
+        FY2024 и FY2025 и из сообщения о запуске Toniebox Lite от июля 2026 года.
+        Это единственный аудируемый источник в категории.</p>
+      <p><strong>Расчётные величины</strong> в разделе 07 получены арифметически из раскрытых
+        накопленных показателей. Компания публикует базу 2024 года в формате «более 8 млн»
+        и «более 100 млн», поэтому производные значения следует читать как верхнюю границу:
+        фактические величины могут быть ниже на 5–10%.</p>
+      <p><strong>Заявления компаний.</strong> Yoto, Miko, Storypod, Haivivi, FoloToy и Bondu
+        отчётность не публикуют; приведённые цифры — их собственные заявления в пресс-релизах
+        и интервью, независимо не подтверждённые. По Yoto открытые источники расходятся:
+        £94,8 млн выручки за 2024 год против оценки $44,2 млн ARR у агрегаторов.
+        Обе величины приведены без выбора между ними.</p>
+      <p><strong>Платформенный слой.</strong> Данные о Tuya, Volcano Engine и Espressif взяты
+        из их пресс-релизов и документации для разработчиков; заявления об экономии сроков
+        и бюджета приведены как утверждения компаний. По NeoHumans открытых данных мало:
+        год основания, основатель и отсутствие финансирования — из автоматических агрегаторов,
+        технические характеристики — с сайта компании, независимого подтверждения нет.</p>
+      <p><strong>Цены</strong> собраны с сайтов производителей и крупных ритейлеров на август 2026 года.
+        Промо-цены и цены отдельных сетей указаны там, где они устойчиво отличаются от прайса.</p>
+      <p><strong>Прайс AI-стека</strong> — публичные тарифы провайдеров на середину 2026 года.
+        Это опубликованные тарифы на облачные API.</p>
+
+      <div class="callout warn">
+        <h4>Чего в обзоре нет</h4>
+        <p class="small" style="margin-bottom:.55rem">Границы документа, чтобы они были явными:</p>
+        <ul class="tight small" style="margin-bottom:0">
+          <li>Нет реконструкции чужих бизнес-моделей и допущений об их окупаемости —
+            ни одна компания в категории их не раскрывает</li>
+          <li>Нет данных о retention и оттоке по конкретным продуктам: их не публикует никто,
+            включая tonies</li>
+          <li>Нет себестоимости устройств: единственные публичные ориентиры — разборы Echo Dot и Google Home</li>
+          <li>Нет полевых данных: родители не опрашивались, устройства не тестировались</li>
+          <li>Нет коммерческих условий платформенных поставщиков: цен на модули, лицензий на SDK
+            и минимальных партий никто из них публично не раскрывает</li>
+          <li>Нет оценок, рекомендаций и сценариев — по условиям задачи</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap"><div class="col">
+    <p class="xs" style="margin-bottom:.6rem"><strong>Источники:</strong>
+      релизы и отчётность tonies SE (FY2024, FY2025, Toniebox Lite, июль 2026);
+      сайты и пресс-релизы Yoto, Storypod, Miko, Curio, Haivivi, FoloToy, Bondu, Ropet, Keyi, Tuya;
+      корпоративные сообщения Mattel и OpenAI; отчёт PIRG об AI-игрушках (ноябрь 2025);
+      MIT Technology Review о рынке AI-игрушек в Китае; IEEE Spectrum о социальной робототехнике;
+      публикации о девайсном подразделении Amazon; разборы BOM ABI Research и TechInsights;
+      EU Toy Safety Regulation 2025/2509; правила COPPA (FTC); законопроект S. 5171;
+      прайс-листы Deepgram, ElevenLabs, Cartesia, Vapi, Retell; документация и релизы Tuya Smart, Volcano Engine, Espressif, OpenToys и NeoHumans;
+      профиль NeoHumans в Tracxn;
+      Parrot Analytics, License Global, Total Licensing по Masha and the Bear;
+      каталоги Amazon, Walmart, DNS, Ситилинк, Яндекс Маркет.</p>
+    <p class="xs" style="margin-bottom:0">Обзор рынка, август 2026. Документ описательный:
+      содержит наблюдаемые параметры продуктов и опубликованные показатели компаний,
+      без интерпретаций и рекомендаций.</p>
+  </div></div>
+</footer>
+</main>
+<nav id="pager" aria-label="Соседние документы"><a class="next" href="02-platform.html"><span class="dir">02 · дальше →</span><span class="ttl">Платформенный слой</span></a></nav>
+<footer id="appfoot"><hr>
+  Исследование по детским AI-девайсам · Animaccord · август 2026.
+  Все цифры сопровождаются источниками внутри документов.
+  <a href="index.html">К оглавлению</a>
+</footer>
+<script src="assets/app.js"></script>
+</body>
+</html>

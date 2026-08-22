@@ -1,0 +1,93 @@
+/* Shell chrome for the Animaccord research site.
+   Every selector here is id- or .app- scoped: the four documents bring their own
+   stylesheets with bare element selectors, and the two cascades must not meet. */
+
+:root{
+  --app-bg:#F2F4F2; --app-surface:#FCFDFC; --app-surface-2:#E9EDEA;
+  --app-ink:#121614; --app-ink-2:#464F4B; --app-ink-3:#7A837E;
+  --app-rule:#D5DBD7; --app-rule-strong:#B6BFB9;
+  --app-accent:#1C3A34; --app-accent-fg:#EDF2EF;
+  --app-bar-h:56px;
+  --app-shadow:0 1px 2px rgba(18,22,20,.06);
+  --app-sans:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
+  --app-serif:"Newsreader",Georgia,serif;
+  --app-mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --app-bg:#0E1211; --app-surface:#161B19; --app-surface-2:#1E2523;
+    --app-ink:#E6EAE7; --app-ink-2:#A8B2AD; --app-ink-3:#7B8580;
+    --app-rule:#2A322E; --app-rule-strong:#3C4641;
+    --app-accent:#8FBFAF; --app-accent-fg:#0E1211;
+    --app-shadow:0 1px 2px rgba(0,0,0,.4);
+  }
+}
+
+.app-skip{ position:absolute; left:-9999px; top:0; z-index:100;
+  background:var(--app-accent); color:var(--app-accent-fg); padding:10px 16px;
+  font:500 14px/1 var(--app-sans); text-decoration:none }
+.app-skip:focus{ left:8px; top:8px }
+
+/* ---------- top bar ---------- */
+#appbar{ position:fixed; inset:0 0 auto; z-index:50; height:var(--app-bar-h);
+  background:var(--app-surface); border-bottom:1px solid var(--app-rule);
+  display:flex; align-items:center; gap:20px; padding:0 20px;
+  font-family:var(--app-sans); font-size:14px; color:var(--app-ink) }
+#appbar *{ box-sizing:border-box }
+#appbar .mark{ display:flex; align-items:baseline; gap:8px; text-decoration:none;
+  border:0; color:var(--app-ink); white-space:nowrap; flex:0 0 auto }
+#appbar .mark b{ font:600 14px/1 var(--app-sans); letter-spacing:-.01em }
+#appbar .mark span{ font:400 10px/1 var(--app-mono); letter-spacing:.14em;
+  text-transform:uppercase; color:var(--app-ink-3) }
+#appbar nav{ display:flex; align-items:center; gap:2px; margin-left:auto; min-width:0 }
+#appbar nav a{ display:flex; align-items:baseline; gap:7px; text-decoration:none; border:0;
+  padding:7px 11px; color:var(--app-ink-2); font:500 13px/1.2 var(--app-sans);
+  white-space:nowrap; border-radius:2px }
+#appbar nav a i{ font:500 10px/1 var(--app-mono); font-style:normal; color:var(--app-ink-3);
+  letter-spacing:.08em }
+#appbar nav a:hover{ background:var(--app-surface-2); color:var(--app-ink) }
+#appbar nav a[aria-current="page"]{ background:var(--app-accent); color:var(--app-accent-fg) }
+#appbar nav a[aria-current="page"] i{ color:var(--app-accent-fg); opacity:.7 }
+#appbar .pdf{ flex:0 0 auto; text-decoration:none; border:1px solid var(--app-rule-strong);
+  padding:6px 11px; color:var(--app-ink-2); font:500 11px/1 var(--app-mono);
+  letter-spacing:.1em; text-transform:uppercase; border-radius:2px }
+#appbar .pdf:hover{ border-color:var(--app-accent); color:var(--app-accent) }
+#appbar .burger{ display:none; margin-left:auto; background:none;
+  border:1px solid var(--app-rule-strong); color:var(--app-ink); border-radius:2px;
+  padding:7px 12px; font:500 12px/1 var(--app-mono); letter-spacing:.08em; cursor:pointer }
+
+@media (max-width:1000px){
+  #appbar nav{ position:fixed; inset:var(--app-bar-h) 0 auto; flex-direction:column;
+    align-items:stretch; gap:0; background:var(--app-surface);
+    border-bottom:1px solid var(--app-rule); padding:6px; display:none }
+  #appbar nav[data-open="true"]{ display:flex }
+  #appbar nav a{ padding:13px 14px; font-size:15px }
+  #appbar .burger{ display:block }
+  #appbar .pdf{ display:none }
+}
+
+/* ---------- document frame ---------- */
+body{ padding-top:var(--app-bar-h) }
+#pager{ font-family:var(--app-sans); max-width:1180px; margin:0 auto;
+  padding:48px 28px 0; display:grid; grid-template-columns:1fr 1fr; gap:16px }
+#pager a{ display:block; text-decoration:none; border:1px solid var(--app-rule);
+  background:var(--app-surface); padding:18px 20px; border-radius:2px }
+#pager a:hover{ border-color:var(--app-accent) }
+#pager a .dir{ display:block; font:500 10px/1 var(--app-mono); letter-spacing:.14em;
+  text-transform:uppercase; color:var(--app-ink-3); margin-bottom:8px }
+#pager a .ttl{ display:block; font:600 17px/1.25 var(--app-serif); color:var(--app-ink) }
+#pager .next{ grid-column:2; text-align:right }
+#pager .prev{ grid-column:1 }
+@media (max-width:640px){ #pager{ grid-template-columns:1fr; padding:32px 18px 0 }
+  #pager .next,#pager .prev{ grid-column:1; text-align:left } }
+
+#appfoot{ font-family:var(--app-sans); max-width:1180px; margin:0 auto;
+  padding:40px 28px 64px; color:var(--app-ink-3); font-size:13px; line-height:1.6 }
+#appfoot a{ color:var(--app-ink-2); text-decoration:none; border-bottom:1px solid var(--app-rule-strong) }
+#appfoot a:hover{ color:var(--app-accent); border-color:var(--app-accent) }
+#appfoot hr{ border:0; border-top:1px solid var(--app-rule); margin:0 0 20px }
+
+@media print{
+  #appbar,#pager,#appfoot,.app-skip{ display:none !important }
+  body{ padding-top:0 !important }
+}
