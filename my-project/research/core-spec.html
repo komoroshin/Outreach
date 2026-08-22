@@ -1,0 +1,967 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<title>Спецификация ядра</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+@page{ size:A4; margin:16mm 15mm 18mm; }
+:root{
+  --ink:#121614; --ink-2:#454E4A; --ink-3:#767F7A;
+  --paper:#FFFFFF; --tint:#F1F4F2; --rule:#D3D9D5; --rule-2:#AEB8B2;
+  --accent:#1C3A34; --warn:#8A6410; --neg:#9B2C1F;
+}
+*{box-sizing:border-box}
+html,body{margin:0; padding:0; background:var(--paper); color:var(--ink)}
+body{ font-family:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:9.4pt; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+h1,h2,h3{ font-family:"Newsreader",Georgia,serif; font-weight:600; margin:0; text-wrap:balance }
+h1{ font-size:23pt; line-height:1.12; letter-spacing:-.01em }
+h2{ font-size:14pt; line-height:1.2; margin:0 0 3mm }
+h3{ font-size:10.5pt; line-height:1.25; font-family:"IBM Plex Sans",sans-serif; font-weight:600 }
+p{margin:0 0 2.6mm}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+.eyebrow{ font-family:"IBM Plex Mono",monospace; font-size:6.8pt; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--accent); font-weight:500 }
+.muted{color:var(--ink-2)}
+.xs{font-size:8pt; line-height:1.45; color:var(--ink-3)}
+
+/* cover */
+.cover{ border-bottom:2.5pt solid var(--accent); padding-bottom:5mm; margin-bottom:6mm }
+.cover .row{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5mm }
+.deck{ font-size:10.5pt; color:var(--ink-2); margin-top:3.5mm; max-width:150mm }
+.meta{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:.6pt solid var(--rule);
+  margin-top:6mm }
+.meta div{ padding:2.6mm 3mm; border-right:.6pt solid var(--rule) }
+.meta div:last-child{border-right:none}
+.meta dt{ font-family:"IBM Plex Mono",monospace; font-size:6.4pt; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 1.2mm }
+.meta dd{ margin:0; font-size:9pt; font-weight:600; line-height:1.25 }
+
+section{ margin-bottom:5.5mm }
+.sec-head{ border-top:1.2pt solid var(--ink); padding-top:2.5mm; margin-bottom:4mm }
+.sec-num{ display:block; font-family:"IBM Plex Mono",monospace; font-size:6.8pt;
+  letter-spacing:.14em; color:var(--accent); margin-bottom:1.8mm }
+.lead{ color:var(--ink-2); max-width:158mm }
+
+/* supplier card */
+.card{ border:.6pt solid var(--rule); margin-bottom:3.2mm; break-inside:avoid; page-break-inside:avoid }
+.card-top{ background:var(--tint); padding:2.8mm 3.5mm; border-bottom:.6pt solid var(--rule);
+  display:flex; justify-content:space-between; align-items:baseline; gap:4mm }
+.card-top h3{margin:0}
+.card-top .who{ font-size:8pt; color:var(--ink-2); text-align:right; white-space:nowrap }
+.card-body{ padding:2.6mm 3.5mm }
+.spec{ display:grid; grid-template-columns:32mm 1fr; gap:1.4mm 4mm }
+.spec dt{ font-family:"IBM Plex Mono",monospace; font-size:6.6pt; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3); padding-top:.6mm }
+.spec dd{ margin:0; font-size:9pt; line-height:1.45 }
+
+.tag{ display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:6.4pt;
+  letter-spacing:.08em; text-transform:uppercase; padding:.6mm 1.6mm; border:.6pt solid currentColor;
+  color:var(--ink-2); background:var(--paper); white-space:nowrap; font-weight:500 }
+.tag.w{color:var(--warn)} .tag.n{color:var(--neg)}
+
+table{ border-collapse:collapse; width:100%; font-size:8.4pt; break-inside:avoid }
+th,td{ text-align:left; padding:1.9mm 2.4mm; border-bottom:.6pt solid var(--rule); vertical-align:top }
+thead th{ font-family:"IBM Plex Mono",monospace; font-size:6.4pt; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3); font-weight:500; background:var(--tint);
+  border-bottom:.8pt solid var(--rule-2) }
+td.name{font-weight:600}
+td.num,th.num{ text-align:right; font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums; white-space:nowrap }
+tbody tr:last-child td{border-bottom:.6pt solid var(--rule)}
+caption{ caption-side:bottom; text-align:left; padding:2mm 0 0; font-size:7.6pt;
+  color:var(--ink-3); line-height:1.45 }
+
+.callout{ border:.6pt solid var(--rule-2); border-top:2pt solid var(--accent);
+  padding:3mm 3.5mm; margin:3.2mm 0; break-inside:avoid; background:var(--paper) }
+.callout.w{border-top-color:var(--warn)}
+.callout h3{margin:0 0 1.8mm}
+.callout p:last-child{margin-bottom:0}
+
+ul{margin:0 0 2.6mm; padding-left:4.2mm}
+li{margin-bottom:1.2mm}
+li::marker{color:var(--accent)}
+
+.split{ display:grid; grid-template-columns:1fr 1fr; gap:5mm }
+.sec-head{ break-after:avoid; page-break-after:avoid }
+footer{ border-top:.6pt solid var(--rule); padding-top:2.6mm; margin-top:4mm;
+  break-inside:avoid; page-break-inside:avoid }
+
+.ours{border-left:3pt solid var(--accent)}
+.theirs{border-left:3pt solid var(--warn)}
+.legend-row{display:flex; gap:6mm; flex-wrap:wrap; margin:3mm 0 5mm; font-size:8pt}
+.legend-row span{display:flex; align-items:center; gap:2mm}
+.legend-row i{display:inline-block; width:3mm; height:3mm}
+.form td{background:var(--paper)}
+.form .fill{background:var(--tint); color:var(--ink-3); font-style:italic}
+a{ color:var(--accent); text-decoration:none; border-bottom:.4pt solid var(--rule-2) }
+.srclist li{ margin-bottom:1mm }
+</style>
+</head>
+<body>
+<div class="cover">
+  <div class="row">
+    <span class="eyebrow">Animaccord · AI-девайс · спецификация</span>
+    <span class="xs mono">Август 2026</span>
+  </div>
+  <h1>Ядро слоя персонажа: спецификация работ</h1>
+  <p class="deck">Декомпозиция ядра до единиц работ с объёмом в человеко-днях и ролью
+    исполнителя. Документ написан под расчёт стоимости разработки: каждая строка сметы
+    имеет описание, признак готовности и зависимости.</p>
+  <dl class="meta">
+    <div><dt>Единиц работ</dt><dd>78</dd></div>
+    <div><dt>Прямые работы</dt><dd>1 261 чел-день</dd></div>
+    <div><dt>Горизонт</dt><dd>18 месяцев, 3 фазы</dd></div>
+    <div><dt>Оценки</dt><dd>Наши, проектные</dd></div>
+  </dl>
+</div>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">00 — Как считать</span>
+    <h2>Что это за цифры и как получить из них деньги</h2>
+  </div>
+  <p>Каждая единица работ описана строкой: что делается, сколько это стоит в человеко-днях
+    и какая роль её выполняет. Умножьте человеко-дни на свою дневную ставку по роли —
+    получится прямая стоимость разработки.</p>
+
+  <div class="callout ours">
+    <h3>Человеко-день здесь означает день конструирования</h3>
+    <p>В оценку каждой единицы входит проектирование, написание кода, тесты на неё
+      и исправление найденного при интеграции. За её пределами остаются: совещания,
+      согласования с правообладателем, найм и выход людей на скорость, отпуска,
+      ожидание решений на стороне заказчика, а также производство самого контента канона.
+      В разделе 16 эти накладные вынесены отдельной строкой с коэффициентом.</p>
+    <p style="margin-bottom:0">Оценки даны для команды, знакомой с голосовыми продуктами.
+      Команда, собирающая первый разговорный продукт, укладывается в те же строки
+      при коэффициенте 1,3–1,5 на единицы с пометкой «ML».</p>
+  </div>
+
+  <table>
+    <caption>Коды ролей используются по всему документу.</caption>
+    <thead><tr><th>Код</th><th>Роль</th><th>Где занята плотнее всего</th></tr></thead>
+    <tbody>
+      <tr><td class="name mono">ARCH</td><td>Архитектор</td><td>Разделы 03, 13, 15 — контракты и границы</td></tr>
+      <tr><td class="name mono">BE</td><td>Бэкенд-инженер</td><td>Рантайм, память, порталы, развёртывание</td></tr>
+      <tr><td class="name mono">ML</td><td>ML-инженер</td><td>Фильтры, маршрутизация, судья, голос, ключевое слово</td></tr>
+      <tr><td class="name mono">FE</td><td>Фронтенд-инженер</td><td>Конструктор канона, портал лицензиата, дашборды</td></tr>
+      <tr><td class="name mono">EMB</td><td>Инженер встраиваемого ПО</td><td>Прошивка, аудиотракт, офлайн, обновления</td></tr>
+      <tr><td class="name mono">DE</td><td>Инженер данных</td><td>Корпуса, каталог, конвейер контента, телеметрия</td></tr>
+      <tr><td class="name mono">SND</td><td>Звукорежиссёр</td><td>Тембр, мастеринг, склейка аудио</td></tr>
+      <tr><td class="name mono">ED</td><td>Редактор канона</td><td>Канон, сценарии приёмки, реплики отката</td></tr>
+      <tr><td class="name mono">QA</td><td>Инженер по качеству</td><td>Приёмочный контур, регрессия, нагрузка</td></tr>
+      <tr><td class="name mono">SEC</td><td>Безопасность и комплаенс</td><td>Хранение, согласия, модель угроз</td></tr>
+      <tr><td class="name mono">PM</td><td>Продукт и управление</td><td>Сквозная строка раздела 12</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01 — Границы</span>
+    <h2>Что входит в смету, что берётся готовым и что лежит снаружи</h2>
+  </div>
+
+  <div class="split">
+    <div>
+      <h3 style="margin-bottom:6px">Входит</h3>
+      <ul>
+        <li>Шесть компонентов ядра, разделы 04–09</li>
+        <li>Часть прошивки, отвечающая за поведение персонажа: ключевое слово, офлайн-режим,
+          кэш аудио, аудиотракт — раздел 10</li>
+        <li>Переносимость: адаптеры портов, локали, абстракция комплаенса — раздел 11</li>
+        <li>Сквозные работы: платформа сборки, наблюдаемость, безопасность — раздел 12</li>
+      </ul>
+      <h3 style="margin:5mm 0 6px">Берётся готовым</h3>
+      <ul>
+        <li>Модели генерации, распознавания и синтеза — по прайсам поставщиков</li>
+        <li>Облако, хранилище, очереди, база данных</li>
+        <li>Плата и модуль устройства, аудиокодек, корпус</li>
+        <li>Библиотеки оркестрации голосового диалога, если подойдут по задержке
+          и по размещению данных</li>
+      </ul>
+    </div>
+    <div>
+      <h3 style="margin-bottom:6px">Лежит снаружи ядра</h3>
+      <ul>
+        <li>Промышленный дизайн, оснастка, сертификация и производство устройства</li>
+        <li>Мобильное приложение для родителя как продукт: ядро отдаёт данные и события,
+          интерфейс приложения считается отдельно</li>
+        <li>Биллинг, платежи, подписки, магазин контента</li>
+        <li>Маркетинг, каналы продаж, розница, поддержка пользователей</li>
+        <li>Производство самого контента: запись эпизодов, песен, историй.
+          Конвейер под это входит в смету, наполнение — производственный бюджет</li>
+        <li>Юридическая работа: договор с актрисой озвучания, форма лицензии,
+          регистрация прав на модель голоса</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02 — Требования</span>
+    <h2>Нефункциональные требования, от которых зависит объём работ</h2>
+  </div>
+  <p class="lead">Ниже — проектные бюджеты. Замеры появятся на прототипе фазы 1;
+    до этого цифры служат целями конструирования.</p>
+
+  <h3 style="margin-top:5mm; margin-bottom:2mm">Бюджет задержки на один обмен репликами</h3>
+  <table>
+    <caption>Сумма — от 870 мс до 1,6 с до первого звука ответа. Целевой коридор — 1–1,5 с;
+      выше 2 с ребёнок перестаёт воспринимать ответ как реакцию на своё.</caption>
+    <thead><tr><th>Шаг</th><th class="num">Бюджет</th><th>Замечание</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Определение конца реплики</td><td class="num">150–250 мс</td>
+        <td>На устройстве. Дети делают длинные паузы внутри фразы — порог настраивается по возрасту</td></tr>
+      <tr><td class="name">Распознавание речи</td><td class="num">200–350 мс</td>
+        <td>Потоковое, до финальной гипотезы после конца речи</td></tr>
+      <tr><td class="name">Проверка входа</td><td class="num">30–60 мс</td>
+        <td>Классификаторы запрещённых тем и тревожных ситуаций, параллельно</td></tr>
+      <tr><td class="name">Сборка контекста</td><td class="num">40–80 мс</td>
+        <td>Профиль, релевантные факты памяти, фрагменты канона</td></tr>
+      <tr><td class="name">Выбор маршрута</td><td class="num">10–30 мс</td>
+        <td>Кэш, библиотека или модель; выбор модели по сложности</td></tr>
+      <tr><td class="name">Генерация до первого токена</td><td class="num">250–500 мс</td>
+        <td>Ноль при попадании в кэш или готовую реплику</td></tr>
+      <tr><td class="name">Проверка выхода</td><td class="num">40–80 мс</td>
+        <td>На первом фрагменте потока, дальше — вдогонку</td></tr>
+      <tr><td class="name">Синтез до первого звука</td><td class="num">150–250 мс</td>
+        <td>Потоковый; при готовом аудио — время чтения из кэша</td></tr>
+    </tbody>
+  </table>
+
+  <table style="margin-top:5mm">
+    <caption>Остальные требования, влияющие на состав работ.</caption>
+    <thead><tr><th>Требование</th><th class="num">Значение</th><th>Что из него следует</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Доступность диалога</td><td class="num">99,5%</td>
+        <td>Резервирование на уровне поставщиков моделей, а не только зон облака:
+          нужен второй поставщик по каждому порту</td></tr>
+      <tr><td class="name">Работа без сети</td><td class="num">полный сценарий</td>
+        <td>Готовое аудио и офлайн-сценарий на устройстве. Отдельная строка сметы, раздел 10</td></tr>
+      <tr><td class="name">Себестоимость на активное устройство</td><td class="num">≤ 304 ₽/мес</td>
+        <td>Достигается кэшем, маршрутизацией и долей готового контента 80–90%.
+          Это требование, из которого вырастают четыре единицы работ рантайма</td></tr>
+      <tr><td class="name">Одновременных сессий</td><td class="num">3–5% базы</td>
+        <td>При 100 тыс. активных устройств — 3–5 тыс. параллельных диалогов в пике</td></tr>
+      <tr><td class="name">Пик к среднему</td><td class="num">×4</td>
+        <td>Вечерние часы и выходные. Определяет автомасштабирование и квоты</td></tr>
+      <tr><td class="name">Срок хранения аудио</td><td class="num">0 по умолчанию</td>
+        <td>Аудио не сохраняется, кроме явного согласия на улучшение распознавания.
+          Упрощает 152-ФЗ и COPPA, усложняет отладку — нужен режим диагностики</td></tr>
+      <tr><td class="name">Возраст аудитории</td><td class="num">2–6 лет</td>
+        <td>Определяет требования к распознаванию, длину ответов и сценарные форматы</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03 — Карта</span>
+    <h2>Компоненты и как они связаны</h2>
+  </div>
+  <p>Активен в момент диалога один компонент — рантайм. Остальные пять готовят то,
+    чем он пользуется, или проверяют то, что он сделал.</p>
+  <table>
+    <thead><tr><th>Компонент</th><th>Что даёт рантайму</th><th>Кто правит</th><th class="num">Раздел</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Character Runtime</td><td>Сам обрабатывает каждую реплику</td>
+        <td>Инженеры, редко</td><td class="num">04</td></tr>
+      <tr><td class="name">Конструктор канона</td><td>Актуальную версию персонажа как пакет</td>
+        <td>Редакторы, постоянно</td><td class="num">05</td></tr>
+      <tr><td class="name">Голосовой пайплайн</td><td>Озвучивает то, что рантайм решил сказать</td>
+        <td>Тембр почти неизменен</td><td class="num">06</td></tr>
+      <tr><td class="name">Сервис памяти</td><td>Контекст о ребёнке и историю общения</td>
+        <td>Редко, с юридическими последствиями</td><td class="num">07</td></tr>
+      <tr><td class="name">Приёмочный контур</td><td>Проверяет поведение и ловит регрессии</td>
+        <td>Набор растёт постоянно</td><td class="num">08</td></tr>
+      <tr><td class="name">Фабрика контента</td><td>Наполняет библиотеку готовых ответов</td>
+        <td>Непрерывный процесс</td><td class="num">09</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04 — Компонент 1</span>
+    <h2>Character Runtime</h2>
+  </div>
+  <p class="lead">Сервис, обрабатывающий каждую реплику ребёнка. Крупнейшая и самая
+    инженерно-ёмкая часть ядра.</p>
+  <table>
+    <thead><tr><th>Единица работ</th><th>Содержание</th><th class="num">Чел-дни</th><th class="num">Роль</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Каркас сервиса диалога</td>
+        <td>Сессии, состояние разговора, конкурентность, изоляция устройств, корректное
+          завершение, наблюдаемость на уровне реплики</td><td class="num">15</td><td class="num mono">BE</td></tr>
+      <tr><td class="name">Приём аудио и определение конца реплики</td>
+        <td>Потоковый приём, VAD, пороги паузы под возраст, обработка фонового шума
+          и чужой речи в комнате</td><td class="num">12</td><td class="num mono">ML BE</td></tr>
+      <tr><td class="name">Обработка перебивания</td>
+        <td>Дуплексный режим, отмена текущего синтеза, склейка состояния после прерывания</td>
+        <td class="num">10</td><td class="num mono">BE</td></tr>
+      <tr><td class="name">Адаптер распознавания</td>
+        <td>Единый интерфейс к порту «речь → текст», потоковая передача, ретраи,
+          деградация на локальную модель</td><td class="num">8</td><td class="num mono">BE</td></tr>
+      <tr><td class="name">Входной фильтр: запрещённые темы</td>
+        <td>Классификатор на списке тем канона, пороги, объяснимость срабатывания</td>
+        <td class="num">14</td><td class="num mono">ML</td></tr>
+      <tr><td class="name">Входной фильтр: тревожные ситуации</td>
+        <td>Признаки беды дома, самоповреждения, насилия. Предписанная реакция персонажа
+          и уведомление родителя</td><td class="num">12</td><td class="num mono">ML ED</td></tr>
+      <tr><td class="name">Сборщик контекста</td>
+        <td>Профиль ребёнка, релевантные факты из памяти, релевантные фрагменты канона.
+          Поиск по канону, ранжирование, укладка в окно модели</td><td class="num">20</td><td class="num mono">BE ML</td></tr>
+      <tr><td class="name">Маршрутизатор</td>
+        <td>Классификатор сложности реплики, выбор между кэшем, готовой библиотекой
+          и моделью, выбор модели по сложности. Прямо отвечает за себестоимость минуты</td>
+        <td class="num">18</td><td class="num mono">ML BE</td></tr>
+      <tr><td class="name">Кэш ответов</td>
+        <td>Ключи с учётом контекста, инвалидация при смене версии канона или модели,
+          метрики попаданий, прогрев</td><td class="num">12</td><td class="num mono">BE</td></tr>
+      <tr><td class="name">Адаптер моделей</td>
+        <td>Единый интерфейс к порту «модель», потоковая генерация, таймауты,
+          фолбэк на второго поставщика</td><td class="num">14</td><td class="num mono">BE</td></tr>
+      <tr><td class="name">Выходной фильтр</td>
+        <td>Соответствие образу и канону, безопасность, отсутствие выдуманных фактов
+          о вселенной. Работает на потоке, чтобы не съедать бюджет задержки</td>
+        <td class="num">20</td><td class="num mono">ML</td></tr>
+      <tr><td class="name">Детектор выпадения из образа</td>
+        <td>Признаки того, что отвечает ассистент, а не персонаж. Откат на утверждённую
+          реплику из пула канона</td><td class="num">12</td><td class="num mono">ML ED</td></tr>
+      <tr><td class="name">Адаптер синтеза и склейка</td>
+        <td>Потоковая отдача звука, бесшовное соединение готового аудио с синтезом</td>
+        <td class="num">12</td><td class="num mono">BE SND</td></tr>
+      <tr><td class="name">Квоты и лимиты</td>
+        <td>Суточная квота диалога, лимиты на устройство и на семью, поведение персонажа
+          при исчерпании квоты</td><td class="num">8</td><td class="num mono">BE ED</td></tr>
+      <tr><td class="name">Телеметрия реплики</td>
+        <td>Событийная модель, трассировка полного пути реплики, стоимость и задержка
+          по каждому шагу</td><td class="num">12</td><td class="num mono">BE DE</td></tr>
+      <tr><td class="name">Нагрузка и оптимизация задержки</td>
+        <td>Профилирование, устранение узких мест, проверка поведения на пиковом профиле
+          из раздела 02</td><td class="num">15</td><td class="num mono">BE QA</td></tr>
+    </tbody>
+  </table>
+  <div class="callout ours">
+    <h3>Готово, когда</h3>
+    <p style="margin-bottom:0">Полный обмен репликами укладывается в бюджет раздела 02
+      на пиковом профиле; при отключении любого одного поставщика диалог продолжается;
+      при исчерпании квоты и при потере сети персонаж отвечает предписанной репликой;
+      каждая реплика прослеживается в телеметрии от звука до звука с указанием стоимости.
+      <strong>Итого 214 чел-дней.</strong></p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05 — Компонент 2</span>
+    <h2>Конструктор канона</h2>
+  </div>
+  <p class="lead">Инструмент, в котором персонаж описывается людьми, отвечающими за канон.
+    Компонент, отсутствие которого делает продукт неподдерживаемым: каждая правка характера
+    превращается в задачу разработчику.</p>
+  <table>
+    <thead><tr><th>Единица работ</th><th>Содержание</th><th class="num">Чел-дни</th><th class="num">Роль</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Схема канона</td>
+        <td>Модель данных: лексикон, реестр знаний, запреты, пул реплик, правила ремикса.
+          Определяет всё остальное в этом разделе</td><td class="num">12</td><td class="num mono">ARCH BE</td></tr>
+      <tr><td class="name">Редактор лексикона и манер</td>
+        <td>Словечки, обороты, длина реплик, обращения, запрещённые для персонажа слова</td>
+        <td class="num">15</td><td class="num mono">FE BE</td></tr>
+      <tr><td class="name">Реестр знаний</td>
+        <td>Кого персонаж знает, что произошло в сериях, кем кто приходится. Сущности,
+          связи, события с привязкой к эпизодам</td><td class="num">20</td><td class="num mono">FE BE</td></tr>
+      <tr><td class="name">Запреты и реакции</td>
+        <td>Темы, которых персонаж не касается, и предписанные ответы на них</td>
+        <td class="num">12</td><td class="num mono">FE ED</td></tr>
+      <tr><td class="name">Пул реплик и историй</td>
+        <td>Одобренные реплики и сюжеты, теги, поиск, пометки допустимого контекста</td>
+        <td class="num">15</td><td class="num mono">FE BE</td></tr>
+      <tr><td class="name">Правила ремикса</td>
+        <td>В каких пределах модель пересобирает готовый материал: что можно менять,
+          что цитируется дословно</td><td class="num">12</td><td class="num mono">BE ED</td></tr>
+      <tr><td class="name">Версионирование</td>
+        <td>Ветки, диффы, история изменений, откат к предыдущей версии канона</td>
+        <td class="num">18</td><td class="num mono">BE</td></tr>
+      <tr><td class="name">Ревью и согласование</td>
+        <td>Роли, статусы, маршрут утверждения у правообладателя, журнал решений</td>
+        <td class="num">15</td><td class="num mono">BE FE</td></tr>
+      <tr><td class="name">Публикация без релиза софта</td>
+        <td>Сборка пакета канона, подпись, выкатка в рантайм, инвалидация кэша</td>
+        <td class="num">15</td><td class="num mono">BE</td></tr>
+      <tr><td class="name">Импорт существующей библиотеки</td>
+        <td>Разбор имеющихся материалов франшизы в структуру канона</td>
+        <td class="num">12</td><td class="num mono">DE ED</td></tr>
+      <tr><td class="name">Каркас интерфейса</td>
+        <td>Навигация, аутентификация, права доступа, работа нескольких редакторов</td>
+        <td class="num">18</td><td class="num mono">FE BE</td></tr>
+      <tr><td class="name">Песочница предпросмотра</td>
+        <td>Редактор видит, как правка меняет ответ, до публикации: прогон на рантайме
+          с черновой версией канона</td><td class="num">15</td><td class="num mono">FE BE</td></tr>
+    </tbody>
+  </table>
+  <div class="callout ours">
+    <h3>Готово, когда</h3>
+    <p style="margin-bottom:0">Редактор без участия разработчика меняет характер персонажа,
+      видит результат в песочнице, отправляет правку на согласование и публикует её в прод;
+      предыдущая версия откатывается одним действием. <strong>Итого 179 чел-дней.</strong></p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06 — Компонент 3</span>
+    <h2>Голосовой пайплайн</h2>
+  </div>
+  <p class="lead">Технология синтеза и отдельно — тембр персонажа как актив. Тембр держит
+    всю лицензионную конструкцию: это единственная часть ядра, которую невозможно
+    воспроизвести без правообладателя.</p>
+  <table>
+    <thead><tr><th>Единица работ</th><th>Содержание</th><th class="num">Чел-дни</th><th class="num">Роль</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Корпус записей тембра</td>
+        <td>Сбор, чистка, разметка студийных записей голоса персонажа; отбор материала
+          по эмоциям и темпу</td><td class="num">15</td><td class="num mono">SND DE</td></tr>
+      <tr><td class="name">Модель голоса</td>
+        <td>Обучение или адаптация, слепая приёмка качества с участием правообладателя,
+          подбор параметров под детское восприятие</td><td class="num">20</td><td class="num mono">ML SND</td></tr>
+      <tr><td class="name">Потоковый синтез</td>
+        <td>Разбиение на фрагменты, буферизация, ровный темп при переменной сети</td>
+        <td class="num">12</td><td class="num mono">BE</td></tr>
+      <tr><td class="name">Словарь произношения</td>
+        <td>Имена, названия из вселенной, заимствования, детские искажения слов</td>
+        <td class="num">10</td><td class="num mono">SND ED</td></tr>
+      <tr><td class="name">Деградация при плохой связи</td>
+        <td>Понижение качества вместо обрыва, запасной локальный голос на устройстве</td>
+        <td class="num">12</td><td class="num mono">BE EMB</td></tr>
+      <tr><td class="name">Защищённая поставка тембра</td>
+        <td>Пакет модели с ограничением по сроку и объёму, привязка к лицензиату,
+          водяной знак в синтезированном звуке. Техническая опора лицензии</td>
+        <td class="num">18</td><td class="num mono">ML SEC</td></tr>
+      <tr><td class="name">Склейка с готовым аудио</td>
+        <td>Бесшовный переход между записанным материалом и синтезом: уровни, паузы, тембр</td>
+        <td class="num">10</td><td class="num mono">SND BE</td></tr>
+    </tbody>
+  </table>
+  <div class="callout ours">
+    <h3>Готово, когда</h3>
+    <p style="margin-bottom:0">Правообладатель принимает голос вслепую; переход между готовой
+      записью и синтезом неразличим на слух; модель тембра уезжает лицензиату в пакете,
+      который перестаёт работать по истечении срока. <strong>Итого 97 чел-дней.</strong></p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">07 — Компонент 4</span>
+    <h2>Сервис памяти</h2>
+  </div>
+  <p class="lead">Что персонаж знает о ребёнке, на какой срок, что видит родитель и что
+    удаляется по запросу. Отдельно — как персонаж помнит: в своей манере.</p>
+  <table>
+    <thead><tr><th>Единица работ</th><th>Содержание</th><th class="num">Чел-дни</th><th class="num">Роль</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Модель данных</td>
+        <td>Профиль ребёнка, факты, эпизоды общения, связи с каноном. Схема одна на все
+          юрисдикции, политики — параметры</td><td class="num">12</td><td class="num mono">ARCH BE</td></tr>
+      <tr><td class="name">Извлечение фактов</td>
+        <td>Что запомнить из диалога, дедупликация, разрешение противоречий, срок жизни факта</td>
+        <td class="num">18</td><td class="num mono">ML BE</td></tr>
+      <tr><td class="name">Ранжирование релевантности</td>
+        <td>Какие факты подать в контекст на текущую реплику при ограниченном окне</td>
+        <td class="num">12</td><td class="num mono">ML</td></tr>
+      <tr><td class="name">Манера припоминания</td>
+        <td>Как персонаж ссылается на прошлое: живая отсылка вместо перечисления фактов</td>
+        <td class="num">10</td><td class="num mono">ED ML</td></tr>
+      <tr><td class="name">Политики хранения</td>
+        <td>Срок, место, состав данных как конфигурация под юрисдикцию.
+          Готовые наборы под 152-ФЗ, COPPA, EU TSR</td><td class="num">14</td><td class="num mono">SEC BE</td></tr>
+      <tr><td class="name">Согласие и удаление</td>
+        <td>Механика согласия родителя, отзыв, полное удаление, экспорт данных семьи</td>
+        <td class="num">15</td><td class="num mono">BE SEC</td></tr>
+      <tr><td class="name">Родительские сводки</td>
+        <td>Что ребёнок спрашивал, сколько разговаривал, что персонаж запомнил.
+          Ядро отдаёт данные и события; интерфейс приложения — вне сметы</td>
+        <td class="num">12</td><td class="num mono">BE</td></tr>
+      <tr><td class="name">Защита и аудит</td>
+        <td>Шифрование, разграничение доступа, журнал обращений к данным ребёнка</td>
+        <td class="num">15</td><td class="num mono">SEC BE</td></tr>
+    </tbody>
+  </table>
+  <div class="callout ours">
+    <h3>Готово, когда</h3>
+    <p style="margin-bottom:0">Персонаж живо ссылается на сказанное неделю назад; родитель
+      видит сводку и удаляет данные одним действием; смена юрисдикции меняет конфигурацию,
+      а не схему. <strong>Итого 108 чел-дней.</strong></p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">08 — Компонент 5</span>
+    <h2>Приёмочный контур</h2>
+  </div>
+  <p class="lead">Механизм, которым лицензия на говорящего персонажа проверяется перед
+    выпуском SKU. Без него сборку невозможно отдать наружу, а модель — спокойно поменять.</p>
+  <table>
+    <thead><tr><th>Единица работ</th><th>Содержание</th><th class="num">Чел-дни</th><th class="num">Роль</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Формат сценария и хранилище</td>
+        <td>Как описывается проверка, ожидаемое поведение и критерий прохождения</td>
+        <td class="num">10</td><td class="num mono">ARCH QA</td></tr>
+      <tr><td class="name">Прогонщик</td>
+        <td>Параллельный запуск сотен сценариев, запись полных трасс, воспроизводимость</td>
+        <td class="num">15</td><td class="num mono">QA BE</td></tr>
+      <tr><td class="name">Модель-судья</td>
+        <td>Оценка по критериям: в образе, соответствие канону, безопасность, задержка,
+          стоимость. Калибровка по согласию с оценками людей</td><td class="num">25</td><td class="num mono">ML QA</td></tr>
+      <tr><td class="name">Первые 300 сценариев</td>
+        <td>Типичные детские реплики, провокации, повторы, попытки вывести из образа,
+          тяжёлые вопросы, вопросы о природе собеседника</td><td class="num">25</td><td class="num mono">ED QA</td></tr>
+      <tr><td class="name">Режим регрессии</td>
+        <td>Автоматический прогон при изменении промпта, канона, модели или поставщика;
+          блокировка выкатки при падении порога</td><td class="num">12</td><td class="num mono">QA BE</td></tr>
+      <tr><td class="name">Мониторинг прода</td>
+        <td>Регулярный прогон на живой системе, чтобы поймать молчаливое обновление модели
+          у поставщика</td><td class="num">15</td><td class="num mono">QA BE</td></tr>
+      <tr><td class="name">Сертификация лицензиата</td>
+        <td>Пороги допуска, отчёт о прохождении, право на знак «официальный голос»</td>
+        <td class="num">15</td><td class="num mono">BE PM</td></tr>
+      <tr><td class="name">Портал лицензиата</td>
+        <td>Загрузка сборки, запуск приёмки, результат с разбором несоответствий,
+          история попыток</td><td class="num">25</td><td class="num mono">FE BE</td></tr>
+      <tr><td class="name">Дашборд качества</td>
+        <td>Качество, задержка и стоимость в динамике; сравнение версий канона и моделей</td>
+        <td class="num">15</td><td class="num mono">FE DE</td></tr>
+    </tbody>
+  </table>
+  <div class="callout ours">
+    <h3>Готово, когда</h3>
+    <p style="margin-bottom:0">Смена модели проходит за один прогон с понятным вердиктом;
+      лицензиат самостоятельно получает допуск через портал; молчаливое обновление
+      у поставщика видно из отчёта, а не из отзывов родителей.
+      <strong>Итого 157 чел-дней.</strong></p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">09 — Компонент 6</span>
+    <h2>Фабрика контента</h2>
+  </div>
+  <p class="lead">Конвейер, превращающий библиотеку и канон в озвученный контент.
+    Экономический смысл: готовый контент имеет нулевую предельную себестоимость, и каждая
+    минута на нём — прямая экономия в COGS.</p>
+  <table>
+    <thead><tr><th>Единица работ</th><th>Содержание</th><th class="num">Чел-дни</th><th class="num">Роль</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Конвейер производства</td>
+        <td>Сценарий → текст → озвучка → мастеринг → упакованный пак. Со статусами
+          и возвратом на доработку</td><td class="num">20</td><td class="num mono">BE DE</td></tr>
+      <tr><td class="name">Контроль канона на входе</td>
+        <td>Проверка сценария на соответствие канону до записи, чтобы не переозвучивать</td>
+        <td class="num">12</td><td class="num mono">BE ED</td></tr>
+      <tr><td class="name">Маршрут согласования</td>
+        <td>Утверждение материалов правообладателем, журнал решений, версии</td>
+        <td class="num">12</td><td class="num mono">BE PM</td></tr>
+      <tr><td class="name">Каталог</td>
+        <td>Метаданные, теги, возрастная адресация, длительность, права по территориям</td>
+        <td class="num">12</td><td class="num mono">DE BE</td></tr>
+      <tr><td class="name">Доставка на устройство</td>
+        <td>Паки, обновления дельтами, приоритет закачки, ограничение по памяти платы</td>
+        <td class="num">15</td><td class="num mono">BE EMB</td></tr>
+      <tr><td class="name">Инструмент редактора</td>
+        <td>Сборка эпизодов и сезонных наборов без участия разработчика</td>
+        <td class="num">15</td><td class="num mono">FE</td></tr>
+    </tbody>
+  </table>
+  <div class="callout ours">
+    <h3>Готово, когда</h3>
+    <p style="margin-bottom:0">Редактор собирает и выпускает новый набор контента без задачи
+      разработчику; готовое аудио доезжает до устройства и подхватывается рантаймом
+      как маршрут с нулевой себестоимостью. <strong>Итого 86 чел-дней.</strong></p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">10 — На устройстве</span>
+    <h2>Часть прошивки, отвечающая за поведение персонажа</h2>
+  </div>
+  <p class="lead">Эти работы идут параллельно ядру с первого дня: их результат нужен рантайму
+    уже на первой фазе, а собственная цепочка железа — оснастка, сертификация, партия —
+    длиннее программной.</p>
+  <table>
+    <thead><tr><th>Единица работ</th><th>Содержание</th><th class="num">Чел-дни</th><th class="num">Роль</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Ключевое слово</td>
+        <td>Обучение детектора на собственном корпусе, интеграция, настройка порогов
+          ложных срабатываний. Корпус детской речи — отдельная статья бюджета</td>
+        <td class="num">25</td><td class="num mono">ML EMB</td></tr>
+      <tr><td class="name">Локальное определение конца реплики</td>
+        <td>Снимает сетевой круг с самого частого шага и экономит 100–200 мс</td>
+        <td class="num">12</td><td class="num mono">EMB ML</td></tr>
+      <tr><td class="name">Кэш аудио на устройстве</td>
+        <td>Частые ответы и приветствия локально: ноль сети и ноль себестоимости</td>
+        <td class="num">15</td><td class="num mono">EMB</td></tr>
+      <tr><td class="name">Офлайн-сценарий</td>
+        <td>Полный сценарий общения без сети, включая объяснение персонажем происходящего.
+          Требование, а не удобство</td><td class="num">18</td><td class="num mono">EMB ED</td></tr>
+      <tr><td class="name">Аудиотракт</td>
+        <td>Эхоподавление, шумоподавление, работа микрофонного массива. Определяет качество
+          распознавания детской речи сильнее, чем выбор модели ASR</td>
+        <td class="num">20</td><td class="num mono">EMB SND</td></tr>
+      <tr><td class="name">Обновления по воздуху</td>
+        <td>Доставка прошивки и паков контента, проверка подписи, откат при сбое</td>
+        <td class="num">15</td><td class="num mono">EMB BE</td></tr>
+      <tr><td class="name">Реестр устройств</td>
+        <td>Провижининг, привязка к аккаунту семьи, состояние парка, вывод из эксплуатации</td>
+        <td class="num">15</td><td class="num mono">BE EMB</td></tr>
+    </tbody>
+  </table>
+  <div class="callout ours">
+    <h3>Что нужно решить до начала этих работ</h3>
+    <p style="margin-bottom:0">Где выполняются распознавание и синтез — в облаке или
+      на устройстве. Решение определяет одновременно себестоимость минуты, ответ регулятору
+      о голосе ребёнка и класс платы, а значит BOM. Пока оно открыто, объём этого раздела
+      держится диапазоном. <strong>Итого 120 чел-дней при облачном варианте;
+      локальный инференс добавляет 40–70.</strong></p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">11 — Переносимость</span>
+    <h2>Работы, превращающие инсталляцию в лицензируемое право</h2>
+  </div>
+  <p class="lead">Третья фаза. Пока эти работы не сделаны, зарубежная версия собирается заново,
+    и лицензионный сценарий не работает.</p>
+  <table>
+    <thead><tr><th>Единица работ</th><th>Содержание</th><th class="num">Чел-дни</th><th class="num">Роль</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Адаптеры вторых поставщиков</td>
+        <td>По каждому из шести портов — второй работающий поставщик и тесты
+          на переключение</td><td class="num">40</td><td class="num mono">BE ML</td></tr>
+      <tr><td class="name">Локали</td>
+        <td>Язык интерфейса и персонажа, культурные правила канона, произношение,
+          возрастные нормы</td><td class="num">25</td><td class="num mono">BE ED</td></tr>
+      <tr><td class="name">Абстракция комплаенса</td>
+        <td>Политики хранения, согласий и модерации как конфигурация под юрисдикцию</td>
+        <td class="num">25</td><td class="num mono">SEC BE</td></tr>
+      <tr><td class="name">Пакетирование ядра</td>
+        <td>Контейнеры, описание инфраструктуры, конфигурация под чужое облако</td>
+        <td class="num">25</td><td class="num mono">BE</td></tr>
+      <tr><td class="name">Установка и документация</td>
+        <td>Сценарий развёртывания у лицензиата, диагностика, руководство инженера</td>
+        <td class="num">20</td><td class="num mono">BE PM</td></tr>
+      <tr><td class="name">Конформанс-спецификация</td>
+        <td>Канон как описание поведения, которому обязана удовлетворять сборка лицензиата</td>
+        <td class="num">15</td><td class="num mono">ARCH ED</td></tr>
+      <tr><td class="name">Приёмочный набор как поставка</td>
+        <td>Отчуждаемая версия набора сценариев с порогами, которую лицензиат прогоняет
+          у себя до выпуска SKU</td><td class="num">15</td><td class="num mono">QA BE</td></tr>
+      <tr><td class="name">Второй персонаж</td>
+        <td>Проверка того, что ядро не приросло к одному герою: второй тембр,
+          второй канон, общий рантайм</td><td class="num">20</td><td class="num mono">ML BE</td></tr>
+    </tbody>
+  </table>
+  <div class="callout ours">
+    <h3>Готово, когда</h3>
+    <p style="margin-bottom:0">Ядро разворачивается в чужом облаке на чужих моделях
+      и проходит приёмку; второй персонаж поднимается на том же рантайме.
+      <strong>Итого 185 чел-дней.</strong></p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">12 — Сквозные</span>
+    <h2>Работы, идущие через все фазы</h2>
+  </div>
+  <table>
+    <thead><tr><th>Единица работ</th><th>Содержание</th><th class="num">Чел-дни</th><th class="num">Роль</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Платформа сборки</td>
+        <td>Окружения, конвейер выкатки, секреты, воспроизводимые сборки</td>
+        <td class="num">25</td><td class="num mono">BE</td></tr>
+      <tr><td class="name">Наблюдаемость</td>
+        <td>Логи, метрики, трассировки, алерты по качеству и стоимости</td>
+        <td class="num">15</td><td class="num mono">BE DE</td></tr>
+      <tr><td class="name">Безопасность</td>
+        <td>Модель угроз, внешний аудит, исправление найденного. Детские данные
+          и голос повышают цену ошибки</td><td class="num">20</td><td class="num mono">SEC</td></tr>
+      <tr><td class="name">Документация</td>
+        <td>Архитектура, регламенты, руководства редактора и инженера лицензиата</td>
+        <td class="num">15</td><td class="num mono">PM ARCH</td></tr>
+      <tr><td class="name">Управление и приёмка</td>
+        <td>Планирование, аналитика требований, приёмка результатов заказчиком</td>
+        <td class="num">40</td><td class="num mono">PM</td></tr>
+    </tbody>
+  </table>
+  <p class="xs">Итого 115 чел-дней. Строка «управление и приёмка» посчитана как прямая работа;
+    накладные на совещания и согласования учтены отдельно в разделе 16.</p>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">13 — Порты</span>
+    <h2>Контракты с внешним миром</h2>
+  </div>
+  <p class="lead">Порт — зафиксированный набор операций и требований, которым обязан
+    удовлетворять любой поставщик по ту сторону. Наличие портов и делает ядро переносимым.</p>
+  <table>
+    <thead><tr><th>Порт</th><th>Операции</th><th>Требования к поставщику</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Модель</td>
+        <td>Потоковая генерация с системным контекстом; оценка сложности; отмена запроса</td>
+        <td>Первый токен ≤ 500 мс; стабильность формата; поддержка длины контекста
+          под канон и память</td></tr>
+      <tr><td class="name">Речь → текст</td>
+        <td>Потоковое распознавание; промежуточные и финальная гипотезы; словарь имён</td>
+        <td>Качество на речи 3–5 лет; финальная гипотеза ≤ 350 мс после конца речи</td></tr>
+      <tr><td class="name">Текст → речь</td>
+        <td>Потоковый синтез тембром персонажа; отмена; словарь произношения</td>
+        <td>Первый звук ≤ 250 мс; развёртывание модели тембра на своих мощностях</td></tr>
+      <tr><td class="name">Устройство</td>
+        <td>Захват и воспроизведение звука; ключевое слово; офлайн-режим; обновления</td>
+        <td>Память под аудио-паки; микрофонный массив; подпись прошивки</td></tr>
+      <tr><td class="name">Хранилище и профиль</td>
+        <td>Чтение и запись фактов; согласия; удаление; экспорт</td>
+        <td>Размещение данных в требуемой юрисдикции; шифрование; журнал доступа</td></tr>
+      <tr><td class="name">Телеметрия</td>
+        <td>События использования, инциденты, отчётность правообладателю</td>
+        <td>Обязательный обратный поток к правообладателю — условие лицензии</td></tr>
+    </tbody>
+  </table>
+  <div class="callout theirs">
+    <h3>Порт тембра отдаётся частично</h3>
+    <p style="margin-bottom:0">Даже когда лицензиат разворачивает всё у себя, модель голоса
+      поставляется в защищённом виде с ограничением по сроку и объёму либо вызывается
+      через API ядра. Это техническая опора лицензии: голос, ушедший без ограничений,
+      делает её необеспеченной. Единица работ — в разделе 06.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">14 — Данные</span>
+    <h2>Что хранится и где</h2>
+  </div>
+  <table>
+    <thead><tr><th>Хранилище</th><th>Содержимое</th><th>Особенность</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Канон</td>
+        <td>Лексикон, реестр знаний, запреты, пул реплик, правила ремикса</td>
+        <td>Версионируется; публикуется подписанным пакетом; читается рантаймом</td></tr>
+      <tr><td class="name">Профиль и память</td>
+        <td>Данные ребёнка, факты, история общения, согласия</td>
+        <td>Персональные данные. Юрисдикция задаёт срок, место и состав</td></tr>
+      <tr><td class="name">Каталог контента</td>
+        <td>Метаданные готового аудио, права по территориям</td>
+        <td>Отдаёт рантайму маршрут с нулевой себестоимостью</td></tr>
+      <tr><td class="name">Аудиохранилище</td>
+        <td>Готовые записи, паки для устройств</td>
+        <td>Раздаётся через сеть доставки; дельта-обновления</td></tr>
+      <tr><td class="name">Кэш ответов</td>
+        <td>Синтезированные повторяющиеся реплики</td>
+        <td>Инвалидируется при смене версии канона или модели</td></tr>
+      <tr><td class="name">Приёмочный набор</td>
+        <td>Сценарии, эталоны, результаты прогонов</td>
+        <td>Растёт по мере накопления инцидентов; часть отчуждается лицензиату</td></tr>
+      <tr><td class="name">Телеметрия</td>
+        <td>События, трассы реплик, стоимость и задержка</td>
+        <td>Без содержания диалога по умолчанию; агрегаты уходят правообладателю</td></tr>
+      <tr><td class="name">Реестр устройств</td>
+        <td>Парк, версии прошивок, привязка к семьям</td>
+        <td>Основание для расчёта платы за активное устройство</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">15 — Развёртывание</span>
+    <h2>Три схемы и что меняется в смете</h2>
+  </div>
+  <table>
+    <thead><tr><th>Схема</th><th>Как устроена</th><th>Что добавляет к смете</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Ядро как сервис</td>
+        <td>Устройство лицензиата обращается к эндпоинту правообладателя. Рантайм, канон,
+          голос, память и приёмка остаются у правообладателя</td>
+        <td>Ничего сверх фаз 1–2. Инфраструктуру и задержку несёт правообладатель;
+          трансграничная передача детских данных ограничивает применимость</td></tr>
+      <tr><td class="name">В контуре лицензиата</td>
+        <td>Ядро поставляется контейнерами, разворачивается в его облаке, подключается
+          к его моделям и хранилищу. Канон и голос приходят подписанными пакетами</td>
+        <td>Раздел 11 целиком — 185 чел-дней. Решает регуляторику и задержку,
+          усложняет контроль версий</td></tr>
+      <tr><td class="name">Гибрид</td>
+        <td>Канон, приёмка, тембр и реестр устройств у правообладателя; горячий путь
+          диалога у лицензиата. Основной рабочий вариант</td>
+        <td>Раздел 11 плюс 15–25 чел-дней на разделение контуров и синхронизацию</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">16 — Смета</span>
+    <h2>Сводка и переход к деньгам</h2>
+  </div>
+  <table>
+    <caption>Прямые работы — сумма единиц из разделов 04–12.</caption>
+    <thead><tr><th>Раздел</th><th class="num">Чел-дни</th><th class="num">Чел-месяцы</th><th>Фаза</th></tr></thead>
+    <tbody>
+      <tr><td class="name">04 · Character Runtime</td><td class="num">214</td><td class="num">10,7</td><td>1</td></tr>
+      <tr><td class="name">05 · Конструктор канона</td><td class="num">179</td><td class="num">9,0</td><td>2</td></tr>
+      <tr><td class="name">06 · Голосовой пайплайн</td><td class="num">97</td><td class="num">4,9</td><td>1</td></tr>
+      <tr><td class="name">07 · Сервис памяти</td><td class="num">108</td><td class="num">5,4</td><td>1</td></tr>
+      <tr><td class="name">08 · Приёмочный контур</td><td class="num">157</td><td class="num">7,9</td><td>2</td></tr>
+      <tr><td class="name">09 · Фабрика контента</td><td class="num">86</td><td class="num">4,3</td><td>2</td></tr>
+      <tr><td class="name">10 · На устройстве</td><td class="num">120</td><td class="num">6,0</td><td>1</td></tr>
+      <tr><td class="name">11 · Переносимость</td><td class="num">185</td><td class="num">9,3</td><td>3</td></tr>
+      <tr><td class="name">12 · Сквозные</td><td class="num">115</td><td class="num">5,8</td><td>1–3</td></tr>
+      <tr><td class="name">Прямые работы</td><td class="num">1 261</td><td class="num">63,1</td><td>—</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout theirs">
+    <h3>Разрыв с оценкой проектного документа объясняется накладными</h3>
+    <p>В проектном документе стоит 114 чел-месяцев по фазам. Та цифра получена сверху —
+      состав команды, умноженный на длительность фазы. Эта — снизу, суммой единиц работ:
+      63 чел-месяца конструирования.</p>
+    <p>Разница в 51 чел-месяц, коэффициент 1,8, — это загрузка команды за пределами
+      написания кода: совещания и согласования с правообладателем, выход новых людей
+      на скорость, отпуска и болезни, ожидание решений, переделки после приёмки,
+      исследование вариантов до выбора. Доля прямой работы в 55–60% календарного времени
+      команды — обычная величина.</p>
+    <p style="margin-bottom:0"><strong>Как считать.</strong> Прямые работы × ставка роли даёт
+      нижнюю границу. Умножение на 1,7–1,9 даёт бюджет команды на 18 месяцев. Разница между
+      двумя цифрами — это то, чем управляют: стабильностью состава, скоростью согласований
+      и числом открытых развилок на входе в фазу.</p>
+  </div>
+
+  <h3 style="margin-top:5mm; margin-bottom:2mm">Распределение по ролям</h3>
+  <table class="form">
+    <caption>Доли посчитаны по единицам работ разделов 04–12; там, где у единицы указано
+      две роли, её объём разделён между ними поровну. Ставки проставляются компанией.</caption>
+    <thead><tr><th>Роль</th><th class="num">Чел-дни</th><th class="num">Доля</th><th class="num">Ставка</th><th class="num">Сумма</th></tr></thead>
+    <tbody>
+      <tr><td class="name">BE · бэкенд</td><td class="num">495</td><td class="num">39%</td><td class="num fill">₽/день</td><td class="num fill">₽</td></tr>
+      <tr><td class="name">ML</td><td class="num">177</td><td class="num">14%</td><td class="num fill">₽/день</td><td class="num fill">₽</td></tr>
+      <tr><td class="name">ED · редактор канона</td><td class="num">92</td><td class="num">7%</td><td class="num fill">₽/день</td><td class="num fill">₽</td></tr>
+      <tr><td class="name">FE · фронтенд</td><td class="num">90</td><td class="num">7%</td><td class="num fill">₽/день</td><td class="num fill">₽</td></tr>
+      <tr><td class="name">EMB · прошивка</td><td class="num">81</td><td class="num">6%</td><td class="num fill">₽/день</td><td class="num fill">₽</td></tr>
+      <tr><td class="name">PM · управление</td><td class="num">71</td><td class="num">6%</td><td class="num fill">₽/день</td><td class="num fill">₽</td></tr>
+      <tr><td class="name">QA</td><td class="num">66</td><td class="num">5%</td><td class="num fill">₽/день</td><td class="num fill">₽</td></tr>
+      <tr><td class="name">SEC · безопасность</td><td class="num">64</td><td class="num">5%</td><td class="num fill">₽/день</td><td class="num fill">₽</td></tr>
+      <tr><td class="name">DE · данные</td><td class="num">51</td><td class="num">4%</td><td class="num fill">₽/день</td><td class="num fill">₽</td></tr>
+      <tr><td class="name">SND · звук</td><td class="num">44</td><td class="num">3%</td><td class="num fill">₽/день</td><td class="num fill">₽</td></tr>
+      <tr><td class="name">ARCH · архитектор</td><td class="num">32</td><td class="num">3%</td><td class="num fill">₽/день</td><td class="num fill">₽</td></tr>
+    </tbody>
+  </table>
+  <p class="xs">Суммы округлены до целых дней, поэтому столбцы сходятся с точностью
+    до единиц. Роли ML, EMB и SND заняты неравномерно во времени: их пик приходится
+    на фазу 1, и держать их в штате все 18 месяцев необязательно.</p>
+
+  <h3 style="margin-top:5mm; margin-bottom:2mm">Что считается за пределами человеко-дней</h3>
+  <table class="form">
+    <caption>Строки, которые не сводятся к работе команды разработки.</caption>
+    <thead><tr><th>Статья</th><th class="num">Сумма</th><th>Наш ориентир</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Корпус детской речи</td><td class="num fill">₽</td>
+        <td>500+ дикторов, из них 100 детей. Закрывает ключевое слово, гипотезу
+          о распознавании и обучение локального распознавателя одновременно</td></tr>
+      <tr><td class="name">Студийная запись тембра</td><td class="num fill">₽</td>
+        <td>Смена актрисы озвучания, студия, режиссёр. Объём — по требованию модели голоса</td></tr>
+      <tr><td class="name">Производство контента</td><td class="num fill">₽</td>
+        <td>Ориентир глубины каталога на старте — 100 часов аудио</td></tr>
+      <tr><td class="name">Облако и модели в разработке</td><td class="num fill">₽</td>
+        <td>18 месяцев инференса на тестах и прогонах приёмки</td></tr>
+      <tr><td class="name">Внешний аудит безопасности</td><td class="num fill">₽</td>
+        <td>Один полный цикл перед выпуском, повтор при выходе наружу</td></tr>
+      <tr><td class="name">Юридическое сопровождение</td><td class="num fill">₽</td>
+        <td>Договор с актрисой, форма лицензии, 152-ФЗ на первой фазе,
+          COPPA и EU TSR при выходе наружу</td></tr>
+      <tr><td class="name">Устройство</td><td class="num fill">₽</td>
+        <td>Дизайн, оснастка, сертификация, первая партия. Считается отдельным треком,
+          стартует вместе с фазой 1</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">17 — Чувствительность</span>
+    <h2>Что двигает оценку и на сколько</h2>
+  </div>
+  <table>
+    <thead><tr><th>Фактор</th><th class="num">Влияние</th><th>Пояснение</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Локальный инференс вместо облачного</td><td class="num">+40–70 дн</td>
+        <td>Раздел 10 растёт: модель на устройстве, память, энергопотребление, тепловой режим</td></tr>
+      <tr><td class="name">Готовая библиотека оркестрации подходит</td><td class="num">−30–50 дн</td>
+        <td>Часть каркаса рантайма закрывается готовым решением, если оно проходит
+          по задержке и по размещению данных</td></tr>
+      <tr><td class="name">Канон приходит структурированным</td><td class="num">−15–25 дн</td>
+        <td>Импорт библиотеки франшизы упрощается; иначе разбор материалов ложится на команду</td></tr>
+      <tr><td class="name">Второй персонаж в первой фазе</td><td class="num">+20–30 дн</td>
+        <td>Разделение общего и персонажного приходится делать раньше, чем в фазе 3</td></tr>
+      <tr><td class="name">Родительское приложение внутри сметы</td><td class="num">+60–90 дн</td>
+        <td>Здесь учтена только отдача данных и событий ядром</td></tr>
+      <tr><td class="name">Число одновременных лицензиатов на старте</td><td class="num">+15–25 дн каждый</td>
+        <td>Портал считает всех, но первые интеграции идут вручную</td></tr>
+      <tr><td class="name">Требование к задержке ниже 1 с</td><td class="num">+25–40 дн</td>
+        <td>Требует локального распознавания и агрессивного кэша: оптимизация
+          растёт нелинейно к концу бюджета</td></tr>
+      <tr><td class="name">Команда без опыта голосовых продуктов</td><td class="num">×1,3–1,5 на ML</td>
+        <td>Фильтры, судья, маршрутизация и тембр — места, где опыт экономит недели</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">18 — Допущения</span>
+    <h2>На чём стоят эти цифры</h2>
+  </div>
+  <ul>
+    <li><strong>Оценки проектные.</strong> Они получены разбором состава работ, а не замером
+      на аналогичном проекте. Точность на этом этапе — плюс-минус треть по разделу
+      и плюс-минус четверть по сумме.</li>
+    <li><strong>Развилка облако против устройства открыта.</strong> Раздел 10 посчитан
+      по облачному варианту; локальный добавляет 40–70 дней и меняет BOM.</li>
+    <li><strong>Один персонаж на первых двух фазах.</strong> Второй появляется в фазе 3
+      как проверка переносимости.</li>
+    <li><strong>Один рынок на первых двух фазах.</strong> Россия как референс-инсталляция;
+      непереносимый слой под каждый следующий рынок считается отдельно.</li>
+    <li><strong>Поставщики моделей доступны и стабильны.</strong> Смена поставщика внутри
+      фазы 1 добавляет работы адаптерам, которые по плану делаются в фазе 3.</li>
+    <li><strong>Аудио не хранится по умолчанию.</strong> Изменение этого решения добавляет
+      работы в разделах 07 и 12 и меняет юридический контур.</li>
+    <li><strong>Правообладатель доступен для согласований.</strong> Канон, тембр и контент
+      проходят через утверждение; скорость этого маршрута прямо влияет на коэффициент
+      накладных из раздела 16.</li>
+  </ul>
+
+  <div class="callout ours">
+    <h3>Что уточнить первым, чтобы сузить вилку</h3>
+    <p style="margin-bottom:0">Три вещи дают наибольшее сужение: решение по развилке
+      облако/устройство, состав и формат имеющейся библиотеки франшизы, и объём
+      родительского приложения. Первое двигает раздел 10 и BOM, второе — раздел 05,
+      третье — саму границу сметы.</p>
+  </div>
+</section>
+
+<footer>
+  <p class="xs" style="margin-bottom:0">Спецификация ядра слоя персонажа. Август 2026.
+    Состав ядра и его роль в конструкции — в проектном документе «Лицензируемый слой
+    персонажа», раздел 12. Себестоимость минуты и структура затрат — там же, разделы 07 и 13.</p>
+</footer>
+
+</body>
+</html>
