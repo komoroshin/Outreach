@@ -107,12 +107,12 @@ a{ color:var(--accent); text-decoration:none; border-bottom:.4pt solid var(--rul
   <h1>Ядро слоя персонажа: спецификация работ</h1>
   <p class="deck">Декомпозиция ядра до единиц работ с объёмом в человеко-днях и ролью
     исполнителя. Документ написан под расчёт стоимости разработки: каждая строка сметы
-    имеет описание, признак готовности и зависимости.</p>
+    имеет описание, признак готовности и оценку по рыночным ставкам.</p>
   <dl class="meta">
     <div><dt>Единиц работ</dt><dd>78</dd></div>
     <div><dt>Прямые работы</dt><dd>1 261 чел-день</dd></div>
     <div><dt>Горизонт</dt><dd>18 месяцев, 3 фазы</dd></div>
-    <div><dt>Оценки</dt><dd>Наши, проектные</dd></div>
+    <div><dt>По рынку 08.2026</dt><dd>39,4 млн ₽</dd></div>
   </dl>
 </div>
 
@@ -896,7 +896,129 @@ a{ color:var(--accent); text-decoration:none; border-bottom:.4pt solid var(--rul
 
 <section>
   <div class="sec-head">
-    <span class="sec-num">17 — Чувствительность</span>
+    <span class="sec-num">17 — Оценка по рынку</span>
+    <h2>Сколько это стоит по рыночным ставкам августа 2026</h2>
+  </div>
+  <p class="lead">Расчёт для российской команды. Опорные цифры — медианы по грейдам
+    Хабр Карьеры за первое полугодие 2026 года, 41 247 анкет: lead 378 000 ₽,
+    senior 293 000 ₽, middle 167 000 ₽. Медиана по всем специализациям — 170 000 ₽
+    оклада, 190 800 ₽ с премией.</p>
+
+  <table>
+    <caption>Месячная ставка собрана из грейдовых медиан под состав, который эта работа
+      требует. Строки ED и SND лежат вне IT-грейдов — там стоит наша оценка, а не рыночная
+      медиана; их доля в объёме 11%, и ошибка в них двигает итог слабо.</caption>
+    <thead><tr><th>Роль</th><th class="num">Чел-дни</th><th class="num">Оклад, ₽/мес</th><th>Как получено</th></tr></thead>
+    <tbody>
+      <tr><td class="name">BE · бэкенд</td><td class="num">495</td><td class="num">255 000</td>
+        <td>Senior и middle в пропорции 70/30 от грейдовых медиан</td></tr>
+      <tr><td class="name">ML</td><td class="num">177</td><td class="num">325 000</td>
+        <td>Senior плюс премия за специализацию. Медиана ML-инженера по всем грейдам
+          на апрель 2026 — 227 000 ₽; работа с LLM оплачивается выше</td></tr>
+      <tr><td class="name">ED · редактор канона</td><td class="num">92</td><td class="num">150 000</td>
+        <td>Редакторская работа вне IT-грейдов — наша оценка</td></tr>
+      <tr><td class="name">FE · фронтенд</td><td class="num">90</td><td class="num">240 000</td>
+        <td>Senior и middle в пропорции 60/40</td></tr>
+      <tr><td class="name">EMB · прошивка</td><td class="num">81</td><td class="num">320 000</td>
+        <td>Нижняя часть рыночного диапазона senior embedded, который начинается
+          от 350 000 ₽ в проектах с высокими требованиями к надёжности</td></tr>
+      <tr><td class="name">PM · управление</td><td class="num">71</td><td class="num">300 000</td>
+        <td>Продукт уровня senior и выше</td></tr>
+      <tr><td class="name">QA</td><td class="num">66</td><td class="num">220 000</td>
+        <td>Автоматизация, senior и middle</td></tr>
+      <tr><td class="name">SEC · безопасность</td><td class="num">64</td><td class="num">280 000</td>
+        <td>Информационная безопасность, senior</td></tr>
+      <tr><td class="name">DE · данные</td><td class="num">51</td><td class="num">250 000</td>
+        <td>Senior и middle</td></tr>
+      <tr><td class="name">SND · звук</td><td class="num">44</td><td class="num">180 000</td>
+        <td>Звукорежиссура вне IT-грейдов — наша оценка</td></tr>
+      <tr><td class="name">ARCH · архитектор</td><td class="num">32</td><td class="num">378 000</td>
+        <td>Грейд lead</td></tr>
+      <tr><td class="name">Взвешенно по объёму</td><td class="num">1 263</td><td class="num">262 500</td>
+        <td>Средний оклад по составу работ этого проекта</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout theirs">
+    <h3>С 1 января 2026 льгота по страховым взносам для IT изменилась</h3>
+    <p>Плоской ставки 7,6% больше нет. Закон 425-ФЗ от 28.11.2025 ввёл две ступени:
+      <strong>15% в пределах предельной базы</strong> — в 2026 году это 2 979 000 ₽
+      нарастающим итогом на сотрудника — и 7,6% на выплаты сверх неё. Структура
+      зафиксирована до 2036 года включительно.</p>
+    <p style="margin-bottom:0">На окладе 262 500 ₽ эффективная ставка выходит
+      <strong>14,6%</strong> вместо прежних 7,6% — почти вдвое. Льгота требует аккредитации
+      в реестре Минцифры, доли IT-доходов от 70% и штата от семи человек. Без аккредитации
+      действует общий тариф 30% и 15,1%, эффективно 29,2%, и итог растёт примерно
+      на 13%.</p>
+  </div>
+
+  <table>
+    <caption>Полная стоимость месяца работы включает оклад, страховые взносы и 15%
+      накладных: рабочее место, техника, лицензии, учёт, найм.</caption>
+    <thead><tr><th>Сценарий</th><th class="num">Стоимость месяца</th><th class="num">Прямые работы<br>63,1 чел-мес</th><th class="num">Бюджет команды<br>114 чел-мес</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Штатная команда, аккредитованная IT-компания</td>
+        <td class="num">346 000 ₽</td><td class="num">21,8 млн ₽</td><td class="num">39,4 млн ₽</td></tr>
+      <tr><td class="name">Штатная команда без аккредитации</td>
+        <td class="num">390 000 ₽</td><td class="num">24,6 млн ₽</td><td class="num">44,5 млн ₽</td></tr>
+    </tbody>
+  </table>
+
+  <div class="callout ours">
+    <h3>Что означают две цифры</h3>
+    <p><strong>21,8 млн ₽</strong> — стоимость 1 261 человеко-дня конструирования.
+      Величина для сравнения вариантов: сколько стоит добавить единицу работ или отказаться
+      от неё.</p>
+    <p style="margin-bottom:0"><strong>39,4 млн ₽</strong> — бюджет команды на 18 месяцев,
+      с накладными по коэффициенту 1,8 из раздела 16. Это примерно 2,2 млн ₽ в месяц,
+      что соответствует команде в среднем из 6–7 человек с пиком на первой фазе.
+      Планировать нужно от этой цифры.</p>
+  </div>
+
+  <h3 style="margin-top:5mm; margin-bottom:2mm">Альтернатива: заказная разработка</h3>
+  <table>
+    <caption>Часовые ставки студий в России на 2026 год — 2 500–6 500 ₽; узкие специализации
+      идут от 5 000 ₽. Объём взят как 1 261 человеко-день по 8 часов: студия выставляет
+      счёт за отработанные часы, её накладные уже внутри ставки.</caption>
+    <thead><tr><th>Ставка</th><th class="num">Часов</th><th class="num">Сумма</th><th>Комментарий</th></tr></thead>
+    <tbody>
+      <tr><td class="name">2 500 ₽/ч — нижняя граница рынка</td><td class="num">10 088</td>
+        <td class="num">25,2 млн ₽</td><td>Регион, смешанный состав по грейдам</td></tr>
+      <tr><td class="name">4 000 ₽/ч — середина</td><td class="num">10 088</td>
+        <td class="num">40,4 млн ₽</td><td>Совпадает с бюджетом штатной команды</td></tr>
+      <tr><td class="name">6 500 ₽/ч — верхняя граница</td><td class="num">10 088</td>
+        <td class="num">65,6 млн ₽</td><td>Москва, senior-состав, редкие специализации</td></tr>
+    </tbody>
+  </table>
+  <p class="xs">Совпадение середины рынка заказной разработки с бюджетом штатной команды —
+    признак того, что обе оценки собраны корректно. Выбор между ними определяется другим:
+    ядро остаётся активом компании и требует постоянного сопровождения после запуска,
+    а это 3–5 человек в штате, которые всё равно понадобятся.</p>
+
+  <div class="callout theirs">
+    <h3>Что в эти суммы не входит</h3>
+    <p style="margin-bottom:0">Строки из раздела 16, которые не сводятся к работе команды:
+      корпус детской речи, студийная запись тембра, производство контента на 100 часов аудио,
+      облако и модели в течение 18 месяцев разработки, внешний аудит безопасности,
+      юридическое сопровождение и весь трек устройства — дизайн, оснастка, сертификация,
+      первая партия. Каждая из них требует отдельного запроса цен; рыночных медиан,
+      сопоставимых по надёжности с зарплатными, по ним нет.</p>
+  </div>
+
+  <h3 style="margin-top:5mm; margin-bottom:2mm">Источники ставок</h3>
+  <ol class="srclist" style="padding-left:5mm; font-size:8pt">
+    <li><a href="https://career.habr.com/salaries">Хабр Карьера — зарплаты в IT, медианы по грейдам, I полугодие 2026</a></li>
+    <li><a href="https://h.careers/hub/karernye-traektorii/ml-engineer">Медиана ML-инженера, апрель 2026</a></li>
+    <li><a href="https://mypl.pro/blog/embedded-razrabotchik-samaya-nedootsenyonnaya-i-vysokooplach">Диапазон senior embedded-разработчика</a></li>
+    <li><a href="https://bpadevelop.ru/blog/skolko-stoit-razrabotka-programmnogo-obespecheniya/">Часовые ставки заказной разработки, 2026</a></li>
+    <li><a href="https://www.kontur-extern.ru/info/83605-strahovye_vznosy_dlya_it_kompaniy">Страховые взносы для IT-компаний в 2026: тарифы и условия</a></li>
+    <li><a href="https://www.glavbukh.ru/art/392228-otmena-lgotnyh-vznosov-dlya-it-kompaniy-s-2026-goda-izmeneniya-tablitsa-stavok">Изменение тарифов с 2026 года, 425-ФЗ от 28.11.2025</a></li>
+  </ol>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">18 — Чувствительность</span>
     <h2>Что двигает оценку и на сколько</h2>
   </div>
   <table>
@@ -926,7 +1048,7 @@ a{ color:var(--accent); text-decoration:none; border-bottom:.4pt solid var(--rul
 
 <section>
   <div class="sec-head">
-    <span class="sec-num">18 — Допущения</span>
+    <span class="sec-num">19 — Допущения</span>
     <h2>На чём стоят эти цифры</h2>
   </div>
   <ul>
