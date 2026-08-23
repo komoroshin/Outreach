@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<title>Механика лицензии</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+@page{ size:A4; margin:16mm 15mm 18mm; }
+:root{
+  --ink:#121614; --ink-2:#454E4A; --ink-3:#767F7A;
+  --paper:#FFFFFF; --tint:#F1F4F2; --rule:#D3D9D5; --rule-2:#AEB8B2;
+  --accent:#1C3A34; --warn:#8A6410; --neg:#9B2C1F;
+}
+*{box-sizing:border-box}
+html,body{margin:0; padding:0; background:var(--paper); color:var(--ink)}
+body{ font-family:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:9.4pt; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+h1,h2,h3{ font-family:"Newsreader",Georgia,serif; font-weight:600; margin:0; text-wrap:balance }
+h1{ font-size:23pt; line-height:1.12; letter-spacing:-.01em }
+h2{ font-size:14pt; line-height:1.2; margin:0 0 3mm }
+h3{ font-size:10.5pt; line-height:1.25; font-family:"IBM Plex Sans",sans-serif; font-weight:600 }
+p{margin:0 0 2.6mm}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+.eyebrow{ font-family:"IBM Plex Mono",monospace; font-size:6.8pt; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--accent); font-weight:500 }
+.muted{color:var(--ink-2)}
+.xs{font-size:8pt; line-height:1.45; color:var(--ink-3)}
+
+/* cover */
+.cover{ border-bottom:2.5pt solid var(--accent); padding-bottom:5mm; margin-bottom:6mm }
+.cover .row{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5mm }
+.deck{ font-size:10.5pt; color:var(--ink-2); margin-top:3.5mm; max-width:150mm }
+.meta{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:.6pt solid var(--rule);
+  margin-top:6mm }
+.meta div{ padding:2.6mm 3mm; border-right:.6pt solid var(--rule) }
+.meta div:last-child{border-right:none}
+.meta dt{ font-family:"IBM Plex Mono",monospace; font-size:6.4pt; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 1.2mm }
+.meta dd{ margin:0; font-size:9pt; font-weight:600; line-height:1.25 }
+
+section{ margin-bottom:5.5mm }
+.sec-head{ border-top:1.2pt solid var(--ink); padding-top:2.5mm; margin-bottom:4mm }
+.sec-num{ display:block; font-family:"IBM Plex Mono",monospace; font-size:6.8pt;
+  letter-spacing:.14em; color:var(--accent); margin-bottom:1.8mm }
+.lead{ color:var(--ink-2); max-width:158mm }
+
+/* supplier card */
+.card{ border:.6pt solid var(--rule); margin-bottom:3.2mm; break-inside:avoid; page-break-inside:avoid }
+.card-top{ background:var(--tint); padding:2.8mm 3.5mm; border-bottom:.6pt solid var(--rule);
+  display:flex; justify-content:space-between; align-items:baseline; gap:4mm }
+.card-top h3{margin:0}
+.card-top .who{ font-size:8pt; color:var(--ink-2); text-align:right; white-space:nowrap }
+.card-body{ padding:2.6mm 3.5mm }
+.spec{ display:grid; grid-template-columns:32mm 1fr; gap:1.4mm 4mm }
+.spec dt{ font-family:"IBM Plex Mono",monospace; font-size:6.6pt; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3); padding-top:.6mm }
+.spec dd{ margin:0; font-size:9pt; line-height:1.45 }
+
+.tag{ display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:6.4pt;
+  letter-spacing:.08em; text-transform:uppercase; padding:.6mm 1.6mm; border:.6pt solid currentColor;
+  color:var(--ink-2); background:var(--paper); white-space:nowrap; font-weight:500 }
+.tag.w{color:var(--warn)} .tag.n{color:var(--neg)}
+
+table{ border-collapse:collapse; width:100%; font-size:8.4pt; break-inside:avoid }
+th,td{ text-align:left; padding:1.9mm 2.4mm; border-bottom:.6pt solid var(--rule); vertical-align:top }
+thead th{ font-family:"IBM Plex Mono",monospace; font-size:6.4pt; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3); font-weight:500; background:var(--tint);
+  border-bottom:.8pt solid var(--rule-2) }
+td.name{font-weight:600}
+td.num,th.num{ text-align:right; font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums; white-space:nowrap }
+tbody tr:last-child td{border-bottom:.6pt solid var(--rule)}
+caption{ caption-side:bottom; text-align:left; padding:2mm 0 0; font-size:7.6pt;
+  color:var(--ink-3); line-height:1.45 }
+
+.callout{ border:.6pt solid var(--rule-2); border-top:2pt solid var(--accent);
+  padding:3mm 3.5mm; margin:3.2mm 0; break-inside:avoid; background:var(--paper) }
+.callout.w{border-top-color:var(--warn)}
+.callout h3{margin:0 0 1.8mm}
+.callout p:last-child{margin-bottom:0}
+
+ul{margin:0 0 2.6mm; padding-left:4.2mm}
+li{margin-bottom:1.2mm}
+li::marker{color:var(--accent)}
+
+.split{ display:grid; grid-template-columns:1fr 1fr; gap:5mm }
+.sec-head{ break-after:avoid; page-break-after:avoid }
+footer{ border-top:.6pt solid var(--rule); padding-top:2.6mm; margin-top:4mm;
+  break-inside:avoid; page-break-inside:avoid }
+
+.ours{border-left:3pt solid var(--accent)}
+.theirs{border-left:3pt solid var(--warn)}
+.legend-row{display:flex; gap:6mm; flex-wrap:wrap; margin:3mm 0 5mm; font-size:8pt}
+.legend-row span{display:flex; align-items:center; gap:2mm}
+.legend-row i{display:inline-block; width:3mm; height:3mm}
+.form td{background:var(--paper)}
+.form .fill{background:var(--tint); color:var(--ink-3); font-style:italic}
+a{ color:var(--accent); text-decoration:none; border-bottom:.4pt solid var(--rule-2) }
+.srclist li{ margin-bottom:1mm }
+</style>
+</head>
+<body>
+<div class="cover">
+  <div class="row">
+    <span class="eyebrow">Animaccord · AI-девайс · механика лицензии</span>
+    <span class="xs mono">Август 2026</span>
+  </div>
+  <h1>Механика лицензии: канон, голос, приёмка</h1>
+  <p class="deck">Что именно передаётся лицензиату при лицензии на говорящего персонажа, как это
+    доставляется и как проверяется. Материал для постановки задачи юристам — не сам договор
+    и не его текст.</p>
+  <dl class="meta">
+    <div><dt>Применяется к</dt><dd>Китай, остальной мир</dd></div>
+    <div><dt>Не применяется к</dt><dd>России — там нет лицензии</dd></div>
+    <div><dt>Текст договора</dt><dd>Готовят юристы</dd></div>
+    <div><dt>Формат</dt><dd>Техническое ТЗ</dd></div>
+  </dl>
+</div>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">00 — Как пользоваться</span>
+    <h2>Что это за документ и чем он не является</h2>
+  </div>
+  <div class="legend-row">
+    <span><i style="background:var(--accent)"></i><strong>Наше</strong> — техническое описание механики и юридические аналогии для ориентира</span>
+    <span><i style="background:var(--warn)"></i><strong>Их</strong> — формулировки договора, выбор юрисдикции, конкретные ставки и сроки</span>
+  </div>
+  <p>Документ отвечает на один вопрос: технически, что физически происходит, когда компания
+    лицензирует говорящего персонажа производителю устройства. Дальше — задача юристов перевести
+    это в формулировки договора. Мы называем механизм и его ближайший юридический прецедент;
+    мы не пишем условия, ставки и не выбираем применимое право.</p>
+
+  <div class="callout theirs">
+    <h3>Где это применяется</h3>
+    <p style="margin-bottom:0">Схема ниже — для лицензионных векторов: Китай и остальной мир
+      (проектный документ, раздел 12). В России компания сама оператор устройства, канал
+      и подписки — лицензии там нет, потому что нет второй стороны, которой лицензировать.
+      Референсная установка в России производит то, что описано ниже как предмет лицензии:
+      проверенный канон, обученный голос, откалиброванные пороги приёмки.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01 — Три компонента</span>
+    <h2>Что лицензируется, одним взглядом</h2>
+  </div>
+  <table>
+    <thead><tr><th>Компонент</th><th>Что это по природе</th><th>Роль в лицензии</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Канон</td><td>Контент и данные — спецификация поведения</td>
+        <td>Определяет, что персонажу разрешено говорить и делать</td></tr>
+      <tr><td class="name">Голос</td><td>Защищённый актив — обученная модель тембра</td>
+        <td>Физически удерживает контроль над репликой, даже когда всё остальное — на чужом стеке</td></tr>
+      <tr><td class="name">Приёмка</td><td>Процедура — тесты и порог допуска</td>
+        <td>Доказывает, что чужая сборка соответствует канону, прежде чем выйдет SKU</td></tr>
+    </tbody>
+  </table>
+  <p class="xs">Ни один из трёх компонентов не является программой в привычном смысле лицензии
+    на софт. Это то, что отличает предмет договора от лицензии на SDK: лицензиат не получает
+    исходный код или дистрибутив — он получает право, данные и доступ к сервису.</p>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02 — Канон</span>
+    <h2>Доставка и проверка</h2>
+  </div>
+  <table>
+    <thead><tr><th>Параметр</th><th>Как устроено</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Форма поставки</td>
+        <td>Подписанный версионированный пакет данных: лексикон, реестр знаний, запретные темы,
+          пул одобренных реплик, правила ремикса</td></tr>
+      <tr><td class="name">Периодичность</td>
+        <td>Не разовая передача. Канон обновляется, и лицензиат обязан принимать новые версии —
+          это ближе к подписке на контент-фид, чем к одноразовой выдаче файла</td></tr>
+      <tr><td class="name">Куда встраивается</td>
+        <td>В собственную систему лицензиата — промптом, базой для поиска по контексту
+          или иным способом на его стеке. Компания не диктует реализацию, только результат</td></tr>
+      <tr><td class="name">Как проверяется</td>
+        <td>Не чтением документа. Поведение генерируется заново при каждом диалоге, поэтому
+          соответствие проверяется прогоном приёмочного набора по выходу системы —
+          раздел 04</td></tr>
+    </tbody>
+  </table>
+  <div class="callout ours">
+    <h3>Чем это отличается от привычного стайлгайда</h3>
+    <p style="margin-bottom:0">Гайдлайн на изображение персонажа — статичный артефакт: нарисовал,
+      один раз согласовал, живёт годами без изменений. Канон описывает поведение, которое
+      генерируется динамически и никогда не воспроизводится дословно дважды. Значит, единица
+      проверки — не макет, а образец поведения на репрезентативной выборке ситуаций.
+      Это меняет саму процедуру приёмки: не «посмотреть и одобрить», а «прогнать и измерить».</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03 — Голос</span>
+    <h2>Доставка и проверка</h2>
+  </div>
+  <p class="lead">Два режима поставки. Выбор между ними — коммерческое и техническое решение,
+    не юридическое; ниже — механика каждого.</p>
+  <table>
+    <thead><tr><th>Режим</th><th>Как устроен</th><th>Когда уместен</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Защищённый пакет</td>
+        <td>Модель тембра с ограничением по сроку и объёму синтеза, привязка к конкретному
+          лицензиату, водяной знак в каждом синтезированном звуке</td>
+        <td>Офлайн-режим или низкое качество связи, где вызов внешнего API ненадёжен</td></tr>
+      <tr><td class="name">Вызов через API</td>
+        <td>Модель никогда не покидает инфраструктуру компании. Лицензиат отправляет текст,
+          получает готовый звук, платит по использованию</td>
+        <td>Основной режим по умолчанию — отзыв доступа не требует поиска и удаления файлов
+          на стороне лицензиата</td></tr>
+    </tbody>
+  </table>
+  <div class="callout ours">
+    <h3>Проверка встроена в саму доставку</h3>
+    <p>В отличие от канона, голос не нуждается в отдельной процедуре контроля — использование
+      и есть контроль. При API-режиме каждый вызов логируется на нашей стороне: объём, частота,
+      содержание запроса видны сразу, без аудита постфактум. При пакетном режиме водяной знак
+      в звуке — судебное доказательство происхождения при утечке или превышении лимита,
+      даже без доступа к системе лицензиата.</p>
+    <p style="margin-bottom:0">Практический вывод для контракта: отзыв лицензии в API-режиме —
+      это отключение одного ключа, происходит мгновенно и без исполнения на стороне лицензиата.
+      В пакетном режиме отзыв зависит от истечения срока пакета или доброй воли лицензиата
+      удалить файл — контролировать это сложнее.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04 — Приёмка</span>
+    <h2>Доставка и проверка</h2>
+  </div>
+  <table>
+    <thead><tr><th>Этап</th><th>Что происходит</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Поставка набора</td>
+        <td>Отчуждаемая версия сценариев приёмки с порогами допуска — лицензиат получает её
+          и прогоняет у себя до выпуска SKU, без обращения к компании на каждый прогон</td></tr>
+      <tr><td class="name">Самотестирование</td>
+        <td>Лицензиат видит несоответствия и пороги заранее, дорабатывает сборку сам —
+          как разработчик приложения тестирует его локально до отправки в стор</td></tr>
+      <tr><td class="name">Финальная подача</td>
+        <td>Загрузка сборки и результатов в портал лицензиата; запуск финальной приёмки;
+          разбор несоответствий, история попыток</td></tr>
+      <tr><td class="name">Сертификация</td>
+        <td>При прохождении порога — отчёт о прохождении и право на знак «официальный голос»
+          на упаковке и в маркетинге</td></tr>
+      <tr><td class="name">Мониторинг после выпуска</td>
+        <td>Регулярный повторный прогон на живой сборке лицензиата — ловит молчаливое обновление
+          модели у стороннего поставщика, которое лицензиат не контролирует и не всегда замечает</td></tr>
+    </tbody>
+  </table>
+  <div class="callout theirs">
+    <h3>Почему нельзя ограничиться разовой сертификацией</h3>
+    <p style="margin-bottom:0">Физический аксессуар, пройдя сертификацию, не меняется сам.
+      Языковая модель, на которой лицензиат строит диалог, может обновиться у стороннего
+      поставщика без предупреждения — и персонаж начнёт отвечать иначе, хотя сборка лицензиата
+      не менялась ни строкой. Разовая приёмка эту ситуацию не ловит. Отсюда — повторяющийся
+      прогон, а не только приёмка на входе; это решение обсуждается в разделе 07.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">05 — Аналогии</span>
+    <h2>Ближайшие юридические прецеденты по каждому компоненту</h2>
+  </div>
+  <p class="lead">Ни один из трёх механизмов не изобретён заново. Ниже — где искать
+    состоявшийся образец конструкции договора под каждый.</p>
+  <table>
+    <thead><tr><th>Компонент</th><th>Прецедент</th><th>Что оттуда переносится</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Канон</td>
+        <td>Лицензия на бренд с контролем качества — та же конструкция, что уже используется
+          для изображения персонажа</td>
+        <td>Грант прав, территория, срок, оговорка о контроле качества, основание
+          для расторжения при систематическом нарушении</td></tr>
+      <tr><td class="name">Голос, пакет</td>
+        <td>DRM-лицензия на шрифт или иной защищённый цифровой актив</td>
+        <td>Запрет распространения и обратной разработки, лимиты по объёму и сроку,
+          привязка к конкретному держателю лицензии</td></tr>
+      <tr><td class="name">Голос, API</td>
+        <td>Условия использования облачного API — коммерческое лицензирование синтетических
+          голосов уже существует как рыночная категория</td>
+        <td>Оплата по использованию, лимиты частоты запросов, отзываемые учётные данные,
+          уровень доступности сервиса</td></tr>
+      <tr><td class="name">Приёмка</td>
+        <td>Программы сертификации платформ: MFi у Apple, TRC на игровых консолях,
+          конформанс-тесты USB-IF и Bluetooth SIG</td>
+        <td>Отчуждаемый набор самотестирования, финальная подача на подтверждение,
+          сертификационный знак, право отозвать знак</td></tr>
+      <tr><td class="name">Мониторинг</td>
+        <td>Непрерывный комплаенс-контроль: PCI-DSS с периодической пересертификацией,
+          SLA модерации контента</td>
+        <td>Периодичность повторной проверки, порядок эскалации при провале,
+          отличие разовой сертификации от длящегося обязательства</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">06 — Структура договора</span>
+    <h2>Как это собирается в один документ</h2>
+  </div>
+  <p>Три механизма разной природы — не повод писать три отдельных контракта. Обычная практика
+    для корпоративных сделок такого состава — один рамочный договор с приложениями, каждое
+    в логике своего раздела.</p>
+  <table>
+    <thead><tr><th>Часть</th><th>Логика</th><th>Что регулирует</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Рамочный договор</td><td>Лицензия на IP</td>
+        <td>Стороны, территория, срок, эксклюзивность, источники роялти, основания
+          расторжения, ответственность, применимое право</td></tr>
+      <tr><td class="name">Приложение А</td><td>Права на канон</td>
+        <td>Объём прав на использование спецификации поведения, порядок обновления версий,
+          обязательства по конфиденциальности</td></tr>
+      <tr><td class="name">Приложение Б</td><td>Условия доступа к голосу</td>
+        <td>Условия использования API или пакета: лимиты, биллинг, отзыв доступа,
+          уровень доступности</td></tr>
+      <tr><td class="name">Приложение В</td><td>Регламент приёмки</td>
+        <td>Процедура самотестирования и подачи, пороги допуска, периодичность мониторинга,
+          последствия провала</td></tr>
+    </tbody>
+  </table>
+  <p class="xs">Разделение на приложения даёт практическое преимущество: регламент приёмки
+    и условия API можно обновлять по мере того, как меняются модели и требования безопасности,
+    не пересогласовывая весь договор заново.</p>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">07 — Что здесь новое</span>
+    <h2>Единственное место, где нет готового шаблона</h2>
+  </div>
+  <p class="lead">Все аналогии из раздела 05 закрывают отдельные механизмы. Не закрыт один
+    момент — необходимость повторяющейся, а не разовой сертификации, потому что предмет
+    проверки живой и может измениться сам по себе.</p>
+
+  <div class="callout theirs">
+    <h3>Вопросы, которые нужно решить до передачи юристам</h3>
+    <ul>
+      <li><strong>Периодичность повторного прогона.</strong> Раз в месяц автоматически плюс
+        полный прогон раз в квартал — рабочая гипотеза, не решение</li>
+      <li><strong>Кто оплачивает прогон.</strong> Включён в плату за сертификацию SKU
+        или тарифицируется отдельно как сервис</li>
+      <li><strong>Лестница последствий при провале.</strong> Предупреждение → срок
+        на исправление → приостановка знака «официальный голос» → отзыв доступа к API.
+        Нужно решить длительность каждого шага</li>
+      <li><strong>Кто отвечает за дрейф, вызванный не нами.</strong> Если сторонняя модель
+        лицензиата изменилась и это вызвало провал повторной проверки — чья это зона
+        ответственности по договору: лицензиата, выбравшего эту модель, или общая</li>
+      <li><strong>Право оспорить результат.</strong> Механизм апелляции при несогласии
+        с вердиктом приёмки</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">08 — Открытые вопросы</span>
+    <h2>Что ещё нужно решить до формулировок договора</h2>
+  </div>
+  <table>
+    <thead><tr><th>Вопрос</th><th>Почему это важно</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Эксклюзивность</td>
+        <td>По территории и по категории продукта — открывает или закрывает параллельные
+          сделки на том же рынке</td></tr>
+      <tr><td class="name">Срок и условия продления</td>
+        <td>Совпадает ли с циклом обновления канона и с жизненным циклом устройства
+          у лицензиата</td></tr>
+      <tr><td class="name">База роялти</td>
+        <td>Три источника уже названы в проектном документе — роялти с устройства, плата
+          за сертификацию SKU, маржа на инференсе, проходящем через API голоса.
+          Пропорции между ними — предмет переговоров по каждой сделке</td></tr>
+      <tr><td class="name">Ответственность за инцидент</td>
+        <td>Приёмочный набор проверяет известные сценарии и не гарантирует, что персонаж
+          не скажет недопустимого в непредвиденной ситуации на чужом стеке. Раздел 04
+          проектного документа разбирает Kumma и Aristotle — оба инцидента произошли
+          на устройствах без такого контроля. Распределение риска между сторонами
+          при инциденте — ключевая оговорка договора</td></tr>
+      <tr><td class="name">Право на аудит</td>
+        <td>Может ли компания запросить логи диалогов лицензиата сверх автоматического
+          мониторинга, в каком объёме и с учётом законов о детских данных на территории
+          лицензиата</td></tr>
+      <tr><td class="name">Судьба проданных устройств при расторжении</td>
+        <td>Отзыв доступа к API голоса могут замолчать уже проданные семьям устройства.
+          Нужна оговорка о переходном периоде — аналог того, как обошлись с пользователями
+          Moxie при закрытии Embodied, только предусмотренная заранее, а не постфактум</td></tr>
+      <tr><td class="name">Применимое право и подсудность</td>
+        <td>Стандартный пункт международного лицензионного договора, решается юристами
+          по каждой сделке отдельно</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">09 — Источники</span>
+    <h2>Откуда взята механика</h2>
+  </div>
+  <ol class="srclist" style="padding-left:5mm; font-size:8pt">
+    <li>Проектный документ «Лицензируемый слой персонажа», раздел 12 — три вектора
+      и механизм лицензии в двух формах</li>
+    <li>Проектный документ, раздел 04 — инциденты Kumma и Aristotle</li>
+    <li>Спецификация ядра, раздел 05 — конструктор канона, публикация без релиза софта</li>
+    <li>Спецификация ядра, раздел 06 — защищённая поставка тембра</li>
+    <li>Спецификация ядра, раздел 08 — приёмочный контур, портал лицензиата, мониторинг прода</li>
+    <li>Спецификация ядра, раздел 11 — конформанс-спецификация, приёмочный набор как поставка</li>
+  </ol>
+</section>
+
+<footer>
+  <p class="xs" style="margin-bottom:0">Механика лицензии слоя персонажа. Август 2026.
+    Техническое описание для постановки задачи юристам; не является текстом договора
+    и не заменяет юридическую консультацию.</p>
+</footer>
+
+</body>
+</html>
