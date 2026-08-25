@@ -1,0 +1,212 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<title>Пилот на 200 тысяч</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+@page{ size:A4; margin:16mm 15mm 18mm; }
+:root{
+  --ink:#121614; --ink-2:#454E4A; --ink-3:#767F7A;
+  --paper:#FFFFFF; --tint:#F1F4F2; --rule:#D3D9D5; --rule-2:#AEB8B2;
+  --accent:#1C3A34; --warn:#8A6410; --neg:#9B2C1F;
+}
+*{box-sizing:border-box}
+html,body{margin:0; padding:0; background:var(--paper); color:var(--ink)}
+body{ font-family:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:9.4pt; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+h1,h2,h3{ font-family:"Newsreader",Georgia,serif; font-weight:600; margin:0; text-wrap:balance }
+h1{ font-size:23pt; line-height:1.12; letter-spacing:-.01em }
+h2{ font-size:14pt; line-height:1.2; margin:0 0 3mm }
+h3{ font-size:10.5pt; line-height:1.25; font-family:"IBM Plex Sans",sans-serif; font-weight:600 }
+p{margin:0 0 2.6mm}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+.eyebrow{ font-family:"IBM Plex Mono",monospace; font-size:6.8pt; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--accent); font-weight:500 }
+.muted{color:var(--ink-2)}
+.xs{font-size:8pt; line-height:1.45; color:var(--ink-3)}
+
+/* cover */
+.cover{ border-bottom:2.5pt solid var(--accent); padding-bottom:5mm; margin-bottom:6mm }
+.cover .row{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5mm }
+.deck{ font-size:10.5pt; color:var(--ink-2); margin-top:3.5mm; max-width:150mm }
+.meta{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:.6pt solid var(--rule);
+  margin-top:6mm }
+.meta div{ padding:2.6mm 3mm; border-right:.6pt solid var(--rule) }
+.meta div:last-child{border-right:none}
+.meta dt{ font-family:"IBM Plex Mono",monospace; font-size:6.4pt; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 1.2mm }
+.meta dd{ margin:0; font-size:9pt; font-weight:600; line-height:1.25 }
+
+section{ margin-bottom:5.5mm }
+.sec-head{ border-top:1.2pt solid var(--ink); padding-top:2.5mm; margin-bottom:4mm }
+.sec-num{ display:block; font-family:"IBM Plex Mono",monospace; font-size:6.8pt;
+  letter-spacing:.14em; color:var(--accent); margin-bottom:1.8mm }
+.lead{ color:var(--ink-2); max-width:158mm }
+
+/* supplier card */
+.card{ border:.6pt solid var(--rule); margin-bottom:3.2mm; break-inside:avoid; page-break-inside:avoid }
+.card-top{ background:var(--tint); padding:2.8mm 3.5mm; border-bottom:.6pt solid var(--rule);
+  display:flex; justify-content:space-between; align-items:baseline; gap:4mm }
+.card-top h3{margin:0}
+.card-top .who{ font-size:8pt; color:var(--ink-2); text-align:right; white-space:nowrap }
+.card-body{ padding:2.6mm 3.5mm }
+.spec{ display:grid; grid-template-columns:32mm 1fr; gap:1.4mm 4mm }
+.spec dt{ font-family:"IBM Plex Mono",monospace; font-size:6.6pt; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3); padding-top:.6mm }
+.spec dd{ margin:0; font-size:9pt; line-height:1.45 }
+
+.tag{ display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:6.4pt;
+  letter-spacing:.08em; text-transform:uppercase; padding:.6mm 1.6mm; border:.6pt solid currentColor;
+  color:var(--ink-2); background:var(--paper); white-space:nowrap; font-weight:500 }
+.tag.w{color:var(--warn)} .tag.n{color:var(--neg)}
+
+table{ border-collapse:collapse; width:100%; font-size:8.4pt; break-inside:avoid }
+th,td{ text-align:left; padding:1.9mm 2.4mm; border-bottom:.6pt solid var(--rule); vertical-align:top }
+thead th{ font-family:"IBM Plex Mono",monospace; font-size:6.4pt; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3); font-weight:500; background:var(--tint);
+  border-bottom:.8pt solid var(--rule-2) }
+td.name{font-weight:600}
+td.num,th.num{ text-align:right; font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums; white-space:nowrap }
+tbody tr:last-child td{border-bottom:.6pt solid var(--rule)}
+caption{ caption-side:bottom; text-align:left; padding:2mm 0 0; font-size:7.6pt;
+  color:var(--ink-3); line-height:1.45 }
+
+.callout{ border:.6pt solid var(--rule-2); border-top:2pt solid var(--accent);
+  padding:3mm 3.5mm; margin:3.2mm 0; break-inside:avoid; background:var(--paper) }
+.callout.w{border-top-color:var(--warn)}
+.callout h3{margin:0 0 1.8mm}
+.callout p:last-child{margin-bottom:0}
+
+ul{margin:0 0 2.6mm; padding-left:4.2mm}
+li{margin-bottom:1.2mm}
+li::marker{color:var(--accent)}
+
+.split{ display:grid; grid-template-columns:1fr 1fr; gap:5mm }
+.sec-head{ break-after:avoid; page-break-after:avoid }
+footer{ border-top:.6pt solid var(--rule); padding-top:2.6mm; margin-top:4mm;
+  break-inside:avoid; page-break-inside:avoid }
+
+.ours{border-left:3pt solid var(--accent)}
+.theirs{border-left:3pt solid var(--warn)}
+.legend-row{display:flex; gap:6mm; flex-wrap:wrap; margin:3mm 0 5mm; font-size:8pt}
+.legend-row span{display:flex; align-items:center; gap:2mm}
+.legend-row i{display:inline-block; width:3mm; height:3mm}
+.form td{background:var(--paper)}
+.form .fill{background:var(--tint); color:var(--ink-3); font-style:italic}
+a{ color:var(--accent); text-decoration:none; border-bottom:.4pt solid var(--rule-2) }
+.srclist li{ margin-bottom:1mm }
+</style>
+</head>
+<body>
+<div class="cover">
+  <div class="row">
+    <span class="eyebrow">Animaccord · AI-девайс · пилот</span>
+    <span class="xs mono">Август 2026</span>
+  </div>
+  <h1>Пилот на первые 200 тысяч</h1>
+  <p class="deck">Сбор небольшой части корпуса детской речи и замер, справляется ли
+    распознавание с речью 3–5 лет. Не демонстрация для инвестора, а первый транш работы,
+    которая всё равно предстоит — выбранной так, чтобы закрыть самое рискованное
+    допущение проекта раньше остальных.</p>
+  <dl class="meta">
+    <div><dt>Бюджет</dt><dd>170–200 тыс. ₽</dd></div>
+    <div><dt>Срок</dt><dd>4 недели</dd></div>
+    <div><dt>Проверяет</dt><dd>Гипотезу H3</dd></div>
+    <div><dt>Статус</dt><dd>Первый транш раздела 18</dd></div>
+  </dl>
+</div>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">00 — Зачем именно это</span>
+    <h2>Единственное непроверенное допущение во всём плане</h2>
+  </div>
+  <p>Себестоимость минуты диалога — посчитана. Экономика подписки — посчитана. Справится ли
+    распознавание с речью трёхлетки — нет: это не абстрактный риск, а задокументированный
+    провал у конкурента. У Curio в разделе 04 проектного документа прямо зафиксировано —
+    «распознавание не справляется с речью младших дошкольников». Это единственное место
+    во всей конструкции, где вместо расчёта стоит предположение.</p>
+  <p style="margin-bottom:0">Полный корпус — 700+ дикторов, 20 тыс. записей, 0,7–1,3 млн ₽
+    — рассчитан на обучение русского ключевого слова (раздел 10 спецификации ядра).
+    Пилот не заменяет эту работу и не дублирует её: это первая пятая часть того же сбора,
+    достаточная, чтобы получить реальную цифру ошибок распознавания, прежде чем тратить
+    остальное.</p>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01 — Бюджет</span>
+    <h2>Как расходуются 170–200 тысяч</h2>
+  </div>
+  <table>
+    <thead><tr><th>Статья</th><th class="num">Сумма</th><th>Что покупает</th></tr></thead>
+    <tbody>
+      <tr><td class="name">≈100 взрослых дикторов</td><td class="num">40 000 ₽</td>
+        <td>~400 ₽/участник — та же ставка, что в расчёте полного корпуса</td></tr>
+      <tr><td class="name">≈35 детей</td><td class="num">70 000 ₽</td>
+        <td>~2 000 ₽/участник — нужно согласие и сопровождение родителя</td></tr>
+      <tr><td class="name">Методология и организация</td><td class="num">60 000–90 000 ₽</td>
+        <td>Протокол записи, форма согласия, логистика — в основном фиксированные
+          затраты, которые потом обслуживают весь корпус, а не только пилот</td></tr>
+      <tr><td class="name">Бенчмарк распознавания</td><td class="num">≈1 000 ₽</td>
+        <td>Прогон 300–600 минут через SaluteSpeech по тарифу из вводных
+          для инвестпакета</td></tr>
+    </tbody>
+  </table>
+  <p class="xs">Юридический минимум — согласие родителя и порядок хранения записей —
+    нужен с первого диктора, это малая часть статьи «юридическое сопровождение»
+    из раздела 18 спецификации, на пилот — не более нескольких десятков тысяч рублей
+    сверх сметы выше.</p>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02 — План по неделям</span>
+    <h2>Четыре недели от денег до цифры</h2>
+  </div>
+  <table>
+    <thead><tr><th>Неделя</th><th>Что происходит</th></tr></thead>
+    <tbody>
+      <tr><td class="name">1</td>
+        <td>Протокол записи, форма согласия родителя, набор взрослых дикторов
+          и семей с детьми</td></tr>
+      <tr><td class="name">2</td>
+        <td>Запись — две дистанции, 30 повторов на диктора, отбраковка непригодных
+          записей</td></tr>
+      <tr><td class="name">3</td>
+        <td>Прогон собранного материала через распознавание, отдельно для взрослых
+          и для детей</td></tr>
+      <tr><td class="name">4</td>
+        <td>Разбор ошибок по возрасту и дистанции записи, короткий отчёт с цифрой</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03 — Что показать инвестору по итогу</span>
+    <h2>Число, а не слайд</h2>
+  </div>
+  <ul>
+    <li><strong>Процент ошибок распознавания</strong> отдельно для взрослых и для детей
+      3–5 лет — гипотеза H3 либо подтверждается, либо нет, но перестаёт быть
+      предположением</li>
+    <li><strong>Образцы записей</strong> — не абстракция, а реальные голоса детей,
+      отвечающие персонажу</li>
+    <li><strong>Действующая методология сбора</strong> — протокол и согласия, готовые
+      к масштабированию на оставшиеся 80% корпуса без повторной разработки</li>
+  </ul>
+  <p style="margin-bottom:0">Разговор смещается с «дайте денег на идею» на «мы уже проверяем
+    самое рискованное допущение, вот первые результаты» — второй разговор с инвестором
+    начинается с цифры, а не с обещания.</p>
+</section>
+
+<footer>
+  <p class="xs" style="margin-bottom:0">Пилот на первые 200 тысяч. Август 2026. Часть более
+    крупной статьи «корпус детской речи» — спецификация ядра, разделы 16 и 18.
+    Проверяемая гипотеза H3 — проектный документ «Лицензируемый слой персонажа», раздел 14.</p>
+</footer>
+
+</body>
+</html>
