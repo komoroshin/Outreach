@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="ru"><head><meta charset="utf-8">
+<title>Фаза 1 на $200 тысяч</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+@page{ size:A4; margin:16mm 15mm 18mm; }
+:root{
+  --ink:#121614; --ink-2:#454E4A; --ink-3:#767F7A;
+  --paper:#FFFFFF; --tint:#F1F4F2; --rule:#D3D9D5; --rule-2:#AEB8B2;
+  --accent:#1C3A34; --warn:#8A6410; --neg:#9B2C1F;
+}
+*{box-sizing:border-box}
+html,body{margin:0; padding:0; background:var(--paper); color:var(--ink)}
+body{ font-family:"IBM Plex Sans",-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:9.4pt; line-height:1.5; -webkit-print-color-adjust:exact; print-color-adjust:exact; }
+h1,h2,h3{ font-family:"Newsreader",Georgia,serif; font-weight:600; margin:0; text-wrap:balance }
+h1{ font-size:23pt; line-height:1.12; letter-spacing:-.01em }
+h2{ font-size:14pt; line-height:1.2; margin:0 0 3mm }
+h3{ font-size:10.5pt; line-height:1.25; font-family:"IBM Plex Sans",sans-serif; font-weight:600 }
+p{margin:0 0 2.6mm}
+.mono{font-family:"IBM Plex Mono",ui-monospace,monospace}
+.eyebrow{ font-family:"IBM Plex Mono",monospace; font-size:6.8pt; letter-spacing:.16em;
+  text-transform:uppercase; color:var(--accent); font-weight:500 }
+.muted{color:var(--ink-2)}
+.xs{font-size:8pt; line-height:1.45; color:var(--ink-3)}
+
+/* cover */
+.cover{ border-bottom:2.5pt solid var(--accent); padding-bottom:5mm; margin-bottom:6mm }
+.cover .row{ display:flex; justify-content:space-between; align-items:baseline; margin-bottom:5mm }
+.deck{ font-size:10.5pt; color:var(--ink-2); margin-top:3.5mm; max-width:150mm }
+.meta{ display:grid; grid-template-columns:repeat(4,1fr); gap:0; border:.6pt solid var(--rule);
+  margin-top:6mm }
+.meta div{ padding:2.6mm 3mm; border-right:.6pt solid var(--rule) }
+.meta div:last-child{border-right:none}
+.meta dt{ font-family:"IBM Plex Mono",monospace; font-size:6.4pt; letter-spacing:.13em;
+  text-transform:uppercase; color:var(--ink-3); margin:0 0 1.2mm }
+.meta dd{ margin:0; font-size:9pt; font-weight:600; line-height:1.25 }
+
+section{ margin-bottom:5.5mm }
+.sec-head{ border-top:1.2pt solid var(--ink); padding-top:2.5mm; margin-bottom:4mm }
+.sec-num{ display:block; font-family:"IBM Plex Mono",monospace; font-size:6.8pt;
+  letter-spacing:.14em; color:var(--accent); margin-bottom:1.8mm }
+.lead{ color:var(--ink-2); max-width:158mm }
+
+/* supplier card */
+.card{ border:.6pt solid var(--rule); margin-bottom:3.2mm; break-inside:avoid; page-break-inside:avoid }
+.card-top{ background:var(--tint); padding:2.8mm 3.5mm; border-bottom:.6pt solid var(--rule);
+  display:flex; justify-content:space-between; align-items:baseline; gap:4mm }
+.card-top h3{margin:0}
+.card-top .who{ font-size:8pt; color:var(--ink-2); text-align:right; white-space:nowrap }
+.card-body{ padding:2.6mm 3.5mm }
+.spec{ display:grid; grid-template-columns:32mm 1fr; gap:1.4mm 4mm }
+.spec dt{ font-family:"IBM Plex Mono",monospace; font-size:6.6pt; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3); padding-top:.6mm }
+.spec dd{ margin:0; font-size:9pt; line-height:1.45 }
+
+.tag{ display:inline-block; font-family:"IBM Plex Mono",monospace; font-size:6.4pt;
+  letter-spacing:.08em; text-transform:uppercase; padding:.6mm 1.6mm; border:.6pt solid currentColor;
+  color:var(--ink-2); background:var(--paper); white-space:nowrap; font-weight:500 }
+.tag.w{color:var(--warn)} .tag.n{color:var(--neg)}
+
+table{ border-collapse:collapse; width:100%; font-size:8.4pt; break-inside:avoid }
+th,td{ text-align:left; padding:1.9mm 2.4mm; border-bottom:.6pt solid var(--rule); vertical-align:top }
+thead th{ font-family:"IBM Plex Mono",monospace; font-size:6.4pt; letter-spacing:.1em;
+  text-transform:uppercase; color:var(--ink-3); font-weight:500; background:var(--tint);
+  border-bottom:.8pt solid var(--rule-2) }
+td.name{font-weight:600}
+td.num,th.num{ text-align:right; font-family:"IBM Plex Mono",monospace; font-variant-numeric:tabular-nums; white-space:nowrap }
+tbody tr:last-child td{border-bottom:.6pt solid var(--rule)}
+caption{ caption-side:bottom; text-align:left; padding:2mm 0 0; font-size:7.6pt;
+  color:var(--ink-3); line-height:1.45 }
+
+.callout{ border:.6pt solid var(--rule-2); border-top:2pt solid var(--accent);
+  padding:3mm 3.5mm; margin:3.2mm 0; break-inside:avoid; background:var(--paper) }
+.callout.w{border-top-color:var(--warn)}
+.callout h3{margin:0 0 1.8mm}
+.callout p:last-child{margin-bottom:0}
+
+ul{margin:0 0 2.6mm; padding-left:4.2mm}
+li{margin-bottom:1.2mm}
+li::marker{color:var(--accent)}
+
+.split{ display:grid; grid-template-columns:1fr 1fr; gap:5mm }
+.sec-head{ break-after:avoid; page-break-after:avoid }
+footer{ border-top:.6pt solid var(--rule); padding-top:2.6mm; margin-top:4mm;
+  break-inside:avoid; page-break-inside:avoid }
+
+.ours{border-left:3pt solid var(--accent)}
+.theirs{border-left:3pt solid var(--warn)}
+.legend-row{display:flex; gap:6mm; flex-wrap:wrap; margin:3mm 0 5mm; font-size:8pt}
+.legend-row span{display:flex; align-items:center; gap:2mm}
+.legend-row i{display:inline-block; width:3mm; height:3mm}
+.form td{background:var(--paper)}
+.form .fill{background:var(--tint); color:var(--ink-3); font-style:italic}
+a{ color:var(--accent); text-decoration:none; border-bottom:.4pt solid var(--rule-2) }
+.srclist li{ margin-bottom:1mm }
+</style>
+</head>
+<body>
+<div class="cover">
+  <div class="row">
+    <span class="eyebrow">Animaccord · AI-девайс · фаза 1</span>
+    <span class="xs mono">Август 2026</span>
+  </div>
+  <h1>Фаза 1 на собственные $200 тысяч</h1>
+  <p class="deck">Не пилот и не демонстрация — полная первая фаза ядра, целиком закрытая
+    средствами заказчика. К моменту разговора с инвестором на руках работающий прототип
+    с семью измеренными гипотезами и выбранной платформой устройства, а не план.</p>
+  <dl class="meta">
+    <div><dt>Бюджет</dt><dd>$200 тыс. ≈ 16,6 млн ₽</dd></div>
+    <div><dt>Срок</dt><dd>6 месяцев</dd></div>
+    <div><dt>Покупает</dt><dd>Всю фазу 1</dd></div>
+    <div><dt>Курс</dt><dd>83 ₽/$, авг. 2026</dd></div>
+  </dl>
+</div>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">00 — Что это меняет</span>
+    <h2>Раунд финансирует масштабирование, а не создание</h2>
+  </div>
+  <p>$200 тыс. — не пилотная сумма и не демонстрационный кусок. По курсу 83 ₽/$
+    это 16,6 млн ₽ — ровно бюджет фазы 1 из раздела 15 проектного документа: 42 из 114
+    человеко-месяцев команды, плюс два внесметных пункта, без которых фаза 1 не считается
+    завершённой.</p>
+  <p style="margin-bottom:0">Разница с любым меньшим пилотом не количественная, а качественная.
+    Пилот отвечает на один вопрос. Фаза 1 закрывает семь: к инвестору заказчик приходит
+    не с идеей и предположениями, а с работающим прототипом, измеренными метриками
+    и выбранной платформой устройства с образцом в руках. Раунд в этом случае финансирует
+    следующий шаг доказанной вещи, а не саму её постройку — это другая переговорная позиция.</p>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">01 — Бюджет</span>
+    <h2>Как расходуются $200 тысяч</h2>
+  </div>
+  <table>
+    <thead><tr><th>Статья</th><th class="num">Сумма</th><th>Источник</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Ядро фазы 1</td><td class="num">14,5 млн ₽</td>
+        <td>42 из 114 чел-мес команды — раздел 15/16 спецификации ядра</td></tr>
+      <tr><td class="name">Полный корпус детской речи</td><td class="num">~1,0 млн ₽</td>
+        <td>Не пилотная часть — весь объём, раздел 16</td></tr>
+      <tr><td class="name">Студийная запись тембра</td><td class="num">~0,5 млн ₽</td>
+        <td>Модель голоса, принятая правообладателем, раздел 18</td></tr>
+      <tr><td class="name">Оценочные образцы платформы</td><td class="num">~0,05 млн ₽</td>
+        <td>Комплекты 2–3 кандидатных ODM/модулей для сравнения — раздел 03 ниже</td></tr>
+      <tr><td class="name">Итого</td><td class="num">~16,05 млн ₽</td><td>из 16,6 млн ₽</td></tr>
+      <tr><td class="name">Резерв</td><td class="num">~0,55 млн ₽</td>
+        <td>На 152-ФЗ и договор с актрисой — минимум, не полное юридическое
+          сопровождение из раздела 18</td></tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">02 — Что даёт ядро фазы 1</span>
+    <h2>Семь измеренных гипотез вместо семи предположений</h2>
+  </div>
+  <p class="lead">Ориентиры фазы 1 из раздела 15 проектного документа — не формальность,
+    а то, что физически будет измерено на работающем прототипе.</p>
+  <table>
+    <thead><tr><th>Показатель</th><th class="num">Ориентир</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Себестоимость минуты</td><td class="num">≤ 304 ₽/мес на устройство</td></tr>
+      <tr><td class="name">Задержка ответа</td><td class="num">≤ 200 мс</td></tr>
+      <tr><td class="name">Сбои распознавания детской речи</td><td class="num">≤ 10%</td></tr>
+      <tr><td class="name">Отклонения детектором выпадения из образа</td><td class="num">≤ 2%</td></tr>
+      <tr><td class="name">Удержание в домашнем тесте</td><td class="num">D30/D1 ≥ 45%</td></tr>
+      <tr><td class="name">Критические инциденты</td><td class="num">ноль на 5 000+ ч диалога</td></tr>
+    </tbody>
+  </table>
+  <p class="xs">Каждая цифра — измерение на прототипе, не расчёт по прайс-листам поставщиков.
+    Это и есть содержательная разница между «мы посчитали» и «мы проверили», на которую
+    обычно упирается разговор с инвестором про юнит-экономику.</p>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">03 — Что происходит с железом</span>
+    <h2>Прошивка — да, тяжёлое железо — нет</h2>
+  </div>
+  <p>Здесь легко перепутать две разные вещи, и стоит развести их явно.</p>
+  <table>
+    <thead><tr><th>Работа</th><th style="white-space:nowrap">Фаза 1</th><th>Где посчитана</th></tr></thead>
+    <tbody>
+      <tr><td class="name">Прошивка под поведение персонажа</td><td class="num">Да</td>
+        <td>Ключевое слово, офлайн-сценарий, аудиотракт, OTA, реестр устройств —
+          раздел 10 спецификации, 120 чел-дней, уже внутри бюджета ядра выше</td></tr>
+      <tr><td class="name">Выбор платформы</td><td class="num">Да</td>
+        <td>Сравнение 2–3 кандидатных ODM/модулей на оценочных образцах —
+          её результат нужен прошивке уже в этой фазе</td></tr>
+      <tr><td class="name">Оснастка, сертификация, первая партия</td><td class="num">Нет</td>
+        <td>Раздел 18, 1,9–17,2 млн ₽ в зависимости от полукастома/полного кастома —
+          начинается только после того, как платформа и прошивка проверены на образце</td></tr>
+    </tbody>
+  </table>
+  <div class="callout ours">
+    <h3>Практический вывод</h3>
+    <p style="margin-bottom:0">К концу фазы 1 на руках не только работающее программное
+      ядро, но и физический прототип: выбранная плата, обученное ключевое слово,
+      проверенный офлайн-режим. Тяжёлые вложения в оснастку и партию откладываются
+      до момента, когда платформа уже доказала себя, — деньги не рискуют быть потраченными
+      на неверный выбор.</p>
+  </div>
+</section>
+
+<section>
+  <div class="sec-head">
+    <span class="sec-num">04 — Что остаётся за скобками</span>
+    <h2>Осознанно не входит в $200 тысяч</h2>
+  </div>
+  <ul>
+    <li><strong>Фазы 2–3</strong> — конструктор канона, приёмочный портал для лицензиатов,
+      фабрика контента, переносимость ядра. Требуют доказательств из фазы 1</li>
+    <li><strong>Трек устройства</strong> — оснастка, сертификация, первая партия.
+      Раздел 18, начинается после выбора платформы</li>
+    <li><strong>Полное юридическое сопровождение</strong> — договор лицензии
+      с тремя приложениями из «Механики лицензии» нужен только к фазе 3</li>
+    <li><strong>Облако сверх тестового трафика фазы 1</strong> — статья растёт
+      с масштабом, не разовый платёж</li>
+  </ul>
+</section>
+
+<footer>
+  <p class="xs" style="margin-bottom:0">Фаза 1 на собственные $200 тысяч. Август 2026.
+    Бюджет и ориентиры — спецификация ядра, разделы 15–18; проектный документ
+    «Лицензируемый слой персонажа», разделы 12 и 15.</p>
+</footer>
+
+</body>
+</html>
