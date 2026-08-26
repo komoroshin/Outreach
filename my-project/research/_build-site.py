@@ -58,6 +58,31 @@ DOCS = [
               "что заполняется данными компании.",
          chips=["Демография", "Сопоставимые сделки", "Экономика подписки", "Формы", "Карта ответов"],
          size="11 разделов · 10 страниц", pdf="investor-inputs.pdf"),
+    dict(slug="05-core-spec", src="core-spec.html", family="print",
+         num="05", nav="Спецификация ядра", title="Спецификация ядра",
+         sub="Внутренний документ — 78 единиц работ и смета",
+         desc="Инженерная спецификация ядра до уровня единиц работ: шесть компонентов, "
+              "нефункциональные требования, порты, данные, три параллельные сметы — "
+              "конструктивная, по рыночным ставкам августа 2026 и внесметные статьи. "
+              "Основа для оценки подрядчиков и переговоров с командой разработки.",
+         chips=["Character Runtime", "Конструктор канона", "78 единиц работ", "Смета по рынку", "Внесметные статьи"],
+         size="21 раздел · 19 страниц", pdf="core-spec.pdf"),
+    dict(slug="06-phase1-own-funds", src="phase1-own-funds.html", family="print",
+         num="06", nav="Фаза 1 на $200К", title="Фаза 1 на собственные $200 тысяч",
+         sub="Внутренний документ — бюджет и штат первого транша",
+         desc="Как расходуются $200 тыс. собственных средств заказчика на первую фазу ядра: "
+              "бюджет по статьям, семь измеряемых гипотез, что происходит с треком устройства "
+              "и штатный состав команды на этот объём.",
+         chips=["Бюджет фазы 1", "Семь гипотез", "Трек устройства", "Штат"],
+         size="6 разделов · 3 страницы", pdf="phase1-own-funds.pdf"),
+    dict(slug="07-license-mechanics", src="license-mechanics.html", family="print",
+         num="07", nav="Механика лицензии", title="Механика лицензии: канон, голос, приёмка",
+         sub="Внутренний документ — для юристов",
+         desc="Как именно лицензируются канон, голос и приёмка: что передаётся и как проверяется "
+              "по каждому из трёх компонентов, сопоставление с известными типами лицензий "
+              "и единственная действительно новая часть — непрерывный контроль соответствия.",
+         chips=["Канон", "Голос", "Приёмка", "Прецеденты", "Открытые вопросы"],
+         size="10 разделов · 5 страниц", pdf="license-mechanics.pdf"),
 ]
 
 FONTS = (
@@ -359,11 +384,10 @@ footer.site{ display:flex; justify-content:space-between; flex-wrap:wrap; gap:12
 
 
 def build_index():
-    cards = []
-    for d in DOCS:
+    def card(d):
         chips = "".join(f"<li>{escape(c)}</li>" for c in d["chips"])
         pdf = (f'<a class="btn" href="pdf/{d["pdf"]}">PDF</a>' if d["pdf"] else "")
-        cards.append(f"""<article class="doc reveal">
+        return f"""<article class="doc reveal">
   <div class="doc-head">
     <span class="idx">{d['num']}</span>
     <h3><a href="{d['slug']}.html">{escape(d['title'])}</a></h3>
@@ -383,7 +407,11 @@ def build_index():
       <span class="size">{escape(d['size'])}</span>
     </div>
   </div>
-</article>""")
+</article>"""
+
+    PUBLIC_DOCS, INTERNAL_DOCS = DOCS[:4], DOCS[4:]
+    cards = [card(d) for d in PUBLIC_DOCS]
+    internal_cards = [card(d) for d in INTERNAL_DOCS]
 
     page = f"""<!doctype html>
 <html lang="ru">
@@ -409,7 +437,8 @@ def build_index():
       <p class="tb-role">Рынок, платформы и <em>предмет разработки</em></p>
       <p class="tb-lede">Четыре документа, которые читаются подряд. Первый описывает рынок
         как он есть, второй разбирает, из чего такие устройства собирают, третий предлагает
-        предмет разработки, четвёртый готовит цифры к разговору с инвестором.</p>
+        предмет разработки, четвёртый готовит цифры к разговору с инвестором. Ниже —
+        внутренние рабочие материалы отдельным блоком.</p>
     </div>
     <div class="stats">
       <div class="stat"><div class="n">4</div><div class="l">документа</div></div>
@@ -437,8 +466,16 @@ def build_index():
 {"".join(cards)}
   </section>
 
+  <section id="internal" class="reveal">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Внутренние материалы</h2></div>
+    <div class="rule"></div>
+    <p>Рабочие документы для команды и юристов — не часть инвестиционной подачи выше
+      и никуда не пересылаются как есть.</p>
+{"".join(internal_cards)}
+  </section>
+
   <section class="reveal">
-    <div class="sec-head"><span class="sec-num">03</span><h2>Как этим пользоваться</h2></div>
+    <div class="sec-head"><span class="sec-num">04</span><h2>Как этим пользоваться</h2></div>
     <div class="rule"></div>
     <ul class="method">
       <li>Порядок задан по нарастанию: от того, что уже существует на рынке, к тому,
