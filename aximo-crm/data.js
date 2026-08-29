@@ -63,9 +63,9 @@ window.AXIMO_CRM = {
     { id: "c16", name: "Deel",           domain: "deel.com",       industry: "HR Tech",            country: "US", size: "3000+", inn: null, enrichmentTarget: null,         website: "https://deel.com" },
 
     // --- свежие входящие лиды (L6): сырые, только имя+корп.емейл у контакта; всё остальное обогащаем ---
-    { id: "c17", name: "Whizz",          domain: null,             industry: null,                 country: null, size: null,   inn: null, enrichmentTarget: "apollo",     website: null },
-    { id: "c18", name: "HR-Link",        domain: null,             industry: null,                 country: null, size: null,   inn: null, enrichmentTarget: "datanewton", website: null },
-    { id: "c19", name: "Wazzup24",       domain: null,             industry: null,                 country: null, size: null,   inn: null, enrichmentTarget: "datanewton", website: null },
+    { id: "c17", name: "Whizz",          domain: "getwhizz.com",   industry: "Mobility / Delivery e-bike rental", country: "US", size: "110",  inn: null, enrichmentTarget: "apollo",     website: "https://getwhizz.com" },
+    { id: "c18", name: "HR-Link",        domain: "hr-link.ru",     industry: "HR Tech / КЭДО",     country: "RU", size: "277",  inn: "7801683312", enrichmentTarget: "datanewton", website: "https://hr-link.ru" },
+    { id: "c19", name: "Wazzup24",       domain: "wazzup24.ru",    industry: "SaaS / мессенджер-интеграции с CRM", country: "RU", size: "151",  inn: "7734610563", enrichmentTarget: "datanewton", website: "https://wazzup24.ru" },
 
     // --- компании по закрытым сделкам (история) ---
     { id: "c20", name: "Lamoda",         domain: "lamoda.ru",      industry: "E-commerce / Fashion", country: "RU", size: "5000+", inn: null, enrichmentTarget: null, website: "https://lamoda.ru" },
@@ -81,6 +81,7 @@ window.AXIMO_CRM = {
     { id: "c30", name: "Glovo",          domain: "glovoapp.com",   industry: "Delivery",           country: "ES", size: "3000+", inn: null, enrichmentTarget: null, website: "https://glovoapp.com" },
     { id: "c31", name: "Bolt",           domain: "bolt.eu",        industry: "Mobility",           country: "EE", size: "4000+", inn: null, enrichmentTarget: null, website: "https://bolt.eu" },
     { id: "c32", name: "ЛогистПро",      domain: "logistpro-spb.ru", industry: "Логистика",        country: "RU", size: "11-50", inn: null, enrichmentTarget: "datanewton", website: "https://logistpro-spb.ru" },
+    { id: "c33", name: "Petshop.ru",     domain: "petshop.ru",     industry: "E-commerce / зоотовары", country: "RU", size: "1492", inn: "7813450665", enrichmentTarget: "datanewton", website: "https://www.petshop.ru" },
 
     // --- ДУБЛИ (чиним в уроке про чистку CRM) ---
     { id: "c13", name: "Pipedrive OÜ",   domain: null,             industry: null,                 country: "EE", size: null,   inn: null, enrichmentTarget: null, _duplicateOf: "c6" },
@@ -123,6 +124,7 @@ window.AXIMO_CRM = {
     { id: "p30", companyId: "c30", firstName: "Sofia",   lastName: "Ilic",        title: "Operations Manager", email: "sofia.ilic@glovoapp.com",       phone: "+34 931 220 3030", linkedin: null },
     { id: "p31", companyId: "c31", firstName: "Andrei",  lastName: "Popa",        title: "Head of Support",    email: "andrei.popa@bolt.eu",           phone: "+372 5000 3131", linkedin: null },
     { id: "p32", companyId: "c32", firstName: "Pavel",   lastName: "Gusev",       title: "Коммерческий директор", email: "p.gusev@logistpro-spb.ru",      phone: "+7 812 700-12-09", linkedin: null },
+    { id: "p33", companyId: "c33", firstName: "Irina",   lastName: "Kotova",      title: null,                     email: "irina.kotova@petshop.ru",       phone: null, linkedin: null },
 
     // контакт-форм-филлер заявки d3 (Wazzup24) — только имя+почта
     { id: "p16", companyId: "c19", firstName: "Sergey",      lastName: "Lebedev",   title: null,                        email: "sergey.lebedev@wazzup24.ru",    phone: null, linkedin: null }
@@ -132,24 +134,43 @@ window.AXIMO_CRM = {
   deals: [
     /* ---------- NEW ---------- */
     {
-      id: "d1", name: "Заявка с сайта — Whizz", companyId: "c17", contactIds: ["p17"], stage: "New",
-      amountUSD: 0, owner: "You", createdHoursAgo: 1, lastActivityHoursAgo: 1,
-      nextStep: "Квалифицировать: что за компания, наш ли ICP, найти ЛПР",
-      notes: [{ daysAgo: 0, author: "You", text: "Заявка с сайта. Всё, что есть: Daniel Roth, daniel.roth@getwhizz.com. Нужно обогатить (домен → сайт → ЛПР) и квалифицировать." }],
+      id: "d1", name: "Заявка с сайта — Whizz", companyId: "c17", contactIds: ["p17"], stage: "Qualified",
+      amountUSD: 0, owner: "You", createdHoursAgo: 1, lastActivityHoursAgo: 0,
+      nextStep: "Назначить демо",
+      notes: [
+        { daysAgo: 0, author: "You", text: "Заявка с сайта. Всё, что есть: Daniel Roth, daniel.roth@getwhizz.com. Нужно обогатить (домен → сайт → ЛПР) и квалифицировать." },
+        { daysAgo: 0, author: "You", text: "КВАЛ. Whizz — аренда и rent-to-own электровелосипедов для курьеров доставки (DoorDash, Grubhub), США (Нью-Йорк), ~110 сотрудников, Series A, $17.5M инвестиций, выручка ~$35M. По ICP: размер и гео подходят, бюджет подтверждён раундом, есть рутина под автоматизацию (12 чел. в поддержке, 9 в операциях — типовые тикеты по батареям/ремонту, диспетчеризация). Заход: AI-ассистент для поддержки курьеров + автоматизация логистики." }
+      ],
       correspondence: []
     },
     {
-      id: "d2", name: "Заявка с сайта — HR-Link", companyId: "c18", contactIds: ["p18"], stage: "New",
-      amountUSD: 0, owner: "You", createdHoursAgo: 4, lastActivityHoursAgo: 4,
-      nextStep: "Квалифицировать: что за компания, наш ли ICP, найти ЛПР и ИНН",
-      notes: [{ daysAgo: 0, author: "You", text: "Заявка с сайта. Всё, что есть: Egor Smirnov, egor.smirnov@hr-link.ru. Российская компания — обогатить через сайт (ИНН/выручка) и квалифицировать." }],
+      id: "d2", name: "Заявка с сайта — HR-Link", companyId: "c18", contactIds: ["p18"], stage: "Qualified",
+      amountUSD: 0, owner: "You", createdHoursAgo: 4, lastActivityHoursAgo: 0,
+      nextStep: "Назначить демо",
+      notes: [
+        { daysAgo: 0, author: "You", text: "Заявка с сайта. Всё, что есть: Egor Smirnov, egor.smirnov@hr-link.ru. Российская компания — обогатить через сайт (ИНН/выручка) и квалифицировать." },
+        { daysAgo: 0, author: "You", text: "КВАЛ. HRlink (ООО «Инновации в управлении кадрами») — система электронного кадрового документооборота (КЭДО), СПб, ИНН 7801683312, статус «Действует». 277 сотрудников (2025), выручка ~1,44 млрд ₽ (кратный рост с 2020), 60% принадлежит HeadHunter (hh.ru) — сильный бэкграунд. По ICP: размер и гео подходят, бюджет подтверждён выручкой и ростом штата, есть рутина под автоматизацию на фоне масштабирования. Заход: AI-автоматизация внутренних HR/support-процессов." }
+      ],
       correspondence: []
     },
     {
-      id: "d3", name: "Заявка с сайта — Wazzup24", companyId: "c19", contactIds: ["p16"], stage: "New",
-      amountUSD: 0, owner: "You", createdDaysAgo: 1, lastActivityDaysAgo: 1,
-      nextStep: "Квалифицировать: что за компания, наш ли ICP",
-      notes: [{ daysAgo: 1, author: "You", text: "Заявка с сайта. Всё, что есть: Sergey Lebedev, sergey.lebedev@wazzup24.ru. Обогатить и квалифицировать." }],
+      id: "d38", name: "Заявка с сайта — Petshop.ru", companyId: "c33", contactIds: ["p33"], stage: "Closed Lost",
+      amountUSD: 0, owner: "You", createdHoursAgo: 1, lastActivityHoursAgo: 0,
+      closeReason: "Не квал — вне ICP по размеру (1492 сотрудника, верхняя граница 1000)",
+      notes: [
+        { daysAgo: 0, author: "You", text: "Заявка с сайта. Всё, что есть: Irina Kotova, irina.kotova@petshop.ru. Российская компания — обогатить через сайт (ИНН/выручка) и квалифицировать." },
+        { daysAgo: 0, author: "You", text: "НЕ КВАЛ. Petshop.ru (ООО «Ин-Ритейл») — крупнейший интернет-магазин зоотоваров в РФ, СПб. ИНН 7813450665, статус «Действует». 1492 сотрудника (2025), выручка ~9 млрд ₽. По ICP: размер сильно превышает верхнюю границу (50–1000), это уже крупный энтерпрайз-ритейлер. Бюджет есть, но не наш сегмент — передать как кандидата в enterprise-сегмент или на решение CEO." }
+      ],
+      correspondence: []
+    },
+    {
+      id: "d3", name: "Заявка с сайта — Wazzup24", companyId: "c19", contactIds: ["p16"], stage: "Qualified",
+      amountUSD: 0, owner: "You", createdDaysAgo: 1, lastActivityHoursAgo: 0,
+      nextStep: "Назначить демо",
+      notes: [
+        { daysAgo: 1, author: "You", text: "Заявка с сайта. Всё, что есть: Sergey Lebedev, sergey.lebedev@wazzup24.ru. Обогатить и квалифицировать." },
+        { daysAgo: 0, author: "You", text: "КВАЛ. Wazzup (ООО «Ваззап») — платформа интеграции мессенджеров (WhatsApp, Telegram, ВК) с CRM, №1 в маркетплейсе amoCRM, 30 000+ клиентов. Москва (Сколково), ИНН 7734610563, статус «Действует». 151 сотрудник (2025), выручка ~2,43 млрд ₽. По ICP: размер и гео подходят, бюджет подтверждён выручкой, большой поток клиентской поддержки — рутина под автоматизацию. Заход: AI-ассистент 1-й линии поддержки + автоматизация онбординга." }
+      ],
       correspondence: []
     },
 
