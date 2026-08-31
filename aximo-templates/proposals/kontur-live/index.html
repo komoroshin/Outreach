@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>КП — Kontur × Aximo</title>
+<style>
+  :root{ --ink:#0e1116; --muted:#5b6573; --line:#e6e9ee; --brand:#2f6bff; --bg:#ffffff; --soft:#f6f8fb; }
+  *{ box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{ margin:0; font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif; color:var(--ink); background:var(--soft); line-height:1.55; }
+  .page{ max-width:820px; margin:0 auto; background:var(--bg); }
+  .pad{ padding:48px 56px; }
+  .cover{ position:relative; overflow:hidden; background:linear-gradient(135deg,#0e1116,#1c2740); color:#fff; padding:64px 56px; }
+  .cover::before{
+    content:""; position:absolute; inset:-40%;
+    background:radial-gradient(circle at 30% 30%, rgba(47,107,255,.35), transparent 55%),
+               radial-gradient(circle at 75% 70%, rgba(158,192,255,.18), transparent 50%);
+    animation:drift 14s ease-in-out infinite alternate;
+  }
+  @keyframes drift{ from{ transform:translate(0,0) scale(1); } to{ transform:translate(-3%,3%) scale(1.08); } }
+  .cover > *{ position:relative; z-index:1; }
+  .cover .brand{ font-weight:700; letter-spacing:.04em; opacity:0; animation:rise .6s ease-out .1s forwards; }
+  .cover h1{ font-size:34px; margin:18px 0 6px; line-height:1.2; opacity:0; animation:rise .6s ease-out .25s forwards; }
+  .cover .sub{ opacity:0; font-size:16px; animation:rise .6s ease-out .4s forwards; }
+  .cover .meta{ margin-top:28px; font-size:14px; opacity:0; animation:rise .6s ease-out .55s forwards; }
+  @keyframes rise{ from{ opacity:0; transform:translateY(10px); } to{ opacity:.85; transform:translateY(0); } }
+  .cover h1{ animation-name:riseFull; }
+  @keyframes riseFull{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:translateY(0); } }
+
+  h2{ font-size:13px; text-transform:uppercase; letter-spacing:.08em; color:var(--brand); margin:0 0 12px; }
+  h3{ font-size:22px; margin:6px 0 10px; }
+  section{ border-top:1px solid var(--line); }
+  p{ margin:0 0 12px; color:#28303a; }
+  .muted{ color:var(--muted); }
+
+  .reveal{ opacity:0; transform:translateY(18px); transition:opacity .6s ease, transform .6s ease; }
+  .reveal.in{ opacity:1; transform:translateY(0); }
+
+  .steps{ display:grid; grid-template-columns:repeat(3,1fr); gap:16px; margin-top:12px; }
+  .step{ background:var(--soft); border:1px solid var(--line); border-radius:12px; padding:16px;
+         opacity:0; transform:translateY(14px) scale(.97); transition:opacity .5s ease, transform .5s ease; }
+  .step.in{ opacity:1; transform:translateY(0) scale(1); }
+  .step:nth-child(1){ transition-delay:.05s; }
+  .step:nth-child(2){ transition-delay:.18s; }
+  .step:nth-child(3){ transition-delay:.31s; }
+  .step .n{ width:26px;height:26px;border-radius:50%;background:var(--brand);color:#fff;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:700;margin-bottom:8px; }
+
+  table{ width:100%; border-collapse:collapse; margin-top:8px; font-size:15px; }
+  th,td{ text-align:left; padding:12px 10px; border-bottom:1px solid var(--line); }
+  th{ font-size:12px; text-transform:uppercase; letter-spacing:.05em; color:var(--muted); }
+  td.price{ text-align:right; white-space:nowrap; font-variant-numeric:tabular-nums; }
+  tbody tr{ opacity:0; transform:translateX(-8px); transition:opacity .45s ease, transform .45s ease; }
+  tbody tr.in{ opacity:1; transform:translateX(0); }
+  tbody tr:nth-child(1){ transition-delay:.05s; }
+  tbody tr:nth-child(2){ transition-delay:.15s; }
+  tbody tr:nth-child(3){ transition-delay:.25s; }
+  tbody tr:nth-child(4){ transition-delay:.35s; }
+  .total td{ border-top:2px solid var(--ink); border-bottom:none; font-weight:700; font-size:17px; transition-delay:.5s !important; }
+  #totalValue{ font-variant-numeric:tabular-nums; }
+
+  .cases{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; margin-top:12px; }
+  .case{ border:1px solid var(--line); border-radius:12px; padding:14px; font-size:14px;
+         opacity:0; transform:translateY(14px); transition:opacity .5s ease, transform .5s ease; }
+  .case.in{ opacity:1; transform:translateY(0); }
+  .case:nth-child(1){ transition-delay:.05s; }
+  .case:nth-child(2){ transition-delay:.18s; }
+  .case:nth-child(3){ transition-delay:.31s; }
+  .case b{ display:block; font-size:20px; }
+
+  .cta{ background:var(--ink); color:#fff; border-radius:14px; padding:26px 28px; margin-top:8px;
+        transition:transform .25s ease, box-shadow .25s ease; }
+  .cta:hover{ transform:translateY(-2px); box-shadow:0 14px 30px rgba(14,17,22,.25); }
+  .cta a{ color:#9ec0ff; }
+  .cta-btn{ display:inline-block; margin-top:16px; background:var(--brand); color:#fff; text-decoration:none;
+            font-weight:600; padding:12px 22px; border-radius:10px; transition:background .2s ease, transform .2s ease; }
+  .cta-btn:hover{ background:#1d54e0; transform:translateY(-1px); }
+
+  .foot{ padding:24px 56px; font-size:12px; color:var(--muted); }
+
+  .progress{ position:fixed; top:0; left:0; height:3px; background:var(--brand); width:0%; z-index:10; transition:width .1s linear; }
+
+  @media (max-width:640px){
+    .pad{ padding:32px 22px; }
+    .cover{ padding:44px 22px; }
+    .steps, .cases{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="progress" id="progress"></div>
+<div class="page">
+
+  <div class="cover">
+    <div class="brand">AXIMO · внедрение AI-автоматизаций</div>
+    <h1>Коммерческое предложение</h1>
+    <div class="sub">для компании Kontur</div>
+    <div class="meta">Подготовлено: 31 августа 2026 · Контакт: hi@aximo.io</div>
+  </div>
+
+  <section class="pad reveal">
+    <h2>Ваша задача</h2>
+    <h3>Входящий поток документов тонет в ручной обработке</h3>
+    <p>Огромный поток входящих документов — счета, договоры, акты от контрагентов. Сейчас команда разбирает их вручную: вычитывает, вносит реквизиты, раскладывает по процессам. Это медленно и с ошибками, а объём продолжает расти.</p>
+  </section>
+
+  <section class="pad reveal">
+    <h2>Что предлагаем</h2>
+    <h3>AI-обработка входящих документов Aximo</h3>
+    <p>Входящий документ распознаётся, AI извлекает ключевые поля — контрагент, суммы, даты, номера — сверяет их с вашими справочниками и направляет в нужный процесс. Спорное и нестандартное не додумывается автоматически, а уходит человеку на проверку.</p>
+    <div class="steps">
+      <div class="step"><div class="n">1</div>Распознавание документа и извлечение полей</div>
+      <div class="step"><div class="n">2</div>Сверка со справочниками и маршрутизация по процессу</div>
+      <div class="step"><div class="n">3</div>Эскалация нестандартных случаев человеку</div>
+    </div>
+  </section>
+
+  <section class="pad reveal">
+    <h2>Объём и этапы</h2>
+    <p>Поэтапное внедрение по трём потокам документов. Этап 1 — внедрение и запуск потока «Счета» (4–5 недель), чтобы вы вошли в пик отчётности уже с рабочим первым этапом. Этап 2 — подключение потоков «Договоры» и «Акты». Решение разворачивается в вашем контуре — чувствительные документы не уходят на сторону. SLA фиксируется отдельным приложением к договору: аптайм 99,5%, реакция на критичный инцидент — в течение 4 рабочих часов, выделенный канал поддержки.</p>
+  </section>
+
+  <section class="pad reveal">
+    <h2>Смета</h2>
+    <table>
+      <thead><tr><th>Позиция</th><th>Описание</th><th class="price">Стоимость</th></tr></thead>
+      <tbody>
+        <tr><td>Внедрение</td><td>Аудит процесса, настройка решения, интеграция в системы Kontur, обучение команды</td><td class="price">$14 000</td></tr>
+        <tr><td>Поток «Счета»</td><td>Распознавание, извлечение полей, правила, тестирование на ваших данных</td><td class="price">$8 000</td></tr>
+        <tr><td>Поток «Договоры»</td><td>Распознавание, извлечение полей, правила, тестирование на ваших данных</td><td class="price">$8 000</td></tr>
+        <tr><td>Поток «Акты»</td><td>Распознавание, извлечение полей, правила, тестирование на ваших данных</td><td class="price">$8 000</td></tr>
+        <tr class="total"><td colspan="2">Итого по проекту</td><td class="price">$<span id="totalValue">0</span></td></tr>
+      </tbody>
+    </table>
+    <p class="muted" style="margin-top:10px">Этап 1 (внедрение + поток «Счета»): $22 000 · Этап 2 (потоки «Договоры» и «Акты»): $16 000. Поэтапная оплата привязана к этапам. Поддержка после запуска (опционально): $2 000/мес — отдельной строкой, не входит в итог по проекту.</p>
+  </section>
+
+  <section class="pad reveal">
+    <h2>Почему Aximo</h2>
+    <p>Мы внедряем AI-автоматизации под конкретный процесс, берём интеграцию и сопровождение на себя и отдаём результат неделями, а не кварталами.</p>
+    <div class="cases">
+      <div class="case"><b>$41K</b>Samokat — AI-управление складом, крупнейшее внедрение квартала.</div>
+      <div class="case"><b>$21K</b>Spendesk (Франция) — AI-обработка входящих чеков, извлечение данных без ручной разборки.</div>
+      <div class="case"><b>$33K</b>Delimobil — AI-оптимизация маршрутов, клиент остался на сопровождении.</div>
+    </div>
+  </section>
+
+  <section class="pad reveal">
+    <div class="cta">
+      <h2 style="color:#9ec0ff">Следующий шаг</h2>
+      <p style="color:#dfe6f2;margin:0">Готовы начать с Этапа 1 сразу после согласования — поток «Счета» запустим за 4–5 недель, чтобы успеть до вашего пика отчётности. Предлагаем короткий созвон на 15 минут, чтобы закрыть последние детали и подписать договор.</p>
+      <a class="cta-btn" href="mailto:hi@aximo.io?subject=Kontur%20%C3%97%20Aximo%20%E2%80%94%20%D1%81%D0%BE%D0%B7%D0%B2%D0%BE%D0%BD">Назначить созвон</a>
+    </div>
+  </section>
+
+  <div class="foot">Aximo · hi@aximo.io · предложение действительно 30 дней. Суммы указаны в USD без НДС.</div>
+
+</div>
+
+<script>
+  // прогресс-бар скролла
+  var progress = document.getElementById('progress');
+  function updateProgress(){
+    var h = document.documentElement;
+    var scrolled = (h.scrollTop) / (h.scrollHeight - h.clientHeight) * 100;
+    progress.style.width = (scrolled || 0) + '%';
+  }
+  window.addEventListener('scroll', updateProgress);
+  updateProgress();
+
+  // появление секций и элементов при скролле
+  var targets = document.querySelectorAll('.reveal, .step, .case, tbody tr');
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+    });
+  }, { threshold:0.15 });
+  targets.forEach(function(t){ io.observe(t); });
+
+  // анимированный счётчик итоговой суммы при появлении сметы
+  var totalEl = document.getElementById('totalValue');
+  var totalTarget = 38000;
+  var counted = false;
+  var totalSection = totalEl.closest('section');
+  var counterIO = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if(e.isIntersecting && !counted){
+        counted = true;
+        var start = null, dur = 1100;
+        function step(ts){
+          if(!start) start = ts;
+          var p = Math.min((ts - start) / dur, 1);
+          var eased = 1 - Math.pow(1 - p, 3);
+          var val = Math.round(totalTarget * eased);
+          totalEl.textContent = val.toLocaleString('ru-RU');
+          if(p < 1) requestAnimationFrame(step);
+        }
+        requestAnimationFrame(step);
+      }
+    });
+  }, { threshold:0.4 });
+  counterIO.observe(totalSection);
+</script>
+</body>
+</html>
