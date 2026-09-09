@@ -1,0 +1,12 @@
+[
+  {"name": "Alexander Moore", "title": "CEO & Co-Founder", "company": "Apex Sportsbook Solutions", "email": "a.moore@apexsportsbook.com", "phone": "+44 20 7123 4567", "website": "apexsportsbook.com"},
+  {"name": "Chloe Davies", "title": "Marketing Manager", "company": "SpinVerse Casino Tech", "email": "c.davies@spinverse.tech", "phone": "+44 776 543 2109", "website": "spinverse.tech"},
+  {"name": "Benjamin Lee", "title": "Head of Platform Integration", "company": "BetGrid Systems", "email": "b.lee@betgrid.co", "phone": "+44 797 222 1109", "website": "betgrid.co"},
+  {"name": "Emily Evans", "title": "Product Lead - Slots", "company": "Rollova Gaming", "email": "emily.e@rollova.com", "phone": "+44 792 555 6677", "website": "rollova-gaming.com"},
+  {"name": "Daniel Smith", "title": "Chief Compliance Officer", "company": "LexGaming Legal Services", "email": "d.smith@lexgaming.co.uk", "phone": "+44 495 888 0011", "website": "lexgaming.com"},
+  {"name": "Sophia Jones", "title": "Lead UI/UX Designer", "company": "Interface iGaming", "email": "s.jones@interfaceigaming.co", "phone": "+44 921 345 6789", "website": "interfaceigaming.site"},
+  {"name": "Thomas Wright", "title": "Senior Live Dealer Manager", "company": "DirectStream Live Casino", "email": "t.wright@directstream.co", "phone": "+44 968 111 2233", "website": "directstream.live"},
+  {"name": "Isabelle Brown", "title": "Account Executive", "company": "GambleNet Affiliate Network", "email": "i.brown@gamblenet.aff", "phone": "+44 909 666 4455", "website": "gamblenet.aff"},
+  {"name": "Oliver Wilson", "title": "Game Economy Designer", "company": "LuckyStack Studios", "email": "o.wilson@luckystack.pro", "phone": "+44 812 777 8899", "website": "luckystack.co.uk"},
+  {"name": "Lucy Miller", "title": "CFO", "company": "FinBet Analytics", "email": "", "phone": "+44 911 555 0088", "website": ""}
+]
