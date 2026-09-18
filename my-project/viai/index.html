@@ -133,6 +133,27 @@ p{margin:0}
 .phase ul{margin:0;padding-left:18px;color:var(--ink-80);display:flex;flex-direction:column;gap:6px}
 .commercials{margin-top:16px;padding:20px 24px;border:1px dashed var(--line);border-radius:16px;color:var(--ink-80)}
 
+
+/* scope */
+.scope{margin-top:32px;display:grid;grid-template-columns:1.5fr 1fr;gap:16px}
+@media (max-width:760px){.scope{grid-template-columns:1fr}}
+.scope .box{background:var(--card);border-radius:24px;padding:24px;display:flex;flex-direction:column;gap:14px}
+.scope .box.dark{background:var(--dark);color:var(--on-dark)}
+.scope .box.dark .label{color:var(--on-dark-80)}
+.scope .label{font-family:var(--mono);font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-50)}
+.scope ol,.scope ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:10px}
+.scope ol li{display:grid;grid-template-columns:auto 1fr;gap:10px;counter-increment:d;align-items:baseline}
+.scope ol{counter-reset:d}
+.scope ol li::before{content:counter(d,decimal-leading-zero);font-family:var(--mono);font-size:12px;color:var(--blue);letter-spacing:.06em}
+.scope ol li b{font-weight:600;grid-column:2}
+.scope ol li span{grid-column:2;color:var(--ink-80);font-size:15px;line-height:1.35}
+.scope ol li::before{grid-row:1}
+.scope ul li{padding-left:16px;position:relative;color:var(--on-dark-80);font-size:15px;line-height:1.35}
+.scope ul li::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:var(--lime)}
+.scope .metrics{font-size:15px;line-height:1.4;color:var(--ink-80);border-top:1px solid var(--line);padding-top:12px}
+.scope .metrics b{font-weight:600;color:var(--ink)}
+.scope .time{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--on-dark-80);border-top:1px solid var(--on-dark-line);padding-top:12px;line-height:1.5}
+
 /* why */
 .why{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:16px}
 @media (max-width:860px){.why{grid-template-columns:repeat(2,minmax(0,1fr))}}
@@ -257,6 +278,18 @@ footer{padding-block:32px 0;display:flex;justify-content:space-between;gap:16px;
       <div class="phase"><span class="when">Stage 1 · 2 weeks</span><h3>Audit and consulting</h3><ul><li>Map the five stations and the clinic flow</li><li>Agree the data contract with the VIAI app</li><li>Fix the pilot metrics up front</li></ul></div>
       <div class="phase"><span class="when">Stage 2 · 8–12 weeks</span><h3>Pilot project</h3><ul><li>First Abu Dhabi V‑Clinic, VIAI‑branded</li><li>Intake, scribe, record, protocol, monitoring</li><li>Metrics measured from day one</li></ul></div>
       <div class="phase"><span class="when">Stage 3 · ongoing</span><h3>Roll‑out and support</h3><ul><li>Per‑location licence as V‑Clinics open across the GCC</li><li>One platform, every site on one dashboard</li><li>Arabic, data residency, Malaffi in the base package</li></ul></div>
+    </div>
+    <div class="scope">
+      <div class="box">
+        <span class="label">What the pilot includes · first Abu Dhabi V‑Clinic</span>
+        <ol><li><b>Athlete intake</b><span>VIAI‑branded pre‑visit questionnaire in English and Arabic; AI summary on the clinician’s screen before the session.</span></li><li><b>Unified athlete record</b><span>Outputs of all five stations imported into one record (file or API, formats agreed at audit), plus history and wearable trends.</span></li><li><b>AI scribe in the consultation room</b><span>Voice‑first notes, structured report template agreed with your physios, report ready when the athlete leaves.</span></li><li><b>Recovery protocol on the phone</b><span>Station‑five output turned into a plan with reminders; acceptance and 30‑day adherence tracked.</span></li><li><b>Between‑visit monitoring</b><span>Apple Health and Android Health from day one; Engo glasses and ring through the VIAI app API; alerts only on change.</span></li><li><b>Clinic dashboard</b><span>Throughput, plan acceptance, adherence and alerts per physio and per site, weekly metric report to VIAI.</span></li><li><b>Deployment and brand</b><span>UAE cloud region or on‑premises, VIAI branding on every screen, two staff training sessions, support for the whole pilot.</span></li></ol>
+        <p class="metrics"><b>Success metrics, fixed before day one:</b> Intake time · athletes per physio per day · protocol acceptance · 30‑day adherence · share of visits with a structured report.</p>
+      </div>
+      <div class="box dark">
+        <span class="label">What we need from VIAI</span>
+        <ul><li>One V‑Clinic location and two or three clinicians for the pilot</li><li>Data formats of the five stations, or access to the devices’ export</li><li>API access to the VIAI app, or an engineer to define it with us</li><li>A compliance contact for DoH Abu Dhabi and Malaffi questions</li><li>Brand assets: logo, colours, tone of voice</li></ul>
+        <p class="time">Audit 2 weeks → build and integrate 4–6 weeks → live pilot 6 weeks with metrics measured from day one</p>
+      </div>
     </div>
     <div class="commercials"><b>Commercials.</b> Pilot fee and per‑location licence are shared after the audit call, once the station flow is mapped. No integration is priced before we have seen it.</div>
   </section>

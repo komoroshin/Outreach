@@ -71,6 +71,25 @@ p{margin:0;line-height:1.3}
 .quote cite{font-style:normal;font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-50)}
 .quote .resp{font-size:15px;color:var(--ink-80)}
 .note{margin-top:14px;padding:14px 20px;border:1px dashed var(--line);border-radius:14px;font-size:14.5px;color:var(--ink-80)}
+
+.scope{display:grid;grid-template-columns:1.55fr 1fr;gap:16px;flex:1;min-height:0;margin-bottom:6px}
+.slide.scope-slide h2{font-size:36px;margin-bottom:16px}
+.scope .box{background:var(--card);border-radius:20px;padding:16px 20px;display:flex;flex-direction:column;gap:8px;min-height:0}
+.scope .box.dark{background:var(--dark);color:#fff}
+.scope .box.dark .mono{color:rgba(255,255,255,.7)}
+.scope ol,.scope ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:5px}
+.scope ol{counter-reset:d}
+.scope ol li{display:grid;grid-template-columns:26px 1fr;gap:0 6px;counter-increment:d;align-items:baseline;font-size:12.8px;line-height:1.28;color:var(--ink-80)}
+.scope ol li b{grid-column:2}.scope ol li b::after{content:" "}
+.scope ol li span{grid-column:2}
+.scope ol li::before{content:counter(d,decimal-leading-zero);font-family:var(--mono);font-size:11px;color:var(--blue)}
+.scope ol li b{font-weight:600;color:var(--ink)}
+.scope ul li{padding-left:14px;position:relative;font-size:13.5px;line-height:1.3;color:rgba(255,255,255,.85)}
+.scope ul li::before{content:"";position:absolute;left:0;top:.5em;width:6px;height:6px;border-radius:50%;background:var(--lime)}
+.scope .metrics{font-size:12.5px;line-height:1.3;color:var(--ink-80);border-top:1px solid var(--line);padding-top:8px;margin-top:auto}
+.scope .metrics b{font-weight:600;color:var(--ink)}
+.scope .time{font-family:var(--mono);font-size:11px;letter-spacing:.04em;color:rgba(255,255,255,.75);border-top:1px solid rgba(255,255,255,.3);padding-top:10px;margin-top:auto;line-height:1.5}
+
 /* dark punch */
 .punch{margin-top:auto;background:var(--dark);color:#fff;border-radius:20px;padding:22px 26px;font-size:21px;line-height:1.25;max-width:100%}
 .punch .mono{display:block;margin-bottom:8px;color:rgba(255,255,255,.7)}
@@ -97,7 +116,7 @@ p{margin:0;line-height:1.3}
     <span class="mono">Running in a private practice</span>
     <span class="mono">Pilot → per‑location licence</span>
   </div>
-  <div class="foot"><span class="mono">Ocean Tech · Healthy4U</span><span class="mono">01 / 08</span></div>
+  <div class="foot"><span class="mono">Ocean Tech · Healthy4U</span><span class="mono">01 / 09</span></div>
 </section>
 
 <!-- 2 · What we saw -->
@@ -112,7 +131,7 @@ p{margin:0;line-height:1.3}
     <div class="card"><span class="label">B2B track</span><h3>Clinics and workforce safety</h3><p>Health Innovation Hub with Dr. O Holdings; an application form for clinics and enterprise safety teams on viai.ae.</p></div>
   </div>
   <blockquote class="quote" style="margin:18px 0 0"><p>“We believe the future of healthcare is not limited to hospitals. It will be in homes, communities, sports facilities and smart health centres that help people understand their bodies earlier, respond faster and live healthier lives.”</p><cite>Abdulla AbuEbeid, Co‑Founder &amp; CEO, VIAI</cite><span class="resp">Healthy4U was built on the same premise: care that does not stop when the athlete leaves the building.</span></blockquote>
-  <div class="foot"><span class="mono">Ocean Tech · Healthy4U</span><span class="mono">02 / 08</span></div>
+  <div class="foot"><span class="mono">Ocean Tech · Healthy4U</span><span class="mono">02 / 09</span></div>
 </section>
 
 <!-- 3 · The gap -->
@@ -126,7 +145,7 @@ p{margin:0;line-height:1.3}
     <div class="card"><span class="label">After the visit</span><h3>Who watches the protocol?</h3><p>Is the plan followed? What do the glasses and the ring say a week later? Who reacts if something drifts?</p><p class="today"><b>Today:</b> nobody, until the next visit.</p></div>
   </div>
   <div class="punch"><span class="mono">Our reading</span>A semi‑autonomous clinic needs an autonomous layer around the stations. That layer is what we have already built and run.</div>
-  <div class="foot"><span class="mono">Ocean Tech · Healthy4U</span><span class="mono">03 / 08</span></div>
+  <div class="foot"><span class="mono">Ocean Tech · Healthy4U</span><span class="mono">03 / 09</span></div>
 </section>
 
 <!-- 4 · Map -->
@@ -142,7 +161,7 @@ p{margin:0;line-height:1.3}
     <div class="row"><div class="step"><span class="mono">5</span>Between visits</div><div><b>AI assistant 24/7 and continuous monitoring.</b> Apple Health and Android Health today; Engo and ring data via the VIAI app in the pilot. Clinician alerted only on change.</div><div><span class="tag live">Live</span><span class="tag pilot">Engo · ring</span></div></div>
     <div class="row"><div class="step"><span class="mono">6</span>Next location</div><div><b>Clinic dashboard per site.</b> Practice analytics across locations; telehealth follow‑ups with real‑time translation anywhere in the GCC.</div><div><span class="tag live">Live</span></div></div>
   </div>
-  <div class="foot"><span class="mono">Ocean Tech · Healthy4U</span><span class="mono">04 / 08</span></div>
+  <div class="foot"><span class="mono">Ocean Tech · Healthy4U</span><span class="mono">04 / 09</span></div>
 </section>
 
 <!-- 5 · Proof -->
@@ -161,7 +180,7 @@ p{margin:0;line-height:1.3}
     <div><b>Retention</b>Plan acceptance is the number that keeps a Pro or Elite subscriber. An athlete who follows the protocol renews.</div>
     <div><b>Data</b>A structured summary on every visit is the dataset your injury‑prediction models need.</div>
   </div>
-  <div class="foot"><span class="mono">Ocean Tech · Healthy4U</span><span class="mono">05 / 08</span></div>
+  <div class="foot"><span class="mono">Ocean Tech · Healthy4U</span><span class="mono">05 / 09</span></div>
 </section>
 
 <!-- 6 · Gulf -->
@@ -175,7 +194,7 @@ p{margin:0;line-height:1.3}
     <div class="card"><div><span class="tag pilot">Pilot</span></div><h3>Data stays in the UAE</h3><p>Deployment in a UAE cloud region or on‑premises at the clinic. No biometric data leaves your perimeter, in line with VIAI’s privacy‑first stance.</p></div>
     <div class="card"><div><span class="tag live">Live</span><span class="tag pilot">Pilot</span></div><h3>Regulatory path</h3><p>FHIR/HL7 records today. DoH Abu Dhabi requirements and a Malaffi connection are scoped together with your compliance team.</p></div>
   </div>
-  <div class="foot"><span class="mono">Ocean Tech · Healthy4U</span><span class="mono">06 / 08</span></div>
+  <div class="foot"><span class="mono">Ocean Tech · Healthy4U</span><span class="mono">06 / 09</span></div>
 </section>
 
 <!-- 7 · Engagement -->
@@ -194,19 +213,38 @@ p{margin:0;line-height:1.3}
     <div style="border-top:2px solid var(--ink);padding-top:10px"><b style="color:var(--ink)">64 people, 48 projects, Ocean Framework™.</b> Research Center tests models on real clinical tasks; the engineering team builds and supports. Reused modules cut build time by 59%.</div>
     <div style="border-top:2px solid var(--ink);padding-top:10px"><b style="color:var(--ink)">Already present in the UAE.</b> We work in Russia, Belarus, Kazakhstan, the UAE and Turkey. A UAE deployment is not our first.</div>
   </div>
-  <div class="foot"><span class="mono">Ocean Tech · Healthy4U</span><span class="mono">07 / 08</span></div>
+  <div class="foot"><span class="mono">Ocean Tech · Healthy4U</span><span class="mono">07 / 09</span></div>
 </section>
 
 <!-- 8 · Next step -->
+
+<!-- 8 · Pilot scope -->
+<section class="slide scope-slide">
+  <div class="eyebrow"><span class="num">07</span><span class="mono">Pilot scope</span></div>
+  <h2>What the pilot includes, and what we need from VIAI</h2>
+  <div class="scope">
+    <div class="box">
+      <span class="mono">Deliverables · first Abu Dhabi V‑Clinic</span>
+      <ol><li><b>Athlete intake</b><span>VIAI‑branded pre‑visit questionnaire in English and Arabic; AI summary on the clinician’s screen before the session.</span></li><li><b>Unified athlete record</b><span>Outputs of all five stations imported into one record (file or API, formats agreed at audit), plus history and wearable trends.</span></li><li><b>AI scribe in the consultation room</b><span>Voice‑first notes, structured report template agreed with your physios, report ready when the athlete leaves.</span></li><li><b>Recovery protocol on the phone</b><span>Station‑five output turned into a plan with reminders; acceptance and 30‑day adherence tracked.</span></li><li><b>Between‑visit monitoring</b><span>Apple Health and Android Health from day one; Engo glasses and ring through the VIAI app API; alerts only on change.</span></li><li><b>Clinic dashboard</b><span>Throughput, plan acceptance, adherence and alerts per physio and per site, weekly metric report to VIAI.</span></li><li><b>Deployment and brand</b><span>UAE cloud region or on‑premises, VIAI branding on every screen, two staff training sessions, support for the whole pilot.</span></li></ol>
+      <p class="metrics"><b>Success metrics, fixed before day one:</b> Intake time · athletes per physio per day · protocol acceptance · 30‑day adherence · share of visits with a structured report.</p>
+    </div>
+    <div class="box dark">
+      <span class="mono">From VIAI</span>
+      <ul><li>One V‑Clinic location and two or three clinicians for the pilot</li><li>Data formats of the five stations, or access to the devices’ export</li><li>API access to the VIAI app, or an engineer to define it with us</li><li>A compliance contact for DoH Abu Dhabi and Malaffi questions</li><li>Brand assets: logo, colours, tone of voice</li></ul>
+      <p class="time">Audit 2 weeks → build and integrate 4–6 weeks → live pilot 6 weeks with metrics measured from day one</p>
+    </div>
+  </div>
+  <div class="foot"><span class="mono">Ocean Tech · Healthy4U</span><span class="mono">08 / 09</span></div>
+</section>
 <section class="slide dark">
-  <div class="eyebrow"><span class="num">07</span><span class="mono">Next step</span></div>
+  <div class="eyebrow"><span class="num">08</span><span class="mono">Next step</span></div>
   <p class="cta-big">Thirty minutes, one scenario</p>
   <p class="lede" style="font-size:21px;max-width:58ch">We show Healthy4U on a V‑Clinic visit: an athlete arrives, passes the five stations, leaves with a protocol on the phone, and the clinician has a finished report before the next athlete walks in.</p>
   <div class="who">
     <div><b>Konstantin Moroshin</b><span>Head of the Research Center, Ocean Tech</span><span>hello@okeantech.ru · +7 917 515‑76‑60</span><span>okeantech.ru · Moscow</span><span class="pill">Book the demo</span></div>
     <div style="text-align:right"><span>Prepared for</span><b>Abdulla AbuEbeid, CEO · Walid Brahim, CTO</b><span>VIAI · Abu Dhabi</span></div>
   </div>
-  <div class="foot"><span class="mono">Ocean Tech · Healthy4U</span><span class="mono">08 / 08</span></div>
+  <div class="foot"><span class="mono">Ocean Tech · Healthy4U</span><span class="mono">09 / 09</span></div>
 </section>
 
 </body>
