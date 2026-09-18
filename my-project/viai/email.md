@@ -5,7 +5,9 @@
 
 Abdulla,
 
-Congratulations on the seed round and on the Health Innovation Hub with Dr. O Holdings. Reading through V‑Clinic on viai.ae, one thing stood out: the five stations cover the diagnostics, but a clinic also has a before, a during and an after. Who collects the athlete's history, who writes the report while the physio talks, who watches the protocol between visits.
+Congratulations on the seed round and on the Health Innovation Hub with Dr. O Holdings. Your line about the future of healthcare living in homes, communities, sports facilities and smart health centres is, almost word for word, the premise Healthy4U was built on: care that continues between visits.
+
+Reading through V‑Clinic on viai.ae, one thing stood out. The five stations cover the diagnostics, but a clinic also has a before, a during and an after. Who collects the athlete's history, who writes the report while the physio talks, who watches the protocol once the athlete has left the building.
 
 We built exactly that layer. Healthy4U runs today in a private practice: pre‑visit intake, an AI scribe that writes structured notes in real time, a unified record, and 24/7 monitoring from wearables. The clinic cut history‑taking from 15 minutes to 30 seconds and sees 30% more patients a day with the same staff.
 
