@@ -13,10 +13,13 @@ For VIAI we would deliver it white‑label, under your brand, starting with the 
 
 I put together a short page with the mapping of Healthy4U onto the six steps of a V‑Clinic visit: [link]
 
+A word on us: Ocean Tech is an AI research and engineering company, 64 people, 48 delivered projects, healthcare one of our focus industries, with work already running in the UAE. Company deck in English: https://okeantech.ru/presentation/en/
+
 Would 30 minutes next week work? We would show it on a V‑Clinic scenario: an athlete arrives, passes the five stations, leaves with a protocol on the phone.
 
 Konstantin Moroshin
-Okean Tech
+Head of the Research Center, Ocean Tech
+hello@okeantech.ru · okeantech.ru
 
 ---
 
