@@ -1,0 +1,81 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><title>Continuous loop</title><style>
+@font-face{font-family:"Suisse Intl";font-weight:500;src:url("fonts/SuisseIntl-Medium.woff2") format("woff2")}
+@font-face{font-family:"Suisse Intl";font-weight:600;src:url("fonts/SuisseIntl-SemiBold.woff2") format("woff2")}
+@font-face{font-family:"PP Right Grotesk";font-weight:500;src:url("fonts/RightGrotesk-Medium.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-weight:500;src:url("fonts/IBMPlexMono-Medium.woff2") format("woff2")}
+*{box-sizing:border-box}html,body{margin:0;background:#fff}
+body{width:1400px;height:940px;padding:52px 64px 40px;font-family:"Suisse Intl","Helvetica Neue",Arial,sans-serif;font-weight:500;color:#333;display:flex;flex-direction:column}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:16px;margin-bottom:16px}.brand svg{width:26px;height:26px}
+h1{font-weight:500;font-size:40px;line-height:1;letter-spacing:-.015em;margin:0 0 8px}
+p{margin:0;font-size:17px;color:rgba(0,0,0,.7);max-width:80ch}
+figure{margin:6px 0 0;flex:1;min-height:0;display:flex;flex-direction:column;align-items:center}
+figure svg{height:100%;width:auto;max-width:100%}
+figcaption{font-size:13px;color:rgba(0,0,0,.5);margin-top:2px;align-self:flex-start}
+</style></head><body>
+<div class="brand"><svg viewBox="31 94 131 132" xmlns="http://www.w3.org/2000/svg"><g transform="translate(0,314) scale(0.1,-0.1)" fill="currentColor"><path d="M722 2180 c-27 -11 -42 -47 -42 -104 0 -57 -21 -76 -86 -76 -74 0 -94 -18 -94 -86 0 -75 -28 -104 -100 -104 -67 0 -90 -22 -90 -88 0 -73 19 -92 89 -92 78 0 93 13 99 86 6 77 19 91 94 96 73 5 88 21 88 89 0 32 6 55 21 73 18 22 28 26 75 26 41 0 59 -5 74 -20 15 -15 20 -33 20 -74 0 -47 -4 -57 -26 -75 -19 -15 -41 -21 -74 -21 -58 0 -80 -21 -86 -82 -9 -74 -13 -84 -39 -96 -14 -7 -46 -12 -70 -12 -60 0 -75 -18 -75 -89 0 -73 17 -91 86 -91 73 0 91 -17 96 -91 6 -78 27 -99 99 -99 68 0 89 -22 89 -94 0 -48 -4 -57 -27 -76 -23 -18 -37 -21 -77 -17 -66 6 -86 30 -86 103 0 64 -21 84 -90 84 -69 0 -87 18 -92 91 -4 49 -9 66 -27 80 -32 26 -101 25 -135 -2 -22 -18 -26 -28 -26 -74 0 -69 28 -95 101 -95 62 0 89 -30 89 -100 0 -61 22 -81 92 -88 70 -6 88 -23 88 -82 0 -33 6 -55 21 -74 18 -23 28 -26 79 -26 71 0 90 19 90 90 0 72 19 90 95 90 76 0 95 -18 95 -90 0 -71 19 -90 89 -90 71 0 91 17 91 78 0 23 5 53 12 67 12 26 22 30 96 39 63 6 82 28 82 93 0 71 21 93 89 93 72 0 101 26 101 91 0 68 -30 99 -95 99 -65 0 -95 -31 -95 -100 0 -69 -22 -90 -93 -90 -68 0 -83 -16 -89 -93 -6 -71 -21 -88 -85 -94 -39 -4 -53 -1 -75 17 -25 19 -28 28 -28 79 0 73 17 91 86 91 73 0 91 17 96 91 6 78 27 99 99 99 68 0 89 22 89 93 0 66 -19 87 -78 87 -80 0 -112 32 -112 114 0 58 -21 76 -88 76 -71 0 -92 21 -92 95 0 73 21 95 89 95 70 0 91 -20 100 -98 4 -34 13 -68 19 -74 6 -6 37 -13 69 -16 76 -6 93 -21 93 -86 0 -79 17 -96 95 -96 77 0 95 17 95 92 0 66 -23 88 -90 88 -71 0 -100 29 -100 100 0 69 -22 90 -93 90 -65 0 -87 19 -93 82 -9 74 -13 84 -39 96 -39 18 -89 14 -119 -9 -22 -17 -26 -28 -26 -73 0 -71 -25 -96 -98 -96 -71 0 -92 21 -92 94 0 47 -4 57 -26 75 -28 22 -82 27 -122 11z m318 -390 c27 -27 28 -108 1 -141 -16 -20 -28 -24 -76 -24 -72 0 -95 23 -95 94 0 72 19 91 91 91 46 0 63 -4 79 -20z m-196 -181 c22 -17 26 -28 26 -73 0 -77 -17 -96 -90 -96 -51 0 -61 3 -79 26 -36 45 -23 136 21 154 40 16 94 11 122 -11z m383 -2 c9 -8 18 -37 20 -64 4 -39 1 -53 -17 -75 -19 -25 -28 -28 -77 -28 -77 0 -93 16 -93 91 0 51 3 60 28 79 22 18 36 21 75 17 27 -2 56 -11 64 -20z m-192 -192 c33 -32 35 -100 4 -139 -17 -22 -28 -26 -72 -26 -71 0 -97 25 -97 94 0 69 26 96 92 96 39 0 54 -5 73 -25z"/></g></svg>Ocean Tech</div>
+<h1>A continuous intelligence layer around V‑Clinic</h1>
+<p>One shared context links preparation, screening, the clinician’s decision, plan adherence and reassessment.</p>
+<figure><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 880" role="img" aria-label="Continuous loop: six steps around a living profile of the person; steps 1–4 inside the V-Clinic visit, steps 5–6 between visits; every step reads and adds to the profile" font-family="Suisse Intl, Helvetica Neue, Arial, sans-serif" font-weight="500">
+<defs><marker id="ahs" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="rgba(0,0,0,.35)"/></marker></defs>
+<path d="M559.0,115.0 A335,335 0 0 1 970.9,387.6" fill="none" stroke="rgba(0,0,0,.35)" stroke-width="1.5" stroke-dasharray="4 5"/>
+<path d="M970.9,492.4 A335,335 0 0 1 559.0,765.0" fill="none" stroke="rgba(0,0,0,.35)" stroke-width="1.5" stroke-dasharray="4 5" marker-end="url(#ahs)"/>
+<path d="M433.8,704.0 A335,335 0 0 1 310.1,498.2" fill="none" stroke="rgba(0,0,0,.35)" stroke-width="1.5" stroke-dasharray="4 5"/>
+<path d="M310.1,381.8 A335,335 0 0 1 433.8,176.0" fill="none" stroke="rgba(0,0,0,.35)" stroke-width="1.5" stroke-dasharray="4 5" marker-end="url(#ahs)"/>
+<text x="989" y="434" font-size="13" font-family="IBM Plex Mono, Menlo, monospace" letter-spacing="1.2" fill="rgba(0,0,0,.5)">V‑CLINIC VISIT</text><text x="989" y="454" font-size="13" fill="rgba(0,0,0,.5)">steps 1–4, one day</text>
+<text x="291" y="434" font-size="13" font-family="IBM Plex Mono, Menlo, monospace" letter-spacing="1.2" fill="rgba(0,0,0,.5)" text-anchor="end">BETWEEN VISITS</text><text x="291" y="454" font-size="13" fill="rgba(0,0,0,.5)" text-anchor="end">steps 5–6, 30–90 days of real life</text>
+<circle cx="640" cy="440" r="250" fill="none" stroke="rgba(0,0,0,.18)" stroke-width="2"/>
+<line x1="640.0" y1="248.0" x2="640.0" y2="297.0" stroke="rgba(0,0,0,.22)" stroke-width="1.5" stroke-dasharray="2 4"/>
+<circle cx="640.0" cy="297.0" r="3" fill="rgba(0,0,0,.35)"/>
+<line x1="806.3" y1="344.0" x2="763.8" y2="368.5" stroke="rgba(0,0,0,.22)" stroke-width="1.5" stroke-dasharray="2 4"/>
+<circle cx="763.8" cy="368.5" r="3" fill="rgba(0,0,0,.35)"/>
+<line x1="806.3" y1="536.0" x2="763.8" y2="511.5" stroke="rgba(0,0,0,.22)" stroke-width="1.5" stroke-dasharray="2 4"/>
+<circle cx="763.8" cy="511.5" r="3" fill="rgba(0,0,0,.35)"/>
+<line x1="640.0" y1="632.0" x2="640.0" y2="583.0" stroke="rgba(0,0,0,.22)" stroke-width="1.5" stroke-dasharray="2 4"/>
+<circle cx="640.0" cy="583.0" r="3" fill="rgba(0,0,0,.35)"/>
+<line x1="473.7" y1="536.0" x2="516.2" y2="511.5" stroke="rgba(0,0,0,.22)" stroke-width="1.5" stroke-dasharray="2 4"/>
+<circle cx="516.2" cy="511.5" r="3" fill="rgba(0,0,0,.35)"/>
+<line x1="473.7" y1="344.0" x2="516.2" y2="368.5" stroke="rgba(0,0,0,.22)" stroke-width="1.5" stroke-dasharray="2 4"/>
+<circle cx="516.2" cy="368.5" r="3" fill="rgba(0,0,0,.35)"/>
+<polygon points="772.8,228.0 762.4,213.9 755.4,226.1" fill="#333333"/>
+<polygon points="890.0,449.0 897.0,433.0 883.0,433.0" fill="#333333"/>
+<polygon points="757.2,661.0 774.6,659.1 767.6,646.9" fill="#333333"/>
+<polygon points="507.2,652.0 517.6,666.1 524.6,653.9" fill="#333333"/>
+<polygon points="390.0,431.0 383.0,447.0 397.0,447.0" fill="#333333"/>
+<polygon points="522.8,219.0 505.4,220.9 512.4,233.1" fill="#333333"/>
+<text x="486" y="150" font-size="12" font-family="IBM Plex Mono, Menlo, monospace" letter-spacing="1" fill="#0460F5" text-anchor="end">NEXT VISIT →</text>
+<circle cx="640" cy="440" r="135" fill="#FFFFFF" stroke="rgba(0,0,0,.18)" stroke-width="1.5"/>
+<text x="640" y="406" font-size="12" font-family="IBM Plex Mono, Menlo, monospace" letter-spacing="1.2" fill="#0460F5" text-anchor="middle">LIVING PROFILE</text>
+<text x="640" y="442" font-size="26" fill="#333333" text-anchor="middle" letter-spacing="-.3">of the person</text>
+<text x="640" y="470" font-size="13" fill="rgba(0,0,0,.55)" text-anchor="middle">every step reads the context</text><text x="640" y="488" font-size="13" fill="rgba(0,0,0,.55)" text-anchor="middle">and adds to it</text>
+<g><rect x="511.0" y="147.0" width="258" height="86" rx="14" fill="#F7F7F7" stroke="#FFFFFF" stroke-width="3"/>
+
+<text x="531.0" y="171.0" font-size="11.5" font-family="IBM Plex Mono, Menlo, monospace" letter-spacing="1.2" fill="rgba(0,0,0,.5)">1 · UNDERSTAND</text>
+<text x="531.0" y="194.0" font-size="16" font-weight="600" fill="#333333">AI intake</text>
+<text x="531.0" y="215.0" font-size="13" fill="rgba(0,0,0,.6)">history · goals</text></g>
+<g><rect x="727.5" y="272.0" width="258" height="86" rx="14" fill="#F7F7F7" stroke="#FFFFFF" stroke-width="3"/>
+
+<text x="747.5" y="296.0" font-size="11.5" font-family="IBM Plex Mono, Menlo, monospace" letter-spacing="1.2" fill="rgba(0,0,0,.5)">2 · MEASURE</text>
+<text x="747.5" y="319.0" font-size="16" font-weight="600" fill="#333333">V‑Clinic + wearables</text>
+<text x="747.5" y="340.0" font-size="13" fill="rgba(0,0,0,.6)">movement · VO₂ · biometrics</text></g>
+<g><rect x="727.5" y="522.0" width="258" height="86" rx="14" fill="#F7F7F7" stroke="#FFFFFF" stroke-width="3"/>
+
+<text x="747.5" y="546.0" font-size="11.5" font-family="IBM Plex Mono, Menlo, monospace" letter-spacing="1.2" fill="rgba(0,0,0,.5)">3 · SYNTHESISE</text>
+<text x="747.5" y="569.0" font-size="16" font-weight="600" fill="#333333">AI summary</text>
+<text x="747.5" y="590.0" font-size="13" fill="rgba(0,0,0,.6)">+ clinician review</text></g>
+<g><rect x="511.0" y="647.0" width="258" height="86" rx="14" fill="#F7F7F7" stroke="#FFFFFF" stroke-width="3"/>
+
+<text x="531.0" y="671.0" font-size="11.5" font-family="IBM Plex Mono, Menlo, monospace" letter-spacing="1.2" fill="rgba(0,0,0,.5)">4 · PRESCRIBE</text>
+<text x="531.0" y="694.0" font-size="16" font-weight="600" fill="#333333">Approved protocol</text>
+<text x="531.0" y="715.0" font-size="13" fill="rgba(0,0,0,.6)">plan · reminders</text></g>
+<g><rect x="294.5" y="522.0" width="258" height="86" rx="14" fill="#F7F7F7" stroke="#FFFFFF" stroke-width="3"/>
+
+<text x="314.5" y="546.0" font-size="11.5" font-family="IBM Plex Mono, Menlo, monospace" letter-spacing="1.2" fill="rgba(0,0,0,.5)">5 · MONITOR</text>
+<text x="314.5" y="569.0" font-size="16" font-weight="600" fill="#333333">Signals + check‑ins</text>
+<text x="314.5" y="590.0" font-size="13" fill="rgba(0,0,0,.6)">adherence · symptoms</text></g>
+<g><rect x="294.5" y="272.0" width="258" height="86" rx="14" fill="#F7F7F7" stroke="#FFFFFF" stroke-width="3"/>
+
+<text x="314.5" y="296.0" font-size="11.5" font-family="IBM Plex Mono, Menlo, monospace" letter-spacing="1.2" fill="rgba(0,0,0,.5)">6 · REASSESS</text>
+<text x="314.5" y="319.0" font-size="16" font-weight="600" fill="#333333">Change over time</text>
+<text x="314.5" y="340.0" font-size="13" fill="rgba(0,0,0,.6)">new baseline · next plan</text></g>
+</svg><figcaption>Steps run around the loop; every step reads the living profile and adds to it. Steps 1–4 happen during the visit, 5–6 between visits, and the next visit starts with the full history.</figcaption></figure>
+</body></html>
