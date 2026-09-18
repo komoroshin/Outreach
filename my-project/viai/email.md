@@ -19,7 +19,7 @@ Would 30 minutes next week work? We would show it on a V‑Clinic scenario: an a
 
 Konstantin Moroshin
 Head of the Research Center, Ocean Tech
-hello@okeantech.ru · okeantech.ru
+hello@okeantech.ru · +7 917 515‑76‑60 · okeantech.ru
 
 ---
 
