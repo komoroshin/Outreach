@@ -1,0 +1,267 @@
+<!doctype html>
+<html lang="ru">
+<head><meta charset="utf-8"><title>От V-Clinic к непрерывному контуру здоровья · Океан Тех для VIAI</title>
+<style>@font-face{font-family:"Suisse Intl";font-weight:500;src:url("fonts/SuisseIntl-Medium.woff2") format("woff2")}
+@font-face{font-family:"Suisse Intl";font-weight:600;src:url("fonts/SuisseIntl-SemiBold.woff2") format("woff2")}
+@font-face{font-family:"PP Right Grotesk";font-weight:500;src:url("fonts/RightGrotesk-Medium.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-weight:500;src:url("fonts/IBMPlexMono-Medium.woff2") format("woff2")}
+:root{
+  --bg:#FFFFFF;--card:#F7F7F7;--dark:#232323;--ink:#333333;--ink-80:rgba(0,0,0,.8);--ink-50:rgba(0,0,0,.5);--ink-35:rgba(0,0,0,.35);
+  --line:rgba(0,0,0,.12);--line-soft:rgba(0,0,0,.07);--blue:#0460F5;--lime:#D5F774;--purple:#60419E;--orange:#E3592E;--green:#4CAF50;--lavender:#C5ACF7;
+  --sans:"Suisse Intl","Helvetica Neue",Arial,sans-serif;--display:"PP Right Grotesk","Suisse Intl",Arial,sans-serif;--mono:"IBM Plex Mono",Menlo,monospace;
+}
+@page{size:1280px 720px;margin:0}
+*{box-sizing:border-box}
+html,body{margin:0;background:#E9E9E9;font-family:var(--sans);font-weight:500;color:var(--ink);-webkit-print-color-adjust:exact;print-color-adjust:exact}
+.slide{width:1280px;height:720px;background:var(--bg);position:relative;overflow:hidden;padding:56px 64px;display:flex;flex-direction:column;page-break-after:always;break-after:page;margin:0 auto}
+@media screen{.slide{margin:24px auto;box-shadow:0 2px 24px rgba(0,0,0,.12)}}
+.slide.dark{background:var(--dark);color:#fff}
+.mono{font-family:var(--mono);font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-50)}
+.slide.dark .mono{color:rgba(255,255,255,.7)}
+.brand{display:flex;align-items:center;gap:10px;font-weight:600;font-size:16px;letter-spacing:-.01em;margin-bottom:24px}
+.brand svg{width:26px;height:26px}
+.eyebrow{display:flex;gap:12px;align-items:baseline;margin-bottom:14px}
+.eyebrow .num{font-family:var(--mono);font-size:12px;letter-spacing:.1em;color:var(--blue)}
+.slide.dark .eyebrow .num{color:var(--lime)}
+h1{font-family:var(--display);font-weight:500;font-size:92px;line-height:.9;letter-spacing:-.01em;margin:0;max-width:12ch}
+h2{font-weight:500;font-size:44px;line-height:1;letter-spacing:-.015em;margin:0 0 12px;max-width:30ch}
+h3{font-weight:600;font-size:18px;line-height:1.15;margin:0 0 6px}
+p{margin:0;line-height:1.3}
+.lede{font-size:19px;color:var(--ink-80);max-width:74ch;margin-bottom:24px}
+.slide.dark .lede{color:rgba(255,255,255,.8)}
+.grid{display:grid;gap:16px;flex:1;min-height:0}
+.c2{grid-template-columns:repeat(2,1fr)}.c3{grid-template-columns:repeat(3,1fr)}.c4{grid-template-columns:repeat(4,1fr)}.c5{grid-template-columns:repeat(5,1fr)}
+.card{background:var(--card);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:8px;font-size:15px;color:var(--ink-80)}
+.card .label{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-50)}
+.card h3{color:var(--ink)}
+.card ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:4px;color:var(--ink-80)}
+.punch{margin-top:auto;background:var(--dark);color:#fff;border-radius:20px;padding:22px 26px;font-size:20px;line-height:1.25}
+.punch .mono{display:block;margin-bottom:8px;color:rgba(255,255,255,.7)}
+.tag{display:inline-block;font-family:var(--mono);font-size:10px;letter-spacing:.08em;text-transform:uppercase;border-radius:10px;padding:5px 8px;white-space:nowrap}
+/* cover */
+.cover{display:grid;grid-template-columns:1.25fr 1fr;gap:40px;flex:1;align-items:start}
+.cover .sub{font-size:21px;color:var(--ink-80);max-width:40ch;margin-top:28px;line-height:1.3}
+.vision{background:var(--card);border-radius:24px;padding:28px;display:flex;flex-direction:column;gap:16px;height:100%}
+.vision .q{font-size:22px;line-height:1.3;color:var(--ink);font-weight:500}
+.vision .who{margin-top:auto;font-size:14px;color:var(--ink-50);line-height:1.35}
+.vision .who b{display:block;color:var(--ink);font-weight:600}
+/* timeline */
+.opp{display:grid;grid-template-columns:260px 1fr 260px;gap:16px;align-items:stretch}
+.tl{display:flex;flex-direction:column;justify-content:center;align-items:center;gap:14px;padding:0 20px}
+.tl .t{font-weight:600;font-size:20px}
+.tl .bar{width:100%;height:2px;background:var(--line);position:relative}
+.tl .bar i{position:absolute;top:-4px;width:10px;height:10px;border-radius:50%;background:var(--line)}
+.tl .bar i.a{background:var(--blue)}
+.tl .s{font-size:14px;color:var(--ink-50);text-align:center;line-height:1.4}
+/* loop */
+.loop{display:grid;grid-template-columns:1fr 300px 1fr;grid-template-rows:1fr 1fr 1fr;gap:12px 28px;flex:1;min-height:0;margin-top:8px}
+.loop .node{max-width:300px;width:100%}
+.loop .node.left{justify-self:end}.loop .node.right{justify-self:start}
+.node{background:var(--card);border-radius:16px;padding:14px 16px 14px 18px;border-left:4px solid var(--blue);display:flex;flex-direction:column;gap:4px;align-self:center}
+.node .k{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-50)}
+.node .v{font-weight:600;font-size:15px;line-height:1.2}
+.node.p{border-color:var(--purple)}.node.o{border-color:var(--orange)}.node.g{border-color:var(--green)}.node.l{border-color:var(--lavender)}
+.core{grid-column:2;grid-row:2;align-self:center;justify-self:center;width:250px;height:250px;border-radius:50%;border:1px solid var(--line);background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:6px;padding:20px}
+.core .k{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--blue)}
+.core .v{font-weight:500;font-size:28px;line-height:1;letter-spacing:-.01em}
+.core .s{font-size:13px;color:var(--ink-50);line-height:1.3}
+/* profile layers */
+.layers{display:flex;flex-direction:column;gap:8px}
+.layer{display:grid;grid-template-columns:190px 1fr;gap:16px;align-items:baseline;background:var(--card);border-radius:14px;padding:14px 18px}
+.layer .k{font-family:var(--mono);font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-50)}
+.layer .v{font-size:15px;color:var(--ink-80)}
+.qs{background:var(--dark);color:#fff;border-radius:20px;padding:22px 24px;display:flex;flex-direction:column;gap:10px}
+.qs .mono{color:rgba(255,255,255,.7)}
+.qs ol{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:9px;counter-reset:q}
+.qs li{display:grid;grid-template-columns:24px 1fr;gap:8px;font-size:15px;line-height:1.3;counter-increment:q;color:rgba(255,255,255,.9)}
+.qs li::before{content:counter(q,decimal-leading-zero);font-family:var(--mono);font-size:11px;color:var(--lime)}
+/* copilots */
+.cop{background:var(--card);border-radius:20px;padding:22px;display:flex;flex-direction:column;gap:14px}
+.cop .head{display:flex;flex-direction:column;gap:4px}
+.cop .head .t{font-weight:600;font-size:22px;letter-spacing:-.01em}
+.cop dl{margin:0;display:flex;flex-direction:column;gap:10px}
+.cop dt{font-weight:600;font-size:15px}
+.cop dd{margin:0 0 2px;font-size:14px;color:var(--ink-80);line-height:1.3}
+/* modules + case */
+.mods{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+.case{margin-top:16px;border:1px solid var(--line);border-radius:20px;padding:20px 24px;display:grid;grid-template-columns:1.1fr 1fr 1fr 1fr;gap:20px;align-items:center}
+.case .n{font-size:44px;line-height:.95;letter-spacing:-.02em;font-variant-numeric:tabular-nums}
+.case .n sup{font-size:.4em;vertical-align:top;color:var(--blue)}
+.case .l{font-size:13.5px;color:var(--ink-50);margin-top:6px;line-height:1.3}
+.case .who{font-size:14px;color:var(--ink-80);line-height:1.35}
+.case .who b{display:block;font-weight:600;color:var(--ink);font-size:16px;margin-bottom:6px}
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}
+.step ul{font-size:15px}
+.step{padding:20px;gap:10px}
+.step{background:var(--card);border-radius:16px;padding:18px;display:flex;flex-direction:column;gap:8px}
+.step .k{font-family:var(--mono);font-size:11px;letter-spacing:.08em;color:var(--blue)}
+.step .t{font-weight:600;font-size:15px;line-height:1.15}
+.step ul{margin:0;padding:0;list-style:none;display:flex;flex-direction:column;gap:3px;font-size:14px;color:var(--ink-80)}
+.crit{margin-top:16px;border:1px dashed var(--line);border-radius:14px;padding:14px 20px;display:flex;flex-direction:column;gap:6px}
+.crit .v{font-size:15px;color:var(--ink)}
+.note{margin-top:20px;font-size:17px;color:var(--ink-80);max-width:80ch;line-height:1.35;padding-left:20px;border-left:3px solid var(--lime)}
+/* cta */
+.cta-big{font-family:var(--display);font-size:80px;line-height:.9;margin:0 0 20px;max-width:14ch}
+.ctagrid{display:grid;grid-template-columns:1.2fr 1fr;gap:40px;flex:1;min-height:0}
+.hyp{background:rgba(255,255,255,.06);border-radius:20px;padding:24px;display:flex;flex-direction:column;gap:12px;align-self:start}
+.hyp .t{font-weight:500;font-size:26px;line-height:1.1;letter-spacing:-.01em}
+.hyp .s{font-size:15px;color:rgba(255,255,255,.75);line-height:1.35}
+.who2{margin-top:auto;display:grid;grid-template-columns:1fr 1fr;gap:24px;align-items:end}
+.who2 b{font-weight:600;font-size:20px;display:block}
+.who2 span{color:rgba(255,255,255,.75);display:block;font-size:16px}
+.who2 .pill{display:inline-block;width:auto}
+.pill{display:inline-block;border:1px solid rgba(255,255,255,.4);background:rgba(255,255,255,.1);border-radius:68px;padding:14px 26px;font-size:17px;color:#fff;margin-top:14px}
+</style></head>
+<body>
+
+<section class="slide">
+  <div class="brand"><svg viewBox="31 94 131 132" xmlns="http://www.w3.org/2000/svg"><g transform="translate(0,314) scale(0.1,-0.1)" fill="currentColor"><path d="M722 2180 c-27 -11 -42 -47 -42 -104 0 -57 -21 -76 -86 -76 -74 0 -94 -18 -94 -86 0 -75 -28 -104 -100 -104 -67 0 -90 -22 -90 -88 0 -73 19 -92 89 -92 78 0 93 13 99 86 6 77 19 91 94 96 73 5 88 21 88 89 0 32 6 55 21 73 18 22 28 26 75 26 41 0 59 -5 74 -20 15 -15 20 -33 20 -74 0 -47 -4 -57 -26 -75 -19 -15 -41 -21 -74 -21 -58 0 -80 -21 -86 -82 -9 -74 -13 -84 -39 -96 -14 -7 -46 -12 -70 -12 -60 0 -75 -18 -75 -89 0 -73 17 -91 86 -91 73 0 91 -17 96 -91 6 -78 27 -99 99 -99 68 0 89 -22 89 -94 0 -48 -4 -57 -27 -76 -23 -18 -37 -21 -77 -17 -66 6 -86 30 -86 103 0 64 -21 84 -90 84 -69 0 -87 18 -92 91 -4 49 -9 66 -27 80 -32 26 -101 25 -135 -2 -22 -18 -26 -28 -26 -74 0 -69 28 -95 101 -95 62 0 89 -30 89 -100 0 -61 22 -81 92 -88 70 -6 88 -23 88 -82 0 -33 6 -55 21 -74 18 -23 28 -26 79 -26 71 0 90 19 90 90 0 72 19 90 95 90 76 0 95 -18 95 -90 0 -71 19 -90 89 -90 71 0 91 17 91 78 0 23 5 53 12 67 12 26 22 30 96 39 63 6 82 28 82 93 0 71 21 93 89 93 72 0 101 26 101 91 0 68 -30 99 -95 99 -65 0 -95 -31 -95 -100 0 -69 -22 -90 -93 -90 -68 0 -83 -16 -89 -93 -6 -71 -21 -88 -85 -94 -39 -4 -53 -1 -75 17 -25 19 -28 28 -28 79 0 73 17 91 86 91 73 0 91 17 96 91 6 78 27 99 99 99 68 0 89 22 89 93 0 66 -19 87 -78 87 -80 0 -112 32 -112 114 0 58 -21 76 -88 76 -71 0 -92 21 -92 95 0 73 21 95 89 95 70 0 91 -20 100 -98 4 -34 13 -68 19 -74 6 -6 37 -13 69 -16 76 -6 93 -21 93 -86 0 -79 17 -96 95 -96 77 0 95 17 95 92 0 66 -23 88 -90 88 -71 0 -100 29 -100 100 0 69 -22 90 -93 90 -65 0 -87 19 -93 82 -9 74 -13 84 -39 96 -39 18 -89 14 -119 -9 -22 -17 -26 -28 -26 -73 0 -71 -25 -96 -98 -96 -71 0 -92 21 -92 94 0 47 -4 57 -26 75 -28 22 -82 27 -122 11z m318 -390 c27 -27 28 -108 1 -141 -16 -20 -28 -24 -76 -24 -72 0 -95 23 -95 94 0 72 19 91 91 91 46 0 63 -4 79 -20z m-196 -181 c22 -17 26 -28 26 -73 0 -77 -17 -96 -90 -96 -51 0 -61 3 -79 26 -36 45 -23 136 21 154 40 16 94 11 122 -11z m383 -2 c9 -8 18 -37 20 -64 4 -39 1 -53 -17 -75 -19 -25 -28 -28 -77 -28 -77 0 -93 16 -93 91 0 51 3 60 28 79 22 18 36 21 75 17 27 -2 56 -11 64 -20z m-192 -192 c33 -32 35 -100 4 -139 -17 -22 -28 -26 -72 -26 -71 0 -97 25 -97 94 0 69 26 96 92 96 39 0 54 -5 73 -25z"/></g></svg>Океан Тех</div>
+  <div class="cover">
+    <div>
+      <h1>От V‑Clinic к непрерывному контуру здоровья</h1>
+      <p class="sub">Не ещё одна медицинская система, а слой, который связывает скрининг, специалиста, носимые устройства и жизнь человека между визитами.</p>
+    </div>
+    <div class="vision">
+      <span class="mono" style="color:var(--blue)">Видение VIAI</span>
+      <p class="q">«Мы считаем, что будущее здравоохранения не ограничивается больницами. Оно будет в домах, сообществах, спортивных сооружениях и интеллектуальных медицинских центрах…»</p>
+      <p class="who"><b>Абдулла Абу Эбейд</b>сооснователь и CEO, VIAI Tech Group</p>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow"><span class="num">01</span><span class="mono">Возможность</span></div>
+  <h2>Сильный момент: V‑Clinic. Большая возможность: всё между визитами.</h2>
+  <p class="lede">Глубокий скрининг становится гораздо ценнее, если его контекст не исчезает, когда человек выходит из клиники.</p>
+  <div class="opp">
+    <div class="card"><span class="label">Оценка 01</span><h3>V‑Clinic</h3><ul><li>движение</li><li>VO₂ / кардио</li><li>биометрия</li><li>контекст специалиста</li></ul></div>
+    <div class="tl">
+      <span class="t">30–90 дней реальной жизни</span>
+      <div class="bar"><i class="a" style="left:0"></i><i style="left:20%"></i><i style="left:40%"></i><i style="left:60%"></i><i style="left:80%"></i><i class="a" style="right:0"></i></div>
+      <span class="s">сон · тренировки · восстановление · симптомы · соблюдение плана · поведение · носимые данные</span>
+    </div>
+    <div class="card"><span class="label">Оценка 02</span><h3>V‑Clinic</h3><ul><li>динамика</li><li>ответ на протокол</li><li>новый baseline</li><li>следующий план</li></ul></div>
+  </div>
+  <div class="punch"><span class="mono">Наше прочтение</span>Нужно не измерять ещё больше. Нужно сохранять контекст, видеть изменения и возвращать следующему визиту полную историю.</div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow"><span class="num">02</span><span class="mono">Непрерывный контур</span></div>
+  <h2>Непрерывный слой интеллекта вокруг V‑Clinic</h2>
+  <p class="lede" style="margin-bottom:12px">Один общий контекст связывает подготовку, скрининг, решение специалиста, выполнение плана и повторную оценку.</p>
+  <div class="loop">
+    <div class="node left" style="grid-column:1;grid-row:1"><span class="k">1 · Понять</span><span class="v">AI‑intake<br>история · цели</span></div>
+    <div class="node g" style="grid-column:2;grid-row:1;justify-self:center;min-width:240px"><span class="k">6 · Переоценить</span><span class="v">динамика +<br>новый baseline</span></div>
+    <div class="node right" style="grid-column:3;grid-row:1"><span class="k">5 · Наблюдать</span><span class="v">сигналы + check‑ins<br>+ adherence</span></div>
+    <div class="node p left" style="grid-column:1;grid-row:2"><span class="k">2 · Измерить</span><span class="v">V‑Clinic +<br>wearables</span></div>
+    <div class="core"><span class="k">Живой профиль</span><span class="v">человека</span><span class="s">контекст растёт с каждым визитом и сигналом</span></div>
+    <div class="node g right" style="grid-column:3;grid-row:2"><span class="k">4 · Направить</span><span class="v">утверждённый<br>протокол</span></div>
+    <div class="node o" style="grid-column:2;grid-row:3;justify-self:center;min-width:240px"><span class="k">3 · Собрать</span><span class="v">AI‑сводка +<br>review специалиста</span></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow"><span class="num">03</span><span class="mono">Живой профиль</span></div>
+  <h2>Один профиль. Каждое взаимодействие добавляет контекст.</h2>
+  <p class="lede">Не ещё один дашборд, а постоянная модель человека, его плана и реакции на вмешательства.</p>
+  <div class="grid c2" style="grid-template-columns:1.15fr 1fr">
+    <div class="layers">
+      <div class="layer"><span class="k">Baseline</span><span class="v">цели · история · ограничения · прошлые травмы</span></div>
+      <div class="layer"><span class="k">Скрининг</span><span class="v">данные V‑Clinic · VO₂ · движение · биометрия</span></div>
+      <div class="layer"><span class="k">Ежедневные сигналы</span><span class="v">сон · HR · активность · тренировки · симптомы</span></div>
+      <div class="layer"><span class="k">Вмешательства</span><span class="v">протоколы · рекомендации · соблюдение плана</span></div>
+      <div class="layer"><span class="k">Исходы</span><span class="v">изменение · ответ · восстановление · новый baseline</span></div>
+    </div>
+    <div class="qs">
+      <span class="mono">Вопросы, на которые система может ответить</span>
+      <ol>
+        <li>Что изменилось после прошлого скрининга?</li>
+        <li>Следует ли человек согласованному плану?</li>
+        <li>Какие сигналы требуют внимания специалиста?</li>
+        <li>Как вмешательство повлияло на восстановление?</li>
+        <li>С каким контекстом должен начаться следующий визит?</li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow"><span class="num">04</span><span class="mono">Два интерфейса</span></div>
+  <h2>Два AI‑копилота. Один общий контекст.</h2>
+  <p class="lede">Пользователь получает непрерывность. Специалист получает масштабирование без потери клинического контроля.</p>
+  <div class="grid c2">
+    <div class="cop">
+      <div class="head"><span class="mono">Для пользователя</span><span class="t">24/7 сопровождение</span></div>
+      <dl>
+        <dt>Ассистент знает план</dt><dd>Видит согласованный протокол и текущие сигналы.</dd>
+        <dt>Короткие check‑ins</dt><dd>Собирает симптомы, восстановление и соблюдение плана.</dd>
+        <dt>Видимая динамика</dt><dd>Показывает прогресс между скринингами.</dd>
+        <dt>Мультиязычность</dt><dd>Один разговорный интерфейс на разных языках.</dd>
+      </dl>
+    </div>
+    <div class="cop">
+      <div class="head"><span class="mono">Для специалиста</span><span class="t">Клинический рычаг</span></div>
+      <dl>
+        <dt>Сводка до визита</dt><dd>Специалист получает главное до встречи.</dd>
+        <dt>Фоновое документирование</dt><dd>Структурированные заметки без пост‑визитной рутины.</dd>
+        <dt>Изменения и исключения</dt><dd>Внимание только туда, где контекст действительно изменился.</dd>
+        <dt>Голос + follow‑up</dt><dd>Поиск по профилю и автоматизация рутинного сопровождения.</dd>
+      </dl>
+    </div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow"><span class="num">05</span><span class="mono">Не с нуля</span></div>
+  <h2>Основные клинические модули уже построены и внедрены</h2>
+  <p class="lede">Для VIAI это не greenfield‑разработка: предлагаем адаптировать существующий стек под конкретный workflow V‑Clinic.</p>
+  <div class="mods">
+    <div class="card"><span class="label">AI‑intake</span><p>структурированный опрос и краткая сводка до визита</p></div>
+    <div class="card"><span class="label">Ambient AI</span><p>транскрибация и структурирование консультации в реальном времени</p></div>
+    <div class="card"><span class="label">Единый профиль</span><p>визиты, история, показатели и носимые данные в одном контексте</p></div>
+    <div class="card"><span class="label">Мониторинг</span><p>межвизитное наблюдение, ассистент и follow‑up</p></div>
+  </div>
+  <div class="case">
+    <div class="who"><span class="mono">Клинический кейс Healthy4U</span><b style="margin-top:8px">GavCure · Израиль</b>Это доказательство способности собрать и внедрить контур, а не обещание VIAI тех же цифр.</div>
+    <div><div class="n">15+ мин <sup>→</sup> 30 сек</div><div class="l">подготовка анамнеза</div></div>
+    <div><div class="n"><sup>+</sup>30%</div><div class="l">пациентов в день</div></div>
+    <div><div class="n">100%</div><div class="l">визитов со структурированной сводкой</div></div>
+  </div>
+</section>
+
+<section class="slide">
+  <div class="eyebrow"><span class="num">06</span><span class="mono">Как начать</span></div>
+  <h2>Один workflow. 6–8 недель. 20–50 пользователей.</h2>
+  <p class="lede">Не заменяем платформу VIAI. Собираем один замкнутый сценарий вокруг V‑Clinic и измеряем, создаёт ли он ценность.</p>
+  <div class="steps">
+    <div class="step"><span class="k">01</span><span class="t">Подключить</span><ul><li>результаты V‑Clinic</li><li>wearables</li><li>короткий AI‑intake</li></ul></div>
+    <div class="step"><span class="k">02</span><span class="t">Собрать профиль</span><ul><li>baseline</li><li>сводка скрининга</li><li>общий контекст</li></ul></div>
+    <div class="step"><span class="k">03</span><span class="t">Замкнуть цикл</span><ul><li>утверждённый протокол</li><li>check‑ins</li><li>мониторинг</li></ul></div>
+    <div class="step"><span class="k">04</span><span class="t">Дать специалисту</span><ul><li>brief</li><li>изменения</li><li>attention flags</li></ul></div>
+    <div class="step"><span class="k">05</span><span class="t">Измерить</span><ul><li>usage</li><li>adherence</li><li>time saved</li></ul></div>
+  </div>
+  <div class="crit"><span class="mono">Success criteria</span><span class="v">время специалиста · соблюдение протокола · engagement после скрининга · повторный визит · объём пригодных longitudinal data</span></div>
+  <p class="note">Если цикл работает, масштабируем на другие сценарии и локации. Если нет, останавливаемся без большой платформенной ставки.</p>
+</section>
+
+<section class="slide dark">
+  <div class="eyebrow"><span class="num">07</span><span class="mono">Следующий шаг</span></div>
+  <div class="ctagrid">
+    <div>
+      <p class="cta-big">Тридцать минут. Один сценарий.</p>
+      <p class="lede" style="max-width:52ch">Разобрать путь одного пользователя V‑Clinic: от контекста до скрининга, от протокола до наблюдения между визитами, и показать, какие части уже можно собрать на существующем стеке Океан Тех.</p>
+    </div>
+    <div class="hyp">
+      <span class="mono">Наша гипотеза</span>
+      <span class="t">VIAI может владеть не только измерением, но и контекстом между измерениями.</span>
+      <span class="s">Именно там появляются непрерывные отношения с пользователем, данные об исходах и новый слой ценности вокруг V‑Clinic.</span>
+    </div>
+  </div>
+  <div class="who2">
+    <div><b>Константин Морошин</b><span>Океан Тех</span><span>hello@okeantech.ru · okeantech.ru</span><span class="pill">Обсудить пилот</span></div>
+    <div style="text-align:right"><span>VIAI · Абу‑Даби</span></div>
+  </div>
+</section>
+
+</body></html>
