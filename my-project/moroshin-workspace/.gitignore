@@ -5,3 +5,6 @@
 inputs/gkey-strategy-offer.pdf
 inputs/outreacher-kp.pdf
 offers/valveiq/
+offers/personal/*
+!offers/personal/README.md
+!offers/personal/_template/
