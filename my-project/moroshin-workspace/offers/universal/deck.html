@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Аутрич для B2B — Константин Морошин</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&subset=cyrillic&display=block" rel="stylesheet">
+<style>
+  /* Слайд = лист 16:9. Печать: одна страница на слайд, без полей. */
+  @page { size: 1280px 720px; margin: 0; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --paper: #F3F0E8;
+    --desk: #E7E3D7;
+    --ink: #111111;
+    --steel: #6B7075;
+    --steel-08: rgba(107,112,117,.08);
+    --steel-16: rgba(107,112,117,.16);
+    --steel-32: rgba(107,112,117,.32);
+    --signal: #245BFF;
+    --signal-05: rgba(36,91,255,.05);
+    --sans: 'IBM Plex Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  html, body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 17px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+  a { color: var(--signal); text-decoration: none; }
+  strong { font-weight: 600; }
+
+  /* ---------- слайд ---------- */
+  .slide {
+    width: 1280px;
+    height: 720px;
+    padding: 24px;
+    background: var(--paper);
+    page-break-after: always;
+    break-after: page;
+    overflow: hidden;
+  }
+  .slide:last-child { page-break-after: auto; break-after: auto; }
+
+  .frame {
+    height: 100%;
+    border: 1px solid var(--ink);
+    display: flex;
+    flex-direction: column;
+    background-image:
+      linear-gradient(var(--steel-08) 1px, transparent 1px),
+      linear-gradient(90deg, var(--steel-08) 1px, transparent 1px);
+    background-size: 64px 64px;
+    background-position: -1px -1px;
+  }
+
+  .head {
+    display: flex;
+    align-items: baseline;
+    gap: 16px;
+    padding: 30px 40px 14px;
+    border-bottom: 1px solid var(--ink);
+  }
+  .sec-num { font-family: var(--mono); font-size: 14px; font-weight: 600; color: var(--signal); letter-spacing: .1em; }
+  h2 { font-size: 30px; font-weight: 600; letter-spacing: .01em; line-height: 1.1; }
+  .head .lede { margin-left: auto; max-width: 480px; font-size: 15px; color: var(--steel); text-align: right; align-self: flex-end; }
+
+  .body { flex: 1; padding: 28px 40px 0; }
+  .body.center { display: flex; flex-direction: column; justify-content: center; padding-bottom: 36px; }
+
+  .foot {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 40px;
+    border-top: 1px solid var(--ink);
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--steel);
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--steel);
+  }
+  .tag.signal { color: var(--signal); }
+
+  /* ---------- обложка ---------- */
+  .cover .body { display: grid; grid-template-columns: 1fr 300px; gap: 48px; padding-top: 40px; }
+  h1 {
+    font-size: 58px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    line-height: 1.05;
+    text-transform: uppercase;
+    margin-top: 14px;
+  }
+  h1 em { font-style: normal; color: var(--signal); }
+  .role { margin-top: 22px; font-size: 22px; font-weight: 500; line-height: 1.3; max-width: 720px; }
+  .role em { font-style: normal; color: var(--signal); }
+  .cover p.lead { margin-top: 18px; max-width: 640px; font-size: 17px; }
+  .photo { border: 1px solid var(--ink); padding: 8px; background: var(--paper); align-self: start; margin-top: 14px; }
+  .photo img { display: block; width: 100%; filter: grayscale(100%); }
+
+  .meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-top: 1px solid var(--ink);
+    margin-top: auto;
+  }
+  .meta div { padding: 12px 20px 14px; border-right: 1px solid var(--steel-32); }
+  .meta div:first-child { padding-left: 40px; }
+  .meta div:last-child { border-right: none; }
+  .meta .k { display: block; margin-bottom: 2px; }
+  .meta .v { font-family: var(--mono); font-size: 14px; font-weight: 500; letter-spacing: .03em; }
+
+  /* ---------- таблица-сетка карточек ---------- */
+  .cards {
+    display: grid;
+    gap: 1px;
+    background: var(--steel-32);
+    border: 1px solid var(--ink);
+  }
+  .cards.c2 { grid-template-columns: repeat(2, 1fr); }
+  .cards.c3 { grid-template-columns: repeat(3, 1fr); }
+  .cards.c4 { grid-template-columns: repeat(4, 1fr); }
+  .card { background: var(--paper); padding: 22px 24px 26px; }
+  .card .tag { display: block; margin-bottom: 10px; }
+  .card h3 { font-size: 20px; font-weight: 600; line-height: 1.25; margin-bottom: 10px; }
+  .card p { font-size: 16px; }
+  .cards.big .card { padding: 28px 28px 32px; }
+  .cards.big .card h3 { font-size: 22px; }
+  .cards.big .card p { font-size: 17px; }
+  .card.result { background: var(--signal-05); border-top: 2px solid var(--signal); }
+
+  /* ---------- колонки ---------- */
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .cols.wide { grid-template-columns: 1.15fr 1fr; }
+  .subhead { display: block; margin-bottom: 14px; }
+
+  /* ---------- шаги ---------- */
+  .steps { list-style: none; }
+  .steps li { display: grid; grid-template-columns: 44px 1fr; gap: 8px; padding: 14px 0; border-bottom: 1px solid var(--steel-16); font-size: 17.5px; }
+  .steps li:last-child { border-bottom: none; }
+  .steps .n { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--signal); letter-spacing: .1em; padding-top: 4px; }
+
+  /* ---------- принципы ---------- */
+  .tick { list-style: none; }
+  .tick li { position: relative; padding: 13px 0 13px 34px; border-bottom: 1px solid var(--steel-16); font-size: 17.5px; }
+  .tick li:last-child { border-bottom: none; }
+  .tick li::before { content: "⌖"; position: absolute; left: 0; top: 9px; color: var(--signal); font-size: 18px; }
+
+  /* ---------- недели ---------- */
+  .weeks .card h3 { font-size: 17px; }
+  .weeks .out { margin-top: 14px; padding-top: 12px; border-top: 1px solid var(--steel-16); }
+  .weeks .out .tag { margin-bottom: 4px; }
+  .weeks .out p { font-weight: 600; font-size: 15px; }
+  p.note { margin-top: 20px; font-size: 16px; max-width: 900px; }
+  p.note.muted { color: var(--steel); font-size: 15px; }
+
+  /* ---------- письмо ---------- */
+  .letter { border: 1px solid var(--ink); background: var(--paper); }
+  .letter .subj { padding: 12px 20px; border-bottom: 1px solid var(--steel-32); font-family: var(--mono); font-size: 13px; }
+  .letter .subj .tag { margin-right: 10px; }
+  .letter .line { display: grid; grid-template-columns: 120px 1fr; gap: 12px; padding: 11px 20px; border-bottom: 1px solid var(--steel-16); font-size: 15.5px; }
+  .letter .line:last-child { border-bottom: none; }
+  .letter .line .tag { padding-top: 4px; }
+
+  /* ---------- кто делает ---------- */
+  .who { display: grid; grid-template-columns: 220px 1fr 1fr; gap: 40px; align-items: start; }
+  .who .photo { margin-top: 0; }
+  .who h3 { font-size: 24px; font-weight: 600; margin-bottom: 8px; }
+  .who p { font-size: 16.5px; }
+  .contacts { margin-top: 18px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    font-family: var(--mono);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 12px 20px;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    display: inline-block;
+  }
+  .btn.primary { background: var(--signal); border-color: var(--signal); color: var(--paper); }
+  .next { padding: 22px 24px 26px; background: var(--signal-05); border: 1px solid var(--ink); border-top: 2px solid var(--signal); }
+  .next .tag { display: block; margin-bottom: 10px; }
+  .next h3 { font-size: 20px; margin-bottom: 10px; }
+  .next p { font-size: 16px; }
+  .next p + p { margin-top: 10px; }
+</style>
+</head>
+<body>
+
+<!-- 1. Обложка -->
+<div class="slide cover">
+  <div class="frame">
+    <div class="body">
+      <div>
+        <span class="tag">Константин Морошин</span>
+        <h1>Аутрич<br>для <em>B2B</em></h1>
+        <p class="role">Холодные письма и LinkedIn на ваших покупателей: сегменты, база, письма, ответы и <em>встречи в календаре вашей команды</em>.</p>
+        <p class="lead">Демо и продажа остаются за вами. Домены, почты, база и цепочки заводятся на вас и остаются у вас.</p>
+      </div>
+      <div class="photo"><img src="../../inputs/konstantin_moroshin.jpg" alt="Константин Морошин"></div>
+    </div>
+    <div class="meta">
+      <div><span class="tag k">Каналы</span><span class="v">Email + LinkedIn</span></div>
+      <div><span class="tag k">Первые письма</span><span class="v">3–4 неделя</span></div>
+      <div><span class="tag k">Формат</span><span class="v">Помесячно, без найма</span></div>
+    </div>
+    <div class="foot"><span>Константин Морошин · Аутрич для B2B</span><span>1 / 9</span></div>
+  </div>
+</div>
+
+<!-- 2. Зачем -->
+<div class="slide">
+  <div class="frame">
+    <div class="head"><span class="sec-num">01</span><h2>Три ситуации, с которыми приходят</h2></div>
+    <div class="body center">
+      <div class="cards c3 big">
+        <div class="card">
+          <span class="tag">Ситуация</span>
+          <h3>Продажи держатся на знакомствах</h3>
+          <p>Первые клиенты и пилоты пришли через интро фаундеров. Записная книжка конечна, и когда она заканчивается, воронка пустеет.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Ситуация</span>
+          <h3>Нанимать продавца долго</h3>
+          <p>Два-три месяца поиска, потом месяцы до первых встреч. Всё это время он учится продукту за ваш счёт, и не факт, что останется.</p>
+        </div>
+        <div class="card">
+          <span class="tag">Ситуация</span>
+          <h3>Холодные письма уже пробовали</h3>
+          <p>Ушли с основного домена, ответов не было, вывод: «на нашем рынке это не работает». Обычно не работал не рынок, а домен, база или аргумент.</p>
+        </div>
+      </div>
+      <p class="note">Общее у всех: продукт есть, покупатели есть, нет системного способа до них дотянуться без найма и без выжигания базы.</p>
+    </div>
+    <div class="foot"><span>Константин Морошин · Аутрич для B2B</span><span>2 / 9</span></div>
+  </div>
+</div>
+
+<!-- 3. Что меняется -->
+<div class="slide">
+  <div class="frame">
+    <div class="head"><span class="sec-num">02</span><h2>Что меняется через месяц</h2></div>
+    <div class="body">
+      <div class="cards c2">
+        <div class="card result">
+          <span class="tag signal">● Результат</span>
+          <h3>Встречи с компаниями, которых не было в вашем списке</h3>
+          <p>Роли и сегменты выбираете вы. В календаре команды встречи появляются с четвёртой недели, когда почты прогреты и письма пошли объёмом.</p>
+        </div>
+        <div class="card result">
+          <span class="tag signal">● Результат</span>
+          <h3>Ответ, кому продавать</h3>
+          <p>Какой сегмент и какой аргумент отвечает, а какой нет, с цитатами из ответов. Этим пользуются продажи и продукт, даже если сегмент не сработал.</p>
+        </div>
+        <div class="card result">
+          <span class="tag signal">● Результат</span>
+          <h3>Канал без найма</h3>
+          <p>Домены, база, цепочки и ящик с ответами на вашей стороне. Если я ухожу, канал остаётся и продолжает работать.</p>
+        </div>
+        <div class="card result">
+          <span class="tag signal">● Результат</span>
+          <h3>Прозрачность</h3>
+          <p>Доступ к единому ящику со всеми ответами и к статистике по каждой кампании: отправки, открытия, ответы, встречи.</p>
+        </div>
+      </div>
+      <p class="note muted">Число встреч заранее не обещаю: прогноз даю в первом разборе по реальным ответам, точнее к середине второго месяца.</p>
+    </div>
+    <div class="foot"><span>Константин Морошин · Аутрич для B2B</span><span>3 / 9</span></div>
+  </div>
+</div>
+
+<!-- 4. Кому пишем -->
+<div class="slide">
+  <div class="frame">
+    <div class="head"><span class="sec-num">03</span><h2>Кому пишем</h2><p class="lede">Сегмент это отдельный профиль покупателя: своя база и своя цепочка. На старте до трёх сегментов.</p></div>
+    <div class="body">
+      <div class="cols wide">
+        <div>
+          <span class="tag subhead">Порядок сегментов</span>
+          <ol class="steps">
+            <li><span class="n">01</span><div><strong>Начинаем с сегмента, где решает один человек и цикл короткий.</strong> На нём быстрее всего видно, работает ли аргумент.</div></li>
+            <li><span class="n">02</span><div><strong>Следом покупатели крупнее, с несколькими согласующими.</strong> Заходим, когда аргумент проверен на первом сегменте.</div></li>
+            <li><span class="n">03</span><div><strong>Не в первой волне: самый длинный цикл.</strong> Закупочные процедуры, проверка безопасности, многоуровневое согласование.</div></li>
+          </ol>
+        </div>
+        <div>
+          <span class="tag subhead">Роли в сделке</span>
+          <div class="cards" style="grid-template-columns: 1fr;">
+            <div class="card"><span class="tag signal">Чемпион</span><h3 style="font-size:18px">Руководитель функции, которую меняет продукт</h3><p>Боль у него. Ему и пишем.</p></div>
+            <div class="card"><span class="tag signal">Платит</span><h3 style="font-size:18px">Владелец, генеральный или коммерческий директор</h3><p>Аргумент для него в деньгах, а не в часах.</p></div>
+            <div class="card"><span class="tag signal">Может остановить</span><h3 style="font-size:18px">ИТ, безопасность, закупки</h3><p>Подключаются позже. В крупных компаниях на этом этапе теряются месяцы.</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Константин Морошин · Аутрич для B2B</span><span>4 / 9</span></div>
+  </div>
+</div>
+
+<!-- 5. Как ищем и что пишем -->
+<div class="slide">
+  <div class="frame">
+    <div class="head"><span class="sec-num">04</span><h2>Как ищем компании и что им пишем</h2></div>
+    <div class="body">
+      <div class="cols">
+        <div>
+          <span class="tag subhead">Сигналы, по которым отбираем компании</span>
+          <ul class="tick">
+            <li><strong>Вакансии</strong> в функции, которую закрывает продукт. Прямой индикатор нагрузки.</li>
+            <li><strong>Реестры и списки:</strong> отраслевые реестры, лицензии, участники выставок и тендеров.</li>
+            <li><strong>События:</strong> рост штата, новое финансирование, смена руководителя, выход на новый рынок.</li>
+            <li><strong>Обещания на сайте,</strong> которые продукт помогает выполнить: «ответ за 4 часа», «запуск за неделю».</li>
+          </ul>
+          <p class="note" style="font-size:15.5px">Пишем не о функциях продукта, а о деньгах покупателя. Экономия часов сотрудника слабый аргумент для владельца. Сильнее: больше сделок тем же штатом, быстрее ответ клиенту, меньше потерь на ошибках.</p>
+        </div>
+        <div>
+          <span class="tag subhead">Из чего состоит первое письмо</span>
+          <div class="letter">
+            <div class="subj"><span class="tag">Тема</span>4–6 слов, без слова «предложение»</div>
+            <div class="line"><span class="tag">Строка 1</span><div>Про них, а не про нас: сигнал, который мы увидели.</div></div>
+            <div class="line"><span class="tag">Строки 2–3</span><div>Что это стоит им сейчас: сделки, скорость, ошибки.</div></div>
+            <div class="line"><span class="tag">Строка 4</span><div>Что продукт с этим делает. Без перечня функций.</div></div>
+            <div class="line"><span class="tag">Строка 5</span><div>Первый шаг, короткий и конкретный: показать продукт на их задаче, а не «созвониться».</div></div>
+          </div>
+          <p class="note muted" style="margin-top:14px">60–90 слов, без вложений и ссылок в первом касании. Дальше цепочка из трёх-четырёх касаний.</p>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Константин Морошин · Аутрич для B2B</span><span>5 / 9</span></div>
+  </div>
+</div>
+
+<!-- 6. Что делаю -->
+<div class="slide">
+  <div class="frame">
+    <div class="head"><span class="sec-num">05</span><h2>Что делаю</h2><p class="lede">Полный цикл: от разбора продукта до первых ответов. Демо и продажа на вашей стороне.</p></div>
+    <div class="body center">
+      <div class="cols">
+        <ol class="steps">
+          <li><span class="n">01</span><div><strong>Разбираю продукт, клиентов и сделки.</strong> Кто пришёл и почему, кто ушёл и почему.</div></li>
+          <li><span class="n">02</span><div><strong>Фиксирую сегменты</strong> и критерии поиска компаний и ролей.</div></li>
+          <li><span class="n">03</span><div><strong>Собираю и проверяю базу:</strong> компании и нужные роли с рабочими контактами.</div></li>
+          <li><span class="n">04</span><div><strong>Настраиваю инфраструктуру:</strong> домены, почты, прогрев, отправка, автоматизация LinkedIn.</div></li>
+        </ol>
+        <ol class="steps">
+          <li><span class="n">05</span><div><strong>Пишу цепочки писем и сообщений</strong> под каждый сегмент.</div></li>
+          <li><span class="n">06</span><div><strong>Веду первые ответы</strong> до договорённости о встрече.</div></li>
+          <li><span class="n">07</span><div><strong>Раз в две недели разбор:</strong> что подтвердилось, что нет, что меняем. Каждый сегмент гипотеза, и я прямо пишу, если она не подтвердилась.</div></li>
+        </ol>
+      </div>
+    </div>
+    <div class="foot"><span>Константин Морошин · Аутрич для B2B</span><span>6 / 9</span></div>
+  </div>
+</div>
+
+<!-- 7. План первого месяца -->
+<div class="slide">
+  <div class="frame">
+    <div class="head"><span class="sec-num">06</span><h2>План первого месяца</h2><p class="lede">До старта: созвон-брифинг на 1–1,5 часа и договор.</p></div>
+    <div class="body">
+      <div class="cards c4 weeks">
+        <div class="card">
+          <span class="tag signal">Неделя 1</span>
+          <h3>Брифинг, сегменты и критерии поиска</h3>
+          <p>Покупка доменов и почт, старт прогрева.</p>
+          <div class="out"><span class="tag">На выходе</span><p>Согласованы сегменты и роли</p></div>
+        </div>
+        <div class="card">
+          <span class="tag signal">Неделя 2</span>
+          <h3>База первого сегмента</h3>
+          <p>Контакты нужных ролей. Цепочки писем под сегмент.</p>
+          <div class="out"><span class="tag">На выходе</span><p>База и цепочки вам на согласование</p></div>
+        </div>
+        <div class="card">
+          <span class="tag signal">Неделя 3</span>
+          <h3>Первые отправки</h3>
+          <p>Малым объёмом, пока почты догреваются. Старт базы второго сегмента.</p>
+          <div class="out"><span class="tag">На выходе</span><p>Первые письма ушли</p></div>
+        </div>
+        <div class="card">
+          <span class="tag signal">Неделя 4</span>
+          <h3>Объём растёт, веду ответы</h3>
+          <p>Разбор по сегментам и аргументам: что отвечает, что нет.</p>
+          <div class="out"><span class="tag">На выходе</span><p>Первый разбор и прогноз по встречам</p></div>
+        </div>
+      </div>
+      <p class="note">Почты прогреваются 2–3 недели, поэтому первые письма уходят на третьей-четвёртой неделе. Раньше отправлять значит попасть в спам и потерять домены.</p>
+    </div>
+    <div class="foot"><span>Константин Морошин · Аутрич для B2B</span><span>7 / 9</span></div>
+  </div>
+</div>
+
+<!-- 8. Как работаю / что нужно от вас -->
+<div class="slide">
+  <div class="frame">
+    <div class="head"><span class="sec-num">07</span><h2>Как работаю и что нужно от вас</h2></div>
+    <div class="body center">
+      <div class="cols">
+        <div>
+          <span class="tag subhead">Как работаю</span>
+          <ul class="tick">
+            <li>Каждый сегмент гипотеза. В разборе прямо пишу, что не подтвердилось.</li>
+            <li>Успех меряем встречами и запущенными пилотами: в длинном B2B-цикле выручка от аутрича появляется через несколько месяцев.</li>
+            <li>Не выжигаю базу: объём отправки подбираю под сегмент.</li>
+            <li>Демо и продажа на вашей стороне.</li>
+            <li>Подписываю NDA.</li>
+          </ul>
+        </div>
+        <div>
+          <span class="tag subhead">Что нужно от вас</span>
+          <ul class="tick">
+            <li>Брифинг на 1–1,5 часа: клиенты, сделки, возражения, что происходит после встречи.</li>
+            <li>Софт оплачивается напрямую провайдерам: отправка, домены, почты.</li>
+            <li>Один-два LinkedIn-аккаунта фаундеров или продавцов, если подключаем LinkedIn.</li>
+            <li>Человек, который проводит демо, и слоты в его календаре.</li>
+            <li>Согласование базы и цепочек за 1–2 рабочих дня.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Константин Морошин · Аутрич для B2B</span><span>8 / 9</span></div>
+  </div>
+</div>
+
+<!-- 9. Кто делает / следующий шаг -->
+<div class="slide">
+  <div class="frame">
+    <div class="head"><span class="sec-num">08</span><h2>Кто делает и что дальше</h2></div>
+    <div class="body">
+      <div class="who">
+        <div class="photo"><img src="../../inputs/konstantin_moroshin.jpg" alt="Константин Морошин"></div>
+        <div>
+          <h3>Константин Морошин</h3>
+          <p>Больше десяти лет продавал ИТ в энтерпрайзе (IT-GRAD, ITGLOBAL), провёл 150+ глубинных интервью с руководителями. Знаю, как в длинных B2B-сделках принимают решения и на какие аргументы отвечают.</p>
+          <div class="contacts">
+            <a class="btn primary" href="https://t.me/kmoroshin">Telegram · @kmoroshin</a>
+            <a class="btn" href="mailto:kmoroshin@gmail.com">kmoroshin@gmail.com</a>
+          </div>
+        </div>
+        <div class="next">
+          <span class="tag signal">● Следующий шаг</span>
+          <h3>Пришлите ссылку на продукт</h3>
+          <p>До созвона разберу его и соберу: сегмент, с которого начал бы, пять компаний с сигналами из открытых источников и первое письмо им.</p>
+          <p>На созвоне за 30 минут вы скажете, где я ошибся в сегменте и аргументе. Условия и стоимость пришлю вместе с этим разбором.</p>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Константин Морошин · Аутрич для B2B</span><span>9 / 9</span></div>
+  </div>
+</div>
+
+</body>
+</html>
