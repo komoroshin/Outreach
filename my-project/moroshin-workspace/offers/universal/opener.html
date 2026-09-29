@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>B2B-лидогенерация — Константин Морошин</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&subset=cyrillic&display=block" rel="stylesheet">
+<style>
+  /* КП по структуре Outreacher, 12 слайдов 16:9. Цены — из offer.md. */
+  @page { size: 1280px 720px; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --paper: #F3F0E8; --ink: #111111; --steel: #6B7075;
+    --steel-08: rgba(107,112,117,.08); --steel-16: rgba(107,112,117,.16); --steel-32: rgba(107,112,117,.32);
+    --signal: #245BFF; --signal-05: rgba(36,91,255,.05);
+    --sans: 'IBM Plex Sans', sans-serif; --mono: 'IBM Plex Mono', monospace;
+  }
+  html, body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.5;
+    -webkit-font-smoothing: antialiased; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  a { color: var(--signal); text-decoration: none; }
+  strong { font-weight: 600; }
+
+  .slide { width: 1280px; height: 720px; padding: 24px; background: var(--paper); page-break-after: always; break-after: page; overflow: hidden; }
+  .slide:last-child { page-break-after: auto; break-after: auto; }
+  .frame { height: 100%; border: 1px solid var(--ink); display: flex; flex-direction: column;
+    background-image: linear-gradient(var(--steel-08) 1px, transparent 1px), linear-gradient(90deg, var(--steel-08) 1px, transparent 1px);
+    background-size: 64px 64px; background-position: -1px -1px; }
+  .head { display: flex; align-items: baseline; gap: 16px; padding: 30px 40px 14px; border-bottom: 1px solid var(--ink); }
+  .sec-num { font-family: var(--mono); font-size: 14px; font-weight: 600; color: var(--signal); letter-spacing: .1em; }
+  h2 { font-size: 30px; font-weight: 600; letter-spacing: .01em; line-height: 1.1; }
+  .head .lede { margin-left: auto; max-width: 520px; font-size: 15px; color: var(--steel); text-align: right; align-self: flex-end; }
+  .body { flex: 1; padding: 28px 40px 0; }
+  .body.center { display: flex; flex-direction: column; justify-content: center; padding-bottom: 36px; }
+  .foot { display: flex; justify-content: space-between; padding: 10px 40px; border-top: 1px solid var(--ink);
+    font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--steel); }
+  .tag { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--steel); }
+  .tag.signal { color: var(--signal); }
+  .subhead { display: block; margin-bottom: 14px; }
+
+  /* обложка */
+  .cover .body { display: grid; grid-template-columns: 1fr 300px; gap: 48px; padding-top: 48px; }
+  h1 { font-size: 54px; font-weight: 600; letter-spacing: .04em; line-height: 1.05; text-transform: uppercase; margin-top: 14px; }
+  h1 em { font-style: normal; color: var(--signal); }
+  .role { margin-top: 22px; font-size: 24px; font-weight: 500; line-height: 1.3; max-width: 720px; }
+  .role em { font-style: normal; color: var(--signal); }
+  .photo { border: 1px solid var(--ink); padding: 8px; background: var(--paper); align-self: start; margin-top: 14px; }
+  .photo img { display: block; width: 100%; filter: grayscale(100%); }
+  .meta { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); margin-top: auto; }
+  .meta div { padding: 12px 20px 14px; border-right: 1px solid var(--steel-32); }
+  .meta div:first-child { padding-left: 40px; }
+  .meta div:last-child { border-right: none; }
+  .meta .k { display: block; margin-bottom: 2px; }
+  .meta .v { font-family: var(--mono); font-size: 14px; font-weight: 500; letter-spacing: .03em; }
+
+  /* карточки */
+  .cards { display: grid; gap: 1px; background: var(--steel-32); border: 1px solid var(--ink); }
+  .cards.c2 { grid-template-columns: repeat(2, 1fr); }
+  .cards.c3 { grid-template-columns: repeat(3, 1fr); }
+  .card { background: var(--paper); padding: 22px 24px 26px; }
+  .card .tag { display: block; margin-bottom: 10px; }
+  .card h3 { font-size: 20px; font-weight: 600; line-height: 1.25; margin-bottom: 10px; }
+  .card p { font-size: 16px; }
+  .card.result { background: var(--signal-05); border-top: 2px solid var(--signal); }
+  .card .big { font-family: var(--mono); font-size: 34px; font-weight: 600; line-height: 1.1; margin-bottom: 8px; }
+  .card .big small { font-size: 14px; color: var(--steel); font-weight: 500; }
+
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .steps { list-style: none; }
+  .steps li { display: grid; grid-template-columns: 44px 1fr; gap: 8px; padding: 10px 0; border-bottom: 1px solid var(--steel-16); font-size: 16.5px; }
+  .steps li:last-child { border-bottom: none; }
+  .steps .n { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--signal); letter-spacing: .1em; padding-top: 4px; }
+  .tick { list-style: none; }
+  .tick li { position: relative; padding: 10px 0 10px 34px; border-bottom: 1px solid var(--steel-16); font-size: 16.5px; }
+  .tick li:last-child { border-bottom: none; }
+  .tick li::before { content: "⌖"; position: absolute; left: 0; top: 9px; color: var(--signal); font-size: 18px; }
+  p.note { margin-top: 18px; font-size: 16px; max-width: 980px; }
+  p.note.muted { color: var(--steel); font-size: 15px; }
+  .callout { padding: 18px 22px 20px; background: var(--signal-05); border-top: 2px solid var(--signal); border: 1px solid var(--ink); border-top: 2px solid var(--signal); font-size: 16.5px; }
+
+  /* таблица софта */
+  .soft { width: 100%; border-collapse: collapse; border: 1px solid var(--ink); background: var(--paper); }
+  .soft td { padding: 12px 20px; border-bottom: 1px solid var(--steel-16); font-size: 16.5px; vertical-align: baseline; }
+  .soft tr:last-child td { border-bottom: none; }
+  .soft td.cost { font-family: var(--mono); font-size: 15px; text-align: right; white-space: nowrap; }
+  .soft tr.sub td { color: var(--steel); }
+
+  /* стоимость */
+  .price-main { border: 1px solid var(--ink); background: var(--paper); display: grid; grid-template-columns: 260px 1fr; }
+  .price-main .num-cell { padding: 22px 26px; border-right: 1px solid var(--steel-32); }
+  .price-main .txt-cell { padding: 22px 26px; font-size: 16.5px; }
+  .price-num { font-family: var(--mono); font-size: 40px; font-weight: 600; letter-spacing: -.01em; line-height: 1.1; }
+  .price-num small { font-size: 15px; color: var(--steel); font-weight: 500; letter-spacing: 0; }
+  .opt { background: var(--paper); padding: 20px 24px 22px; }
+  .opt .letter { font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--signal); letter-spacing: .1em; }
+  .opt .price-num { font-size: 30px; margin-top: 6px; }
+  .opt p { font-size: 15.5px; margin-top: 8px; }
+
+  /* контакты */
+  .who { display: grid; grid-template-columns: 260px 1fr; gap: 48px; align-items: start; }
+  .who h3 { font-size: 30px; font-weight: 600; margin-bottom: 10px; }
+  .who p { font-size: 17px; max-width: 700px; }
+  .contacts { margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; padding: 13px 22px; border: 1px solid var(--ink); color: var(--ink); display: inline-block; }
+  .btn.primary { background: var(--signal); border-color: var(--signal); color: var(--paper); }
+
+  .ps { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--steel-32); border: 1px solid var(--ink); }
+  .ps > div { background: var(--paper); padding: 20px 24px 22px; }
+  .ps .sol { background: var(--signal-05); }
+  .ps h3 { font-size: 19px; font-weight: 600; line-height: 1.3; margin-bottom: 8px; }
+  .ps p { font-size: 15.5px; }
+  .ps .tag { display: block; margin-bottom: 8px; }
+  .ps-head { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; margin-bottom: 1px; }
+</style>
+</head>
+<body>
+
+<!-- 1. Обложка -->
+<div class="slide cover">
+  <div class="frame">
+    <div class="body">
+      <div>
+        <span class="tag">Константин Морошин · GTM-инженер</span>
+        <h1>B2B-лидогенерация<br>холодными письмами</h1>
+        <p class="role">Встречи с покупателями, которых нет в вашем списке, <em>без найма продавцов</em>. Email и LinkedIn, с помощью AI и автоматизаций.</p>
+      </div>
+      <div class="photo"><img src="../../inputs/konstantin_moroshin.jpg" alt="Константин Морошин"></div>
+    </div>
+    <div class="meta">
+      <div><span class="tag k">Каналы</span><span class="v">Email + LinkedIn</span></div>
+      <div><span class="tag k">Формат</span><span class="v">Помесячно, без найма</span></div>
+      <div><span class="tag k">Контакт</span><span class="v">@kmoroshin</span></div>
+    </div>
+    <div class="foot"><span>Константин Морошин · B2B-лидогенерация</span><span>1 / 4</span></div>
+  </div>
+</div>
+
+<!-- 2. Проблема и решение -->
+<div class="slide">
+  <div class="frame">
+    <div class="head"><span class="sec-num">01</span><h2>Проблема и решение</h2></div>
+    <div class="body center">
+      <div class="ps">
+        <div><span class="tag">Проблема</span><h3>Новые клиенты приходят через знакомства, интро и выставки</h3><p>Когда сеть исчерпана, воронка пустеет, а способа системно дотянуться до остальных покупателей нет.</p></div>
+        <div class="sol"><span class="tag signal">● Решение</span><h3>Системный канал холодных писем на компании, которых нет в вашем списке</h3><p>Сегменты, база, цепочки писем, первые ответы и встречи в календаре команды.</p></div>
+        <div><span class="tag">Проблема</span><h3>Расти продажами значит нанимать биздевов</h3><p>Месяцы поиска, месяцы до первых встреч, и всё это время человек учится продукту за ваш счёт.</p></div>
+        <div class="sol"><span class="tag signal">● Решение</span><h3>Поток встреч, не завязанный на найм</h3><p>Холодная лидогенерация делегирована целиком: от базы до первых ответов. Ваша команда проводит демо и продаёт.</p></div>
+        <div><span class="tag">Проблема</span><h3>Подрядчик уходит, и канал уходит вместе с ним</h3><p>Домены, база и письма остаются у агентства, начинать приходится заново.</p></div>
+        <div class="sol"><span class="tag signal">● Решение</span><h3>Инфраструктура заводится на вас и остаётся у вас</h3><p>Домены, почты, база, цепочки и единый ящик с ответами на вашей стороне.</p></div>
+      </div>
+    </div>
+    <div class="foot"><span>Константин Морошин · B2B-лидогенерация</span><span>2 / 4</span></div>
+  </div>
+</div>
+
+<!-- 3. Что это и что вы получаете -->
+<div class="slide">
+  <div class="frame">
+    <div class="head"><span class="sec-num">02</span><h2>Что это</h2></div>
+    <div class="body center">
+      <p class="note" style="margin-top:0; font-size:19px; max-width:1000px;">Беру на себя полный цикл B2B-лидогенерации через холодные письма в email и LinkedIn: от стратегии и сбора базы до персонализированных писем, первых ответов и аналитики. Задача: построить и постоянно улучшать системный канал привлечения клиентов.</p>
+      <div class="cards c2" style="margin-top:26px;">
+        <div class="card result"><span class="tag signal">● Результат</span><h3>Встречи в календаре команды</h3><p>С нужными ролями из согласованных сегментов.</p></div>
+        <div class="card result"><span class="tag signal">● Результат</span><h3>Прозрачность</h3><p>Статистика по каждой кампании, все получатели, все ответы в едином ящике.</p></div>
+        <div class="card result"><span class="tag signal">● Результат</span><h3>Канал остаётся у вас</h3><p>Домены, почты, база и цепочки на вашей инфраструктуре.</p></div>
+        <div class="card result"><span class="tag signal">● Результат</span><h3>Карта гипотез</h3><p>Какие сегменты и аргументы откликаются, какие нет, с цитатами из ответов. Пригодится продажам и продукту.</p></div>
+      </div>
+    </div>
+    <div class="foot"><span>Константин Морошин · B2B-лидогенерация</span><span>3 / 4</span></div>
+  </div>
+</div>
+
+<!-- 4. Кто и следующий шаг -->
+<div class="slide">
+  <div class="frame">
+    <div class="head"><span class="sec-num">03</span><h2>Кто и что дальше</h2></div>
+    <div class="body center">
+      <div class="who">
+        <div class="photo" style="margin-top:0"><img src="../../inputs/konstantin_moroshin.jpg" alt="Константин Морошин"></div>
+        <div>
+          <h3>Константин Морошин</h3>
+          <p>GTM-инженер. Больше десяти лет продавал ИТ в энтерпрайзе (IT-GRAD, ITGLOBAL), провёл 150+ глубинных интервью с руководителями. Знаю, как в длинных B2B-сделках принимают решения и на какие аргументы отвечают. Аутрич выстраиваю по методике Outreacher.</p>
+          <div class="callout" style="margin-top:22px; max-width:700px;"><strong>Следующий шаг: разговор на 30 минут.</strong> Разберём продукт, кому продаёте сейчас и с какого сегмента начать. После него пришлю предложение с планом первого месяца и условиями.</div>
+          <div class="contacts">
+            <a class="btn primary" href="https://t.me/kmoroshin">Telegram · @kmoroshin</a>
+            <a class="btn" href="mailto:kmoroshin@gmail.com">kmoroshin@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Константин Морошин · B2B-лидогенерация</span><span>4 / 4</span></div>
+  </div>
+</div>
+
+</body>
+</html>
