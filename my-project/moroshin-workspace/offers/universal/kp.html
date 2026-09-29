@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Коммерческое предложение по запуску B2B-лидогенерации — Константин Морошин</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&subset=cyrillic&display=block" rel="stylesheet">
+<style>
+  /* КП по структуре Outreacher, 12 слайдов 16:9. Цены — из offer.md. */
+  @page { size: 1280px 720px; margin: 0; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --paper: #F3F0E8; --ink: #111111; --steel: #6B7075;
+    --steel-08: rgba(107,112,117,.08); --steel-16: rgba(107,112,117,.16); --steel-32: rgba(107,112,117,.32);
+    --signal: #245BFF; --signal-05: rgba(36,91,255,.05);
+    --sans: 'IBM Plex Sans', sans-serif; --mono: 'IBM Plex Mono', monospace;
+  }
+  html, body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 17px; line-height: 1.5;
+    -webkit-font-smoothing: antialiased; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  a { color: var(--signal); text-decoration: none; }
+  strong { font-weight: 600; }
+
+  .slide { width: 1280px; height: 720px; padding: 24px; background: var(--paper); page-break-after: always; break-after: page; overflow: hidden; }
+  .slide:last-child { page-break-after: auto; break-after: auto; }
+  .frame { height: 100%; border: 1px solid var(--ink); display: flex; flex-direction: column;
+    background-image: linear-gradient(var(--steel-08) 1px, transparent 1px), linear-gradient(90deg, var(--steel-08) 1px, transparent 1px);
+    background-size: 64px 64px; background-position: -1px -1px; }
+  .head { display: flex; align-items: baseline; gap: 16px; padding: 30px 40px 14px; border-bottom: 1px solid var(--ink); }
+  .sec-num { font-family: var(--mono); font-size: 14px; font-weight: 600; color: var(--signal); letter-spacing: .1em; }
+  h2 { font-size: 30px; font-weight: 600; letter-spacing: .01em; line-height: 1.1; }
+  .head .lede { margin-left: auto; max-width: 520px; font-size: 15px; color: var(--steel); text-align: right; align-self: flex-end; }
+  .body { flex: 1; padding: 28px 40px 0; }
+  .body.center { display: flex; flex-direction: column; justify-content: center; padding-bottom: 36px; }
+  .foot { display: flex; justify-content: space-between; padding: 10px 40px; border-top: 1px solid var(--ink);
+    font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--steel); }
+  .tag { font-family: var(--mono); font-size: 10px; letter-spacing: .14em; text-transform: uppercase; color: var(--steel); }
+  .tag.signal { color: var(--signal); }
+  .subhead { display: block; margin-bottom: 14px; }
+
+  /* обложка */
+  .cover .body { display: grid; grid-template-columns: 1fr 300px; gap: 48px; padding-top: 48px; }
+  h1 { font-size: 54px; font-weight: 600; letter-spacing: .04em; line-height: 1.05; text-transform: uppercase; margin-top: 14px; }
+  h1 em { font-style: normal; color: var(--signal); }
+  .role { margin-top: 22px; font-size: 24px; font-weight: 500; line-height: 1.3; max-width: 720px; }
+  .role em { font-style: normal; color: var(--signal); }
+  .photo { border: 1px solid var(--ink); padding: 8px; background: var(--paper); align-self: start; margin-top: 14px; }
+  .photo img { display: block; width: 100%; filter: grayscale(100%); }
+  .meta { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--ink); margin-top: auto; }
+  .meta div { padding: 12px 20px 14px; border-right: 1px solid var(--steel-32); }
+  .meta div:first-child { padding-left: 40px; }
+  .meta div:last-child { border-right: none; }
+  .meta .k { display: block; margin-bottom: 2px; }
+  .meta .v { font-family: var(--mono); font-size: 14px; font-weight: 500; letter-spacing: .03em; }
+
+  /* карточки */
+  .cards { display: grid; gap: 1px; background: var(--steel-32); border: 1px solid var(--ink); }
+  .cards.c2 { grid-template-columns: repeat(2, 1fr); }
+  .cards.c3 { grid-template-columns: repeat(3, 1fr); }
+  .card { background: var(--paper); padding: 22px 24px 26px; }
+  .card .tag { display: block; margin-bottom: 10px; }
+  .card h3 { font-size: 20px; font-weight: 600; line-height: 1.25; margin-bottom: 10px; }
+  .card p { font-size: 16px; }
+  .card.result { background: var(--signal-05); border-top: 2px solid var(--signal); }
+  .card .big { font-family: var(--mono); font-size: 34px; font-weight: 600; line-height: 1.1; margin-bottom: 8px; }
+  .card .big small { font-size: 14px; color: var(--steel); font-weight: 500; }
+
+  .cols { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; }
+  .steps { list-style: none; }
+  .steps li { display: grid; grid-template-columns: 44px 1fr; gap: 8px; padding: 10px 0; border-bottom: 1px solid var(--steel-16); font-size: 16.5px; }
+  .steps li:last-child { border-bottom: none; }
+  .steps .n { font-family: var(--mono); font-size: 13px; font-weight: 600; color: var(--signal); letter-spacing: .1em; padding-top: 4px; }
+  .tick { list-style: none; }
+  .tick li { position: relative; padding: 10px 0 10px 34px; border-bottom: 1px solid var(--steel-16); font-size: 16.5px; }
+  .tick li:last-child { border-bottom: none; }
+  .tick li::before { content: "⌖"; position: absolute; left: 0; top: 9px; color: var(--signal); font-size: 18px; }
+  p.note { margin-top: 18px; font-size: 16px; max-width: 980px; }
+  p.note.muted { color: var(--steel); font-size: 15px; }
+  .callout { padding: 18px 22px 20px; background: var(--signal-05); border-top: 2px solid var(--signal); border: 1px solid var(--ink); border-top: 2px solid var(--signal); font-size: 16.5px; }
+
+  /* таблица софта */
+  .soft { width: 100%; border-collapse: collapse; border: 1px solid var(--ink); background: var(--paper); }
+  .soft td { padding: 12px 20px; border-bottom: 1px solid var(--steel-16); font-size: 16.5px; vertical-align: baseline; }
+  .soft tr:last-child td { border-bottom: none; }
+  .soft td.cost { font-family: var(--mono); font-size: 15px; text-align: right; white-space: nowrap; }
+  .soft tr.sub td { color: var(--steel); }
+
+  /* стоимость */
+  .price-main { border: 1px solid var(--ink); background: var(--paper); display: grid; grid-template-columns: 260px 1fr; }
+  .price-main .num-cell { padding: 22px 26px; border-right: 1px solid var(--steel-32); }
+  .price-main .txt-cell { padding: 22px 26px; font-size: 16.5px; }
+  .price-num { font-family: var(--mono); font-size: 40px; font-weight: 600; letter-spacing: -.01em; line-height: 1.1; }
+  .price-num small { font-size: 15px; color: var(--steel); font-weight: 500; letter-spacing: 0; }
+  .opt { background: var(--paper); padding: 20px 24px 22px; }
+  .opt .letter { font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--signal); letter-spacing: .1em; }
+  .opt .price-num { font-size: 30px; margin-top: 6px; }
+  .opt p { font-size: 15.5px; margin-top: 8px; }
+
+  /* контакты */
+  .who { display: grid; grid-template-columns: 260px 1fr; gap: 48px; align-items: start; }
+  .who h3 { font-size: 30px; font-weight: 600; margin-bottom: 10px; }
+  .who p { font-size: 17px; max-width: 700px; }
+  .contacts { margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn { font-family: var(--mono); font-size: 13px; font-weight: 500; letter-spacing: .1em; text-transform: uppercase; padding: 13px 22px; border: 1px solid var(--ink); color: var(--ink); display: inline-block; }
+  .btn.primary { background: var(--signal); border-color: var(--signal); color: var(--paper); }
+</style>
+</head>
+<body>
+
+<!-- 1. Обложка -->
+<div class="slide cover">
+  <div class="frame">
+    <div class="body">
+      <div>
+        <span class="tag">Константин Морошин · GTM-инженер</span>
+        <h1>Коммерческое<br>предложение</h1>
+        <p class="role">по запуску <em>B2B-лидогенерации</em><br>с помощью AI и автоматизаций</p>
+      </div>
+      <div class="photo"><img src="../../inputs/konstantin_moroshin.jpg" alt="Константин Морошин"></div>
+    </div>
+    <div class="meta">
+      <div><span class="tag k">Каналы</span><span class="v">Email + LinkedIn</span></div>
+      <div><span class="tag k">Формат</span><span class="v">Помесячно, без найма</span></div>
+      <div><span class="tag k">Контакт</span><span class="v">@kmoroshin</span></div>
+    </div>
+    <div class="foot"><span>Константин Морошин · B2B-лидогенерация</span><span>1 / 12</span></div>
+  </div>
+</div>
+
+<!-- 2. Кто -->
+<div class="slide">
+  <div class="frame">
+    <div class="head"><span class="sec-num">01</span><h2>Кто</h2></div>
+    <div class="body center">
+      <p class="note" style="margin-top:0; font-size:19px; max-width:1000px;">Константин Морошин, GTM-инженер. Беру на себя полный цикл B2B-лидогенерации через холодные письма в email и LinkedIn: от стратегии и сбора базы до персонализированных писем, первых ответов и аналитики. Задача: построить и постоянно улучшать системный канал привлечения клиентов через холодный аутрич.</p>
+      <div class="cards c3" style="margin-top:28px;">
+        <div class="card">
+          <span class="tag signal">Продажи</span>
+          <h3>Больше десяти лет продавал ИТ в энтерпрайзе</h3>
+          <p>IT-GRAD, ITGLOBAL. Длинные сделки, несколько человек в закупочном комитете, тендеры.</p>
+        </div>
+        <div class="card">
+          <span class="tag signal">Исследования</span>
+          <h3>150+ глубинных интервью с руководителями</h3>
+          <p>Исследователь клиентского опыта в B2B ИТ. Знаю, как принимают решения и на какие аргументы отвечают.</p>
+        </div>
+        <div class="card">
+          <span class="tag signal">Метод</span>
+          <h3>Аутрич по методике Outreacher</h3>
+          <p>AI и автоматизации: сегменты, база, цепочки, доставляемость. Инфраструктура заводится на вас и остаётся у вас.</p>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Константин Морошин · B2B-лидогенерация</span><span>2 / 12</span></div>
+  </div>
+</div>
+
+<!-- 3. Отчётность -->
+<div class="slide">
+  <div class="frame">
+    <div class="head"><span class="sec-num">02</span><h2>Отчётность</h2><p class="lede">Вы в режиме реального времени видите:</p></div>
+    <div class="body center">
+      <div class="cards c3">
+        <div class="card result">
+          <span class="tag signal">● Кампании</span>
+          <h3>Статистику по каждой холодной кампании</h3>
+          <p>Отправки, доставляемость, открытия, ответы, встречи по каждому сегменту.</p>
+        </div>
+        <div class="card result">
+          <span class="tag signal">● База</span>
+          <h3>Всех получателей, их почты и LinkedIn URL</h3>
+          <p>Кому, когда и какое письмо ушло.</p>
+        </div>
+        <div class="card result">
+          <span class="tag signal">● Ответы</span>
+          <h3>Все ответы и лиды со всех почт в едином Master Inbox</h3>
+          <p>Один ящик на все домены и кампании, с историей переписки.</p>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Константин Морошин · B2B-лидогенерация</span><span>3 / 12</span></div>
+  </div>
+</div>
+
+<!-- 4. Как работаю -->
+<div class="slide">
+  <div class="frame">
+    <div class="head"><span class="sec-num">03</span><h2>Как работаю</h2></div>
+    <div class="body">
+      <div class="cols">
+        <ol class="steps">
+          <li><span class="n">01</span><div>Погружаюсь в ваш бизнес, целевую аудиторию, конкурентное окружение.</div></li>
+          <li><span class="n">02</span><div>Сегментирую рынок, выявляю критерии и триггеры, по которым ищу и фильтрую компании и роли.</div></li>
+          <li><span class="n">03</span><div>Определяю гипотезы, каналы коммуникации и тон оффера на ближайший месяц.</div></li>
+          <li><span class="n">04</span><div>Разрабатываю цепочки писем под основные сегменты месяца.</div></li>
+          <li><span class="n">05</span><div>Собираю и обогащаю базу компаний и нужных ролей с рабочими контактами.</div></li>
+        </ol>
+        <ol class="steps">
+          <li><span class="n">06</span><div>Делаю технический сетап: домены и DNS, прогрев почт, парсинг, спам-тесты, отправка, аналитика и другое ПО под ваш случай.</div></li>
+          <li><span class="n">07</span><div>Доставляю холодные письма и LinkedIn-сообщения в Inbox.</div></li>
+          <li><span class="n">08</span><div>Даю доступ к порталу, где вы видите все входящие и исходящие письма и общаетесь с лидами.</div></li>
+          <li><span class="n">09</span><div>Анализирую обратную связь и метрики, готовлю отчёты с выводами.</div></li>
+          <li><span class="n">10</span><div>По обратной связи корректирую письма, дорабатываю гипотезы, делаю новую итерацию.</div></li>
+        </ol>
+      </div>
+    </div>
+    <div class="foot"><span>Константин Морошин · B2B-лидогенерация</span><span>4 / 12</span></div>
+  </div>
+</div>
+
+<!-- 5. Стоимость -->
+<div class="slide">
+  <div class="frame">
+    <div class="head"><span class="sec-num">04</span><h2>Стоимость</h2></div>
+    <div class="body">
+      <div class="price-main">
+        <div class="num-cell"><div class="price-num">$1,500</div><div class="tag" style="margin-top:6px">Первый месяц, запуск</div></div>
+        <div class="txt-cell">Стратегия и запуск Cold Outreach (Email + LinkedIn): брифинг, до трёх сегментов, база, инфраструктура, цепочки, первые отправки. Без ограничений по объёму получателей и писем в каждом сегменте. Почты прогреваются 2–3 недели, поэтому первые письма уходят на третьей-четвёртой неделе.</div>
+      </div>
+      <span class="tag" style="display:block; margin:18px 0 10px;">Дальше, на выбор</span>
+      <div class="cards c2">
+        <div class="opt"><span class="letter">ВАРИАНТ А</span><div class="price-num">$900 <small>в месяц</small></div><p>Ведение кампаний, итерации по результатам, до трёх новых сегментов в месяц.</p></div>
+        <div class="opt"><span class="letter">ВАРИАНТ Б</span><div class="price-num">$100 <small>за встречу</small></div><p>Базу согласуем до отправки: состоявшаяся встреча с компанией и ролью из согласованной базы засчитывается автоматически. Фиксированной части нет.</p></div>
+      </div>
+      <p class="note muted">Сегмент это уникальный профиль покупателя, под который нужно разработать способ поиска компаний и ролей, собрать и проверить базу, написать цепочку email- и LinkedIn-писем, подготовить техническую часть.</p>
+    </div>
+    <div class="foot"><span>Константин Морошин · B2B-лидогенерация</span><span>5 / 12</span></div>
+  </div>
+</div>
+
+<!-- 6. Оплачивается отдельно -->
+<div class="slide">
+  <div class="frame">
+    <div class="head"><span class="sec-num">05</span><h2>Что оплачивается отдельно</h2><p class="lede">Софт для выполнения работ оплачивается вами напрямую провайдерам.</p></div>
+    <div class="body center">
+      <table class="soft">
+        <tr><td>Отправка писем, Smartlead</td><td class="cost">~$94 / мес</td></tr>
+        <tr><td>Домены, нужно 5–10</td><td class="cost">~$15 / шт</td></tr>
+        <tr><td>Корпоративные почты Google Workspace</td><td class="cost">$2–5 / ящик</td></tr>
+        <tr><td>API OpenAI, депозит зависит от объёмов</td><td class="cost">$100–200</td></tr>
+        <tr class="sub"><td>Если подключаем LinkedIn: автоматизация, за аккаунт</td><td class="cost">$48 / мес</td></tr>
+        <tr class="sub"><td>Если подключаем LinkedIn: LinkedIn Premium, за аккаунт</td><td class="cost">$60–80 / мес</td></tr>
+      </table>
+      <p class="note">Ориентировочно $300–550 в первый месяц, дальше меньше: домены и депозит API разовые.</p>
+    </div>
+    <div class="foot"><span>Константин Морошин · B2B-лидогенерация</span><span>6 / 12</span></div>
+  </div>
+</div>
+
+<!-- 7. Почему такое ценообразование -->
+<div class="slide">
+  <div class="frame">
+    <div class="head"><span class="sec-num">06</span><h2>Почему такое ценообразование</h2></div>
+    <div class="body">
+      <div class="cols">
+        <div>
+          <p class="note" style="margin-top:0">AI и инструменты автоматизации убрали узкое горлышко на объём получателей. Запустить кампанию на 1 000 получателей и на 20 000 для меня одинаковый объём работы, если оплачены API OpenAI, почты и остальной софт.</p>
+          <p class="note">Самая трудозатратная часть это стратегия и проработка новых сегментов. Поэтому цена привязана к сегментам, а не к количеству писем.</p>
+          <div class="callout" style="margin-top:22px"><strong>Что это даёт вам:</strong> вы не ограничены количеством получателей, а вся инфраструктура, база и цепочки остаются у вас.</div>
+        </div>
+        <div>
+          <span class="tag subhead">Что входит в проработку сегмента</span>
+          <ul class="tick">
+            <li>Брифинг</li>
+            <li>Ресёрч рынка</li>
+            <li>Парсинг и подготовка базы</li>
+            <li>Сбор цепочек в Clay и написание промптов</li>
+            <li>Копирайтинг писем</li>
+            <li>Техническое задание и контроль качества данных</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Константин Морошин · B2B-лидогенерация</span><span>7 / 12</span></div>
+  </div>
+</div>
+
+<!-- 8. LinkedIn -->
+<div class="slide">
+  <div class="frame">
+    <div class="head"><span class="sec-num">07</span><h2>Про LinkedIn Outreach</h2></div>
+    <div class="body center">
+      <div class="cards c3">
+        <div class="card">
+          <span class="tag signal">Аккаунты</span>
+          <h3>Запускаю на ваших аккаунтах</h3>
+          <p>Обычно это аккаунты фаундеров, ключевых лиц или продавцов, которые ходят на звонки. Логин и пароль передавать не нужно, ваши прошлые сообщения я не вижу: вы сами подключаете аккаунт к софту для автоматизации.</p>
+        </div>
+        <div class="card">
+          <span class="tag signal">Лимит</span>
+          <h3>600–700 уникальных получателей на аккаунт</h3>
+          <p>На email лимитов нет: почт можно завести сколько нужно.</p>
+        </div>
+        <div class="card">
+          <span class="tag signal">Premium</span>
+          <h3>Нужна подписка LinkedIn Premium</h3>
+          <p>Без неё LinkedIn не даёт отправлять текст в инвайте. $60–80 за аккаунт, оплачивается напрямую LinkedIn, 30 дней бесплатно. Плюс лицензия на софт для автоматизации, $48 за аккаунт.</p>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Константин Морошин · B2B-лидогенерация</span><span>8 / 12</span></div>
+  </div>
+</div>
+
+<!-- 9. Результат -->
+<div class="slide">
+  <div class="frame">
+    <div class="head"><span class="sec-num">08</span><h2>Результат</h2></div>
+    <div class="body center">
+      <div class="cards c3">
+        <div class="card result"><span class="tag signal">● 01</span><h3>Управляемый поток встреч</h3><p>Не завязанный на постоянный найм новых биздевов.</p></div>
+        <div class="card result"><span class="tag signal">● 02</span><h3>Процесс делегирован</h3><p>Холодная лидогенерация целиком на мне: от базы до первых ответов. Демо и продажа на вашей команде.</p></div>
+        <div class="card result"><span class="tag signal">● 03</span><h3>Прозрачный процесс и аналитика</h3><p>Статистика по кампаниям и единый ящик с ответами.</p></div>
+        <div class="card result"><span class="tag signal">● 04</span><h3>Канал остаётся у вас</h3><p>Домены, почты, база и цепочки на вашей инфраструктуре.</p></div>
+        <div class="card result"><span class="tag signal">● 05</span><h3>Карта гипотез</h3><p>Какие сегменты и аргументы откликаются, какие нет, с цитатами из ответов.</p></div>
+        <div class="card result"><span class="tag signal">● 06</span><h3>Масштабируется на другие страны</h3><p>Тот же процесс переносится на продажи в новых регионах.</p></div>
+      </div>
+    </div>
+    <div class="foot"><span>Константин Морошин · B2B-лидогенерация</span><span>9 / 12</span></div>
+  </div>
+</div>
+
+<!-- 10. Цикл -->
+<div class="slide">
+  <div class="frame">
+    <div class="head"><span class="sec-num">09</span><h2>Работа GTM-инженера это постоянный цикл</h2></div>
+    <div class="body center">
+      <ol class="steps" style="max-width:1000px">
+        <li><span class="n">01</span><div><strong>Сегментирую базу:</strong> исследование, ресёрч, фильтрация.</div></li>
+        <li><span class="n">02</span><div><strong>Пишу цепочки писем</strong> под каждую гипотезу или сегмент, чтобы попадать в боль и быть актуальным для получателя.</div></li>
+        <li><span class="n">03</span><div><strong>Проверяю реакцию и конверсию:</strong> что сработало, где болевые точки.</div></li>
+        <li><span class="n">04</span><div><strong>Оптимизирую и дорабатываю,</strong> корректирую сегменты, сверяюсь с вами.</div></li>
+        <li><span class="n">05</span><div><strong>Снова отправляю.</strong></div></li>
+      </ol>
+      <p class="note">Так вы получаете качественные лиды и контролируемый рост, не выжигаете базу потенциальных клиентов и не портите репутацию домена.</p>
+    </div>
+    <div class="foot"><span>Константин Морошин · B2B-лидогенерация</span><span>10 / 12</span></div>
+  </div>
+</div>
+
+<!-- 11. Следующие шаги -->
+<div class="slide">
+  <div class="frame">
+    <div class="head"><span class="sec-num">10</span><h2>Следующие шаги и этапы оплаты</h2></div>
+    <div class="body center">
+      <ol class="steps" style="max-width:1000px">
+        <li><span class="n">01</span><div>Согласовываем и подписываем договор.</div></li>
+        <li><span class="n">02</span><div>Оплата первого месяца.</div></li>
+        <li><span class="n">03</span><div>Брифинг вашей команды → гипотезы и сегменты на месяц → инфраструктура → база → копирайтинг писем → запуск.</div></li>
+        <li><span class="n">04</span><div>Дальше оплата помесячно или за встречу, в сроки, согласованные в договоре.</div></li>
+      </ol>
+      <p class="note">Прогрев почт, база, письма и первые отправки укладываются в первый месяц: первые письма уходят на третьей-четвёртой неделе.</p>
+      <p class="note muted">Варианты оплаты: [уточнить: юрлицо, валюты].</p>
+    </div>
+    <div class="foot"><span>Константин Морошин · B2B-лидогенерация</span><span>11 / 12</span></div>
+  </div>
+</div>
+
+<!-- 12. Контакты -->
+<div class="slide">
+  <div class="frame">
+    <div class="head"><span class="sec-num">11</span><h2>Контакты</h2></div>
+    <div class="body center">
+      <div class="who">
+        <div class="photo" style="margin-top:0"><img src="../../inputs/konstantin_moroshin.jpg" alt="Константин Морошин"></div>
+        <div>
+          <h3>Константин Морошин</h3>
+          <p>GTM-инженер. Больше десяти лет продавал ИТ в энтерпрайзе, провёл 150+ глубинных интервью с руководителями.</p>
+          <div class="contacts">
+            <a class="btn primary" href="https://t.me/kmoroshin">Telegram · @kmoroshin</a>
+            <a class="btn" href="mailto:kmoroshin@gmail.com">kmoroshin@gmail.com</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="foot"><span>Константин Морошин · B2B-лидогенерация</span><span>12 / 12</span></div>
+  </div>
+</div>
+
+</body>
+</html>
