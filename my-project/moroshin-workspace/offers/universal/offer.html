@@ -1,0 +1,543 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<title>Аутрич для B2B — Константин Морошин</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600;700&subset=cyrillic&display=block" rel="stylesheet">
+<style>
+  @page { size: A4; margin: 0; }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --paper: #F3F0E8;
+    --ink: #111111;
+    --steel: #6B7075;
+    --steel-08: rgba(107,112,117,.08);
+    --steel-16: rgba(107,112,117,.16);
+    --steel-32: rgba(107,112,117,.32);
+    --signal: #245BFF;
+    --signal-05: rgba(36,91,255,.05);
+    --sans: 'IBM Plex Sans', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+
+  html, body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--sans);
+    font-size: 12.5px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  a { color: var(--signal); text-decoration: none; }
+
+  /* ---------- page = sheet ---------- */
+  .page {
+    width: 210mm;
+    height: 297mm;
+    padding: 10mm;
+    background: var(--paper);
+    page-break-after: always;
+    break-after: page;
+    overflow: hidden;
+  }
+  .page:last-child { page-break-after: auto; break-after: auto; }
+
+  .frame {
+    height: 100%;
+    overflow: hidden;
+    border: 1px solid var(--ink);
+    display: flex;
+    flex-direction: column;
+    background-image:
+      linear-gradient(var(--steel-08) 1px, transparent 1px),
+      linear-gradient(90deg, var(--steel-08) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: -1px -1px;
+  }
+
+  .body { flex: 1; padding: 0 30px; }
+
+  .foot {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 30px;
+    border-top: 1px solid var(--ink);
+    background: var(--paper);
+    font-family: var(--mono);
+    font-size: 8px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--steel);
+  }
+
+  .tag {
+    font-family: var(--mono);
+    font-size: 8.5px;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--steel);
+  }
+
+  /* ---------- title block ---------- */
+  .title {
+    padding: 26px 30px 18px;
+    border-bottom: 1px solid var(--ink);
+    background: var(--paper);
+  }
+  h1 {
+    font-size: 36px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    line-height: 1.05;
+    text-transform: uppercase;
+  }
+  h1 em { font-style: normal; color: var(--signal); }
+  .lede { margin-top: 12px; max-width: 590px; font-size: 12.5px; }
+  .lede + .lede { margin-top: 6px; }
+
+  .meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    border-bottom: 1px solid var(--ink);
+    background: var(--paper);
+  }
+  .meta div { padding: 7px 12px 8px; border-right: 1px solid var(--steel-32); }
+  .meta div:first-child { padding-left: 30px; }
+  .meta div:last-child { border-right: none; }
+  .meta .k { display: block; margin-bottom: 1px; }
+  .meta .v { font-family: var(--mono); font-size: 11px; font-weight: 500; letter-spacing: .03em; }
+  .meta.key .v { color: var(--signal); font-weight: 600; }
+  .meta.top { border-bottom: 1px solid var(--steel-32); }
+
+  /* ---------- sections ---------- */
+  section { padding-top: 22px; }
+  section.first { padding-top: 28px; }
+  .sec-head { display: flex; align-items: baseline; gap: 12px; margin-bottom: 9px; }
+  .sec-num { font-family: var(--mono); font-size: 11px; font-weight: 600; color: var(--signal); letter-spacing: .1em; }
+  h2 { font-size: 17px; font-weight: 600; letter-spacing: .01em; }
+  .rule { height: 1px; background: var(--ink); margin-bottom: 12px; }
+
+  .subhead { display: block; margin: 12px 0 6px; }
+
+  p.note { font-size: 12.5px; max-width: 650px; }
+  p.note + p.note { margin-top: 7px; }
+  strong { font-weight: 600; }
+
+  /* hairline table of cards */
+  .cards {
+    display: grid;
+    gap: 1px;
+    background: var(--steel-32);
+    border: 1px solid var(--ink);
+  }
+  .cards.c3 { grid-template-columns: repeat(3, 1fr); }
+  .cards.c2 { grid-template-columns: 1fr 1fr; }
+  .cards.c4 { grid-template-columns: repeat(4, 1fr); }
+  .card { background: var(--paper); padding: 10px 13px 11px; }
+  .card .n { display: block; font-family: var(--mono); font-size: 10px; font-weight: 600; color: var(--signal); letter-spacing: .1em; margin-bottom: 4px; }
+  .card h3 { font-size: 12.5px; font-weight: 600; line-height: 1.3; margin-bottom: 4px; }
+  .card p { font-size: 11.5px; }
+  .card.muted h3, .card.muted p { color: var(--steel); }
+  .card.muted .n { color: var(--steel); }
+
+  .card.role .k { display: block; font-family: var(--mono); font-size: 10px; font-weight: 600; color: var(--signal); letter-spacing: .1em; text-transform: uppercase; margin-bottom: 3px; }
+
+  /* week plan */
+  .week { background: var(--paper); padding: 11px 12px 12px; display: flex; flex-direction: column; }
+  .week .n { display: block; font-family: var(--mono); font-size: 10px; font-weight: 600; color: var(--signal); letter-spacing: .1em; margin-bottom: 6px; }
+  .week p { font-size: 11.5px; flex: 1; }
+  .week .out { margin-top: 10px; padding-top: 7px; border-top: 1px solid var(--steel-32); font-size: 11px; font-weight: 600; }
+  .week .out .tag { display: block; font-weight: 400; margin-bottom: 2px; }
+
+  /* list with crosshair */
+  .list { list-style: none; }
+  .list li {
+    position: relative;
+    padding: 0 0 6px 22px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid var(--steel-16);
+    font-size: 12.5px;
+  }
+  .list li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .list li::before {
+    content: '⌖';
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: var(--mono);
+    color: var(--signal);
+  }
+
+  /* numbered steps */
+  .steps { list-style: none; counter-reset: s; }
+  .steps li {
+    counter-increment: s;
+    display: grid;
+    grid-template-columns: 30px 1fr;
+    padding: 0 0 6px;
+    margin-bottom: 6px;
+    border-bottom: 1px solid var(--steel-16);
+    font-size: 12.5px;
+  }
+  .steps li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+  .steps li::before {
+    content: counter(s, decimal-leading-zero);
+    font-family: var(--mono);
+    font-size: 10.5px;
+    font-weight: 600;
+    color: var(--signal);
+    letter-spacing: .08em;
+    padding-top: 1px;
+  }
+
+  /* callout */
+  .callout {
+    padding: 10px 14px 11px;
+    background: var(--signal-05);
+    border-top: 1px solid var(--signal);
+    font-size: 12.5px;
+    margin-bottom: 12px;
+  }
+
+  /* pricing */
+  .price-main {
+    border: 1px solid var(--ink);
+    background: var(--paper);
+    display: grid;
+    grid-template-columns: 190px 1fr;
+  }
+  .price-main .num-cell { padding: 14px 16px; border-right: 1px solid var(--steel-32); }
+  .price-main .txt-cell { padding: 14px 16px; font-size: 12px; }
+  .price-num { font-family: var(--mono); font-size: 28px; font-weight: 600; letter-spacing: -.01em; line-height: 1.1; }
+  .price-num small { font-size: 12px; color: var(--steel); font-weight: 500; letter-spacing: 0; }
+  .price-label { margin-top: 4px; }
+
+  .options-head { margin: 14px 0 8px; }
+
+  .opt { background: var(--paper); padding: 13px 14px 14px; }
+  .opt .letter { font-family: var(--mono); font-size: 10px; font-weight: 600; color: var(--signal); letter-spacing: .1em; }
+  .opt .price-num { font-size: 22px; margin-top: 4px; }
+  .opt p { font-size: 11.5px; margin-top: 6px; }
+
+  /* tables */
+  .soft { width: 100%; border-collapse: collapse; border: 1px solid var(--ink); background: var(--paper); }
+  .soft td { padding: 7px 12px; border-bottom: 1px solid var(--steel-16); font-size: 12px; vertical-align: baseline; }
+  .soft tr:last-child td { border-bottom: none; }
+  .soft td.cost { font-family: var(--mono); font-size: 11px; text-align: right; white-space: nowrap; }
+  .soft tr.sub td { color: var(--steel); }
+
+  .base { width: 100%; border-collapse: collapse; border: 1px solid var(--ink); background: var(--paper); }
+  .base th {
+    text-align: left;
+    padding: 7px 10px;
+    border-bottom: 1px solid var(--ink);
+    font-family: var(--mono);
+    font-size: 8.5px;
+    font-weight: 400;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--steel);
+  }
+  .base td { padding: 4px 10px; border-bottom: 1px solid var(--steel-16); font-size: 11px; vertical-align: top; line-height: 1.4; }
+  .base tr:last-child td { border-bottom: none; }
+  .base td.num { font-family: var(--mono); font-size: 10px; font-weight: 600; color: var(--signal); width: 26px; }
+  .base td.co { font-weight: 600; width: 170px; }
+  .base td.geo { color: var(--steel); width: 120px; }
+  .base .q { color: var(--signal); }
+
+  .src { margin-top: 7px; font-size: 10.5px; color: var(--steel); }
+
+  /* email */
+  .email { border: 1px solid var(--ink); background: var(--paper); }
+  .email .hd { display: grid; grid-template-columns: 70px 1fr; border-bottom: 1px solid var(--steel-32); }
+  .email .hd span { padding: 7px 12px; }
+  .email .hd .k { border-right: 1px solid var(--steel-32); }
+  .email .hd .v { font-size: 12px; font-weight: 600; }
+  .email .bd { padding: 10px 14px 11px; font-size: 11.5px; line-height: 1.5; }
+  .email .bd p + p { margin-top: 6px; }
+  .email .var { font-family: var(--mono); font-size: 11px; color: var(--signal); }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 26px; }
+
+  .contacts { display: flex; gap: 12px; margin-top: 18px; }
+  .btn {
+    font-family: var(--mono);
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    padding: 10px 18px;
+    border: 1px solid var(--ink);
+    color: var(--ink);
+    background: var(--paper);
+  }
+  .btn.primary { background: var(--signal); border-color: var(--signal); color: var(--paper); }
+</style>
+</head>
+<body>
+
+<!-- ================= PAGE 1 ================= -->
+<div class="page"><div class="frame">
+
+  <div class="title">
+    <h1>Аутрич<br>для <em>B2B</em></h1>
+    <p class="lede">Выстраиваю канал холодного аутрича — email и LinkedIn — на ваших покупателей. От выбора сегментов и сбора базы до писем, первых ответов и назначенных встреч. Демо и продажа остаются за вашей командой.</p>
+    <p class="lede">Инфраструктура — домены, почты, база, цепочки писем — заводится на вас и остаётся у вас.</p>
+  </div>
+
+  <div class="meta key">
+    <div><span class="k tag">Запуск, первый месяц</span><span class="v">$1,500</span></div>
+    <div><span class="k tag">Дальше, на выбор</span><span class="v">$900/мес или $100 за встречу</span></div>
+    <div><span class="k tag">Первые письма</span><span class="v">3–4 неделя</span></div>
+  </div>
+
+  <div class="body">
+
+    <section>
+      <div class="sec-head"><span class="sec-num">01</span><h2>Как выбираем, кому писать</h2></div>
+      <div class="rule"></div>
+
+      <p class="note" style="margin-bottom: 10px;">Сегмент — отдельный профиль покупателя: под него собирается своя база и пишется своя цепочка. На старте — до трёх сегментов, порядок фиксируем на брифинге.</p>
+
+      <div class="cards c3">
+        <div class="card">
+          <span class="n">НАЧИНАЕМ С НЕГО</span>
+          <h3>Короткий цикл, решает один человек</h3>
+          <p>На таком сегменте быстрее всего видно, работает ли аргумент.</p>
+        </div>
+        <div class="card">
+          <span class="n">СЛЕДОМ</span>
+          <h3>Покупатели крупнее, несколько согласующих</h3>
+          <p>Заходим, когда аргумент проверен на первом сегменте.</p>
+        </div>
+        <div class="card muted">
+          <span class="n">НЕ В ПЕРВОЙ ВОЛНЕ</span>
+          <h3>Самый длинный цикл</h3>
+          <p>Закупочные процедуры, проверка безопасности, многоуровневое согласование.</p>
+        </div>
+      </div>
+
+      <span class="subhead tag">Роли в сделке</span>
+      <div class="cards c3">
+        <div class="card role">
+          <span class="k">Чемпион</span>
+          <p>Руководитель функции, которую меняет продукт. Боль у него.</p>
+        </div>
+        <div class="card role">
+          <span class="k">Платит</span>
+          <p>Владелец, генеральный или коммерческий директор.</p>
+        </div>
+        <div class="card role">
+          <span class="k">Может остановить</span>
+          <p>IT, безопасность, закупки. Подключаются позже, и в крупных компаниях на этом этапе теряются месяцы.</p>
+        </div>
+      </div>
+
+      <span class="subhead tag">Как ищем компании</span>
+      <ul class="list">
+        <li>Вакансии в функции, которую закрывает продукт, — прямой индикатор нагрузки.</li>
+        <li>Отраслевые реестры, участники выставок и тендеров.</li>
+        <li>События: рост штата, новое финансирование, смена руководителя, выход на новый рынок.</li>
+      </ul>
+
+      <span class="subhead tag">Аргумент для письма</span>
+      <div class="callout" style="margin-bottom: 0;">Пишем не о функциях продукта, а о деньгах покупателя. Экономия часов сотрудника — слабый аргумент для владельца. Сильнее — больше сделок тем же штатом, быстрее ответ клиенту, меньше потерь на ошибках. Первый шаг в письме — короткий и конкретный: показать продукт на задаче получателя.</div>
+    </section>
+
+  </div>
+
+  <div class="foot"><span>Константин Морошин — аутрич для B2B</span><span>1 / 4</span></div>
+</div></div>
+
+<!-- ================= PAGE 2 ================= -->
+<div class="page"><div class="frame">
+  <div class="body">
+
+    <section class="first">
+      <div class="sec-head"><span class="sec-num">02</span><h2>Что выясним до запуска</h2></div>
+      <div class="rule"></div>
+      <div class="callout">Аутрич приводит встречи, а деньги появляются дальше — когда встреча переходит в пилот или сделку. Поэтому до запуска договариваемся о следующем шаге после встречи: что происходит после демо, по какой метрике пилот считается успешным и на каких условиях переходит в оплату. Чем яснее этот путь, тем больше встреч доходит до сделки.</div>
+      <ul class="list">
+        <li>Кто уже купил или в пилоте: сегмент, размер компании, как пришёл?</li>
+        <li>Выигранные и проигранные сделки: почему выбирали вас и почему нет?</li>
+        <li>Модель цены — и есть ли уже названная цифра?</li>
+        <li>Сколько длится цикл сделки и из чего он складывается: пилот, закупка, IT-проверка, согласование бюджета?</li>
+        <li>Какие возражения звучат чаще всего: данные и безопасность, интеграции, цена? Короткие ответы на них пригодятся прямо в письмах.</li>
+      </ul>
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="sec-num">03</span><h2>Что делаю</h2></div>
+      <div class="rule"></div>
+      <ol class="steps">
+        <li><span>Разбираю продукт, текущих клиентов и сделки: кто пришёл и почему.</span></li>
+        <li><span>Фиксирую сегменты и критерии поиска компаний и ролей.</span></li>
+        <li><span>Собираю и проверяю базу: компании и нужные роли с рабочими контактами.</span></li>
+        <li><span>Настраиваю инфраструктуру: домены, почты, прогрев, отправка, автоматизация LinkedIn.</span></li>
+        <li><span>Пишу цепочки писем и сообщений под каждый сегмент.</span></li>
+        <li><span>Веду первые ответы до договорённости о встрече.</span></li>
+        <li><span>Раз в две недели — разбор: что подтвердилось, что нет, что меняем.</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="sec-num">04</span><h2>Что вы получаете</h2></div>
+      <div class="rule"></div>
+      <div class="cards c2">
+        <div class="card">
+          <h3>Канал, который остаётся у вас</h3>
+          <p>Инфраструктура, база и цепочки — на вашей стороне.</p>
+        </div>
+        <div class="card">
+          <h3>Прозрачность</h3>
+          <p>Доступ к единому ящику со всеми ответами и к статистике по каждой кампании.</p>
+        </div>
+        <div class="card">
+          <h3>Встречи</h3>
+          <p>С нужными ролями из согласованных сегментов — в календаре команды.</p>
+        </div>
+        <div class="card">
+          <h3>Карта гипотез</h3>
+          <p>Какие сегменты и аргументы откликаются, какие нет, с цитатами из ответов. Пригодится продажам и продукту, даже если сегмент не сработал.</p>
+        </div>
+      </div>
+    </section>
+
+  </div>
+  <div class="foot"><span>Константин Морошин — аутрич для B2B</span><span>2 / 4</span></div>
+</div></div>
+
+<!-- ================= PAGE 3 ================= -->
+<div class="page"><div class="frame">
+  <div class="body">
+
+    <section class="first">
+      <div class="sec-head"><span class="sec-num">05</span><h2>Стоимость</h2></div>
+      <div class="rule"></div>
+
+      <div class="price-main">
+        <div class="num-cell">
+          <div class="price-num">$1,500</div>
+          <div class="price-label tag">Первый месяц</div>
+        </div>
+        <div class="txt-cell">Запуск: брифинг, до трёх сегментов, база, инфраструктура, цепочки, первые отправки. Почты прогреваются 2–3 недели, поэтому первые письма уходят на третьей-четвёртой неделе.</div>
+      </div>
+
+      <div class="options-head tag">Дальше — на выбор</div>
+
+      <div class="cards c2">
+        <div class="opt">
+          <span class="letter">ВАРИАНТ А</span>
+          <div class="price-num">$900 <small>в месяц</small></div>
+          <p>Ведение кампаний, итерации по результатам, до трёх новых сегментов в месяц.</p>
+        </div>
+        <div class="opt">
+          <span class="letter">ВАРИАНТ Б</span>
+          <div class="price-num">$100 <small>за встречу</small></div>
+          <p>Базу согласуем до отправки: состоявшаяся встреча с компанией и ролью из согласованной базы засчитывается автоматически. Фиксированной части нет.</p>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="sec-num">06</span><h2>Софт — отдельно, напрямую провайдерам</h2></div>
+      <div class="rule"></div>
+      <table class="soft">
+        <tr><td>Отправка писем — Smartlead</td><td class="cost">~$94 / мес</td></tr>
+        <tr><td>Домены, нужно 5–10</td><td class="cost">~$15 / шт</td></tr>
+        <tr><td>Почты Google Workspace</td><td class="cost">$2–5 / ящик</td></tr>
+        <tr><td>API OpenAI</td><td class="cost">депозит $100–200</td></tr>
+        <tr class="sub"><td>Если подключаем LinkedIn: автоматизация, за аккаунт</td><td class="cost">$48 / мес</td></tr>
+        <tr class="sub"><td>Если подключаем LinkedIn: LinkedIn Premium, за аккаунт</td><td class="cost">$60–80 / мес</td></tr>
+      </table>
+      <p class="note" style="margin-top: 9px;">Ориентировочно $300–550 в первый месяц, дальше меньше: домены и депозит API разовые.</p>
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="sec-num">07</span><h2>План первого месяца</h2></div>
+      <div class="rule"></div>
+      <p class="note" style="margin-bottom: 10px;">До старта — созвон-брифинг по вопросам из раздела 02, договор и оплата первого месяца. Дальше по неделям:</p>
+      <div class="cards c4">
+        <div class="week">
+          <span class="n">НЕДЕЛЯ 1</span>
+          <p>Брифинг, сегменты и критерии поиска. Покупка доменов и почт, старт прогрева.</p>
+          <div class="out"><span class="tag">На выходе</span>Согласованы сегменты и роли</div>
+        </div>
+        <div class="week">
+          <span class="n">НЕДЕЛЯ 2</span>
+          <p>База первого сегмента с контактами нужных ролей. Цепочки писем.</p>
+          <div class="out"><span class="tag">На выходе</span>База и цепочки — вам на согласование</div>
+        </div>
+        <div class="week">
+          <span class="n">НЕДЕЛЯ 3</span>
+          <p>Первые отправки малым объёмом, пока почты догреваются. Старт базы второго сегмента.</p>
+          <div class="out"><span class="tag">На выходе</span>Первые письма ушли</div>
+        </div>
+        <div class="week">
+          <span class="n">НЕДЕЛЯ 4</span>
+          <p>Объём отправки растёт, веду первые ответы. Разбор по сегментам и аргументам.</p>
+          <div class="out"><span class="tag">На выходе</span>Первый разбор и прогноз по встречам</div>
+        </div>
+      </div>
+      <p class="note" style="margin-top: 10px;">Число встреч заранее не обещаю: прогноз даю в первом разборе по реальным ответам, точнее — к середине второго месяца.</p>
+    </section>
+
+  </div>
+  <div class="foot"><span>Константин Морошин — аутрич для B2B</span><span>3 / 4</span></div>
+</div></div>
+
+<!-- ================= PAGE 4 ================= -->
+<div class="page"><div class="frame">
+  <div class="body">
+
+    <section class="first">
+      <div class="two-col">
+        <div>
+          <div class="sec-head"><span class="sec-num">08</span><h2>Что нужно от вас</h2></div>
+          <div class="rule"></div>
+          <ul class="list">
+            <li>Брифинг на 1–1,5 часа по вопросам из раздела 02.</li>
+            <li>Оплата софта и доступ к нему.</li>
+            <li>Один-два LinkedIn-аккаунта фаундеров или продавцов, если подключаем LinkedIn.</li>
+            <li>Человек, который проводит демо, и слоты в его календаре.</li>
+            <li>Согласование базы и цепочек за 1–2 рабочих дня.</li>
+          </ul>
+        </div>
+        <div>
+          <div class="sec-head"><span class="sec-num">09</span><h2>Как работаю</h2></div>
+          <div class="rule"></div>
+          <ul class="list">
+            <li>Каждый сегмент — гипотеза. В разборе прямо пишу, что не подтвердилось.</li>
+            <li>Успех меряем встречами и запущенными пилотами: в длинном B2B-цикле выручка от аутрича появляется через несколько месяцев.</li>
+            <li>Не выжигаю базу: объём отправки подбираю под сегмент.</li>
+            <li>Демо и продажа — на вашей стороне.</li>
+            <li>Подписываю NDA.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section>
+      <div class="sec-head"><span class="sec-num">10</span><h2>Кто делает</h2></div>
+      <div class="rule"></div>
+      <p class="note">Константин Морошин. Больше десяти лет продавал ИТ в энтерпрайзе и провёл 150+ глубинных интервью с руководителями. Знаю, как в длинных B2B-сделках принимают решения и на какие аргументы отвечают.</p>
+
+      <div class="contacts">
+        <a class="btn primary" href="https://t.me/kmoroshin">Telegram → @kmoroshin</a>
+        <a class="btn" href="mailto:kmoroshin@gmail.com">kmoroshin@gmail.com</a>
+      </div>
+    </section>
+
+  </div>
+  <div class="foot"><span>Константин Морошин — аутрич для B2B</span><span>4 / 4</span></div>
+</div></div>
+
+</body>
+</html>

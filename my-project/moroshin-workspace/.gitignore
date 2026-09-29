@@ -1,0 +1,7 @@
+.DS_Store
+
+# Конфиденциальное — репозиторий Outreach публичный, эти файлы в него не попадают.
+# Оффер чужого агентства и данные сделки ValveIQ (см. CLAUDE.md, раздел «Конфиденциальность»).
+inputs/gkey-strategy-offer.pdf
+inputs/outreacher-kp.pdf
+offers/valveiq/
